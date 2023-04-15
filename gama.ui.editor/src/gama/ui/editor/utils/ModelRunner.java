@@ -48,7 +48,7 @@ import gaml.compiler.validation.GamlModelBuilder;
 import gaml.core.compilation.GamlCompilationError;
 import gaml.core.statements.test.TestExperimentSummary;
 import gaml.core.statements.test.WithTestSummary;
-import ummisco.gama.ui.modeling.internal.ModelingActivator;
+import gama.ui.editor.internal.EditorActivator;
 
 /**
  * The class ModelRunner.
@@ -68,7 +68,7 @@ public class ModelRunner extends AbstractServiceFactory implements IModelRunner 
 	 */
 	private void editModelInternal(final Object eObject) {
 		if (eObject instanceof URI uri) {
-			final Injector injector = ModelingActivator.getInstance().getInjector("msi.gama.lang.gaml.Gaml");
+			final Injector injector = EditorActivator.getInstance().getInjector("msi.gama.lang.gaml.Gaml");
 			final IURIEditorOpener opener = injector.getInstance(IURIEditorOpener.class);
 			opener.open(uri, true);
 		} else if (eObject instanceof EObject) {

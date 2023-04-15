@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import ummisco.gama.ui.modeling.internal.ModelingActivator;
+import gama.ui.editor.internal.EditorActivator;
 
 /**
  * The Class BoxProviderRegistry.
@@ -80,7 +80,7 @@ public class BoxProviderRegistry {
 	 */
 	protected Collection<IBoxProvider> loadProviders() {
 		List<IBoxProvider> result = null;
-		final String pSetting = ModelingActivator.getInstance().getPreferenceStore().getString(PROIVDERS);
+		final String pSetting = EditorActivator.getInstance().getPreferenceStore().getString(PROIVDERS);
 		if (pSetting != null && pSetting.length() > 0) {
 			final String[] split = pSetting.split(",");
 			if (split.length > 0) {
@@ -117,7 +117,7 @@ public class BoxProviderRegistry {
 				}
 				sb.append(p.getName());
 			}
-			ModelingActivator.getInstance().getPreferenceStore().setValue(PROIVDERS, sb.toString());
+			EditorActivator.getInstance().getPreferenceStore().setValue(PROIVDERS, sb.toString());
 		}
 	}
 
