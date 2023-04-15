@@ -17,10 +17,10 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
-import msi.gama.application.workbench.PerspectiveHelper;
-import msi.gama.util.tree.GamaNode;
-import msi.gama.util.tree.GamaTree;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.application.workbench.PerspectiveHelper;
+import gama.core.util.tree.GamaNode;
+import gama.core.util.tree.GamaTree;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The Class CopyLayout.

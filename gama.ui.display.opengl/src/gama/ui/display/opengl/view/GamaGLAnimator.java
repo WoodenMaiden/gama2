@@ -20,7 +20,7 @@ import com.jogamp.opengl.GLAutoDrawable;
 import gama.ui.display.dev.utils.DEBUG;
 import gama.ui.display.dev.utils.THREADS;
 import gama.ui.display.ui.utils.WorkbenchHelper;
-import msi.gama.common.preferences.GamaPreferences;
+import gama.core.common.preferences.GamaPreferences;
 
 /**
  * Single Thread Animator (with target FPS)

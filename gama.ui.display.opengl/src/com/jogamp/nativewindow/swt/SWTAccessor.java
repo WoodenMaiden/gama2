@@ -50,8 +50,8 @@ import jogamp.nativewindow.x11.X11Lib;
 public class SWTAccessor {
 
 	static {
-		// ummisco.gama.dev.utils.DEBUG.ON();
-		// ummisco.gama.dev.utils.DEBUG.LOG("Loading redefined SWTAccessor");
+		// gama.dev.DEBUG.ON();
+		// gama.dev.DEBUG.LOG("Loading redefined SWTAccessor");
 	}
 
 	/** The Constant DEBUG. */

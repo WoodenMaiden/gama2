@@ -47,7 +47,7 @@ import gama.ui.display.opengl.camera.IMultiListener;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
 import gama.ui.display.ui.bindings.IDelegateEventsToParent;
 import gama.ui.display.ui.utils.WorkbenchHelper;
-import msi.gama.runtime.PlatformHelper;
+import gama.core.runtime.PlatformHelper;
 
 /**
  * The Class GamaGLCanvas.

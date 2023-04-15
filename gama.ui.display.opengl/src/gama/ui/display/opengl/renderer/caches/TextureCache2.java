@@ -28,8 +28,8 @@ import com.jogamp.opengl.util.texture.awt.AWTTextureIO;
 
 import gama.ui.display.dev.utils.DEBUG;
 import gama.ui.display.opengl.OpenGL;
-import msi.gama.common.interfaces.IImageProvider;
-import msi.gama.common.preferences.GamaPreferences;
+import gama.core.common.interfaces.IImageProvider;
+import gama.core.common.preferences.GamaPreferences;
 
 /**
  * The Class TextureCache2.

@@ -23,11 +23,11 @@ import com.google.common.collect.Iterables;
 import msi.gama.kernel.experiment.ExperimentAgent;
 import msi.gama.kernel.experiment.IExperimentPlan;
 import msi.gama.kernel.simulation.SimulationAgent;
-import msi.gama.outputs.IDisplayOutput;
-import msi.gama.outputs.IOutputManager;
-import msi.gama.outputs.LayeredDisplayOutput;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.IScope;
+import gama.core.outputs.IDisplayOutput;
+import gama.core.outputs.IOutputManager;
+import gama.core.outputs.LayeredDisplayOutput;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.IScope;
 import ummisco.gama.ui.resources.GamaIcon;
 import ummisco.gama.ui.resources.IGamaIcons;
 

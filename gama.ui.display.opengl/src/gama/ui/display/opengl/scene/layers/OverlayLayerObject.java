@@ -15,12 +15,12 @@ import com.jogamp.opengl.fixedfunc.GLMatrixFunc;
 import gama.ui.display.dev.utils.DEBUG;
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
-import msi.gama.common.interfaces.IKeyword;
-import msi.gama.common.interfaces.ILayer;
+import gama.core.common.interfaces.IKeyword;
+import gama.core.common.interfaces.ILayer;
 import msi.gama.metamodel.shape.GamaPoint;
 import msi.gama.metamodel.shape.IShape;
-import msi.gama.outputs.layers.OverlayLayerData;
-import msi.gama.runtime.IScope;
+import gama.core.outputs.layers.OverlayLayerData;
+import gama.core.runtime.IScope;
 import msi.gaml.expressions.IExpression;
 import msi.gaml.operators.Cast;
 

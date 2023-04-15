@@ -23,7 +23,7 @@ import com.jogamp.opengl.util.gl2.GLUT;
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
 import msi.gama.metamodel.shape.GamaPoint;
-import msi.gama.outputs.layers.properties.ILightDefinition;
+import gama.core.outputs.layers.properties.ILightDefinition;
 
 /**
  * The Class LightHelper.

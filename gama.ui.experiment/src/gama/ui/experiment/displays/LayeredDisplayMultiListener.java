@@ -16,10 +16,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 
 import gama.ui.experiment.views.WorkaroundForIssue1353;
-import msi.gama.common.interfaces.IDisplaySurface;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.PlatformHelper;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.core.common.interfaces.IDisplaySurface;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.PlatformHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The listener interface for receiving layeredDisplayMulti events. The class that is interested in processing a

@@ -18,8 +18,8 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.ui.commands.IElementUpdater;
 import org.eclipse.ui.menus.UIElement;
 
-import msi.gama.runtime.GAMA;
-import ummisco.gama.dev.utils.DEBUG;
+import gama.core.runtime.GAMA;
+import gama.dev.DEBUG;
 
 /**
  * The Class SynchronizeExperimentHandler.

@@ -10,7 +10,7 @@
  ********************************************************************************************************/
 package gama.ui.experiment.inspectors;
 
-import static msi.gama.common.preferences.GamaPreferences.Displays.CORE_DISPLAY_LAYOUT;
+import static gama.core.common.preferences.GamaPreferences.Displays.CORE_DISPLAY_LAYOUT;
 import static ummisco.gama.ui.resources.IGamaIcons.ACTION_REVERT;
 import static ummisco.gama.ui.resources.IGamaIcons.MENU_ADD_MONITOR;
 
@@ -32,26 +32,26 @@ import gama.ui.experiment.controls.ParameterExpandItem;
 import gama.ui.experiment.parameters.EditorsList;
 import gama.ui.experiment.parameters.ExperimentsParametersList;
 import gama.ui.experiment.views.toolbar.GamaToolbar2;
-import msi.gama.common.interfaces.IGamaView;
-import msi.gama.common.interfaces.IGui;
-import msi.gama.common.preferences.GamaPreferences;
+import gama.core.common.interfaces.IGamaView;
+import gama.core.common.interfaces.IGui;
+import gama.core.common.preferences.GamaPreferences;
 import msi.gama.kernel.experiment.IExperimentDisplayable;
 import msi.gama.kernel.experiment.IExperimentPlan;
 import msi.gama.kernel.experiment.ParametersSet;
 import msi.gama.kernel.simulation.SimulationAgent;
-import msi.gama.outputs.MonitorOutput;
-import msi.gama.outputs.SimulationOutputManager;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.IScope;
-import msi.gaml.constants.GamlCoreConstants;
-import ummisco.gama.dev.utils.COUNTER;
+import gama.core.outputs.MonitorOutput;
+import gama.core.outputs.SimulationOutputManager;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.IScope;
+import gaml.core.constants.GamlCoreConstants;
+import gama.dev.COUNTER;
 import ummisco.gama.ui.interfaces.IParameterEditor;
 import ummisco.gama.ui.parameters.EditorsGroup;
 import ummisco.gama.ui.parameters.MonitorDisplayer;
 import ummisco.gama.ui.resources.GamaColors;
 import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
 import ummisco.gama.ui.resources.IGamaIcons;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The Class ExperimentParametersView.
@@ -291,7 +291,7 @@ public class ExperimentParametersView extends AttributesEditorsView<String> impl
 	/**
 	 * Method handleMenu()
 	 *
-	 * @see msi.gama.common.interfaces.ItemList#handleMenu(java.lang.Object, int, int)
+	 * @see gama.core.common.interfaces.ItemList#handleMenu(java.lang.Object, int, int)
 	 */
 	@Override
 	public Map<String, Runnable> handleMenu(final String data, final int x, final int y) {

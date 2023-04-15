@@ -14,7 +14,7 @@ import org.eclipse.ui.services.AbstractServiceFactory;
 import org.eclipse.ui.services.IServiceLocator;
 
 import gama.ui.experiment.user.UserControlDialog;
-import msi.gama.runtime.IScope;
+import gama.core.runtime.IScope;
 import msi.gaml.architecture.user.UserPanelStatement;
 
 /**

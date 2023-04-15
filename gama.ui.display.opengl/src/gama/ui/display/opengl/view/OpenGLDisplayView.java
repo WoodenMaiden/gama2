@@ -18,9 +18,9 @@ import com.jogamp.newt.Window;
 import gama.ui.display.dev.utils.DEBUG;
 import gama.ui.display.dev.utils.FLAGS;
 import gama.ui.experiment.displays.LayeredDisplayView;
-import msi.gama.common.interfaces.IDisposable;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.PlatformHelper;
+import gama.core.common.interfaces.IDisposable;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.PlatformHelper;
 
 /**
  * Class OpenGLLayeredDisplayView.
@@ -36,7 +36,7 @@ public class OpenGLDisplayView extends LayeredDisplayView {
 	}
 
 	/** The id. */
-	public static String ID = "msi.gama.application.view.OpenGLDisplayView";
+	public static String ID = "gama.ui.application.view.OpenGLDisplayView";
 
 	@Override
 	public SWTOpenGLDisplaySurface getDisplaySurface() { return (SWTOpenGLDisplaySurface) super.getDisplaySurface(); }

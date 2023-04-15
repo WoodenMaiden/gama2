@@ -32,15 +32,15 @@ import gama.ui.experiment.menus.AgentsMenu;
 import gama.ui.experiment.parameters.AgentAttributesEditorsList;
 import gama.ui.experiment.views.toolbar.IToolbarDecoratedView;
 import gama.ui.experiment.views.toolbar.Selector;
-import msi.gama.common.interfaces.IGui;
+import gama.core.common.interfaces.IGui;
 import msi.gama.kernel.experiment.IParameter;
 import msi.gama.kernel.experiment.ITopLevelAgent;
 import msi.gama.kernel.experiment.ParameterAdapter;
 import msi.gama.metamodel.agent.IAgent;
-import msi.gama.outputs.IDisplayOutput;
-import msi.gama.outputs.IOutput;
-import msi.gama.outputs.InspectDisplayOutput;
-import msi.gama.runtime.IScope;
+import gama.core.outputs.IDisplayOutput;
+import gama.core.outputs.IOutput;
+import gama.core.outputs.InspectDisplayOutput;
+import gama.core.runtime.IScope;
 import msi.gaml.types.Types;
 import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
 import ummisco.gama.ui.resources.IGamaColors;
@@ -270,7 +270,7 @@ public class AgentInspectView extends AttributesEditorsView<IAgent>
 	/**
 	 * Method handleMenu()
 	 *
-	 * @see msi.gama.common.interfaces.ItemList#handleMenu(java.lang.Object, int, int)
+	 * @see gama.core.common.interfaces.ItemList#handleMenu(java.lang.Object, int, int)
 	 */
 	@Override
 	public Map<String, Runnable> handleMenu(final IAgent data, final int x, final int y) {

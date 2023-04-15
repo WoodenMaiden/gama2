@@ -33,11 +33,11 @@ import gama.ui.display.ui.utils.ViewsHelper;
 import gama.ui.display.ui.utils.WorkbenchHelper;
 import gama.ui.experiment.views.toolbar.IToolbarDecoratedView.ICameraHelper;
 import msi.gama.common.geometry.Envelope3D;
-import msi.gama.common.interfaces.IKeyword;
-import msi.gama.common.preferences.GamaPreferences;
+import gama.core.common.interfaces.IKeyword;
+import gama.core.common.preferences.GamaPreferences;
 import msi.gama.metamodel.shape.GamaPoint;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.PlatformHelper;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.PlatformHelper;
 import msi.gaml.operators.Maths;
 import msi.gaml.types.Types;
 

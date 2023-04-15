@@ -13,7 +13,7 @@ package gama.ui.experiment.factories;
 import org.eclipse.ui.services.AbstractServiceFactory;
 import org.eclipse.ui.services.IServiceLocator;
 
-import msi.gama.common.interfaces.IStatusDisplayer;
+import gama.core.common.interfaces.IStatusDisplayer;
 
 /**
  * A factory for creating StatusDisplayer objects.

@@ -15,7 +15,7 @@ import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.IPlaceholderFolderLayout;
 
-import msi.gama.common.interfaces.IGui;
+import gama.core.common.interfaces.IGui;
 
 /**
  * The Class SimulationPerspective.

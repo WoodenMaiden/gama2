@@ -453,7 +453,7 @@
           category="msi.gama.gui.category.gama"
           class="org.eclipse.ui.views.contentoutline.ContentOutline"
           icon="platform:/plugin/gama.ui.shared.shared/icons/views/tabs/view.outline.png"
-          id="msi.gama.application.outline"
+          id="gama.ui.application.outline"
           name="Outline"
           restorable="true">
     </view>
@@ -462,7 +462,7 @@
           category="msi.gama.gui.category.gama"
           class="gama.ui.shared.views.SyntaxErrorsView"
           icon="platform:/plugin/gama.ui.shared.shared/icons/views/tabs/view.problems.png"
-          id="msi.gama.application.problems"
+          id="gama.ui.application.problems"
           name="Validation"
           restorable="true">
     </view>
@@ -761,7 +761,7 @@
           <action
                 class="gama.ui.editor.editor.DelegateForAllElements"
                 icon="platform:/plugin/gama.ui.shared.shared/icons/generic/menu.searchtext.png"
-                id="msi.gama.application.action1"
+                id="gama.ui.application.action1"
                 label="GAML elements in models..."
                 menubarPath="org.eclipse.search.menu/extraSearchGroup"
                 style="push"
@@ -772,7 +772,7 @@
     <extension 
           point="org.eclipse.ui.perspectiveExtensions">
        <perspectiveExtension
-             targetID="msi.gama.application.perspectives.ModelingPerspective">
+             targetID="gama.ui.application.perspectives.ModelingPerspective">
           <view
                 closeable="false"
                 id="msi.gama.gui.view.GamaNavigator"
@@ -785,7 +785,7 @@
           </view>
           <view
                 closeable="true"
-                id="msi.gama.application.outline"
+                id="gama.ui.application.outline"
                 minimized="false"
                 moveable="true"
                 ratio="0.70"
@@ -795,25 +795,25 @@
           </view>
           <view
                 closeable="true"
-                id="msi.gama.application.problems"
+                id="gama.ui.application.problems"
                 minimized="false"
                 moveable="true"
                 relationship="stack"
-                relative="msi.gama.application.outline"
+                relative="gama.ui.application.outline"
                 visible="true">
           </view>
           <viewShortcut
-                id="msi.gama.application.outline">
+                id="gama.ui.application.outline">
           </viewShortcut>
           <viewShortcut
-                id="msi.gama.application.problems">
+                id="gama.ui.application.problems">
           </viewShortcut>
           <perspectiveShortcut
-                id="msi.gama.application.perspectives.SimulationPerspective">
+                id="gama.ui.application.perspectives.SimulationPerspective">
           </perspectiveShortcut>
           <view
                 closeable="true"
-                id="msi.gama.application.view.InteractiveConsoleView"
+                id="gama.ui.application.view.InteractiveConsoleView"
                 minimized="false"
                 moveable="true"
                 ratio="0.7"
@@ -824,7 +824,7 @@
                 visible="true">
           </view>
           <viewShortcut
-                id="msi.gama.application.view.InteractiveConsoleView">
+                id="gama.ui.application.view.InteractiveConsoleView">
           </viewShortcut>
        </perspectiveExtension>
     </extension>
@@ -834,7 +834,7 @@
              class="gama.ui.shared.perspective.ModelingPerspective"
              fixed="false"
              icon="platform:/plugin/gama.ui.shared.shared/icons/views/perspective.modeling.png"
-             id="msi.gama.application.perspectives.ModelingPerspective"
+             id="gama.ui.application.perspectives.ModelingPerspective"
              name="Modeling">
           <description> 
              The perspective used to edit GAMA models
@@ -851,7 +851,7 @@
        <serviceFactory
              factoryClass="gama.ui.editor.outline.LabelProviderFactory">
           <service
-                serviceClass="msi.gama.common.interfaces.IGamlLabelProvider">
+                serviceClass="gama.core.common.interfaces.IGamlLabelProvider">
           </service>
        </serviceFactory>
     </extension>

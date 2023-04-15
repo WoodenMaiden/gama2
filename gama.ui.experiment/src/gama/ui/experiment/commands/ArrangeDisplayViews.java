@@ -10,8 +10,8 @@
  ********************************************************************************************************/
 package gama.ui.experiment.commands;
 
-import static msi.gaml.operators.Displays.HORIZONTAL;
-import static msi.gaml.operators.Displays.VERTICAL;
+import static gaml.core.operators.Displays.HORIZONTAL;
+import static gaml.core.operators.Displays.VERTICAL;
 import static org.eclipse.e4.ui.model.application.ui.basic.MBasicFactory.INSTANCE;
 import static org.eclipse.e4.ui.workbench.modeling.EModelService.IN_ACTIVE_PERSPECTIVE;
 
@@ -32,16 +32,16 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.common.collect.Iterables;
 
-import msi.gama.application.workbench.PerspectiveHelper;
-import msi.gama.application.workbench.ThemeHelper;
-import msi.gama.common.interfaces.IGamaView;
-import msi.gama.common.preferences.GamaPreferences;
-import msi.gama.outputs.LayeredDisplayOutput;
-import msi.gama.util.tree.GamaNode;
-import msi.gama.util.tree.GamaTree;
-import ummisco.gama.dev.utils.DEBUG;
-import ummisco.gama.ui.utils.ViewsHelper;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.application.workbench.PerspectiveHelper;
+import gama.ui.application.workbench.ThemeHelper;
+import gama.core.common.interfaces.IGamaView;
+import gama.core.common.preferences.GamaPreferences;
+import gama.core.outputs.LayeredDisplayOutput;
+import gama.core.util.tree.GamaNode;
+import gama.core.util.tree.GamaTree;
+import gama.dev.DEBUG;
+import gama.ui.shared.utils.ViewsHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The Class ArrangeDisplayViews.

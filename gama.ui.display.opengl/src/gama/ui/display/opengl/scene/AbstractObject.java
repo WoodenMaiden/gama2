@@ -15,8 +15,8 @@ import java.awt.image.BufferedImage;
 import java.util.Arrays;
 
 import gama.ui.display.opengl.OpenGL;
-import msi.gama.common.interfaces.IDisposable;
-import msi.gama.common.interfaces.IImageProvider;
+import gama.core.common.interfaces.IDisposable;
+import gama.core.common.interfaces.IImageProvider;
 import msi.gama.metamodel.shape.GamaPoint;
 import msi.gaml.statements.draw.DrawingAttributes;
 import msi.gaml.statements.draw.DrawingAttributes.DrawerType;

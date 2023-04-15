@@ -16,8 +16,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import msi.gama.common.interfaces.ItemList;
-import msi.gama.common.preferences.GamaPreferences;
+import gama.core.common.interfaces.ItemList;
+import gama.core.common.preferences.GamaPreferences;
 import msi.gama.kernel.experiment.IExperimentDisplayable;
 import msi.gama.metamodel.agent.IAgent;
 import ummisco.gama.ui.interfaces.IParameterEditor;

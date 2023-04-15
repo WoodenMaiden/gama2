@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 
 import com.jogamp.opengl.util.texture.Texture;
 
-import msi.gama.common.interfaces.IImageProvider;
+import gama.core.common.interfaces.IImageProvider;
 
 /**
  * The Interface ITextureCache.

@@ -10,7 +10,7 @@
  ********************************************************************************************************/
 package gama.ui.experiment.factories;
 
-import static ummisco.gama.ui.utils.ViewsHelper.hideView;
+import static gama.ui.shared.utils.ViewsHelper.hideView;
 
 import java.util.ConcurrentModificationException;
 import java.util.HashMap;
@@ -20,17 +20,17 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.services.AbstractServiceFactory;
 import org.eclipse.ui.services.IServiceLocator;
 
-import msi.gama.application.workbench.PerspectiveHelper;
-import msi.gama.common.interfaces.IConsoleDisplayer;
-import msi.gama.common.interfaces.IGamaView;
-import msi.gama.common.interfaces.IGamaView.Console;
-import msi.gama.common.interfaces.IGui;
+import gama.ui.application.workbench.PerspectiveHelper;
+import gama.core.common.interfaces.IConsoleDisplayer;
+import gama.core.common.interfaces.IGamaView;
+import gama.core.common.interfaces.IGamaView.Console;
+import gama.core.common.interfaces.IGui;
 import msi.gama.kernel.experiment.ITopLevelAgent;
-import msi.gama.runtime.GAMA;
+import gama.core.runtime.GAMA;
 import msi.gama.util.GamaColor;
 import msi.gaml.operators.Strings;
-import ummisco.gama.ui.utils.ViewsHelper;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.shared.utils.ViewsHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * A factory for creating ConsoleDisplayer objects.

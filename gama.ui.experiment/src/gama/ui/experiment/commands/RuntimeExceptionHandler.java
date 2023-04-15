@@ -22,13 +22,13 @@ import org.eclipse.core.runtime.jobs.Job;
 
 import com.google.common.collect.Iterables;
 
-import msi.gama.common.interfaces.IRuntimeExceptionHandler;
-import msi.gama.common.preferences.GamaPreferences;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.exceptions.GamaRuntimeException;
+import gama.core.common.interfaces.IRuntimeExceptionHandler;
+import gama.core.common.preferences.GamaPreferences;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.exceptions.GamaRuntimeException;
 import one.util.streamex.StreamEx;
-import ummisco.gama.dev.utils.DEBUG;
-import ummisco.gama.dev.utils.THREADS;
+import gama.dev.DEBUG;
+import gama.dev.THREADS;
 
 /**
  * The Class RuntimeExceptionHandler.

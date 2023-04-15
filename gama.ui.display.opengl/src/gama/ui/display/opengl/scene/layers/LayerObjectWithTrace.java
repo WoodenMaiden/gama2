@@ -14,7 +14,7 @@ import java.util.LinkedList;
 
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
-import msi.gama.common.interfaces.ILayer;
+import gama.core.common.interfaces.ILayer;
 
 /**
  * Class LayerObject.

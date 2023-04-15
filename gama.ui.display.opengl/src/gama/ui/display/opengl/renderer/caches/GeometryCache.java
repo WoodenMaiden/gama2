@@ -46,12 +46,12 @@ import gama.ui.display.opengl.files.ObjFileDrawer;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
 import msi.gama.common.geometry.Envelope3D;
 import msi.gama.common.geometry.ICoordinates;
-import msi.gama.common.preferences.GamaPreferences;
+import gama.core.common.preferences.GamaPreferences;
 import msi.gama.metamodel.shape.GamaPoint;
 import msi.gama.metamodel.shape.IShape;
 import msi.gama.metamodel.shape.IShape.Type;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.IScope;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.IScope;
 import msi.gama.util.file.GamaGeometryFile;
 import msi.gama.util.file.GamaObjFile;
 

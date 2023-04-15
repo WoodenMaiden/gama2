@@ -36,18 +36,18 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPartSite;
 
 import msi.gama.common.geometry.Envelope3D;
-import msi.gama.common.interfaces.IDisplaySurface;
-import msi.gama.common.interfaces.IGui;
-import msi.gama.common.interfaces.IOverlayProvider;
-import msi.gama.common.interfaces.IUpdaterTarget;
-import msi.gama.outputs.LayeredDisplayOutput;
-import msi.gama.outputs.layers.OverlayStatement.OverlayInfo;
-import msi.gama.runtime.GAMA;
+import gama.core.common.interfaces.IDisplaySurface;
+import gama.core.common.interfaces.IGui;
+import gama.core.common.interfaces.IOverlayProvider;
+import gama.core.common.interfaces.IUpdaterTarget;
+import gama.core.outputs.LayeredDisplayOutput;
+import gama.core.outputs.layers.OverlayStatement.OverlayInfo;
+import gama.core.runtime.GAMA;
 import msi.gaml.operators.Maths;
-import ummisco.gama.dev.utils.DEBUG;
+import gama.dev.DEBUG;
 import ummisco.gama.ui.resources.GamaColors;
 import ummisco.gama.ui.resources.IGamaColors;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The class DisplayOverlay.
@@ -515,7 +515,7 @@ public class DisplayOverlay implements IUpdaterTarget<OverlayInfo> {
 	/**
 	 * Method getCurrentState()
 	 *
-	 * @see msi.gama.common.interfaces.IUpdaterTarget#getCurrentState()
+	 * @see gama.core.common.interfaces.IUpdaterTarget#getCurrentState()
 	 */
 	@Override
 	public int getCurrentState() { return IGui.NEUTRAL; }
@@ -523,7 +523,7 @@ public class DisplayOverlay implements IUpdaterTarget<OverlayInfo> {
 	/**
 	 * Method resume()
 	 *
-	 * @see msi.gama.common.interfaces.IUpdaterTarget#resume()
+	 * @see gama.core.common.interfaces.IUpdaterTarget#resume()
 	 */
 	@Override
 	public void resume() {}

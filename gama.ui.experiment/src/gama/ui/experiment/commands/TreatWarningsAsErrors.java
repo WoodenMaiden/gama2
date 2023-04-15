@@ -20,7 +20,7 @@ import org.eclipse.ui.commands.IElementUpdater;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.menus.UIElement;
 
-import msi.gama.common.preferences.GamaPreferences;
+import gama.core.common.preferences.GamaPreferences;
 
 /**
  * The Class TreatWarningsAsErrors.

@@ -14,9 +14,9 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
-import msi.gama.common.interfaces.IGui;
-import msi.gama.runtime.GAMA;
-import ummisco.gama.ui.utils.ViewsHelper;
+import gama.core.common.interfaces.IGui;
+import gama.core.runtime.GAMA;
+import gama.ui.shared.utils.ViewsHelper;
 
 /**
  * The Class ShowHideParametersViewHandler.

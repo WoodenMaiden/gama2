@@ -27,25 +27,25 @@ import gama.ui.experiment.views.ExpandableItemsView;
 import gama.ui.experiment.views.toolbar.GamaToolbar2;
 import gama.ui.experiment.views.toolbar.GamaToolbarFactory;
 import gama.ui.experiment.views.toolbar.IToolbarDecoratedView;
-import msi.gama.common.interfaces.IValue;
-import msi.gama.common.interfaces.ItemList;
+import gama.core.common.interfaces.IValue;
+import gama.core.common.interfaces.ItemList;
 import msi.gama.metamodel.agent.IAgent;
-import msi.gama.outputs.IDisplayOutput;
-import msi.gama.outputs.MonitorOutput;
-import msi.gama.outputs.ValuedDisplayOutputFactory;
-import msi.gama.runtime.IScope;
-import msi.gama.runtime.exceptions.GamaRuntimeException;
+import gama.core.outputs.IDisplayOutput;
+import gama.core.outputs.MonitorOutput;
+import gama.core.outputs.ValuedDisplayOutputFactory;
+import gama.core.runtime.IScope;
+import gama.core.runtime.exceptions.GamaRuntimeException;
 import msi.gama.util.GamaColor;
 import msi.gaml.compilation.GAML;
 import msi.gaml.expressions.IExpression;
 import msi.gaml.expressions.IExpressionFactory;
 import msi.gaml.types.IType;
 import msi.gaml.types.Types;
-import ummisco.gama.dev.utils.COUNTER;
+import gama.dev.COUNTER;
 import ummisco.gama.ui.parameters.EditorFactory;
 import ummisco.gama.ui.parameters.EditorsGroup;
 import ummisco.gama.ui.resources.IGamaIcons;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * @author Alexis Drogoul
@@ -232,7 +232,7 @@ public class MonitorView extends ExpandableItemsView<MonitorOutput> implements I
 	/**
 	 * Method handleMenu()
 	 *
-	 * @see msi.gama.common.interfaces.ItemList#handleMenu(java.lang.Object, int, int)
+	 * @see gama.core.common.interfaces.ItemList#handleMenu(java.lang.Object, int, int)
 	 */
 	@Override
 	public Map<String, Runnable> handleMenu(final MonitorOutput data, final int x, final int y) {

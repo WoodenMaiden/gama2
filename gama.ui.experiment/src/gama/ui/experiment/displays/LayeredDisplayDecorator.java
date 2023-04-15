@@ -10,8 +10,8 @@
  ********************************************************************************************************/
 package gama.ui.experiment.displays;
 
-import static ummisco.gama.ui.bindings.GamaKeyBindings.COMMAND;
-import static ummisco.gama.ui.bindings.GamaKeyBindings.format;
+import static gama.ui.shared.bindings.GamaKeyBindings.COMMAND;
+import static gama.ui.shared.bindings.GamaKeyBindings.format;
 import static ummisco.gama.ui.resources.IGamaIcons.DISPLAY_FULLSCREEN_ENTER;
 import static ummisco.gama.ui.resources.IGamaIcons.DISPLAY_TOOLBAR_SNAPSHOT;
 import static ummisco.gama.ui.resources.IGamaIcons.EXPERIMENT_RUN;
@@ -43,22 +43,22 @@ import gama.ui.experiment.views.toolbar.GamaCommand;
 import gama.ui.experiment.views.toolbar.GamaToolbar2;
 import gama.ui.experiment.views.toolbar.GamaToolbarFactory;
 import gama.ui.experiment.views.toolbar.Selector;
-import msi.gama.application.workbench.PerspectiveHelper;
-import msi.gama.common.interfaces.IDisplaySurface;
-import msi.gama.common.interfaces.IDisposable;
-import msi.gama.common.preferences.GamaPreferences;
-import msi.gama.outputs.LayeredDisplayData.Changes;
-import msi.gama.outputs.LayeredDisplayData.DisplayDataListener;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.PlatformHelper;
-import ummisco.gama.dev.utils.DEBUG;
-import ummisco.gama.dev.utils.STRINGS;
-import ummisco.gama.ui.bindings.GamaKeyBindings;
+import gama.ui.application.workbench.PerspectiveHelper;
+import gama.core.common.interfaces.IDisplaySurface;
+import gama.core.common.interfaces.IDisposable;
+import gama.core.common.preferences.GamaPreferences;
+import gama.core.outputs.LayeredDisplayData.Changes;
+import gama.core.outputs.LayeredDisplayData.DisplayDataListener;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.PlatformHelper;
+import gama.dev.DEBUG;
+import gama.dev.STRINGS;
+import gama.ui.shared.bindings.GamaKeyBindings;
 import ummisco.gama.ui.resources.GamaColors;
 import ummisco.gama.ui.resources.GamaIcon;
 import ummisco.gama.ui.resources.IGamaIcons;
-import ummisco.gama.ui.utils.ViewsHelper;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.shared.utils.ViewsHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The Class LayeredDisplayDecorator.

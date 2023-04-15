@@ -18,8 +18,8 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.ui.commands.IElementUpdater;
 import org.eclipse.ui.menus.UIElement;
 
-import msi.gama.runtime.GAMA;
-import ummisco.gama.ui.bindings.GamaKeyBindings;
+import gama.core.runtime.GAMA;
+import gama.ui.shared.bindings.GamaKeyBindings;
 
 /**
  * The Class StepByStepHandler.

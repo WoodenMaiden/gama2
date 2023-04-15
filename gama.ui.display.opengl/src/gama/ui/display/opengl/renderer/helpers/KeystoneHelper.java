@@ -31,7 +31,7 @@ import msi.gama.common.geometry.ICoordinates;
 import msi.gama.common.geometry.Scaling3D;
 import msi.gama.metamodel.shape.GamaPoint;
 import msi.gama.metamodel.shape.IShape;
-import msi.gama.outputs.LayeredDisplayData;
+import gama.core.outputs.LayeredDisplayData;
 import msi.gama.util.GamaColor.NamedGamaColor;
 
 /**

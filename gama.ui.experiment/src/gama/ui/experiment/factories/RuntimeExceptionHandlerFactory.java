@@ -14,7 +14,7 @@ import org.eclipse.ui.services.AbstractServiceFactory;
 import org.eclipse.ui.services.IServiceLocator;
 
 import gama.ui.experiment.commands.RuntimeExceptionHandler;
-import msi.gama.common.interfaces.IRuntimeExceptionHandler;
+import gama.core.common.interfaces.IRuntimeExceptionHandler;
 
 /**
  * A factory for creating RuntimeExceptionHandler objects.

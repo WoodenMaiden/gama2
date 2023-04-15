@@ -17,12 +17,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import msi.gama.common.interfaces.IKeyword;
-import msi.gama.common.interfaces.ItemList;
+import gama.core.common.interfaces.IKeyword;
+import gama.core.common.interfaces.ItemList;
 import msi.gama.kernel.experiment.IExperimentDisplayable;
 import msi.gama.kernel.experiment.IParameter;
 import msi.gama.metamodel.agent.IAgent;
-import msi.gama.runtime.IScope;
+import gama.core.runtime.IScope;
 import msi.gama.util.GamaColor;
 import ummisco.gama.ui.interfaces.IParameterEditor;
 import ummisco.gama.ui.parameters.EditorFactory;
@@ -96,7 +96,7 @@ public class AgentAttributesEditorsList extends EditorsList<IAgent> {
 	/**
 	 * Method handleMenu()
 	 *
-	 * @see msi.gama.common.interfaces.ItemList#handleMenu(java.lang.Object, int, int)
+	 * @see gama.core.common.interfaces.ItemList#handleMenu(java.lang.Object, int, int)
 	 */
 	@Override
 	public Map<String, Runnable> handleMenu(final IAgent data, final int x, final int y) {

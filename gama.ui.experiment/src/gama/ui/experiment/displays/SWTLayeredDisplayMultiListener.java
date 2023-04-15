@@ -29,11 +29,11 @@ import org.eclipse.swt.events.MouseWheelListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Control;
 
-import msi.gama.common.interfaces.IDisplaySurface;
-import msi.gama.common.interfaces.IDisposable;
-import msi.gama.outputs.layers.IEventLayerListener;
-import ummisco.gama.dev.utils.DEBUG;
-import ummisco.gama.ui.bindings.GamaKeyBindings;
+import gama.core.common.interfaces.IDisplaySurface;
+import gama.core.common.interfaces.IDisposable;
+import gama.core.outputs.layers.IEventLayerListener;
+import gama.dev.DEBUG;
+import gama.ui.shared.bindings.GamaKeyBindings;
 
 /**
  * The listener interface for receiving mouse and key events. When an event occurs, that object's appropriate method is

@@ -15,9 +15,9 @@ import java.awt.event.MouseMotionListener;
 
 import org.eclipse.swt.SWT;
 
-import msi.gama.common.interfaces.IDisplaySurface;
-import msi.gama.runtime.GAMA;
-import ummisco.gama.dev.utils.DEBUG;
+import gama.core.common.interfaces.IDisplaySurface;
+import gama.core.runtime.GAMA;
+import gama.dev.DEBUG;
 
 /**
  * The Class WorkaroundForIssue2476.
@@ -53,7 +53,7 @@ public class WorkaroundForIssue2476 {
 	 */
 	public static void installOn(final Container applet, final IDisplaySurface surface) {
 		// Install only on Linux
-		if (!msi.gama.runtime.PlatformHelper.isLinux()) return;
+		if (!gama.core.runtime.PlatformHelper.isLinux()) return;
 		applet.addMouseWheelListener(e -> {
 			if (e.getPreciseWheelRotation() > 0) {
 				surface.zoomOut();

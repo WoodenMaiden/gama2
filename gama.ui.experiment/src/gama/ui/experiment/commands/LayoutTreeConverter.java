@@ -14,18 +14,18 @@ import static gama.ui.experiment.commands.ArrangeDisplayViews.DISPLAY_INDEX_KEY;
 import static gama.ui.experiment.commands.ArrangeDisplayViews.collectAndPrepareDisplayViews;
 import static gama.ui.experiment.commands.ArrangeDisplayViews.getDisplaysPlaceholder;
 import static java.lang.String.valueOf;
-import static msi.gama.common.interfaces.IKeyword.LAYOUT;
-import static msi.gama.util.tree.GamaTree.withRoot;
-import static msi.gaml.constants.GamlCoreConstants.horizontal;
-import static msi.gaml.constants.GamlCoreConstants.none;
-import static msi.gaml.constants.GamlCoreConstants.split;
-import static msi.gaml.constants.GamlCoreConstants.stack;
-import static msi.gaml.constants.GamlCoreConstants.vertical;
-import static msi.gaml.operators.Displays.HORIZONTAL;
-import static msi.gaml.operators.Displays.STACK;
-import static msi.gaml.operators.Displays.VERTICAL;
+import static gama.annotations.common.interfaces.IKeyword.LAYOUT;
+import static gama.core.util.tree.GamaTree.withRoot;
+import static gaml.core.constants.GamlCoreConstants.horizontal;
+import static gaml.core.constants.GamlCoreConstants.none;
+import static gaml.core.constants.GamlCoreConstants.split;
+import static gaml.core.constants.GamlCoreConstants.stack;
+import static gaml.core.constants.GamlCoreConstants.vertical;
+import static gaml.core.operators.Displays.HORIZONTAL;
+import static gaml.core.operators.Displays.STACK;
+import static gaml.core.operators.Displays.VERTICAL;
 import static one.util.streamex.StreamEx.of;
-import static ummisco.gama.ui.utils.ViewsHelper.getDisplayViews;
+import static gama.ui.shared.utils.ViewsHelper.getDisplayViews;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,10 +37,10 @@ import org.eclipse.e4.ui.model.application.ui.advanced.MPlaceholder;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartSashContainer;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 
-import msi.gama.common.interfaces.IGamaView.Display;
-import msi.gama.common.preferences.GamaPreferences;
-import msi.gama.util.tree.GamaNode;
-import msi.gama.util.tree.GamaTree;
+import gama.core.common.interfaces.IGamaView.Display;
+import gama.core.common.preferences.GamaPreferences;
+import gama.core.util.tree.GamaNode;
+import gama.core.util.tree.GamaTree;
 import one.util.streamex.IntStreamEx;
 
 /**

@@ -15,16 +15,16 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import msi.gama.common.preferences.GamaPreferences;
+import gama.core.common.preferences.GamaPreferences;
 import msi.gama.kernel.experiment.ICategory;
 import msi.gama.kernel.experiment.IExperimentDisplayable;
 import msi.gama.kernel.experiment.IExperimentPlan;
 import msi.gama.kernel.experiment.IParameter;
 import msi.gama.kernel.experiment.TextStatement;
 import msi.gama.metamodel.agent.IAgent;
-import msi.gama.outputs.MonitorOutput;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.IScope;
+import gama.core.outputs.MonitorOutput;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.IScope;
 import msi.gama.util.GamaColor;
 import msi.gaml.operators.Cast;
 import msi.gaml.statements.UserCommandStatement;
@@ -270,7 +270,7 @@ public class ExperimentsParametersList extends EditorsList<String> {
 	/**
 	 * Method handleMenu()
 	 *
-	 * @see msi.gama.common.interfaces.ItemList#handleMenu(java.lang.Object, int, int)
+	 * @see gama.core.common.interfaces.ItemList#handleMenu(java.lang.Object, int, int)
 	 */
 	@Override
 	public Map<String, Runnable> handleMenu(final String data, final int x, final int y) {

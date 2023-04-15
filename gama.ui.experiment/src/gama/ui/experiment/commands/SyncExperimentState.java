@@ -12,7 +12,7 @@ package gama.ui.experiment.commands;
 
 import org.eclipse.core.commands.State;
 
-import msi.gama.runtime.GAMA;
+import gama.core.runtime.GAMA;
 
 /**
  * The Class SyncExperimentState.

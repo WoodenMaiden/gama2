@@ -16,7 +16,7 @@ import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
 import gama.ui.display.opengl.view.GamaGLCanvas;
 import gama.ui.display.opengl.view.SWTOpenGLDisplaySurface;
-import msi.gama.outputs.LayeredDisplayData;
+import gama.core.outputs.LayeredDisplayData;
 
 /**
  * The Class AbstractRendererHelper.

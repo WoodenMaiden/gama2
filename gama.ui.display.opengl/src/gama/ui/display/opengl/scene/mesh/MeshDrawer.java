@@ -27,7 +27,7 @@ import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.scene.ObjectDrawer;
 import msi.gama.common.geometry.ICoordinates;
 import msi.gama.metamodel.shape.GamaPoint;
-import msi.gama.outputs.layers.MeshLayerData;
+import gama.core.outputs.layers.MeshLayerData;
 import msi.gama.util.matrix.IField;
 import msi.gaml.statements.draw.IMeshColorProvider;
 

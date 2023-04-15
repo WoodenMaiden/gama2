@@ -21,9 +21,9 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.menus.WorkbenchWindowControlContribution;
 
 import msi.gama.kernel.experiment.ExperimentAgent;
-import msi.gama.runtime.GAMA;
+import gama.core.runtime.GAMA;
 import msi.gaml.operators.Maths;
-import ummisco.gama.dev.utils.DEBUG;
+import gama.dev.DEBUG;
 import ummisco.gama.ui.interfaces.ISpeedDisplayer;
 import ummisco.gama.ui.resources.GamaColors;
 import ummisco.gama.ui.resources.GamaColors.GamaUIColor;

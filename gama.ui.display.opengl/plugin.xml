@@ -11,7 +11,7 @@
              category="msi.gama.gui.category.gama"
              class="gama.ui.display.opengl.view.OpenGLDisplayView"
              icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/tabs/view.display.png"
-             id="msi.gama.application.view.OpenGLDisplayView"
+             id="gama.ui.application.view.OpenGLDisplayView"
              name="3D"
              restorable="false">
        </view>

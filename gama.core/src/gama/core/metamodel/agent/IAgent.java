@@ -593,7 +593,7 @@ public interface IAgent extends IShape, INamed, Comparable<IAgent>, IStepable, I
 	}
 
 	/**
-	 * @see msi.gama.common.interfaces.IGeometry#setInnerGeometry(org.locationtech.jts.geom.Geometry)
+	 * @see gama.core.common.interfaces.IGeometry#setInnerGeometry(org.locationtech.jts.geom.Geometry)
 	 */
 	@Override
 	default void setInnerGeometry(final Geometry geom) {

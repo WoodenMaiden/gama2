@@ -790,7 +790,7 @@ public class Java2DDisplaySurface extends JPanel implements IDisplaySurface {
 	/**
 	 * Method changed()
 	 *
-	 * @see msi.gama.outputs.LayeredDisplayData.DisplayDataListener#changed(int, boolean)
+	 * @see gama.core.outputs.LayeredDisplayData.DisplayDataListener#changed(int, boolean)
 	 */
 	@Override
 	public void changed(final Changes property, final Object value) {

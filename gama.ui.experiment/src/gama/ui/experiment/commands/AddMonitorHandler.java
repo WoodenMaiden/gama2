@@ -15,7 +15,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import gama.ui.experiment.inspectors.MonitorView;
-import gama.runtime.GAMA;
+import gama.core.runtime.GAMA;
 
 /**
  * The Class AddMonitorHandler.

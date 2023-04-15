@@ -14,9 +14,9 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
-import msi.gama.application.Application;
+import gama.ui.application.Application;
 import ummisco.gama.ui.dialogs.Messages;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The Class ResetModelingPerspective.

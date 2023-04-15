@@ -56,7 +56,7 @@ import org.jfree.chart.title.TextTitle;
 import org.jfree.chart.title.Title;
 
 import ummisco.gama.ui.resources.GamaColors;
-import ummisco.gama.ui.utils.GraphicsHelper;
+import gama.ui.shared.utils.GraphicsHelper;
 
 /**
  * An editor for chart properties.

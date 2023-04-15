@@ -96,7 +96,7 @@ public class FLAGS {
 	public static final boolean USE_GLOBAL_PREFERENCE_STORE = get("use_global_preference_store", true);
 
 	/**
-	 * Used in msi.gama.application.Application to transmit the value of "quarter" (if true) to property
+	 * Used in gama.ui.application.Application to transmit the value of "quarter" (if true) to property
 	 * org.eclipse.swt.internal.DPIUtil.SWT_AUTOSCALE, enabling more precise scaling methods for HiDPI screens.
 	 * Otherwise the default of "integer200" is used by DPIUtil (see #3180). False by default.
 	 *
@@ -111,7 +111,7 @@ public class FLAGS {
 	public static final boolean IS_READ_ONLY = get("read_only", false);
 
 	/**
-	 * Used in msi.gama.application.workbench.ApplicationWorkbenchWindowAdvisor to impose the use of the "classic" view
+	 * Used in gama.ui.application.workbench.ApplicationWorkbenchWindowAdvisor to impose the use of the "classic" view
 	 * tabs (with a visible border) and inject a specific CSS stylesheet. See #3187. True by default.
 	 */
 	// public static final boolean USE_OLD_TABS = get("use_old_tabs", true);
@@ -123,7 +123,7 @@ public class FLAGS {
 	// public static final boolean USE_LEGACY_DRAWERS = get("use_legacy_drawers", false);
 
 	/**
-	 * Originally used in msi.gama.application.workbench.ApplicationWorkbenchWindowAdvisor to work around issue #3195.
+	 * Originally used in gama.ui.application.workbench.ApplicationWorkbenchWindowAdvisor to work around issue #3195.
 	 * If true, makes the workbench window resize its views asynchronously. Could prove useful in all environments, for
 	 * instance in the presence of slow graphic cards/computers. False by default
 	 */

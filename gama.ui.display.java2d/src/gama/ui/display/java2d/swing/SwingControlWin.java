@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import gama.ui.display.java2d.AWTDisplayView;
 import gama.ui.display.java2d.Java2DDisplaySurface;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The Class SwingControl.

@@ -20,7 +20,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.internal.WorkbenchPage;
 
-import msi.gama.runtime.GAMA;
+import gama.core.runtime.GAMA;
 
 /**
  * The Class ResetSimulationPerspective.

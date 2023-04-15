@@ -29,17 +29,17 @@ import gama.ui.experiment.views.GamaViewPart;
 import gama.ui.experiment.views.toolbar.GamaToolbar2;
 import gama.ui.experiment.views.toolbar.GamaToolbarFactory;
 import gama.ui.experiment.views.toolbar.IToolbarDecoratedView;
-import msi.gama.application.workbench.ThemeHelper;
-import msi.gama.common.interfaces.IGamaView;
-import msi.gama.common.preferences.GamaPreferences;
+import gama.ui.application.workbench.ThemeHelper;
+import gama.core.common.interfaces.IGamaView;
+import gama.core.common.preferences.GamaPreferences;
 import msi.gama.kernel.experiment.ITopLevelAgent;
-import msi.gama.runtime.IScope;
+import gama.core.runtime.IScope;
 import msi.gama.util.GamaColor;
 import ummisco.gama.ui.resources.GamaColors;
 import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
 import ummisco.gama.ui.resources.IGamaColors;
 import ummisco.gama.ui.resources.IGamaIcons;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The Class ConsoleView.

@@ -4,12 +4,12 @@ import gama.ui.experiment.controls.StatusControlContribution;
 import msi.gama.common.StatusMessage;
 import msi.gama.common.SubTaskMessage;
 import msi.gama.common.UserStatusMessage;
-import msi.gama.common.interfaces.IGui;
-import msi.gama.common.interfaces.IStatusDisplayer;
-import msi.gama.common.interfaces.IStatusMessage;
-import msi.gama.runtime.IScope;
+import gama.core.common.interfaces.IGui;
+import gama.core.common.interfaces.IStatusDisplayer;
+import gama.core.common.interfaces.IStatusMessage;
+import gama.core.runtime.IScope;
 import msi.gama.util.GamaColor;
-import ummisco.gama.ui.utils.ThreadedUpdater;
+import gama.ui.shared.utils.ThreadedUpdater;
 
 /**
  * The Class StatusDisplayer.

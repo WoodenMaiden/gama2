@@ -30,10 +30,10 @@ import org.eclipse.swt.widgets.ToolItem;
 import gama.ui.experiment.controls.FlatButton;
 import gama.ui.experiment.views.GamaViewPart;
 import gama.ui.experiment.views.toolbar.GamaToolbar2;
-import msi.gama.common.interfaces.IGamaView;
-import msi.gama.common.interfaces.IGui;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.IScope;
+import gama.core.common.interfaces.IGamaView;
+import gama.core.common.interfaces.IGui;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.IScope;
 import msi.gaml.architecture.user.UserInputStatement;
 import msi.gaml.architecture.user.UserPanelStatement;
 import msi.gaml.statements.IStatement;
@@ -45,7 +45,7 @@ import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
 import ummisco.gama.ui.resources.GamaIcon;
 import ummisco.gama.ui.resources.IGamaColors;
 import ummisco.gama.ui.resources.IGamaIcons;
-import ummisco.gama.ui.utils.ViewsHelper;
+import gama.ui.shared.utils.ViewsHelper;
 
 /**
  * The Class UserControlView.

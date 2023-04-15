@@ -17,7 +17,7 @@ import gama.ui.display.dev.utils.DEBUG;
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
 import gama.ui.display.opengl.scene.ModelScene;
-import msi.gama.common.interfaces.ILayer;
+import gama.core.common.interfaces.ILayer;
 
 /**
  * Class SceneHelper. Manages the interactions between the updating and the rendering tasks by keeping hold of three

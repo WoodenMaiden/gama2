@@ -20,7 +20,8 @@ Require-Bundle: gama.ui.application,
  org.eclipse.e4.core.contexts,
  org.eclipse.ui,
  org.eclipse.core.expressions,
- org.eclipse.core.commands
+ org.eclipse.core.commands,
+ gama.dev;bundle-version="2.0.0"
 Export-Package: gama.ui.experiment.activator,
  gama.ui.experiment.commands,
  gama.ui.experiment.console,

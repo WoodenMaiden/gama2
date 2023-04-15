@@ -563,7 +563,7 @@ public class GamaPoint extends Coordinate implements IShape, ILocation, IInterse
 	public void setAgent(final IAgent agent) {}
 
 	/**
-	 * @see msi.gama.common.interfaces.IGeometry#setInnerGeometry(org.locationtech.jts.geom.Geometry)
+	 * @see gama.core.common.interfaces.IGeometry#setInnerGeometry(org.locationtech.jts.geom.Geometry)
 	 */
 	@Override
 	public void setInnerGeometry(final Geometry point) {
@@ -572,7 +572,7 @@ public class GamaPoint extends Coordinate implements IShape, ILocation, IInterse
 	}
 
 	/**
-	 * @see msi.gama.common.interfaces.IGeometry#dispose()
+	 * @see gama.core.common.interfaces.IGeometry#dispose()
 	 */
 	@Override
 	public void dispose() {}

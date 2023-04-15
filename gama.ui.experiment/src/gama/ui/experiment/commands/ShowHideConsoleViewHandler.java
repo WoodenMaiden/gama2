@@ -14,7 +14,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
-import msi.gama.runtime.GAMA;
+import gama.core.runtime.GAMA;
 
 /**
  * The Class ShowHideConsoleViewHandler.

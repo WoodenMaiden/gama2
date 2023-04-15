@@ -22,9 +22,9 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.menus.UIElement;
 
 import gama.ui.experiment.views.ErrorView;
-import msi.gama.common.preferences.GamaPreferences;
-import msi.gama.runtime.GAMA;
-import ummisco.gama.ui.utils.ViewsHelper;
+import gama.core.common.preferences.GamaPreferences;
+import gama.core.runtime.GAMA;
+import gama.ui.shared.utils.ViewsHelper;
 
 /**
  * The Class ShowErrors.

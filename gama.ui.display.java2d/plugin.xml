@@ -23,7 +23,7 @@
             category="msi.gama.gui.category.gama"
             class="gama.ui.display.java2d.AWTDisplayView"
             icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/tabs/view.display.png"
-            id="msi.gama.application.view.LayeredDisplayView"
+            id="gama.ui.application.view.LayeredDisplayView"
             name="Display"
             restorable="false"> 
       </view>

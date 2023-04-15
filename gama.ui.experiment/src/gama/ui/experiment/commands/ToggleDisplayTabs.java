@@ -17,8 +17,8 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
-import msi.gama.application.workbench.PerspectiveHelper;
-import msi.gama.application.workbench.SimulationPerspectiveDescriptor;
+import gama.ui.application.workbench.PerspectiveHelper;
+import gama.ui.application.workbench.SimulationPerspectiveDescriptor;
 
 /**
  * The Class ToggleDisplayTabs.

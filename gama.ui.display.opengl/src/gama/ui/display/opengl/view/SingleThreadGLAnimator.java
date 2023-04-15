@@ -21,8 +21,8 @@ import gama.ui.display.dev.utils.DEBUG;
 import gama.ui.display.dev.utils.FLAGS;
 import gama.ui.display.dev.utils.THREADS;
 import gama.ui.display.ui.utils.WorkbenchHelper;
-import msi.gama.common.preferences.GamaPreferences;
-import msi.gama.runtime.PlatformHelper;
+import gama.core.common.preferences.GamaPreferences;
+import gama.core.runtime.PlatformHelper;
 
 /**
  * Simple Animator (with target FPS)

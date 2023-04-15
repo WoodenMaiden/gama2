@@ -15,7 +15,7 @@ import org.eclipse.ui.services.IServiceLocator;
 
 import gama.ui.experiment.commands.ArrangeDisplayViews;
 import ummisco.gama.ui.interfaces.IDisplayLayoutManager;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * A factory for creating DisplayLayout objects.

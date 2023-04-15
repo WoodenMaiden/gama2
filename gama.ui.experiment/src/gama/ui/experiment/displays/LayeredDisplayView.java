@@ -34,22 +34,22 @@ import org.eclipse.ui.PartInitException;
 import gama.ui.experiment.views.GamaViewPart;
 import gama.ui.experiment.views.toolbar.GamaToolbar2;
 import gama.ui.experiment.views.toolbar.IToolbarDecoratedView;
-import msi.gama.common.interfaces.IDisplaySurface;
-import msi.gama.common.interfaces.IDisposable;
-import msi.gama.common.interfaces.IGamaView;
-import msi.gama.common.interfaces.ILayerManager;
-import msi.gama.common.preferences.GamaPreferences;
+import gama.core.common.interfaces.IDisplaySurface;
+import gama.core.common.interfaces.IDisposable;
+import gama.core.common.interfaces.IGamaView;
+import gama.core.common.interfaces.ILayerManager;
+import gama.core.common.preferences.GamaPreferences;
 import msi.gama.kernel.experiment.ITopLevelAgent;
 import msi.gama.metamodel.shape.GamaPoint;
-import msi.gama.outputs.IDisplayOutput;
-import msi.gama.outputs.LayeredDisplayOutput;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.IScope;
-import ummisco.gama.dev.utils.DEBUG;
+import gama.core.outputs.IDisplayOutput;
+import gama.core.outputs.LayeredDisplayOutput;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.IScope;
+import gama.dev.DEBUG;
 import ummisco.gama.ui.resources.GamaColors;
 import ummisco.gama.ui.resources.GamaIcon;
-import ummisco.gama.ui.utils.ViewsHelper;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.shared.utils.ViewsHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The Class LayeredDisplayView.

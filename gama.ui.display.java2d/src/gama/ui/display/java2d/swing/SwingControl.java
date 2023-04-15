@@ -22,9 +22,9 @@ import org.eclipse.ui.IWorkbenchPartReference;
 
 import gama.ui.display.java2d.AWTDisplayView;
 import gama.ui.display.java2d.Java2DDisplaySurface;
-import msi.gama.runtime.PlatformHelper;
-import ummisco.gama.dev.utils.DEBUG;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.core.runtime.PlatformHelper;
+import gama.dev.DEBUG;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The Class SwingControl.

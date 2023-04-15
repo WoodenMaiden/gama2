@@ -9,7 +9,7 @@
             class="gama.ui.experiment.perspective.SimulationPerspective"
             fixed="false"
             icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/perspective.simulation.png"
-            id="msi.gama.application.perspectives.SimulationPerspective"
+            id="gama.ui.application.perspectives.SimulationPerspective"
             name="Simulation">
          <description>
             The base perspective definition for simulation perspectives
@@ -19,15 +19,15 @@
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
-            targetID="msi.gama.application.perspectives.SimulationPerspective">
+            targetID="gama.ui.application.perspectives.SimulationPerspective">
          <viewShortcut
-               id="msi.gama.application.view.ConsoleView">
+               id="gama.ui.application.view.ConsoleView">
          </viewShortcut>
          <viewShortcut
-               id="msi.gama.application.view.ErrorView">
+               id="gama.ui.application.view.ErrorView">
          </viewShortcut>
          <viewShortcut
-               id="msi.gama.application.view.ParameterView">
+               id="gama.ui.application.view.ParameterView">
          </viewShortcut>
       </perspectiveExtension>
    </extension>
@@ -38,7 +38,7 @@
             category="msi.gama.gui.category.gama"
             class="gama.ui.experiment.console.ConsoleView"
             icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/tabs/view.console.png"
-            id="msi.gama.application.view.ConsoleView"
+            id="gama.ui.application.view.ConsoleView"
             name="Console"
             restorable="false">
       </view>
@@ -47,7 +47,7 @@
             category="msi.gama.gui.category.gama" 
             class="gama.ui.experiment.inspectors.PopulationInspectView"
             icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/tabs/view.browser.png"
-            id="msi.gama.application.view.TableAgentInspectView"
+            id="gama.ui.application.view.TableAgentInspectView"
             name="Browser" 
             restorable="false">
       </view>
@@ -56,7 +56,7 @@
             category="msi.gama.gui.category.gama"
             class="gama.ui.experiment.inspectors.AgentInspectView"
             icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/tabs/view.inspector.png"
-            id="msi.gama.application.view.AgentInspectView"
+            id="gama.ui.application.view.AgentInspectView"
             name="Inspector"
             restorable="false">
       </view>
@@ -65,7 +65,7 @@
             category="msi.gama.gui.category.gama"
             class="gama.ui.experiment.inspectors.MonitorView"
             icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/tabs/view.monitors.png"
-            id="msi.gama.application.view.MonitorView"
+            id="gama.ui.application.view.MonitorView"
             name="Monitors"
             restorable="false">
       </view>
@@ -74,7 +74,7 @@
             category="msi.gama.gui.category.gama"
             class="gama.ui.experiment.inspectors.ExperimentParametersView"
             icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/tabs/view.parameters.png"
-            id="msi.gama.application.view.ParameterView"
+            id="gama.ui.application.view.ParameterView"
             name="Parameters"
             restorable="false">
       </view>
@@ -83,7 +83,7 @@
             category="msi.gama.gui.category.gama"
             class="gama.ui.experiment.views.ErrorView"
             icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/tabs/view.errors.png"
-            id="msi.gama.application.view.ErrorView"
+            id="gama.ui.application.view.ErrorView"
             name="Errors"
             restorable="false">
       </view>
@@ -111,7 +111,7 @@
                </reference>
             </visibleWhen>
             <command
-                  commandId="msi.gama.application.commands.PlaySimulation"
+                  commandId="gama.ui.application.commands.PlaySimulation"
                   disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.run_disabled.png"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.run.png"
                   label="Run Experiment"
@@ -124,7 +124,7 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="msi.gama.application.commands.PauseSimulation"
+                  commandId="gama.ui.application.commands.PauseSimulation"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.pause.png"
                    disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.pause_disabled.png"
                   label="Pause Experiment"
@@ -138,7 +138,7 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="msi.gama.application.commands.StepByStepSimulation"
+                  commandId="gama.ui.application.commands.StepByStepSimulation"
                   disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.step_disabled.png"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.step.png"
                   label="Step Experiment"
@@ -152,7 +152,7 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="msi.gama.application.commands.StepBackSimulation"
+                  commandId="gama.ui.application.commands.StepBackSimulation"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.step.back.png"
                   disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.step.back_disabled.png"
                   label="Step Back Experiment"
@@ -171,11 +171,11 @@
                </visibleWhen>
             </command>
             <separator
-                  name="msi.gama.application.separator1"
+                  name="gama.ui.application.separator1"
                   visible="true">
             </separator>
             <command
-                  commandId="msi.gama.application.commands.ReloadSimulation"
+                  commandId="gama.ui.application.commands.ReloadSimulation"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.reload.png"
                   disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.reload_disabled.png"
                   label="Reload Experiment"
@@ -183,33 +183,33 @@
                   style="push">
             </command>
             <separator
-                  name="msi.gama.application.separator2"
+                  name="gama.ui.application.separator2"
                   visible="true">
             </separator>
             <command
-                  commandId="msi.gama.application.commands.PauseAndEdit"
+                  commandId="gama.ui.application.commands.PauseAndEdit"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/errors.stop.png"
                   label="Stop at first error"
                   style="toggle">
             </command>
             <command
-                  commandId="msi.gama.application.commands.WarningsAsErrors"
+                  commandId="gama.ui.application.commands.WarningsAsErrors"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/errors.warnings.png"
                   label="Treat warnings like errors"
                   style="toggle">
             </command>
             <command
-                  commandId="msi.gama.application.ShowErrors"
+                  commandId="gama.ui.application.ShowErrors"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/errors.show.png"
                   label="Display errors and warnings"
                   style="toggle"> 
             </command>
             <separator
-                  name="msi.gama.application.separator3"
+                  name="gama.ui.application.separator3"
                   visible="true">
             </separator>
             <command
-                  commandId="msi.gama.application.commands.Cancel"
+                  commandId="gama.ui.application.commands.Cancel"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.stop.png"
                   disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.stop_disabled.png"
                   label="Close Experiment"
@@ -232,7 +232,7 @@
                label="Agents">
             <dynamic
                   class="gama.ui.experiment.menus.AgentsMenu"
-                  id="msi.gama.application.agents.menu">
+                  id="gama.ui.application.agents.menu">
             </dynamic>
             <visibleWhen
                   checkEnabled="false">
@@ -245,7 +245,7 @@
                id="viewMenu"
                label="Views">
             <command
-                  commandId="msi.gama.application.command.interactive"
+                  commandId="gama.ui.application.command.interactive"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/open.interactive.console.png"
                   label="Interactive Console"
                   style="push">
@@ -258,11 +258,11 @@
                   tooltip="Hide or show the editors">
             </command>
             <separator 
-                  name="msi.gama.application.separator3"
+                  name="gama.ui.application.separator3"
                   visible="true">
             </separator>
             <command
-                  commandId="msi.gama.application.commands.ShowHideParametersView"
+                  commandId="gama.ui.application.commands.ShowHideParametersView"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/open.parameters.png"
                   label="Parameters"
                   style="push">
@@ -274,7 +274,7 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="msi.gama.application.commands.ShowHideConsoleView"
+                  commandId="gama.ui.application.commands.ShowHideConsoleView"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/open.console.png"
                   label="Console"
                   style="push">
@@ -286,7 +286,7 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="msi.gama.application.commands.AddMonitor"
+                  commandId="gama.ui.application.commands.AddMonitor"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/open.monitor.png"
                   label="Add Monitor"
                   style="push">
@@ -298,7 +298,7 @@
                </visibleWhen>
             </command>
             <separator
-                  name="msi.gama.application.window.views"
+                  name="gama.ui.application.window.views"
                   visible="true">
             </separator>
             <menu
@@ -319,7 +319,7 @@
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/layout.menu.png"
                   label="Layout Displays... (Experimental)">
                <command
-                     commandId="msi.gama.application.layoutDisplays"
+                     commandId="gama.ui.application.layoutDisplays"
                      icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/layout.stack.png"
                      label="Stacked"
                      style="push">
@@ -329,7 +329,7 @@
                   </parameter>
                </command>
                <command
-                     commandId="msi.gama.application.layoutDisplays"
+                     commandId="gama.ui.application.layoutDisplays"
                      icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/layout.grid.png"
                      label="Split"
                      style="push">
@@ -339,7 +339,7 @@
                   </parameter>
                </command>
                <command
-                     commandId="msi.gama.application.layoutDisplays"
+                     commandId="gama.ui.application.layoutDisplays"
                      icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/layout.horizontal.png"
                      label="Horizontally"
                      style="push">
@@ -349,7 +349,7 @@
                   </parameter>
                </command>
                <command
-                     commandId="msi.gama.application.layoutDisplays"
+                     commandId="gama.ui.application.layoutDisplays"
                      icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/layout.vertical.png"
                      label="Vertically"
                      style="push">
@@ -370,11 +370,11 @@
                   </and>
                </visibleWhen>
                <separator
-                     name="msi.gama.application.separator3"
+                     name="gama.ui.application.separator3"
                      visible="true">
                </separator>
                <command
-                     commandId="msi.gama.application.toggleDisplayTabs"
+                     commandId="gama.ui.application.toggleDisplayTabs"
                      label="Toggle Tabs"
                      style="push">
                </command>
@@ -391,7 +391,7 @@
                      icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/perspective.open.png"
                      label="Switch to Perspective...">
                   <command
-                        commandId="msi.gama.application.goto.modeling"
+                        commandId="gama.ui.application.goto.modeling"
                         icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/perspective.modeling.png"
                          disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/views/perspective.modeling_disabled.png"
                         label="Modeling"
@@ -407,7 +407,7 @@
                      </visibleWhen>
                   </command>
                   <command
-                        commandId="msi.gama.application.goto.simulation"
+                        commandId="gama.ui.application.goto.simulation"
                         icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/perspective.simulation.png"
                         disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/views/perspective.simulation_disabled.png"
                         label="Simulation"
@@ -436,7 +436,7 @@
                   </visibleWhen>
                </command>
                <separator
-                     name="msi.gama.application.window.perspectives"
+                     name="gama.ui.application.window.perspectives"
                      visible="true">
                </separator>
                <menu
@@ -444,7 +444,7 @@
                      label="Show View">
                   <dynamic
                         class="gama.ui.experiment.commands.ShowViewContributionItem"
-                        id="msi.gama.application.showView">
+                        id="gama.ui.application.showView">
                   </dynamic>
                </menu>
                <command
@@ -458,9 +458,9 @@
          </menu>
       </menuContribution>
       <menuContribution
-            locationURI="toolbar:msi.gama.application.common.toolbar?after=msi.gama.application.goto.modeling">
+            locationURI="toolbar:gama.ui.application.common.toolbar?after=gama.ui.application.goto.modeling">
             <command
-                  commandId="msi.gama.application.goto.simulation"
+                  commandId="gama.ui.application.goto.simulation"
                   disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/views/perspective.simulation_disabled.png"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/perspective.simulation.png"
                   label="Simulation perspective"
@@ -483,7 +483,7 @@
             </command>
             <control
                   class="gama.ui.experiment.controls.StatusControlContribution"
-                  id="msi.gama.application.status">
+                  id="gama.ui.application.status">
             </control>
             <command
                   commandId="ummisco.gama.ui.experiment.dummy"
@@ -492,7 +492,7 @@
                   tooltip="  "> 
             </command>
             <command
-                  commandId="msi.gama.application.commands.PlaySimulation"
+                  commandId="gama.ui.application.commands.PlaySimulation"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.run.png"
                   disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.run_disabled.png"
                   label="Run Experiment"
@@ -506,7 +506,7 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="msi.gama.application.commands.PauseSimulation"
+                  commandId="gama.ui.application.commands.PauseSimulation"
                   disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.pause_disabled.png"
                      icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.pause.png"
                   label="Pause Experiment"
@@ -520,7 +520,7 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="msi.gama.application.commands.StepByStepSimulation"
+                  commandId="gama.ui.application.commands.StepByStepSimulation"
                   disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.step_disabled.png"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.step.png"
                   label="Step Experiment"
@@ -534,7 +534,7 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="msi.gama.application.commands.StepBackSimulation"
+                  commandId="gama.ui.application.commands.StepBackSimulation"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.step.back.png"
                   disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.step.back_disabled.png"
                   label="Step Back"
@@ -554,7 +554,7 @@
             </command>
             <control
                   class="gama.ui.experiment.controls.SimulationSpeedContributionItem"
-                  id="msi.gama.application.speed">
+                  id="gama.ui.application.speed">
                <visibleWhen
                      checkEnabled="false">
                   <reference
@@ -563,7 +563,7 @@
                </visibleWhen>
             </control>
             <command
-                  commandId="msi.gama.application.commands.SynchronizeExperiment"
+                  commandId="gama.ui.application.commands.SynchronizeExperiment"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.sync.png"
                   label="Synchronize Experiment"
                   style="toggle">
@@ -580,7 +580,7 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="msi.gama.application.commands.ReloadSimulation"
+                  commandId="gama.ui.application.commands.ReloadSimulation"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.reload.png"
                   label="Reload Experiment"
                   mnemonic="M1+M2+R"
@@ -598,7 +598,7 @@
                </visibleWhen>
             </command>
             <command
-                  commandId="msi.gama.application.commands.Cancel"
+                  commandId="gama.ui.application.commands.Cancel"
                   icon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.stop.png"
                   disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/experiment/experiment.stop_disabled.png"
                   label="Close Experiment"
@@ -626,7 +626,7 @@
          point="org.eclipse.ui.handlers">
       <handler
             class="gama.ui.experiment.commands.StepBackHandler"
-            commandId="msi.gama.application.commands.StepBackSimulation">
+            commandId="gama.ui.application.commands.StepBackSimulation">
          <activeWhen>
             <with
                   variable="ummisco.gama.ui.experiment.SimulationStepBack">
@@ -646,7 +646,7 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.PlayPauseSimulationHandler"
-            commandId="msi.gama.application.commands.PlaySimulation">
+            commandId="gama.ui.application.commands.PlaySimulation">
          <activeWhen>
             <reference
                   definitionId="isSimulationReady">
@@ -660,7 +660,7 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.StepByStepHandler"
-            commandId="msi.gama.application.commands.StepByStepSimulation">
+            commandId="gama.ui.application.commands.StepByStepSimulation">
          <activeWhen>
             <and>
                <reference
@@ -688,7 +688,7 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.ReloadSimulationHandler"
-            commandId="msi.gama.application.commands.ReloadSimulation">
+            commandId="gama.ui.application.commands.ReloadSimulation">
          <activeWhen>
             <reference
                   definitionId="isSimulationReady">
@@ -697,7 +697,7 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.AddMonitorHandler"
-            commandId="msi.gama.application.commands.AddMonitor">
+            commandId="gama.ui.application.commands.AddMonitor">
          <activeWhen>
             <reference
                   definitionId="isSimulationReady">
@@ -706,7 +706,7 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.ShowHideParametersViewHandler"
-            commandId="msi.gama.application.commands.ShowHideParametersView">
+            commandId="gama.ui.application.commands.ShowHideParametersView">
          <activeWhen>
             <reference
                   definitionId="isSimulationReady">
@@ -715,7 +715,7 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.ShowHideConsoleViewHandler"
-            commandId="msi.gama.application.commands.ShowHideConsoleView">
+            commandId="gama.ui.application.commands.ShowHideConsoleView">
          <activeWhen>
             <reference
                   definitionId="isSimulationReady">
@@ -724,7 +724,7 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.CancelRun"
-            commandId="msi.gama.application.commands.Cancel">
+            commandId="gama.ui.application.commands.Cancel">
          <activeWhen>
             <reference
                   definitionId="isInSimulationPerspective">
@@ -733,19 +733,19 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.ErrorsPauseAndEdit"
-            commandId="msi.gama.application.commands.PauseAndEdit">
+            commandId="gama.ui.application.commands.PauseAndEdit">
       </handler>
       <handler
             class="gama.ui.experiment.commands.TreatWarningsAsErrors"
-            commandId="msi.gama.application.commands.WarningsAsErrors">
+            commandId="gama.ui.application.commands.WarningsAsErrors">
       </handler>
       <handler
             class="gama.ui.experiment.commands.ShowErrors"
-            commandId="msi.gama.application.ShowErrors">
+            commandId="gama.ui.application.ShowErrors">
       </handler>
       <handler
             class="gama.ui.experiment.commands.SwitchToModeling"
-            commandId="msi.gama.application.goto.modeling">
+            commandId="gama.ui.application.goto.modeling">
          <activeWhen>
             <or>
                <reference
@@ -759,7 +759,7 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.ToggleDisplayTabs"
-            commandId="msi.gama.application.toggleDisplayTabs">
+            commandId="gama.ui.application.toggleDisplayTabs">
          <activeWhen>
             <and>
                <reference
@@ -773,7 +773,7 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.ArrangeDisplayViews"
-            commandId="msi.gama.application.layoutDisplays">
+            commandId="gama.ui.application.layoutDisplays">
          <activeWhen>
             <and>
                <reference
@@ -787,7 +787,7 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.SwitchToSimulation"
-            commandId="msi.gama.application.goto.simulation">
+            commandId="gama.ui.application.goto.simulation">
          <activeWhen>
             <and>
                <reference
@@ -834,7 +834,7 @@
       </handler>
       <handler
             class="gama.ui.experiment.commands.SynchronizeExperimentHandler"
-            commandId="msi.gama.application.commands.SynchronizeExperiment">
+            commandId="gama.ui.application.commands.SynchronizeExperiment">
          <activeWhen>
             <reference
                   definitionId="isSimulationReady">
@@ -850,7 +850,7 @@
    <extension
          point="org.eclipse.ui.contexts">
       <context
-            id="msi.gama.application.simulation.context"
+            id="gama.ui.application.simulation.context"
             name="In Experiments"
             parentId="org.eclipse.ui.contexts.dialogAndWindow">
       </context>
@@ -972,7 +972,7 @@
          <with
                variable="activeWorkbenchWindow.activePerspective">
             <equals
-                  value="msi.gama.application.perspectives.ModelingPerspective">
+                  value="gama.ui.application.perspectives.ModelingPerspective">
             </equals>
          </with>
       </definition>
@@ -1006,86 +1006,86 @@
       <command
             categoryId="msi.gama.category"
             defaultHandler="gama.ui.experiment.commands.PlayPauseSimulationHandler"
-            id="msi.gama.application.commands.PlaySimulation"
+            id="gama.ui.application.commands.PlaySimulation"
             name="Play Experiment">
       </command>
       <command
             categoryId="msi.gama.category"
             defaultHandler="gama.ui.experiment.commands.PlayPauseSimulationHandler"
-            id="msi.gama.application.commands.PauseSimulation"
+            id="gama.ui.application.commands.PauseSimulation"
             name="Pause Simulation">
       </command>
       <command
             categoryId="msi.gama.category"
-            id="msi.gama.application.commands.StepByStepSimulation"
+            id="gama.ui.application.commands.StepByStepSimulation"
             name="Next Step">
       </command>
       <command
             categoryId="msi.gama.category"
-            id="msi.gama.application.commands.StepBackSimulation"
+            id="gama.ui.application.commands.StepBackSimulation"
             name="Previous Step ">
       </command>
       <command
             categoryId="msi.gama.category"
             defaultHandler="gama.ui.experiment.commands.ReloadSimulationHandler"
-            id="msi.gama.application.commands.ReloadSimulation"
+            id="gama.ui.application.commands.ReloadSimulation"
             name="Reload Simulation">
       </command>
       <command
             categoryId="msi.gama.category"
             defaultHandler="gama.ui.experiment.commands.ShowHideParametersViewHandler"
-            id="msi.gama.application.commands.ShowHideParametersView"
+            id="gama.ui.application.commands.ShowHideParametersView"
             name="Show parameters">
       </command>
       <command
             categoryId="msi.gama.category"
-            id="msi.gama.application.commands.AddMonitor"
+            id="gama.ui.application.commands.AddMonitor"
             name="Add a monitor">
       </command>
       <command
             categoryId="msi.gama.category"
-            id="msi.gama.application.commands.ShowHideConsoleView"
+            id="gama.ui.application.commands.ShowHideConsoleView"
             name="Show console">
       </command>
       <command
             categoryId="msi.gama.category"
-            id="msi.gama.application.commands.Cancel"
+            id="gama.ui.application.commands.Cancel"
             name="Cancel">
       </command>
       <command
             categoryId="msi.gama.category"
-            id="msi.gama.application.commands.PauseAndEdit"
+            id="gama.ui.application.commands.PauseAndEdit"
             name="Pause at first error">
       </command>
       <command
             categoryId="msi.gama.category"
-            id="msi.gama.application.commands.WarningsAsErrors"
+            id="gama.ui.application.commands.WarningsAsErrors"
             name="Treat warnings like errors">
       </command>
       <command
             categoryId="msi.gama.category"
-            id="msi.gama.application.ShowErrors"
+            id="gama.ui.application.ShowErrors"
             name="Display errors and warnings">
       </command>
       <command
             categoryId="msi.gama.category"
-            id="msi.gama.application.goto.modeling"
+            id="gama.ui.application.goto.modeling"
             name="Switch to modeling perspective">
       </command>
       <command
             categoryId="msi.gama.category"
-            id="msi.gama.application.layoutDisplays"
+            id="gama.ui.application.layoutDisplays"
             name="Layout display views">
          <commandParameter
                id="msi.gama.displays.layout"
                name="layout"
                optional="false"
-               typeId="msi.gama.application.String">
+               typeId="gama.ui.application.String">
          </commandParameter>
       </command>
       <command
             categoryId="msi.gama.category"
-            id="msi.gama.application.goto.simulation"
+            id="gama.ui.application.goto.simulation"
             name="Switch to simulation perspective">
       </command>
       <command
@@ -1095,11 +1095,11 @@
       </command>
       <command
             defaultHandler="gama.ui.experiment.commands.ShowInteractiveConsole"
-            id="msi.gama.application.command.interactive"
+            id="gama.ui.application.command.interactive"
             name="Show Interactive Console">
       </command>
       <command
-            id="msi.gama.application.toggleDisplayTabs"
+            id="gama.ui.application.toggleDisplayTabs"
             name="Toggle Display Tabs">
       </command>
       <command
@@ -1114,7 +1114,7 @@
       <command
             categoryId="msi.gama.category"
             defaultHandler="gama.ui.experiment.commands.SynchronizeExperimentHandler"
-            id="msi.gama.application.commands.SynchronizeExperiment"
+            id="gama.ui.application.commands.SynchronizeExperiment"
             name="Synchronize Experiment">
          <state
                class="gama.ui.experiment.commands.SyncExperimentState"
@@ -1154,13 +1154,13 @@
       <serviceFactory
             factoryClass="gama.ui.experiment.factories.StatusDisplayerFactory">
          <service
-               serviceClass="msi.gama.common.interfaces.IStatusDisplayer">
+               serviceClass="gama.core.common.interfaces.IStatusDisplayer">
          </service>
       </serviceFactory>
       <serviceFactory
             factoryClass="gama.ui.experiment.factories.ConsoleDisplayerFactory">
          <service
-               serviceClass="msi.gama.common.interfaces.IConsoleDisplayer">
+               serviceClass="gama.core.common.interfaces.IConsoleDisplayer">
          </service>
       </serviceFactory>
       <serviceFactory
@@ -1172,7 +1172,7 @@
       <serviceFactory
             factoryClass="gama.ui.experiment.factories.RuntimeExceptionHandlerFactory">
          <service
-               serviceClass="msi.gama.common.interfaces.IRuntimeExceptionHandler">
+               serviceClass="gama.core.common.interfaces.IRuntimeExceptionHandler">
          </service>
       </serviceFactory>
    </extension>

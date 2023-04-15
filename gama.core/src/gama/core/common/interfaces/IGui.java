@@ -120,46 +120,46 @@ public interface IGui {
 	Map<String, DisplayDescription> DISPLAYS = GamaMapFactory.createOrdered();
 
 	/** The monitor view id. */
-	String MONITOR_VIEW_ID = "msi.gama.application.view.MonitorView";
+	String MONITOR_VIEW_ID = "gama.ui.application.view.MonitorView";
 
 	/** The interactive console view id. */
-	String INTERACTIVE_CONSOLE_VIEW_ID = "msi.gama.application.view.InteractiveConsoleView";
+	String INTERACTIVE_CONSOLE_VIEW_ID = "gama.ui.application.view.InteractiveConsoleView";
 
 	/** The agent view id. */
-	String AGENT_VIEW_ID = "msi.gama.application.view.AgentInspectView";
+	String AGENT_VIEW_ID = "gama.ui.application.view.AgentInspectView";
 
 	/** The table view id. */
-	String TABLE_VIEW_ID = "msi.gama.application.view.TableAgentInspectView";
+	String TABLE_VIEW_ID = "gama.ui.application.view.TableAgentInspectView";
 
 	/** The layer view id. */
-	String LAYER_VIEW_ID = "msi.gama.application.view.LayeredDisplayView";
+	String LAYER_VIEW_ID = "gama.ui.application.view.LayeredDisplayView";
 
 	/** The gl layer view id. */
-	String GL_LAYER_VIEW_ID = "msi.gama.application.view.OpenGLDisplayView";
+	String GL_LAYER_VIEW_ID = "gama.ui.application.view.OpenGLDisplayView";
 
 	/** The gl layer view id2. */
-	String GL_LAYER_VIEW_ID2 = "msi.gama.application.view.OpenGLDisplayView2";
+	String GL_LAYER_VIEW_ID2 = "gama.ui.application.view.OpenGLDisplayView2";
 
 	/** The gl layer view id3. */
-	String GL_LAYER_VIEW_ID3 = "msi.gama.application.view.WebDisplayView";
+	String GL_LAYER_VIEW_ID3 = "gama.ui.application.view.WebDisplayView";
 
 	/** The error view id. */
-	String ERROR_VIEW_ID = "msi.gama.application.view.ErrorView";
+	String ERROR_VIEW_ID = "gama.ui.application.view.ErrorView";
 
 	/** The test view id. */
-	String TEST_VIEW_ID = "msi.gama.application.view.TestView";
+	String TEST_VIEW_ID = "gama.ui.application.view.TestView";
 
 	/** The parameter view id. */
-	String PARAMETER_VIEW_ID = "msi.gama.application.view.ParameterView";
+	String PARAMETER_VIEW_ID = "gama.ui.application.view.ParameterView";
 
 	/** The navigator view id. */
 	String NAVIGATOR_VIEW_ID = "msi.gama.gui.view.GamaNavigator";
 
 	/** The navigator lightweight decorator id. */
-	String NAVIGATOR_LIGHTWEIGHT_DECORATOR_ID = "msi.gama.application.decorator";
+	String NAVIGATOR_LIGHTWEIGHT_DECORATOR_ID = "gama.ui.application.decorator";
 
 	/** The console view id. */
-	String CONSOLE_VIEW_ID = "msi.gama.application.view.ConsoleView";
+	String CONSOLE_VIEW_ID = "gama.ui.application.view.ConsoleView";
 
 	/** The user control view id. */
 	String USER_CONTROL_VIEW_ID = "msi.gama.views.userControlView";
@@ -180,7 +180,7 @@ public interface IGui {
 	String NONE = "NONE";
 
 	/** The perspective modeling id. */
-	String PERSPECTIVE_MODELING_ID = "msi.gama.application.perspectives.ModelingPerspective";
+	String PERSPECTIVE_MODELING_ID = "gama.ui.application.perspectives.ModelingPerspective";
 
 	/**
 	 * Gets the status.

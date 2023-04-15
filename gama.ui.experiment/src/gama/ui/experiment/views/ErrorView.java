@@ -27,18 +27,18 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
 import gama.ui.experiment.controls.ParameterExpandItem;
-import msi.gama.common.interfaces.IGamaView;
-import msi.gama.common.interfaces.IGui;
-import msi.gama.common.interfaces.IRuntimeExceptionHandler;
-import msi.gama.common.interfaces.ItemList;
-import msi.gama.common.preferences.GamaPreferences;
-import msi.gama.runtime.GAMA;
-import msi.gama.runtime.exceptions.GamaRuntimeException;
+import gama.core.common.interfaces.IGamaView;
+import gama.core.common.interfaces.IGui;
+import gama.core.common.interfaces.IRuntimeExceptionHandler;
+import gama.core.common.interfaces.ItemList;
+import gama.core.common.preferences.GamaPreferences;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.exceptions.GamaRuntimeException;
 import ummisco.gama.ui.resources.GamaColors;
 import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
-import ummisco.gama.ui.utils.PreferencesHelper;
-import ummisco.gama.ui.utils.WebHelper;
-import ummisco.gama.ui.utils.WorkbenchHelper;
+import gama.ui.shared.utils.PreferencesHelper;
+import gama.ui.shared.utils.WebHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The Class ErrorView.
@@ -233,7 +233,7 @@ public class ErrorView extends ExpandableItemsView<GamaRuntimeException> impleme
 	/**
 	 * Method handleMenu()
 	 *
-	 * @see msi.gama.common.interfaces.ItemList#handleMenu(java.lang.Object)
+	 * @see gama.core.common.interfaces.ItemList#handleMenu(java.lang.Object)
 	 */
 	@Override
 	public Map<String, Runnable> handleMenu(final GamaRuntimeException item, final int x, final int y) {

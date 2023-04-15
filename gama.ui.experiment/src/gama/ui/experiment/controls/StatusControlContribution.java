@@ -26,9 +26,9 @@ import org.eclipse.ui.menus.WorkbenchWindowControlContribution;
 import msi.gama.common.StatusMessage;
 import msi.gama.common.SubTaskMessage;
 import msi.gama.common.UserStatusMessage;
-import msi.gama.common.interfaces.IGui;
-import msi.gama.common.interfaces.IStatusMessage;
-import msi.gama.common.interfaces.IUpdaterTarget;
+import gama.core.common.interfaces.IGui;
+import gama.core.common.interfaces.IStatusMessage;
+import gama.core.common.interfaces.IUpdaterTarget;
 import msi.gama.kernel.experiment.IExperimentAgent;
 import msi.gama.kernel.experiment.IExperimentPlan;
 import msi.gama.kernel.experiment.ITopLevelAgent;
@@ -37,7 +37,7 @@ import msi.gama.kernel.simulation.SimulationClock;
 import msi.gama.kernel.simulation.SimulationPopulation;
 import msi.gama.metamodel.agent.IAgent;
 import msi.gama.metamodel.population.IPopulation;
-import msi.gama.runtime.GAMA;
+import gama.core.runtime.GAMA;
 import msi.gaml.operators.Strings;
 import ummisco.gama.ui.resources.GamaColors;
 import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
@@ -359,7 +359,7 @@ public class StatusControlContribution extends WorkbenchWindowControlContributio
 	/**
 	 * Method resume()
 	 *
-	 * @see msi.gama.common.interfaces.IUpdaterTarget#resume()
+	 * @see gama.core.common.interfaces.IUpdaterTarget#resume()
 	 */
 	@Override
 	public void resume() {

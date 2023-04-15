@@ -34,16 +34,16 @@ import gama.ui.display.opengl.view.GamaGLCanvas;
 import gama.ui.display.opengl.view.SWTOpenGLDisplaySurface;
 import gama.ui.display.ui.utils.DPIHelper;
 import gama.ui.display.ui.utils.WorkbenchHelper;
-import msi.gama.common.interfaces.IAsset;
-import msi.gama.common.interfaces.IDisplaySurface;
-import msi.gama.common.interfaces.IImageProvider;
-import msi.gama.common.interfaces.ILayer;
-import msi.gama.common.preferences.GamaPreferences;
+import gama.core.common.interfaces.IAsset;
+import gama.core.common.interfaces.IDisplaySurface;
+import gama.core.common.interfaces.IImageProvider;
+import gama.core.common.interfaces.ILayer;
+import gama.core.common.preferences.GamaPreferences;
 import msi.gama.metamodel.shape.GamaPoint;
 import msi.gama.metamodel.shape.IShape;
-import msi.gama.outputs.display.AbstractDisplayGraphics;
-import msi.gama.outputs.layers.charts.ChartOutput;
-import msi.gama.runtime.GAMA;
+import gama.core.outputs.display.AbstractDisplayGraphics;
+import gama.core.outputs.layers.charts.ChartOutput;
+import gama.core.runtime.GAMA;
 import msi.gama.util.GamaColor;
 import msi.gama.util.file.GamaGeometryFile;
 import msi.gama.util.matrix.IField;
@@ -194,7 +194,7 @@ public class JOGLRenderer extends AbstractDisplayGraphics implements IOpenGLRend
 	/**
 	 * Method endDrawingLayers()
 	 *
-	 * @see msi.gama.common.interfaces.IGraphics#endDrawingLayers()
+	 * @see gama.core.common.interfaces.IGraphics#endDrawingLayers()
 	 */
 	@Override
 	public void endDrawingLayers() {

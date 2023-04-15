@@ -24,10 +24,10 @@ import com.jogamp.newt.event.WindowUpdateEvent;
 import gama.ui.display.dev.utils.DEBUG;
 import gama.ui.experiment.displays.LayeredDisplayDecorator;
 import gama.ui.experiment.displays.LayeredDisplayMultiListener;
-import msi.gama.common.interfaces.IDisplaySurface;
-import msi.gama.common.interfaces.IDisposable;
-import msi.gama.outputs.layers.IEventLayerListener;
-import msi.gama.runtime.PlatformHelper;
+import gama.core.common.interfaces.IDisplaySurface;
+import gama.core.common.interfaces.IDisposable;
+import gama.core.outputs.layers.IEventLayerListener;
+import gama.core.runtime.PlatformHelper;
 
 /**
  * A listener for NEWT events

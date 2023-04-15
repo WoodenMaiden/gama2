@@ -324,7 +324,7 @@ public abstract class AbstractSyntacticElement implements ISyntacticElement {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gama.common.interfaces.IDisposable#dispose()
+	 * @see gama.core.common.interfaces.IDisposable#dispose()
 	 */
 	@Override
 	public void dispose() {

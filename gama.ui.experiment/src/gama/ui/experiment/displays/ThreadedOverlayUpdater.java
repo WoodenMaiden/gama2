@@ -10,9 +10,9 @@
  ********************************************************************************************************/
 package gama.ui.experiment.displays;
 
-import msi.gama.common.interfaces.IOverlayProvider;
-import msi.gama.outputs.layers.OverlayStatement.OverlayInfo;
-import ummisco.gama.ui.utils.ThreadedUpdater;
+import gama.core.common.interfaces.IOverlayProvider;
+import gama.core.outputs.layers.OverlayStatement.OverlayInfo;
+import gama.ui.shared.utils.ThreadedUpdater;
 
 /**
  * The Class ThreadedOverlayUpdater.
