@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * LayeredDisplayMultiListener.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * LayeredDisplayMultiListener.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and
+ * simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -15,11 +15,11 @@ import java.util.function.Consumer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 
-import gama.ui.experiment.views.WorkaroundForIssue1353;
 import gama.core.common.interfaces.IDisplaySurface;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.PlatformHelper;
 import gama.ui.shared.utils.WorkbenchHelper;
+import gama.ui.shared.views.WorkaroundForIssue1353;
 
 /**
  * The listener interface for receiving layeredDisplayMulti events. The class that is interested in processing a

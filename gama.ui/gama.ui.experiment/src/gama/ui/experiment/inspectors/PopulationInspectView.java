@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * PopulationInspectView.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * PopulationInspectView.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -52,38 +52,38 @@ import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 
-import gama.ui.experiment.controls.SwitchButton;
-import gama.ui.experiment.menus.AgentsMenu;
-import gama.ui.experiment.menus.GamaMenu;
-import gama.ui.experiment.views.GamaViewPart;
-import gama.ui.experiment.views.toolbar.GamaToolbar2;
-import gama.ui.experiment.views.toolbar.GamaToolbarFactory;
-import gama.ui.experiment.views.toolbar.IToolbarDecoratedView;
+import gama.annotations.common.interfaces.IKeyword;
 import gama.core.common.interfaces.IGui;
-import gama.core.common.interfaces.IKeyword;
-import msi.gama.common.util.FileUtils;
-import msi.gama.metamodel.agent.IAgent;
-import msi.gama.metamodel.population.IPopulation;
-import msi.gama.metamodel.shape.GamaPoint;
+import gama.core.common.util.FileUtils;
+import gama.core.metamodel.agent.IAgent;
+import gama.core.metamodel.population.IPopulation;
+import gama.core.metamodel.shape.GamaPoint;
 import gama.core.outputs.IDisplayOutput;
 import gama.core.outputs.InspectDisplayOutput;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope;
 import gama.core.runtime.exceptions.GamaRuntimeException;
-import msi.gama.util.file.csv.CsvWriter;
-import msi.gaml.expressions.IExpression;
-import msi.gaml.expressions.types.SpeciesConstantExpression;
-import msi.gaml.operators.Cast;
-import msi.gaml.operators.Files;
-import gaml.core.species.ISpecies;
-import msi.gaml.types.IType;
-import msi.gaml.types.Types;
-import msi.gaml.variables.IVariable;
-import one.util.streamex.StreamEx;
+import gama.core.util.file.csv.CsvWriter;
 import gama.dev.DEBUG;
-import ummisco.gama.ui.parameters.ExpressionControl;
-import ummisco.gama.ui.resources.GamaIcon;
-import ummisco.gama.ui.resources.IGamaIcons;
+import gama.ui.experiment.menus.AgentsMenu;
+import gama.ui.shared.controls.SwitchButton;
+import gama.ui.shared.menus.GamaMenu;
+import gama.ui.shared.parameters.ExpressionControl;
+import gama.ui.shared.resources.GamaIcon;
+import gama.ui.shared.resources.IGamaIcons;
+import gama.ui.shared.views.GamaViewPart;
+import gama.ui.shared.views.toolbar.GamaToolbar2;
+import gama.ui.shared.views.toolbar.GamaToolbarFactory;
+import gama.ui.shared.views.toolbar.IToolbarDecoratedView;
+import gaml.core.expressions.IExpression;
+import gaml.core.expressions.types.SpeciesConstantExpression;
+import gaml.core.operators.Cast;
+import gaml.core.operators.Files;
+import gaml.core.species.ISpecies;
+import gaml.core.types.IType;
+import gaml.core.types.Types;
+import gaml.core.variables.IVariable;
+import one.util.streamex.StreamEx;
 
 /**
  * Written by drogoul Modified on 18 mai 2011
@@ -193,6 +193,11 @@ public class PopulationInspectView extends GamaViewPart
 	/** The provider. */
 	final private AgentContentProvider provider = new AgentContentProvider();
 
+	/**
+	 * Creates the update job.
+	 *
+	 * @return the job
+	 */
 	@Override
 	protected Job createUpdateJob() {
 		return new GamaUIJob() {
@@ -223,9 +228,20 @@ public class PopulationInspectView extends GamaViewPart
 		};
 	}
 
+	/**
+	 * Gets the output.
+	 *
+	 * @return the output
+	 */
 	@Override
 	public InspectDisplayOutput getOutput() { return (InspectDisplayOutput) super.getOutput(); }
 
+	/**
+	 * Adds the output.
+	 *
+	 * @param output
+	 *            the output
+	 */
 	@Override
 	public void addOutput(final IDisplayOutput output) {
 		// Either both are null or they are equal
@@ -457,6 +473,12 @@ public class PopulationInspectView extends GamaViewPart
 		return species.getName();
 	}
 
+	/**
+	 * Own create part control.
+	 *
+	 * @param c
+	 *            the c
+	 */
 	@Override
 	public void ownCreatePartControl(final Composite c) {
 		final Composite view = new Composite(c, SWT.None);
@@ -630,6 +652,9 @@ public class PopulationInspectView extends GamaViewPart
 		return viewerColumn;
 	}
 
+	/**
+	 * Sets the focus.
+	 */
 	@Override
 	public void setFocus() {
 		viewer.getControl().setFocus();
@@ -884,12 +909,23 @@ public class PopulationInspectView extends GamaViewPart
 		}
 	}
 
+	/**
+	 * Gets the sizable font control.
+	 *
+	 * @return the sizable font control
+	 */
 	@Override
 	public Control getSizableFontControl() {
 		if (viewer == null) return null;
 		return viewer.getTable();
 	}
 
+	/**
+	 * Creates the tool items.
+	 *
+	 * @param tb
+	 *            the tb
+	 */
 	@Override
 	public void createToolItems(final GamaToolbar2 tb) {
 		if (getOutput() == null) return;
@@ -929,6 +965,12 @@ public class PopulationInspectView extends GamaViewPart
 				e -> saveAsCSV(), SWT.RIGHT);
 	}
 
+	/**
+	 * Widget disposed.
+	 *
+	 * @param e
+	 *            the e
+	 */
 	@Override
 	public void widgetDisposed(final DisposeEvent e) {
 		super.dispose();
@@ -949,7 +991,5 @@ public class PopulationInspectView extends GamaViewPart
 	 */
 	@Override
 	public void pauseChanged() {}
-
-
 
 }

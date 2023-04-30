@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * ExperimentsParametersList.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * ExperimentsParametersList.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -16,22 +16,22 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import gama.core.common.preferences.GamaPreferences;
-import msi.gama.kernel.experiment.ICategory;
-import msi.gama.kernel.experiment.IExperimentDisplayable;
-import msi.gama.kernel.experiment.IExperimentPlan;
-import msi.gama.kernel.experiment.IParameter;
-import msi.gama.kernel.experiment.TextStatement;
-import msi.gama.metamodel.agent.IAgent;
+import gama.core.kernel.experiment.ICategory;
+import gama.core.kernel.experiment.IExperimentDisplayable;
+import gama.core.kernel.experiment.IExperimentPlan;
+import gama.core.kernel.experiment.IParameter;
+import gama.core.kernel.experiment.TextStatement;
+import gama.core.metamodel.agent.IAgent;
 import gama.core.outputs.MonitorOutput;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope;
-import msi.gama.util.GamaColor;
-import msi.gaml.operators.Cast;
-import msi.gaml.statements.UserCommandStatement;
-import ummisco.gama.ui.interfaces.EditorListener.Command;
-import ummisco.gama.ui.interfaces.IParameterEditor;
-import ummisco.gama.ui.parameters.EditorFactory;
-import ummisco.gama.ui.parameters.MonitorDisplayer;
+import gama.core.util.GamaColor;
+import gama.ui.shared.interfaces.EditorListener.Command;
+import gama.ui.shared.interfaces.IParameterEditor;
+import gama.ui.shared.parameters.EditorFactory;
+import gama.ui.shared.parameters.MonitorDisplayer;
+import gaml.core.operators.Cast;
+import gaml.core.statements.UserCommandStatement;
 
 /**
  * The Class ExperimentsParametersList.

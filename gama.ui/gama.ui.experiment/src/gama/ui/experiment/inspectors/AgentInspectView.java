@@ -1,16 +1,14 @@
 /*******************************************************************************************************
  *
- * AgentInspectView.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * AgentInspectView.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
  ********************************************************************************************************/
 package gama.ui.experiment.inspectors;
-
-import static ummisco.gama.ui.resources.GamaColors.getTextColorForBackground;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -25,25 +23,25 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 
-import gama.ui.experiment.controls.FlatButton;
-import gama.ui.experiment.controls.ParameterExpandBar;
-import gama.ui.experiment.controls.ParameterExpandItem;
-import gama.ui.experiment.menus.AgentsMenu;
-import gama.ui.experiment.parameters.AgentAttributesEditorsList;
-import gama.ui.experiment.views.toolbar.IToolbarDecoratedView;
-import gama.ui.experiment.views.toolbar.Selector;
 import gama.core.common.interfaces.IGui;
-import msi.gama.kernel.experiment.IParameter;
-import msi.gama.kernel.experiment.ITopLevelAgent;
-import msi.gama.kernel.experiment.ParameterAdapter;
-import msi.gama.metamodel.agent.IAgent;
+import gama.core.kernel.experiment.IParameter;
+import gama.core.kernel.experiment.ITopLevelAgent;
+import gama.core.kernel.experiment.ParameterAdapter;
+import gama.core.metamodel.agent.IAgent;
 import gama.core.outputs.IDisplayOutput;
 import gama.core.outputs.IOutput;
 import gama.core.outputs.InspectDisplayOutput;
 import gama.core.runtime.IScope;
-import msi.gaml.types.Types;
-import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
-import ummisco.gama.ui.resources.IGamaColors;
+import gama.ui.experiment.menus.AgentsMenu;
+import gama.ui.experiment.parameters.AgentAttributesEditorsList;
+import gama.ui.shared.controls.FlatButton;
+import gama.ui.shared.controls.ParameterExpandBar;
+import gama.ui.shared.controls.ParameterExpandItem;
+import gama.ui.shared.resources.GamaColors.GamaUIColor;
+import gama.ui.shared.resources.IGamaColors;
+import gama.ui.shared.views.toolbar.IToolbarDecoratedView;
+import gama.ui.shared.views.toolbar.Selector;
+import gaml.core.types.Types;
 
 /**
  * The Class AgentInspectView.
@@ -57,6 +55,12 @@ public class AgentInspectView extends AttributesEditorsView<IAgent>
 	/** The first part name. */
 	public String firstPartName = null;
 
+	/**
+	 * Adds the output.
+	 *
+	 * @param output
+	 *            the output
+	 */
 	@Override
 	public void addOutput(final IDisplayOutput output) {
 
@@ -80,6 +84,12 @@ public class AgentInspectView extends AttributesEditorsView<IAgent>
 		}
 	}
 
+	/**
+	 * Own create part control.
+	 *
+	 * @param parent
+	 *            the parent
+	 */
 	@Override
 	public void ownCreatePartControl(final Composite parent) {
 		// DEBUG.LOG("Inspector creating its own part control");
@@ -90,9 +100,19 @@ public class AgentInspectView extends AttributesEditorsView<IAgent>
 		}
 	}
 
+	/**
+	 * Gets the output.
+	 *
+	 * @return the output
+	 */
 	@Override
 	public InspectDisplayOutput getOutput() { return (InspectDisplayOutput) super.getOutput(); }
 
+	/**
+	 * Are items closable.
+	 *
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean areItemsClosable() {
 		return true;
@@ -149,6 +169,13 @@ public class AgentInspectView extends AttributesEditorsView<IAgent>
 		return attributes;
 	}
 
+	/**
+	 * Adds the item.
+	 *
+	 * @param agent
+	 *            the agent
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean addItem(final IAgent agent) {
 		if (editors == null) { editors = new AgentAttributesEditorsList(); }
@@ -162,6 +189,17 @@ public class AgentInspectView extends AttributesEditorsView<IAgent>
 		return false;
 	}
 
+	/**
+	 * Builds the concrete item.
+	 *
+	 * @param bar
+	 *            the bar
+	 * @param data
+	 *            the data
+	 * @param color
+	 *            the color
+	 * @return the parameter expand item
+	 */
 	@Override
 	protected ParameterExpandItem buildConcreteItem(final ParameterExpandBar bar, final IAgent data,
 			final GamaUIColor color) {
@@ -265,7 +303,6 @@ public class AgentInspectView extends AttributesEditorsView<IAgent>
 	 */
 	@Override
 	public void pauseChanged() {}
-
 
 	/**
 	 * Method handleMenu()

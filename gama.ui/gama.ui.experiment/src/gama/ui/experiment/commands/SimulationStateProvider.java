@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * SimulationStateProvider.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * SimulationStateProvider.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -17,7 +17,7 @@ import org.eclipse.ui.AbstractSourceProvider;
 import org.eclipse.ui.ISources;
 
 import gama.core.common.interfaces.IGui;
-import msi.gama.kernel.experiment.IExperimentPlan;
+import gama.core.kernel.experiment.IExperimentPlan;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.ISimulationStateProvider;
 
@@ -54,7 +54,7 @@ public class SimulationStateProvider extends AbstractSourceProvider implements I
 				exp == null ? IGui.NONE : exp.isBatch() ? "BATCH" : exp.isMemorize() ? "MEMORIZE" : "REGULAR";
 
 		String canStepBack = "CANNOT_STEP_BACK";
-		if ((exp != null) && (exp.getAgent() != null)) {
+		if (exp != null && exp.getAgent() != null) {
 			canStepBack = exp.getAgent().canStepBack() ? "CAN_STEP_BACK" : "CANNOT_STEP_BACK";
 		}
 
@@ -76,7 +76,7 @@ public class SimulationStateProvider extends AbstractSourceProvider implements I
 
 		String canStepBack = "CANNOT_STEP_BACK";
 
-		if ((exp != null) && (exp.getAgent() != null)) {
+		if (exp != null && exp.getAgent() != null) {
 			canStepBack = exp.getAgent().canStepBack() ? "CAN_STEP_BACK" : "CANNOT_STEP_BACK";
 		}
 

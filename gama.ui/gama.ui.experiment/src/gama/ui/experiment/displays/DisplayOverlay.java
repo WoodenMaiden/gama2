@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * DisplayOverlay.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * DisplayOverlay.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -35,19 +35,19 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPartSite;
 
-import msi.gama.common.geometry.Envelope3D;
+import gama.annotations.common.interfaces.IUpdaterTarget;
+import gama.core.common.geometry.Envelope3D;
 import gama.core.common.interfaces.IDisplaySurface;
 import gama.core.common.interfaces.IGui;
 import gama.core.common.interfaces.IOverlayProvider;
-import gama.core.common.interfaces.IUpdaterTarget;
 import gama.core.outputs.LayeredDisplayOutput;
 import gama.core.outputs.layers.OverlayStatement.OverlayInfo;
 import gama.core.runtime.GAMA;
-import msi.gaml.operators.Maths;
 import gama.dev.DEBUG;
-import ummisco.gama.ui.resources.GamaColors;
-import ummisco.gama.ui.resources.IGamaColors;
+import gama.ui.shared.resources.GamaColors;
+import gama.ui.shared.resources.IGamaColors;
 import gama.ui.shared.utils.WorkbenchHelper;
+import gaml.core.operators.Maths;
 
 /**
  * The class DisplayOverlay.
@@ -398,6 +398,11 @@ public class DisplayOverlay implements IUpdaterTarget<OverlayInfo> {
 
 	};
 
+	/**
+	 * Checks if is busy.
+	 *
+	 * @return true, if is busy
+	 */
 	@Override
 	public boolean isBusy() { return isBusy; }
 
@@ -582,6 +587,11 @@ public class DisplayOverlay implements IUpdaterTarget<OverlayInfo> {
 		}
 	}
 
+	/**
+	 * Checks if is disposed.
+	 *
+	 * @return true, if is disposed
+	 */
 	@Override
 	public boolean isDisposed() { return popup.isDisposed() || viewIsDetached(); }
 
@@ -603,6 +613,11 @@ public class DisplayOverlay implements IUpdaterTarget<OverlayInfo> {
 		}
 	}
 
+	/**
+	 * Checks if is visible.
+	 *
+	 * @return the visible
+	 */
 	@Override
 	public boolean isVisible() {
 		// AD: Temporary fix for Issue 548. When a view is detached, the

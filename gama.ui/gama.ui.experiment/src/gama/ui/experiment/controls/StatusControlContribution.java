@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * StatusControlContribution.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * StatusControlContribution.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -23,26 +23,29 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.menus.WorkbenchWindowControlContribution;
 
-import msi.gama.common.StatusMessage;
-import msi.gama.common.SubTaskMessage;
-import msi.gama.common.UserStatusMessage;
+import gama.annotations.common.interfaces.IStatusMessage;
+import gama.annotations.common.interfaces.IUpdaterTarget;
+import gama.core.common.StatusMessage;
+import gama.core.common.SubTaskMessage;
+import gama.core.common.UserStatusMessage;
 import gama.core.common.interfaces.IGui;
-import gama.core.common.interfaces.IStatusMessage;
-import gama.core.common.interfaces.IUpdaterTarget;
-import msi.gama.kernel.experiment.IExperimentAgent;
-import msi.gama.kernel.experiment.IExperimentPlan;
-import msi.gama.kernel.experiment.ITopLevelAgent;
-import msi.gama.kernel.simulation.SimulationAgent;
-import msi.gama.kernel.simulation.SimulationClock;
-import msi.gama.kernel.simulation.SimulationPopulation;
-import msi.gama.metamodel.agent.IAgent;
-import msi.gama.metamodel.population.IPopulation;
+import gama.core.kernel.experiment.IExperimentAgent;
+import gama.core.kernel.experiment.IExperimentPlan;
+import gama.core.kernel.experiment.ITopLevelAgent;
+import gama.core.kernel.simulation.SimulationAgent;
+import gama.core.kernel.simulation.SimulationClock;
+import gama.core.kernel.simulation.SimulationPopulation;
+import gama.core.metamodel.agent.IAgent;
+import gama.core.metamodel.population.IPopulation;
 import gama.core.runtime.GAMA;
-import msi.gaml.operators.Strings;
-import ummisco.gama.ui.resources.GamaColors;
-import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
-import ummisco.gama.ui.resources.GamaIcon;
-import ummisco.gama.ui.resources.IGamaColors;
+import gama.ui.shared.controls.FlatButton;
+import gama.ui.shared.controls.IPopupProvider;
+import gama.ui.shared.controls.Popup2;
+import gama.ui.shared.resources.GamaColors;
+import gama.ui.shared.resources.GamaColors.GamaUIColor;
+import gama.ui.shared.resources.GamaIcon;
+import gama.ui.shared.resources.IGamaColors;
+import gaml.core.operators.Strings;
 
 /**
  * The Class StatusControlContribution.
@@ -122,6 +125,11 @@ public class StatusControlContribution extends WorkbenchWindowControlContributio
 		return WIDTH;
 	}
 
+	/**
+	 * Checks if is busy.
+	 *
+	 * @return true, if is busy
+	 */
 	@Override
 	public boolean isBusy() { return isUpdating; }
 
@@ -156,6 +164,11 @@ public class StatusControlContribution extends WorkbenchWindowControlContributio
 		return compo;
 	}
 
+	/**
+	 * Checks if is disposed.
+	 *
+	 * @return true, if is disposed
+	 */
 	@Override
 	public boolean isDisposed() { return label.isDisposed(); }
 
@@ -240,12 +253,27 @@ public class StatusControlContribution extends WorkbenchWindowControlContributio
 				: state == IGui.NEUTRAL ? IGamaColors.NEUTRAL : IGamaColors.OK;
 	}
 
+	/**
+	 * Gets the controlling shell.
+	 *
+	 * @return the controlling shell
+	 */
 	@Override
 	public Shell getControllingShell() { return label.getShell(); }
 
+	/**
+	 * Gets the absolute origin.
+	 *
+	 * @return the absolute origin
+	 */
 	@Override
 	public Point getAbsoluteOrigin() { return label.toDisplay(new Point(label.getLocation().x, label.getSize().y)); }
 
+	/**
+	 * Gets the popup width.
+	 *
+	 * @return the popup width
+	 */
 	@Override
 	public int getPopupWidth() { return label.getSize().x; }
 
@@ -350,6 +378,11 @@ public class StatusControlContribution extends WorkbenchWindowControlContributio
 		return text.toString();
 	}
 
+	/**
+	 * Gets the current state.
+	 *
+	 * @return the current state
+	 */
 	@Override
 	public int getCurrentState() { return state; }
 

@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * ConsoleView.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * ConsoleView.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -25,21 +25,22 @@ import org.eclipse.ui.console.IOConsole;
 import org.eclipse.ui.console.IOConsoleOutputStream;
 import org.eclipse.ui.internal.console.IOConsoleViewer;
 
-import gama.ui.experiment.views.GamaViewPart;
-import gama.ui.experiment.views.toolbar.GamaToolbar2;
-import gama.ui.experiment.views.toolbar.GamaToolbarFactory;
-import gama.ui.experiment.views.toolbar.IToolbarDecoratedView;
-import gama.ui.application.workbench.ThemeHelper;
 import gama.core.common.interfaces.IGamaView;
 import gama.core.common.preferences.GamaPreferences;
-import msi.gama.kernel.experiment.ITopLevelAgent;
+import gama.core.kernel.experiment.ITopLevelAgent;
 import gama.core.runtime.IScope;
-import msi.gama.util.GamaColor;
-import ummisco.gama.ui.resources.GamaColors;
-import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
-import ummisco.gama.ui.resources.IGamaColors;
-import ummisco.gama.ui.resources.IGamaIcons;
+import gama.core.util.GamaColor;
+import gama.ui.application.workbench.ThemeHelper;
+import gama.ui.shared.resources.GamaColors;
+import gama.ui.shared.resources.GamaColors.GamaUIColor;
+import gama.ui.shared.resources.IGamaColors;
+import gama.ui.shared.resources.IGamaIcons;
 import gama.ui.shared.utils.WorkbenchHelper;
+import gama.ui.shared.views.GamaViewPart;
+import gama.ui.shared.views.GamaViewPart.GamaUIJob;
+import gama.ui.shared.views.toolbar.GamaToolbar2;
+import gama.ui.shared.views.toolbar.GamaToolbarFactory;
+import gama.ui.shared.views.toolbar.IToolbarDecoratedView;
 
 /**
  * The Class ConsoleView.
@@ -82,6 +83,12 @@ public class ConsoleView extends GamaViewPart implements IToolbarDecoratedView.S
 		}
 	}
 
+	/**
+	 * Own create part control.
+	 *
+	 * @param parent
+	 *            the parent
+	 */
 	@Override
 	public void ownCreatePartControl(final Composite parent) {
 		setCharacterLimit(GamaPreferences.Interface.CORE_CONSOLE_SIZE.getValue());
@@ -193,18 +200,33 @@ public class ConsoleView extends GamaViewPart implements IToolbarDecoratedView.S
 		}
 	}
 
+	/**
+	 * Widget disposed.
+	 *
+	 * @param e
+	 *            the e
+	 */
 	@Override
 	public void widgetDisposed(final DisposeEvent e) {
 		reset();
 		super.widgetDisposed(e);
 	}
 
+	/**
+	 * Close.
+	 *
+	 * @param scope
+	 *            the scope
+	 */
 	@Override
 	public void close(final IScope scope) {
 		reset();
 		super.close(scope);
 	}
 
+	/**
+	 * Reset.
+	 */
 	@Override
 	public void reset() {
 		writers.clear();
@@ -212,12 +234,20 @@ public class ConsoleView extends GamaViewPart implements IToolbarDecoratedView.S
 		pauseBuffer.setLength(0);
 	}
 
+	/**
+	 * Gets the sizable font control.
+	 *
+	 * @return the sizable font control
+	 */
 	@Override
 	public Control getSizableFontControl() {
 		if (viewer == null) return null;
 		return viewer.getTextWidget();
 	}
 
+	/**
+	 * Pause changed.
+	 */
 	@Override
 	public void pauseChanged() {
 		if (paused) {
@@ -238,6 +268,12 @@ public class ConsoleView extends GamaViewPart implements IToolbarDecoratedView.S
 		}
 	}
 
+	/**
+	 * Creates the tool items.
+	 *
+	 * @param tb
+	 *            the tb
+	 */
 	@Override
 	public void createToolItems(final GamaToolbar2 tb) {
 		super.createToolItems(tb);
@@ -246,6 +282,11 @@ public class ConsoleView extends GamaViewPart implements IToolbarDecoratedView.S
 
 	}
 
+	/**
+	 * Creates the update job.
+	 *
+	 * @return the gama UI job
+	 */
 	@Override
 	protected GamaUIJob createUpdateJob() {
 		return null;
@@ -263,12 +304,21 @@ public class ConsoleView extends GamaViewPart implements IToolbarDecoratedView.S
 		return false;
 	}
 
+	/**
+	 * Needs output.
+	 *
+	 * @return true, if successful
+	 */
 	@Override
 	protected boolean needsOutput() {
 		return false;
 	}
 
-
+	/**
+	 * Gets the contents.
+	 *
+	 * @return the contents
+	 */
 	@Override
 	public String getContents() { return viewer.getDocument().get(); }
 

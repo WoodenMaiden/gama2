@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * MonitorView.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * MonitorView.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -9,8 +9,6 @@
  *
  ********************************************************************************************************/
 package gama.ui.experiment.inspectors;
-
-import static ummisco.gama.ui.resources.GamaColors.get;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -23,29 +21,29 @@ import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
-import gama.ui.experiment.views.ExpandableItemsView;
-import gama.ui.experiment.views.toolbar.GamaToolbar2;
-import gama.ui.experiment.views.toolbar.GamaToolbarFactory;
-import gama.ui.experiment.views.toolbar.IToolbarDecoratedView;
 import gama.core.common.interfaces.IValue;
 import gama.core.common.interfaces.ItemList;
-import msi.gama.metamodel.agent.IAgent;
+import gama.core.metamodel.agent.IAgent;
 import gama.core.outputs.IDisplayOutput;
 import gama.core.outputs.MonitorOutput;
 import gama.core.outputs.ValuedDisplayOutputFactory;
 import gama.core.runtime.IScope;
 import gama.core.runtime.exceptions.GamaRuntimeException;
-import msi.gama.util.GamaColor;
-import msi.gaml.compilation.GAML;
-import msi.gaml.expressions.IExpression;
-import msi.gaml.expressions.IExpressionFactory;
-import msi.gaml.types.IType;
-import msi.gaml.types.Types;
+import gama.core.util.GamaColor;
 import gama.dev.COUNTER;
-import ummisco.gama.ui.parameters.EditorFactory;
-import ummisco.gama.ui.parameters.EditorsGroup;
-import ummisco.gama.ui.resources.IGamaIcons;
+import gama.ui.shared.parameters.EditorFactory;
+import gama.ui.shared.parameters.EditorsGroup;
+import gama.ui.shared.resources.IGamaIcons;
 import gama.ui.shared.utils.WorkbenchHelper;
+import gama.ui.shared.views.ExpandableItemsView;
+import gama.ui.shared.views.toolbar.GamaToolbar2;
+import gama.ui.shared.views.toolbar.GamaToolbarFactory;
+import gama.ui.shared.views.toolbar.IToolbarDecoratedView;
+import gaml.core.compilation.GAML;
+import gaml.core.expressions.IExpression;
+import gaml.core.expressions.IExpressionFactory;
+import gaml.core.types.IType;
+import gaml.core.types.Types;
 
 /**
  * @author Alexis Drogoul
@@ -53,22 +51,46 @@ import gama.ui.shared.utils.WorkbenchHelper;
 @SuppressWarnings ({ "rawtypes", "unchecked" })
 public class MonitorView extends ExpandableItemsView<MonitorOutput> implements IToolbarDecoratedView.Pausable {
 
+	/**
+	 * Own create part control.
+	 *
+	 * @param parent
+	 *            the parent
+	 */
 	@Override
 	public void ownCreatePartControl(final Composite parent) {
 		displayItems();
 	}
 
+	/**
+	 * Needs output.
+	 *
+	 * @return true, if successful
+	 */
 	@Override
 	protected boolean needsOutput() {
 		return false;
 	}
 
+	/**
+	 * Adds the output.
+	 *
+	 * @param output
+	 *            the output
+	 */
 	@Override
 	public void addOutput(final IDisplayOutput output) {
 		super.addOutput(output);
 		addItem((MonitorOutput) output);
 	}
 
+	/**
+	 * Adds the item.
+	 *
+	 * @param output
+	 *            the output
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean addItem(final MonitorOutput output) {
 		if (output != null) {
@@ -80,6 +102,13 @@ public class MonitorView extends ExpandableItemsView<MonitorOutput> implements I
 
 	}
 
+	/**
+	 * Creates the item contents for.
+	 *
+	 * @param output
+	 *            the output
+	 * @return the composite
+	 */
 	@Override
 	protected Composite createItemContentsFor(final MonitorOutput output) {
 		final EditorsGroup compo = new EditorsGroup(getViewer(), SWT.NONE);
@@ -123,24 +152,51 @@ public class MonitorView extends ExpandableItemsView<MonitorOutput> implements I
 		return compo;
 	}
 
+	/**
+	 * Removes the item.
+	 *
+	 * @param o
+	 *            the o
+	 */
 	@Override
 	public void removeItem(final MonitorOutput o) {
 		o.close();
 		removeOutput(o);
 	}
 
+	/**
+	 * Resume item.
+	 *
+	 * @param o
+	 *            the o
+	 */
 	@Override
 	public void resumeItem(final MonitorOutput o) {
 		if (o.isPaused()) { o.setPaused(false); }
 		update(o);
 	}
 
+	/**
+	 * Pause item.
+	 *
+	 * @param o
+	 *            the o
+	 */
 	@Override
 	public void pauseItem(final MonitorOutput o) {
 		o.setPaused(true);
 		update(o);
 	}
 
+	/**
+	 * Gets the item display name.
+	 *
+	 * @param o
+	 *            the o
+	 * @param previousName
+	 *            the previous name
+	 * @return the item display name
+	 */
 	@Override
 	public String getItemDisplayName(final MonitorOutput o, final String previousName) {
 		final StringBuilder sb = new StringBuilder(100);
@@ -163,6 +219,13 @@ public class MonitorView extends ExpandableItemsView<MonitorOutput> implements I
 		return v == null ? "nil" : v instanceof IValue ? ((IValue) v).serialize(true) : v.toString();
 	}
 
+	/**
+	 * Gets the item display color.
+	 *
+	 * @param o
+	 *            the o
+	 * @return the item display color
+	 */
 	@Override
 	public GamaColor getItemDisplayColor(final MonitorOutput o) {
 		return o.getColor(null);
@@ -180,34 +243,70 @@ public class MonitorView extends ExpandableItemsView<MonitorOutput> implements I
 		new MonitorOutput(scope, "monitor" + COUNTER.COUNT(), "");
 	}
 
+	/**
+	 * Reset.
+	 */
 	@Override
 	public void reset() {
 		disposeViewer();
 		outputs.clear();
 	}
 
+	/**
+	 * Focus item.
+	 *
+	 * @param data
+	 *            the data
+	 */
 	@Override
 	public void focusItem(final MonitorOutput data) {
 		outputs.remove(data);
 		outputs.add(0, data);
 	}
 
+	/**
+	 * Are items closable.
+	 *
+	 * @return true, if successful
+	 */
 	@Override
 	protected boolean areItemsClosable() {
 		return true;
 	}
 
+	/**
+	 * Are items pausable.
+	 *
+	 * @return true, if successful
+	 */
 	@Override
 	protected boolean areItemsPausable() {
 		return true;
 	}
 
+	/**
+	 * Gets the items.
+	 *
+	 * @return the items
+	 */
 	@Override
 	public List getItems() { return outputs; }
 
+	/**
+	 * Update item values.
+	 *
+	 * @param synchronously
+	 *            the synchronously
+	 */
 	@Override
 	public void updateItemValues(final boolean synchronously) {}
 
+	/**
+	 * Creates the tool items.
+	 *
+	 * @param tb
+	 *            the tb
+	 */
 	@Override
 	public void createToolItems(final GamaToolbar2 tb) {
 		super.createToolItems(tb);

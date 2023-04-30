@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * LayeredDisplayDecorator.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * LayeredDisplayDecorator.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -12,11 +12,6 @@ package gama.ui.experiment.displays;
 
 import static gama.ui.shared.bindings.GamaKeyBindings.COMMAND;
 import static gama.ui.shared.bindings.GamaKeyBindings.format;
-import static ummisco.gama.ui.resources.IGamaIcons.DISPLAY_FULLSCREEN_ENTER;
-import static ummisco.gama.ui.resources.IGamaIcons.DISPLAY_TOOLBAR_SNAPSHOT;
-import static ummisco.gama.ui.resources.IGamaIcons.EXPERIMENT_RUN;
-import static ummisco.gama.ui.resources.IGamaIcons.TOGGLE_ANTIALIAS;
-import static ummisco.gama.ui.resources.IGamaIcons.TOGGLE_OVERLAY;
 
 import java.util.function.Function;
 
@@ -36,16 +31,8 @@ import org.eclipse.ui.IPerspectiveListener;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
 
-import gama.ui.experiment.controls.SimulationSpeedContributionItem;
-import gama.ui.experiment.menus.GamaColorMenu;
-import gama.ui.experiment.menus.GamaMenu;
-import gama.ui.experiment.views.toolbar.GamaCommand;
-import gama.ui.experiment.views.toolbar.GamaToolbar2;
-import gama.ui.experiment.views.toolbar.GamaToolbarFactory;
-import gama.ui.experiment.views.toolbar.Selector;
-import gama.ui.application.workbench.PerspectiveHelper;
+import gama.annotations.common.interfaces.IDisposable;
 import gama.core.common.interfaces.IDisplaySurface;
-import gama.core.common.interfaces.IDisposable;
 import gama.core.common.preferences.GamaPreferences;
 import gama.core.outputs.LayeredDisplayData.Changes;
 import gama.core.outputs.LayeredDisplayData.DisplayDataListener;
@@ -53,12 +40,20 @@ import gama.core.runtime.GAMA;
 import gama.core.runtime.PlatformHelper;
 import gama.dev.DEBUG;
 import gama.dev.STRINGS;
+import gama.ui.application.workbench.PerspectiveHelper;
+import gama.ui.experiment.controls.SimulationSpeedContributionItem;
 import gama.ui.shared.bindings.GamaKeyBindings;
-import ummisco.gama.ui.resources.GamaColors;
-import ummisco.gama.ui.resources.GamaIcon;
-import ummisco.gama.ui.resources.IGamaIcons;
+import gama.ui.shared.menus.GamaColorMenu;
+import gama.ui.shared.menus.GamaMenu;
+import gama.ui.shared.resources.GamaColors;
+import gama.ui.shared.resources.GamaIcon;
+import gama.ui.shared.resources.IGamaIcons;
 import gama.ui.shared.utils.ViewsHelper;
 import gama.ui.shared.utils.WorkbenchHelper;
+import gama.ui.shared.views.toolbar.GamaCommand;
+import gama.ui.shared.views.toolbar.GamaToolbar2;
+import gama.ui.shared.views.toolbar.GamaToolbarFactory;
+import gama.ui.shared.views.toolbar.Selector;
 
 /**
  * The Class LayeredDisplayDecorator.
@@ -126,21 +121,22 @@ public class LayeredDisplayDecorator implements DisplayDataListener {
 	 */
 	private void createCommands() {
 		int pad = 25;
-		toggleOverlay = new GamaCommand(TOGGLE_OVERLAY, STRINGS.PAD("Toggle overlay", pad) + format(COMMAND, 'O'),
-				e -> toggleOverlay());
-		takeSnapshot =
-				new GamaCommand(DISPLAY_TOOLBAR_SNAPSHOT, STRINGS.PAD("Take a snapshot", pad), e -> view.takeSnapshot(null));
-		antiAlias = new GamaCommand(TOGGLE_ANTIALIAS, STRINGS.PAD("Turn antialias on/off", pad),
+		toggleOverlay = new GamaCommand(IGamaIcons.TOGGLE_OVERLAY,
+				STRINGS.PAD("Toggle overlay", pad) + format(COMMAND, 'O'), e -> toggleOverlay());
+		takeSnapshot = new GamaCommand(IGamaIcons.DISPLAY_TOOLBAR_SNAPSHOT, STRINGS.PAD("Take a snapshot", pad),
+				e -> view.takeSnapshot(null));
+		antiAlias = new GamaCommand(IGamaIcons.TOGGLE_ANTIALIAS, STRINGS.PAD("Turn antialias on/off", pad),
 				e -> view.getOutput().getData().setAntialias(!view.getOutput().getData().isAntialias()));
-		toggleFullScreen = new GamaCommand(DISPLAY_FULLSCREEN_ENTER, STRINGS.PAD("Toggle fullscreen", pad) + "ESC", e -> {
-			toggleFullScreen();
-		});
-		runExperiment = new GamaCommand(EXPERIMENT_RUN,
+		toggleFullScreen = new GamaCommand(IGamaIcons.DISPLAY_FULLSCREEN_ENTER,
+				STRINGS.PAD("Toggle fullscreen", pad) + "ESC", e -> {
+					toggleFullScreen();
+				});
+		runExperiment = new GamaCommand(IGamaIcons.EXPERIMENT_RUN,
 				STRINGS.PAD("Run or pause experiment", pad) + GamaKeyBindings.PLAY_STRING, e -> {
 
 					final Item item = (Item) e.widget;
 					if (!GAMA.isPaused()) {
-						item.setImage(GamaIcon.named(EXPERIMENT_RUN).image());
+						item.setImage(GamaIcon.named(IGamaIcons.EXPERIMENT_RUN).image());
 					} else {
 						item.setImage(GamaIcon.named(IGamaIcons.MENU_PAUSE_ACTION).image());
 					}
@@ -503,7 +499,8 @@ public class LayeredDisplayDecorator implements DisplayDataListener {
 			Menu sub =
 					GamaMenu.sub(parentMenu, "Presentation", "", GamaIcon.named(IGamaIcons.PRESENTATION_MENU).image());
 			if (!isFullScreen() && WorkbenchHelper.getNumberOfMonitors() > 1) {
-				Menu mon = GamaMenu.sub(sub, "Enter fullscreen", "", GamaIcon.named(DISPLAY_FULLSCREEN_ENTER).image());
+				Menu mon = GamaMenu.sub(sub, "Enter fullscreen", "",
+						GamaIcon.named(IGamaIcons.DISPLAY_FULLSCREEN_ENTER).image());
 				Monitor[] mm = WorkbenchHelper.getMonitors();
 				for (int i = 0; i < mm.length; i++) {
 					Monitor monitor = mm[i];
@@ -547,7 +544,7 @@ public class LayeredDisplayDecorator implements DisplayDataListener {
 		ToolItem item = tb.check(antiAlias, SWT.RIGHT);
 		tb.setSelection(item, view.getOutput().getData().isAntialias());
 		if (!isFullScreen() && WorkbenchHelper.getNumberOfMonitors() > 1) {
-			fs = tb.menu(DISPLAY_FULLSCREEN_ENTER, "", "Enter fullscreen", e -> {
+			fs = tb.menu(IGamaIcons.DISPLAY_FULLSCREEN_ENTER, "", "Enter fullscreen", e -> {
 				final GamaMenu menu = new GamaMenu() {
 
 					@Override

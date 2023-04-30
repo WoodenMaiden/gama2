@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * AgentsMenu.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * AgentsMenu.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -26,23 +26,25 @@ import org.eclipse.swt.widgets.MenuItem;
 
 import gama.core.common.interfaces.IGui;
 import gama.core.common.preferences.GamaPreferences;
-import msi.gama.kernel.experiment.ITopLevelAgent;
-import msi.gama.kernel.simulation.SimulationAgent;
-import msi.gama.kernel.simulation.SimulationPopulation;
-import msi.gama.metamodel.agent.IAgent;
-import msi.gama.metamodel.agent.IMacroAgent;
-import msi.gama.metamodel.population.IPopulation;
+import gama.core.kernel.experiment.ITopLevelAgent;
+import gama.core.kernel.simulation.SimulationAgent;
+import gama.core.kernel.simulation.SimulationPopulation;
+import gama.core.metamodel.agent.IAgent;
+import gama.core.metamodel.agent.IMacroAgent;
+import gama.core.metamodel.population.IPopulation;
 import gama.core.outputs.ValuedDisplayOutputFactory;
 import gama.core.runtime.ExecutionResult;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope;
 import gama.core.runtime.PlatformHelper;
-import msi.gaml.statements.Arguments;
-import msi.gaml.statements.IStatement;
-import msi.gaml.statements.UserCommandStatement;
-import ummisco.gama.ui.resources.GamaColors;
-import ummisco.gama.ui.resources.GamaIcon;
-import ummisco.gama.ui.resources.IGamaIcons;
+import gama.ui.shared.menus.GamaMenu;
+import gama.ui.shared.menus.MenuAction;
+import gama.ui.shared.resources.GamaColors;
+import gama.ui.shared.resources.GamaIcon;
+import gama.ui.shared.resources.IGamaIcons;
+import gaml.core.statements.Arguments;
+import gaml.core.statements.IStatement;
+import gaml.core.statements.UserCommandStatement;
 
 /**
  * The Class AgentsMenu.

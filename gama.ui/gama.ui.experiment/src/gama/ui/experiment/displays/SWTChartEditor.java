@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * SWTChartEditor.java, in ummisco.gama.ui.experiment, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * SWTChartEditor.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 
 package gama.ui.experiment.displays;
@@ -55,7 +55,7 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.chart.title.Title;
 
-import ummisco.gama.ui.resources.GamaColors;
+import gama.ui.shared.resources.GamaColors;
 import gama.ui.shared.utils.GraphicsHelper;
 
 /**
@@ -467,32 +467,26 @@ public class SWTChartEditor implements ChartEditor {
 			// set the axis properties
 			if (this.domainAxisPropertyPanel != null) {
 				Axis domainAxis = null;
-				if (plot instanceof CategoryPlot) {
-					final CategoryPlot p = (CategoryPlot) plot;
+				if (plot instanceof CategoryPlot p) {
 					domainAxis = p.getDomainAxis();
-				} else if (plot instanceof XYPlot) {
-					final XYPlot p = (XYPlot) plot;
+				} else if (plot instanceof XYPlot p) {
 					domainAxis = p.getDomainAxis();
 				}
 				if (domainAxis != null) { this.domainAxisPropertyPanel.setAxisProperties(domainAxis); }
 			}
 			if (this.rangeAxisPropertyPanel != null) {
 				Axis rangeAxis = null;
-				if (plot instanceof CategoryPlot) {
-					final CategoryPlot p = (CategoryPlot) plot;
+				if (plot instanceof CategoryPlot p) {
 					rangeAxis = p.getRangeAxis();
-				} else if (plot instanceof XYPlot) {
-					final XYPlot p = (XYPlot) plot;
+				} else if (plot instanceof XYPlot p) {
 					rangeAxis = p.getRangeAxis();
 				}
 				if (rangeAxis != null) { this.rangeAxisPropertyPanel.setAxisProperties(rangeAxis); }
 			}
 			if (this.plotAppearance.getPlotOrientation() != null) {
-				if (plot instanceof CategoryPlot) {
-					final CategoryPlot p = (CategoryPlot) plot;
+				if (plot instanceof CategoryPlot p) {
 					p.setOrientation(this.plotAppearance.getPlotOrientation());
-				} else if (plot instanceof XYPlot) {
-					final XYPlot p = (XYPlot) plot;
+				} else if (plot instanceof XYPlot p) {
 					p.setOrientation(this.plotAppearance.getPlotOrientation());
 				}
 			}

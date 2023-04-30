@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * OutputsMenu.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * OutputsMenu.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -20,16 +20,17 @@ import org.eclipse.swt.widgets.MenuItem;
 
 import com.google.common.collect.Iterables;
 
-import msi.gama.kernel.experiment.ExperimentAgent;
-import msi.gama.kernel.experiment.IExperimentPlan;
-import msi.gama.kernel.simulation.SimulationAgent;
+import gama.core.kernel.experiment.ExperimentAgent;
+import gama.core.kernel.experiment.IExperimentPlan;
+import gama.core.kernel.simulation.SimulationAgent;
 import gama.core.outputs.IDisplayOutput;
 import gama.core.outputs.IOutputManager;
 import gama.core.outputs.LayeredDisplayOutput;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope;
-import ummisco.gama.ui.resources.GamaIcon;
-import ummisco.gama.ui.resources.IGamaIcons;
+import gama.ui.shared.menus.GamaMenu;
+import gama.ui.shared.resources.GamaIcon;
+import gama.ui.shared.resources.IGamaIcons;
 
 /**
  * The Class OutputsMenu.

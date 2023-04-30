@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * LayeredDisplayView.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * LayeredDisplayView.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -31,25 +31,25 @@ import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 
-import gama.ui.experiment.views.GamaViewPart;
-import gama.ui.experiment.views.toolbar.GamaToolbar2;
-import gama.ui.experiment.views.toolbar.IToolbarDecoratedView;
+import gama.annotations.common.interfaces.IDisposable;
 import gama.core.common.interfaces.IDisplaySurface;
-import gama.core.common.interfaces.IDisposable;
 import gama.core.common.interfaces.IGamaView;
 import gama.core.common.interfaces.ILayerManager;
 import gama.core.common.preferences.GamaPreferences;
-import msi.gama.kernel.experiment.ITopLevelAgent;
-import msi.gama.metamodel.shape.GamaPoint;
+import gama.core.kernel.experiment.ITopLevelAgent;
+import gama.core.metamodel.shape.GamaPoint;
 import gama.core.outputs.IDisplayOutput;
 import gama.core.outputs.LayeredDisplayOutput;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope;
 import gama.dev.DEBUG;
-import ummisco.gama.ui.resources.GamaColors;
-import ummisco.gama.ui.resources.GamaIcon;
+import gama.ui.shared.resources.GamaColors;
+import gama.ui.shared.resources.GamaIcon;
 import gama.ui.shared.utils.ViewsHelper;
 import gama.ui.shared.utils.WorkbenchHelper;
+import gama.ui.shared.views.GamaViewPart;
+import gama.ui.shared.views.toolbar.GamaToolbar2;
+import gama.ui.shared.views.toolbar.IToolbarDecoratedView;
 
 /**
  * The Class LayeredDisplayView.
@@ -116,6 +116,14 @@ public abstract class LayeredDisplayView extends GamaViewPart
 		return r.contains(x, y);
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @param site
+	 *            the site
+	 * @throws PartInitException
+	 *             the part init exception
+	 */
 	@Override
 	public void init(final IViewSite site) throws PartInitException {
 		super.init(site);
@@ -139,6 +147,12 @@ public abstract class LayeredDisplayView extends GamaViewPart
 		site.getShell().addControlListener(shellListener);
 	}
 
+	/**
+	 * Adds the output.
+	 *
+	 * @param out
+	 *            the out
+	 */
 	@Override
 	public void addOutput(final IDisplayOutput out) {
 
@@ -208,6 +222,12 @@ public abstract class LayeredDisplayView extends GamaViewPart
 
 	}
 
+	/**
+	 * Own create part control.
+	 *
+	 * @param c
+	 *            the c
+	 */
 	@Override
 	public void ownCreatePartControl(final Composite c) {
 		if (getOutput() == null) return;
@@ -271,6 +291,12 @@ public abstract class LayeredDisplayView extends GamaViewPart
 		return null;
 	}
 
+	/**
+	 * Widget disposed.
+	 *
+	 * @param e
+	 *            the e
+	 */
 	@Override
 	public void widgetDisposed(final DisposeEvent e) {
 		if (disposed) return;
@@ -298,6 +324,9 @@ public abstract class LayeredDisplayView extends GamaViewPart
 		super.widgetDisposed(e);
 	}
 
+	/**
+	 * Pause changed.
+	 */
 	@Override
 	public void pauseChanged() {
 		decorator.updateOverlay();
@@ -312,24 +341,43 @@ public abstract class LayeredDisplayView extends GamaViewPart
 		return false;
 	}
 
+	/**
+	 * Zoom in.
+	 */
 	@Override
 	public void zoomIn() {
 		if (getDisplaySurface() != null) { getDisplaySurface().zoomIn(); }
 	}
 
+	/**
+	 * Zoom out.
+	 */
 	@Override
 	public void zoomOut() {
 		if (getDisplaySurface() != null) { getDisplaySurface().zoomOut(); }
 	}
 
+	/**
+	 * Zoom fit.
+	 */
 	@Override
 	public void zoomFit() {
 		if (getDisplaySurface() != null) { getDisplaySurface().zoomFit(); }
 	}
 
+	/**
+	 * Gets the zoomable controls.
+	 *
+	 * @return the zoomable controls
+	 */
 	@Override
 	public Control[] getZoomableControls() { return new Control[] { getParentComposite() }; }
 
+	/**
+	 * Creates the update job.
+	 *
+	 * @return the job
+	 */
 	@Override
 	protected Job createUpdateJob() {
 		return new Job(getTitle()) {
@@ -349,6 +397,12 @@ public abstract class LayeredDisplayView extends GamaViewPart
 		};
 	}
 
+	/**
+	 * Update.
+	 *
+	 * @param output
+	 *            the output
+	 */
 	@Override
 	public void update(final IDisplayOutput output) {
 		super.update(output);
@@ -367,11 +421,22 @@ public abstract class LayeredDisplayView extends GamaViewPart
 		}
 	}
 
+	/**
+	 * Zoom when scrolling.
+	 *
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean zoomWhenScrolling() {
 		return true;
 	}
 
+	/**
+	 * Removes the output.
+	 *
+	 * @param output
+	 *            the output
+	 */
 	@Override
 	public void removeOutput(final IDisplayOutput output) {
 		if (output == null) return;
@@ -394,6 +459,12 @@ public abstract class LayeredDisplayView extends GamaViewPart
 		decorator.toggleFullScreen();
 	}
 
+	/**
+	 * Creates the tool items.
+	 *
+	 * @param tb
+	 *            the tb
+	 */
 	@Override
 	public void createToolItems(final GamaToolbar2 tb) {
 		super.createToolItems(tb);
@@ -417,6 +488,12 @@ public abstract class LayeredDisplayView extends GamaViewPart
 	 */
 	public Control getInteractionControl() { return getZoomableControls()[0]; }
 
+	/**
+	 * Close.
+	 *
+	 * @param scope
+	 *            the scope
+	 */
 	@Override
 	public void close(final IScope scope) {
 		if (closing) return;
@@ -431,6 +508,9 @@ public abstract class LayeredDisplayView extends GamaViewPart
 
 	}
 
+	/**
+	 * Dispose.
+	 */
 	@Override
 	public void dispose() {
 		WorkbenchHelper.run(() -> {
@@ -440,6 +520,11 @@ public abstract class LayeredDisplayView extends GamaViewPart
 
 	}
 
+	/**
+	 * Checks if is visible.
+	 *
+	 * @return true, if is visible
+	 */
 	@Override
 	public boolean isVisible() {
 		IDisplaySurface surface = getDisplaySurface();

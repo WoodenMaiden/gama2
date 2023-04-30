@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * DisplaySurfaceMenu.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * DisplaySurfaceMenu.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -33,13 +33,10 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.ToolItem;
 
-import gama.ui.experiment.menus.AgentsMenu;
-import gama.ui.experiment.menus.GamaMenu;
-import gama.ui.experiment.menus.MenuAction;
 import gama.core.common.interfaces.IDisplaySurface;
 import gama.core.common.interfaces.ILayer;
 import gama.core.common.interfaces.ILayer.IGridLayer;
-import msi.gama.metamodel.agent.IAgent;
+import gama.core.metamodel.agent.IAgent;
 import gama.core.outputs.layers.AgentLayer;
 import gama.core.outputs.layers.GraphicLayer;
 import gama.core.outputs.layers.GridAgentLayer;
@@ -55,11 +52,14 @@ import gama.core.outputs.layers.charts.ChartLayer;
 import gama.core.outputs.layers.charts.ChartLayerStatement;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.PlatformHelper;
-import msi.gama.util.IList;
-import msi.gaml.types.Types;
-import ummisco.gama.ui.resources.GamaIcon;
-import ummisco.gama.ui.resources.IGamaIcons;
+import gama.core.util.IList;
+import gama.ui.experiment.menus.AgentsMenu;
+import gama.ui.shared.menus.GamaMenu;
+import gama.ui.shared.menus.MenuAction;
+import gama.ui.shared.resources.GamaIcon;
+import gama.ui.shared.resources.IGamaIcons;
 import gama.ui.shared.utils.WorkbenchHelper;
+import gaml.core.types.Types;
 
 /**
  * The Class DisplaySurfaceMenu.

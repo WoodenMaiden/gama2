@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * ErrorView.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * ErrorView.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -26,7 +26,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
-import gama.ui.experiment.controls.ParameterExpandItem;
 import gama.core.common.interfaces.IGamaView;
 import gama.core.common.interfaces.IGui;
 import gama.core.common.interfaces.IRuntimeExceptionHandler;
@@ -34,11 +33,13 @@ import gama.core.common.interfaces.ItemList;
 import gama.core.common.preferences.GamaPreferences;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.exceptions.GamaRuntimeException;
-import ummisco.gama.ui.resources.GamaColors;
-import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
+import gama.ui.shared.controls.ParameterExpandItem;
+import gama.ui.shared.resources.GamaColors;
+import gama.ui.shared.resources.GamaColors.GamaUIColor;
 import gama.ui.shared.utils.PreferencesHelper;
 import gama.ui.shared.utils.WebHelper;
 import gama.ui.shared.utils.WorkbenchHelper;
+import gama.ui.shared.views.ExpandableItemsView;
 
 /**
  * The Class ErrorView.
@@ -54,11 +55,23 @@ public class ErrorView extends ExpandableItemsView<GamaRuntimeException> impleme
 	/** The most recent first. */
 	boolean mostRecentFirst = GamaPreferences.Runtime.CORE_RECENT.getValue();
 
+	/**
+	 * Are items closable.
+	 *
+	 * @return true, if successful
+	 */
 	@Override
 	protected boolean areItemsClosable() {
 		return true;
 	}
 
+	/**
+	 * Adds the item.
+	 *
+	 * @param e
+	 *            the e
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean addItem(final GamaRuntimeException e) {
 		createItem(getParentComposite(), e, false, null);
@@ -86,9 +99,28 @@ public class ErrorView extends ExpandableItemsView<GamaRuntimeException> impleme
 
 	}
 
+	/**
+	 * Own create part control.
+	 *
+	 * @param view
+	 *            the view
+	 */
 	@Override
 	public void ownCreatePartControl(final Composite view) {}
 
+	/**
+	 * Creates the item.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param data
+	 *            the data
+	 * @param expanded
+	 *            the expanded
+	 * @param color
+	 *            the color
+	 * @return the parameter expand item
+	 */
 	// Experimental: creates a deferred item
 	@Override
 	protected ParameterExpandItem createItem(final Composite parent, final GamaRuntimeException data,
@@ -105,6 +137,13 @@ public class ErrorView extends ExpandableItemsView<GamaRuntimeException> impleme
 		return item;
 	}
 
+	/**
+	 * Creates the item contents for.
+	 *
+	 * @param exception
+	 *            the exception
+	 * @return the composite
+	 */
 	@Override
 	protected Composite createItemContentsFor(final GamaRuntimeException exception) {
 		final Composite compo = new Composite(getViewer(), SWT.NONE);
@@ -158,6 +197,9 @@ public class ErrorView extends ExpandableItemsView<GamaRuntimeException> impleme
 		// compo.pack();
 	}
 
+	/**
+	 * Sets the focus.
+	 */
 	@Override
 	public void setFocus() {
 
@@ -172,17 +214,44 @@ public class ErrorView extends ExpandableItemsView<GamaRuntimeException> impleme
 		return WorkbenchHelper.getService(IRuntimeExceptionHandler.class);
 	}
 
+	/**
+	 * Removes the item.
+	 *
+	 * @param obj
+	 *            the obj
+	 */
 	@Override
 	public void removeItem(final GamaRuntimeException obj) {
 		getExceptionHandler().remove(obj);
 	}
 
+	/**
+	 * Pause item.
+	 *
+	 * @param obj
+	 *            the obj
+	 */
 	@Override
 	public void pauseItem(final GamaRuntimeException obj) {}
 
+	/**
+	 * Resume item.
+	 *
+	 * @param obj
+	 *            the obj
+	 */
 	@Override
 	public void resumeItem(final GamaRuntimeException obj) {}
 
+	/**
+	 * Gets the item display name.
+	 *
+	 * @param obj
+	 *            the obj
+	 * @param previousName
+	 *            the previous name
+	 * @return the item display name
+	 */
 	@Override
 	public String getItemDisplayName(final GamaRuntimeException obj, final String previousName) {
 		final StringBuilder sb = new StringBuilder(300);
@@ -193,11 +262,22 @@ public class ErrorView extends ExpandableItemsView<GamaRuntimeException> impleme
 		return sb.toString();
 	}
 
+	/**
+	 * Focus item.
+	 *
+	 * @param data
+	 *            the data
+	 */
 	@Override
 	public void focusItem(final GamaRuntimeException data) {
 		// gotoEditor(data);
 	}
 
+	/**
+	 * Gets the items.
+	 *
+	 * @return the items
+	 */
 	@Override
 	public List<GamaRuntimeException> getItems() {
 		final List<GamaRuntimeException> errors = new ArrayList<>();
@@ -213,11 +293,20 @@ public class ErrorView extends ExpandableItemsView<GamaRuntimeException> impleme
 		return errors;
 	}
 
+	/**
+	 * Update item values.
+	 *
+	 * @param synchronously
+	 *            the synchronously
+	 */
 	@Override
 	public void updateItemValues(final boolean synchronously) {
 		this.getViewer().updateItemNames();
 	}
 
+	/**
+	 * Reset.
+	 */
 	@Override
 	public void reset() {
 		WorkbenchHelper.run(() -> {
@@ -255,6 +344,11 @@ public class ErrorView extends ExpandableItemsView<GamaRuntimeException> impleme
 		WebHelper.openPage("https://github.com/gama-platform/gama/issues/new");
 	}
 
+	/**
+	 * Needs output.
+	 *
+	 * @return true, if successful
+	 */
 	@Override
 	protected boolean needsOutput() {
 		return false;

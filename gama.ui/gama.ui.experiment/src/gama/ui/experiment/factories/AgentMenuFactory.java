@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * AgentMenuFactory.java, in ummisco.gama.ui.experiment, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * AgentMenuFactory.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.experiment.factories;
 
@@ -16,15 +16,26 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.services.AbstractServiceFactory;
 import org.eclipse.ui.services.IServiceLocator;
 
+import gama.core.metamodel.agent.IAgent;
 import gama.ui.experiment.menus.AgentsMenu;
-import gama.ui.experiment.menus.MenuAction;
-import msi.gama.metamodel.agent.IAgent;
+import gama.ui.shared.interfaces.IAgentMenuFactory;
+import gama.ui.shared.menus.MenuAction;
 
 /**
  * A factory for creating AgentMenu objects.
  */
-public class AgentMenuFactory extends AbstractServiceFactory implements ummisco.gama.ui.interfaces.IAgentMenuFactory {
+public class AgentMenuFactory extends AbstractServiceFactory implements IAgentMenuFactory {
 
+	/**
+	 * Fill population sub menu.
+	 *
+	 * @param menu
+	 *            the menu
+	 * @param species
+	 *            the species
+	 * @param actions
+	 *            the actions
+	 */
 	@Override
 	public void fillPopulationSubMenu(final Menu menu, final Collection<? extends IAgent> species,
 			final MenuAction... actions) {

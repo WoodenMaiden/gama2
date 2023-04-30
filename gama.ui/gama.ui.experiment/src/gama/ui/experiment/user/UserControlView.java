@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * UserControlView.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * UserControlView.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -27,25 +27,27 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.ToolItem;
 
-import gama.ui.experiment.controls.FlatButton;
-import gama.ui.experiment.views.GamaViewPart;
-import gama.ui.experiment.views.toolbar.GamaToolbar2;
 import gama.core.common.interfaces.IGamaView;
 import gama.core.common.interfaces.IGui;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope;
-import msi.gaml.architecture.user.UserInputStatement;
-import msi.gaml.architecture.user.UserPanelStatement;
-import msi.gaml.statements.IStatement;
-import msi.gaml.statements.UserCommandStatement;
-import ummisco.gama.ui.parameters.EditorFactory;
-import ummisco.gama.ui.parameters.EditorsGroup;
-import ummisco.gama.ui.resources.GamaColors;
-import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
-import ummisco.gama.ui.resources.GamaIcon;
-import ummisco.gama.ui.resources.IGamaColors;
-import ummisco.gama.ui.resources.IGamaIcons;
+import gama.ui.shared.controls.FlatButton;
+import gama.ui.shared.parameters.EditorFactory;
+import gama.ui.shared.parameters.EditorsGroup;
+import gama.ui.shared.resources.GamaColors;
+import gama.ui.shared.resources.GamaColors.GamaUIColor;
+import gama.ui.shared.resources.GamaIcon;
+import gama.ui.shared.resources.IGamaColors;
+import gama.ui.shared.resources.IGamaIcons;
 import gama.ui.shared.utils.ViewsHelper;
+import gama.ui.shared.views.GamaViewPart;
+import gama.ui.shared.views.GamaViewPart.GamaUIJob;
+import gama.ui.shared.views.GamaViewPart.UpdatePriority;
+import gama.ui.shared.views.toolbar.GamaToolbar2;
+import gaml.core.architecture.user.UserInputStatement;
+import gaml.core.architecture.user.UserPanelStatement;
+import gaml.core.statements.IStatement;
+import gaml.core.statements.UserCommandStatement;
 
 /**
  * The Class UserControlView.
@@ -97,6 +99,12 @@ public class UserControlView extends GamaViewPart implements IGamaView.User {
 		}
 	}
 
+	/**
+	 * Own create part control.
+	 *
+	 * @param parent
+	 *            the parent
+	 */
 	@Override
 	public void ownCreatePartControl(final Composite parent) {
 		// parent.setBackground(IGamaColors.WHITE.color());
@@ -126,9 +134,9 @@ public class UserControlView extends GamaViewPart implements IGamaView.User {
 				final int nbCol = inputs.size() > 0 ? 1 : 3;
 				GamaUIColor color = GamaColors.get(c.getColor(scope));
 				if (color == null) { color = IGamaColors.BLUE; }
-				final Image image = GamaIcon
-						.named(c.isContinue(scope) ? "overlays/small.continue" : "overlays/small.exp.run.white")
-						.image();
+				final Image image =
+						GamaIcon.named(c.isContinue(scope) ? "overlays/small.continue" : "overlays/small.exp.run.white")
+								.image();
 				final FlatButton b = FlatButton.button(commandComposite, color, c.getName(), image);
 				b.setEnabled(c.isEnabled(scope));
 				final GridData gd = new GridData(SWT.LEFT, SWT.CENTER, true, true, nbCol, nbLines);
@@ -165,12 +173,23 @@ public class UserControlView extends GamaViewPart implements IGamaView.User {
 		ViewsHelper.hideView(this);
 	}
 
+	/**
+	 * Widget disposed.
+	 *
+	 * @param e
+	 *            the e
+	 */
 	@Override
 	public void widgetDisposed(final DisposeEvent e) {
 		scope.setOnUserHold(false);
 		super.widgetDisposed(e);
 	}
 
+	/**
+	 * Creates the update job.
+	 *
+	 * @return the gama UI job
+	 */
 	@Override
 	protected GamaUIJob createUpdateJob() {
 		return new GamaUIJob() {
@@ -206,6 +225,11 @@ public class UserControlView extends GamaViewPart implements IGamaView.User {
 
 	}
 
+	/**
+	 * Needs output.
+	 *
+	 * @return true, if successful
+	 */
 	@Override
 	protected boolean needsOutput() {
 		return false;

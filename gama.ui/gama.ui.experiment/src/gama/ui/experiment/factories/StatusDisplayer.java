@@ -1,14 +1,24 @@
+/*******************************************************************************************************
+ *
+ * StatusDisplayer.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
+ *
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ *
+ * Visit https://github.com/gama-platform/gama for license information and contacts.
+ *
+ ********************************************************************************************************/
 package gama.ui.experiment.factories;
 
-import gama.ui.experiment.controls.StatusControlContribution;
-import msi.gama.common.StatusMessage;
-import msi.gama.common.SubTaskMessage;
-import msi.gama.common.UserStatusMessage;
+import gama.annotations.common.interfaces.IStatusMessage;
+import gama.core.common.StatusMessage;
+import gama.core.common.SubTaskMessage;
+import gama.core.common.UserStatusMessage;
 import gama.core.common.interfaces.IGui;
 import gama.core.common.interfaces.IStatusDisplayer;
-import gama.core.common.interfaces.IStatusMessage;
 import gama.core.runtime.IScope;
-import msi.gama.util.GamaColor;
+import gama.core.util.GamaColor;
+import gama.ui.experiment.controls.StatusControlContribution;
 import gama.ui.shared.utils.ThreadedUpdater;
 
 /**

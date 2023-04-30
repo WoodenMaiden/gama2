@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * EditorsList.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * EditorsList.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -18,9 +18,9 @@ import java.util.Map;
 
 import gama.core.common.interfaces.ItemList;
 import gama.core.common.preferences.GamaPreferences;
-import msi.gama.kernel.experiment.IExperimentDisplayable;
-import msi.gama.metamodel.agent.IAgent;
-import ummisco.gama.ui.interfaces.IParameterEditor;
+import gama.core.kernel.experiment.IExperimentDisplayable;
+import gama.core.metamodel.agent.IAgent;
+import gama.ui.shared.interfaces.IParameterEditor;
 
 /**
  * The Class EditorsList.

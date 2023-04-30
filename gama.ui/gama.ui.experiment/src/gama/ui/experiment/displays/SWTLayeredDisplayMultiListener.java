@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * SWTLayeredDisplayMultiListener.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling
- * and simulation platform (v.1.9.0).
+ * SWTLayeredDisplayMultiListener.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and
+ * simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -29,8 +29,8 @@ import org.eclipse.swt.events.MouseWheelListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Control;
 
+import gama.annotations.common.interfaces.IDisposable;
 import gama.core.common.interfaces.IDisplaySurface;
-import gama.core.common.interfaces.IDisposable;
 import gama.core.outputs.layers.IEventLayerListener;
 import gama.dev.DEBUG;
 import gama.ui.shared.bindings.GamaKeyBindings;

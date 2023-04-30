@@ -1,16 +1,14 @@
 /*******************************************************************************************************
  *
- * ConsoleDisplayerFactory.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * ConsoleDisplayerFactory.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
  ********************************************************************************************************/
 package gama.ui.experiment.factories;
-
-import static gama.ui.shared.utils.ViewsHelper.hideView;
 
 import java.util.ConcurrentModificationException;
 import java.util.HashMap;
@@ -20,15 +18,14 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.services.AbstractServiceFactory;
 import org.eclipse.ui.services.IServiceLocator;
 
-import gama.ui.application.workbench.PerspectiveHelper;
 import gama.core.common.interfaces.IConsoleDisplayer;
 import gama.core.common.interfaces.IGamaView;
 import gama.core.common.interfaces.IGamaView.Console;
 import gama.core.common.interfaces.IGui;
-import msi.gama.kernel.experiment.ITopLevelAgent;
+import gama.core.kernel.experiment.ITopLevelAgent;
 import gama.core.runtime.GAMA;
-import msi.gama.util.GamaColor;
-import msi.gaml.operators.Strings;
+import gama.core.util.GamaColor;
+import gama.ui.application.workbench.PerspectiveHelper;
 import gama.ui.shared.utils.ViewsHelper;
 import gama.ui.shared.utils.WorkbenchHelper;
 

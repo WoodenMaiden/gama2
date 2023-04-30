@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * SimulationSpeedContributionItem.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling
- * and simulation platform (v.1.9.0).
+ * SimulationSpeedContributionItem.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and
+ * simulation platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -20,14 +20,17 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.menus.WorkbenchWindowControlContribution;
 
-import msi.gama.kernel.experiment.ExperimentAgent;
+import gama.core.kernel.experiment.ExperimentAgent;
 import gama.core.runtime.GAMA;
-import msi.gaml.operators.Maths;
 import gama.dev.DEBUG;
-import ummisco.gama.ui.interfaces.ISpeedDisplayer;
-import ummisco.gama.ui.resources.GamaColors;
-import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
-import ummisco.gama.ui.resources.IGamaColors;
+import gama.ui.shared.controls.IPositionChangeListener;
+import gama.ui.shared.controls.IToolTipProvider;
+import gama.ui.shared.controls.SimpleSlider;
+import gama.ui.shared.interfaces.ISpeedDisplayer;
+import gama.ui.shared.resources.GamaColors;
+import gama.ui.shared.resources.GamaColors.GamaUIColor;
+import gama.ui.shared.resources.IGamaColors;
+import gaml.core.operators.Maths;
 
 /**
  * The class SimulationSpeedContributionItem.
@@ -175,6 +178,14 @@ public class SimulationSpeedContributionItem extends WorkbenchWindowControlContr
 		return positionFromValue(value);
 	}
 
+	/**
+	 * Sets the init.
+	 *
+	 * @param i
+	 *            the i
+	 * @param notify
+	 *            the notify
+	 */
 	/*
 	 * Parameter in milliseconds
 	 */

@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * ExperimentParametersView.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * ExperimentParametersView.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -9,10 +9,6 @@
  *
  ********************************************************************************************************/
 package gama.ui.experiment.inspectors;
-
-import static gama.core.common.preferences.GamaPreferences.Displays.CORE_DISPLAY_LAYOUT;
-import static ummisco.gama.ui.resources.IGamaIcons.ACTION_REVERT;
-import static ummisco.gama.ui.resources.IGamaIcons.MENU_ADD_MONITOR;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,31 +23,31 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
-import gama.ui.experiment.commands.ArrangeDisplayViews;
-import gama.ui.experiment.controls.ParameterExpandItem;
-import gama.ui.experiment.parameters.EditorsList;
-import gama.ui.experiment.parameters.ExperimentsParametersList;
-import gama.ui.experiment.views.toolbar.GamaToolbar2;
 import gama.core.common.interfaces.IGamaView;
 import gama.core.common.interfaces.IGui;
 import gama.core.common.preferences.GamaPreferences;
-import msi.gama.kernel.experiment.IExperimentDisplayable;
-import msi.gama.kernel.experiment.IExperimentPlan;
-import msi.gama.kernel.experiment.ParametersSet;
-import msi.gama.kernel.simulation.SimulationAgent;
+import gama.core.kernel.experiment.IExperimentDisplayable;
+import gama.core.kernel.experiment.IExperimentPlan;
+import gama.core.kernel.experiment.ParametersSet;
+import gama.core.kernel.simulation.SimulationAgent;
 import gama.core.outputs.MonitorOutput;
 import gama.core.outputs.SimulationOutputManager;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope;
-import gaml.core.constants.GamlCoreConstants;
 import gama.dev.COUNTER;
-import ummisco.gama.ui.interfaces.IParameterEditor;
-import ummisco.gama.ui.parameters.EditorsGroup;
-import ummisco.gama.ui.parameters.MonitorDisplayer;
-import ummisco.gama.ui.resources.GamaColors;
-import ummisco.gama.ui.resources.GamaColors.GamaUIColor;
-import ummisco.gama.ui.resources.IGamaIcons;
+import gama.ui.experiment.commands.ArrangeDisplayViews;
+import gama.ui.experiment.parameters.EditorsList;
+import gama.ui.experiment.parameters.ExperimentsParametersList;
+import gama.ui.shared.controls.ParameterExpandItem;
+import gama.ui.shared.interfaces.IParameterEditor;
+import gama.ui.shared.parameters.EditorsGroup;
+import gama.ui.shared.parameters.MonitorDisplayer;
+import gama.ui.shared.resources.GamaColors;
+import gama.ui.shared.resources.GamaColors.GamaUIColor;
+import gama.ui.shared.resources.IGamaIcons;
 import gama.ui.shared.utils.WorkbenchHelper;
+import gama.ui.shared.views.toolbar.GamaToolbar2;
+import gaml.core.constants.GamlCoreConstants;
 
 /**
  * The Class ExperimentParametersView.
@@ -209,12 +205,14 @@ public class ExperimentParametersView extends AttributesEditorsView<String> impl
 	@Override
 	public void createToolItems(final GamaToolbar2 tb) {
 		super.createToolItems(tb);
-		tb.button(ACTION_REVERT, "Revert parameter values", "Revert parameters to their initial values", e -> {
-			final EditorsList<?> eds = editors;
-			if (eds != null) { eds.revertToDefaultValue(); }
-		}, SWT.RIGHT);
+		tb.button(IGamaIcons.ACTION_REVERT, "Revert parameter values", "Revert parameters to their initial values",
+				e -> {
+					final EditorsList<?> eds = editors;
+					if (eds != null) { eds.revertToDefaultValue(); }
+				}, SWT.RIGHT);
 		if (GamaPreferences.Runtime.CORE_MONITOR_PARAMETERS.getValue()) {
-			tb.button(MENU_ADD_MONITOR, "Add new monitor", "Add new monitor", e -> createNewMonitor(), SWT.RIGHT);
+			tb.button(IGamaIcons.MENU_ADD_MONITOR, "Add new monitor", "Add new monitor", e -> createNewMonitor(),
+					SWT.RIGHT);
 			tb.sep(SWT.RIGHT);
 		}
 
@@ -224,11 +222,11 @@ public class ExperimentParametersView extends AttributesEditorsView<String> impl
 							GAMA.getExperiment().getAgent().createSimulation(new ParametersSet(), true);
 					if (sim == null) return;
 					WorkbenchHelper.runInUI("", 0, m -> {
-						if ("None".equals(CORE_DISPLAY_LAYOUT.getValue())) {
+						if ("None".equals(GamaPreferences.Displays.CORE_DISPLAY_LAYOUT.getValue())) {
 							ArrangeDisplayViews.execute(GamlCoreConstants.split);
 						} else {
-							ArrangeDisplayViews
-									.execute(GamaPreferences.Displays.LAYOUTS.indexOf(CORE_DISPLAY_LAYOUT.getValue()));
+							ArrangeDisplayViews.execute(GamaPreferences.Displays.LAYOUTS
+									.indexOf(GamaPreferences.Displays.CORE_DISPLAY_LAYOUT.getValue()));
 						}
 					});
 				}, SWT.RIGHT);

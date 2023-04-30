@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * UserControlDialog.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * UserControlDialog.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -29,22 +29,22 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-import gama.ui.experiment.parameters.AgentAttributesEditorsList;
-import msi.gama.kernel.experiment.IParameter;
-import msi.gama.metamodel.agent.IAgent;
+import gama.core.kernel.experiment.IParameter;
+import gama.core.metamodel.agent.IAgent;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope;
-import msi.gaml.architecture.user.UserInputStatement;
-import msi.gaml.architecture.user.UserPanelStatement;
-import msi.gaml.statements.IStatement;
-import msi.gaml.statements.UserCommandStatement;
-import ummisco.gama.ui.dialogs.AbstractDetailsDialog;
-import ummisco.gama.ui.interfaces.IParameterEditor;
-import ummisco.gama.ui.parameters.AbstractEditor;
-import ummisco.gama.ui.parameters.EditorFactory;
-import ummisco.gama.ui.parameters.EditorsGroup;
-import ummisco.gama.ui.resources.GamaIcon;
-import ummisco.gama.ui.resources.IGamaIcons;
+import gama.ui.experiment.parameters.AgentAttributesEditorsList;
+import gama.ui.shared.dialogs.AbstractDetailsDialog;
+import gama.ui.shared.interfaces.IParameterEditor;
+import gama.ui.shared.parameters.AbstractEditor;
+import gama.ui.shared.parameters.EditorFactory;
+import gama.ui.shared.parameters.EditorsGroup;
+import gama.ui.shared.resources.GamaIcon;
+import gama.ui.shared.resources.IGamaIcons;
+import gaml.core.architecture.user.UserInputStatement;
+import gaml.core.architecture.user.UserPanelStatement;
+import gaml.core.statements.IStatement;
+import gaml.core.statements.UserCommandStatement;
 
 /**
  * The class EditorsDialog.
@@ -114,6 +114,11 @@ public class UserControlDialog extends AbstractDetailsDialog {
 		this.scope = scope;
 	}
 
+	/**
+	 * Close.
+	 *
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean close() {
 		previous = new PreviousDialog(this);
@@ -122,6 +127,12 @@ public class UserControlDialog extends AbstractDetailsDialog {
 		return super.close();
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @param newShell
+	 *            the new shell
+	 */
 	@Override
 	protected void configureShell(final Shell newShell) {
 		super.configureShell(newShell);
@@ -131,12 +142,24 @@ public class UserControlDialog extends AbstractDetailsDialog {
 
 	}
 
+	/**
+	 * Open.
+	 *
+	 * @return the int
+	 */
 	@Override
 	public int open() {
 		current = this;
 		return super.open();
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 */
 	@Override
 	protected Control createContents(final Composite parent) {
 		final Composite composite = (Composite) super.createContents(parent);
@@ -147,6 +170,12 @@ public class UserControlDialog extends AbstractDetailsDialog {
 
 	}
 
+	/**
+	 * Creates the buttons for button bar.
+	 *
+	 * @param parent
+	 *            the parent
+	 */
 	@Override
 	protected void createButtonsForButtonBar(final Composite parent) {
 		createButton(parent, IDialogConstants.OK_ID, "Continue", true);
@@ -156,6 +185,13 @@ public class UserControlDialog extends AbstractDetailsDialog {
 
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 */
 	@Override
 	protected Control createDialogArea(final Composite parent) {
 		final Composite above = (Composite) super.createDialogArea(parent);
@@ -199,9 +235,17 @@ public class UserControlDialog extends AbstractDetailsDialog {
 		return composite;
 	}
 
+	/**
+	 * Checks if is resizable.
+	 *
+	 * @return true, if is resizable
+	 */
 	@Override
 	protected boolean isResizable() { return true; }
 
+	/**
+	 * Toggle details area.
+	 */
 	@Override
 	protected void toggleDetailsArea() {
 		final Point oldWindowSize = getShell().getSize();
@@ -245,6 +289,13 @@ public class UserControlDialog extends AbstractDetailsDialog {
 		((Composite) getContents()).layout();
 	}
 
+	/**
+	 * Creates the details area.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 */
 	@SuppressWarnings ({ "rawtypes", "unchecked" })
 	@Override
 	protected Control createDetailsArea(final Composite parent) {

@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * AttributesEditorsView.java, in ummisco.gama.ui.experiment, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * AttributesEditorsView.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -18,10 +18,10 @@ import java.util.Map;
 import org.eclipse.swt.widgets.Composite;
 
 import gama.ui.experiment.parameters.EditorsList;
-import gama.ui.experiment.views.ExpandableItemsView;
-import ummisco.gama.ui.interfaces.IParameterEditor;
-import ummisco.gama.ui.parameters.AbstractEditor;
-import ummisco.gama.ui.parameters.EditorsGroup;
+import gama.ui.shared.interfaces.IParameterEditor;
+import gama.ui.shared.parameters.AbstractEditor;
+import gama.ui.shared.parameters.EditorsGroup;
+import gama.ui.shared.views.ExpandableItemsView;
 
 /**
  * The Class AttributesEditorsView.
@@ -34,12 +34,28 @@ public abstract class AttributesEditorsView<T> extends ExpandableItemsView<T> {
 	/** The editors. */
 	protected EditorsList<T> editors;
 
+	/**
+	 * Gets the item display name.
+	 *
+	 * @param obj
+	 *            the obj
+	 * @param previousName
+	 *            the previous name
+	 * @return the item display name
+	 */
 	@Override
 	public String getItemDisplayName(final T obj, final String previousName) {
 		if (editors == null) return "";
 		return editors.getItemDisplayName(obj, previousName);
 	}
 
+	/**
+	 * Creates the item contents for.
+	 *
+	 * @param data
+	 *            the data
+	 * @return the composite
+	 */
 	@SuppressWarnings ({ "rawtypes", "unchecked" })
 	@Override
 	protected Composite createItemContentsFor(final T data) {
@@ -58,42 +74,80 @@ public abstract class AttributesEditorsView<T> extends ExpandableItemsView<T> {
 		return compo;
 	}
 
+	/**
+	 * Reset.
+	 */
 	@Override
 	public void reset() {
 		super.reset();
 		editors = null;
 	}
 
+	/**
+	 * Removes the item.
+	 *
+	 * @param obj
+	 *            the obj
+	 */
 	@Override
 	public void removeItem(final T obj) {
 		if (editors == null) return;
 		editors.removeItem(obj);
 	}
 
+	/**
+	 * Pause item.
+	 *
+	 * @param obj
+	 *            the obj
+	 */
 	@Override
 	public void pauseItem(final T obj) {
 		if (editors == null) return;
 		editors.pauseItem(obj);
 	}
 
+	/**
+	 * Resume item.
+	 *
+	 * @param obj
+	 *            the obj
+	 */
 	@Override
 	public void resumeItem(final T obj) {
 		if (editors == null) return;
 		editors.resumeItem(obj);
 	}
 
+	/**
+	 * Focus item.
+	 *
+	 * @param obj
+	 *            the obj
+	 */
 	@Override
 	public void focusItem(final T obj) {
 		if (editors == null) return;
 		editors.focusItem(obj);
 	}
 
+	/**
+	 * Gets the items.
+	 *
+	 * @return the items
+	 */
 	@Override
 	public List<T> getItems() {
 		if (editors == null) return Collections.EMPTY_LIST;
 		return editors.getItems();
 	}
 
+	/**
+	 * Update item values.
+	 *
+	 * @param synchronously
+	 *            the synchronously
+	 */
 	@Override
 	public void updateItemValues(final boolean synchronously) {
 		if (editors != null) { editors.updateItemValues(synchronously); }
