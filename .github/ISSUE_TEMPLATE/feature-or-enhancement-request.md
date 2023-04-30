@@ -1,6 +1,6 @@
 ---
 name: Feature or enhancement request
-about: Suggest an idea for improving or extending GAMA with new features. Please take the time to discuss it first in the forum or discussions if possible, as it might benefit from others users' feedbacks.  
+about: Suggest an idea for improving or extending GAMA2 with new features. Please take the time to discuss it first in the forum or discussions if possible, as it might benefit from others users' feedbacks.  
 title: ''
 labels: ''
 assignees: ''
