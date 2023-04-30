@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="gaml.feature.compiler"
+      id="gama.feature.compiler"
       label="Compiler"
       version="2.0.0.qualifier"
       provider-name="UMMISCO"
       plugin="gaml.compiler">
 
    <description url="http://www.example.com/description">
-   Feature providing base GAML language
+      Feature providing base GAML language
    </description>
 
    <copyright url="http://www.example.com/copyright">

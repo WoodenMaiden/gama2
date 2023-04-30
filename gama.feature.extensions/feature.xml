@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="gaml.feature.extension"
-      label="Standard Extension to the Core of GAMA"
+      id="gama.feature.extensions"
+      label="Standard Extensions to the Core of GAMA"
       version="2.0.0.qualifier"
       provider-name="UMMISCO, ESPACE-DEV, IRIT &amp; MIAT"
       plugin="gaml.extension.stats">
@@ -78,7 +78,7 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-   
+
    <plugin
          id="gaml.extension.images"
          download-size="0"
