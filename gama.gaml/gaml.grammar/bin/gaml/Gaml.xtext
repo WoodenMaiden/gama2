@@ -1,0 +1,9 @@
+grammar gaml.Gaml with org.eclipse.xtext.common.Terminals
+
+generate gaml "http://www.Gaml.gaml"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
