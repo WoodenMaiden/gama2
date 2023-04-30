@@ -1,6 +1,6 @@
 ---
-name: Report a problem in using GAMA
-about: Create a report to help us eliminate it. Search the repository first to make sure this is a new problem and remember, the more information you provide, the more likely we are to find a fix! 
+name: Report a problem in using GAMA2
+description: Create a report to help us eliminate it. Search the repository first to make sure this is a new problem and remember, the more information you provide, the more likely we are to find a fix! 
 title: ''
 labels: ''
 assignees: ''
@@ -26,7 +26,7 @@ If applicable, add screenshots to help explain your problem.
 **Desktop (please complete the following information):**
  - OS: [e.g. macOS High Sierra]
  - PC Model: [if applicable, can be useful for displays, OpenGL problems)]
- - GAMA version: [e.g. git, 1.7.1, etc.]
+ - GAMA version: [e.g. git, 2.0alpha, etc.]
  - Java version: [e.g. 1.8]
  - Graphics cards / Display system: [can be useful for displays, OpenGL problems]
 
