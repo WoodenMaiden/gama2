@@ -73,7 +73,8 @@ public class GamaField extends GamaFloatMatrix implements IField {
 		this(scope, provider.getCols(scope), provider.getRows(scope), provider.getFieldData(scope),
 				provider.getNoData(scope));
 		int nbBands = provider.getBandsNumber(scope);
-		for (int i = 0; i < nbBands; i++) { bands.add(new GamaField(scope, this, provider.getBand(scope, i))); }
+		// The first provider is already added to the bands in the Field constructor
+		for (int i = 1; i < nbBands; i++) { bands.add(new GamaField(scope, this, provider.getBand(scope, i))); }
 	}
 
 	/**
@@ -235,12 +236,11 @@ public class GamaField extends GamaFloatMatrix implements IField {
 	@Override
 	public double[] getMinMax(final double[] result) {
 		double min = Double.MAX_VALUE;
-		double max = Double.MIN_VALUE;
+		double max = Double.MAX_VALUE;
 		for (double f : getMatrix()) {
 			if (f == noDataValue) { continue; }
-			if (f > max) {
-				max = f;
-			} else if (f < min) { min = f; }
+			if (f > max) { max = f; }
+			if (f < min) { min = f; }
 		}
 		if (result == null) return new double[] { min, max };
 		result[0] = min;
