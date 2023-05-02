@@ -3,7 +3,6 @@
 target/
 *.orig
 build/
-!ummisco.gama.ui.shared/icons/build/
 dist/
 private/
 release/
@@ -21,6 +20,5 @@ release/
 .metadata/
 /*/gaml/
 /*/bin/
-msi.gama.ext/lib/
 .__*
 /*/.tycho-consumer-pom.xml
