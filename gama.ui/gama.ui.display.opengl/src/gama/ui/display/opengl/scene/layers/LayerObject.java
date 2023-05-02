@@ -396,7 +396,7 @@ public class LayerObject {
 	protected final void drawObjects(final OpenGL gl, final Trace list, final double alpha, final boolean picking) {
 		prepareDrawing(gl, list);
 		gl.setCurrentObjectAlpha(alpha);
-		for (final AbstractObject object : list.asArray()) { gl.getDrawerFor(object.type).draw(object, picking); }
+		for (final AbstractObject object : list.asArray()) { gl.getDrawerFor(object).draw(object, picking); }
 	}
 
 	/**

@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * OpenGL.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * OpenGL.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -9,13 +9,6 @@
  *
  ********************************************************************************************************/
 package gama.ui.display.opengl;
-
-import static com.jogamp.opengl.glu.GLU.gluTessBeginContour;
-import static com.jogamp.opengl.glu.GLU.gluTessBeginPolygon;
-import static com.jogamp.opengl.glu.GLU.gluTessEndContour;
-import static com.jogamp.opengl.glu.GLU.gluTessEndPolygon;
-import static gama.core.common.geometry.GeometryUtils.applyToInnerGeometries;
-import static gama.core.common.geometry.GeometryUtils.getContourCoordinates;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -39,23 +32,8 @@ import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.gl2.GLUT;
 import com.jogamp.opengl.util.texture.Texture;
 
-import gama.dev.DEBUG;
-import gama.ui.display.opengl.renderer.IOpenGLRenderer;
-import gama.ui.display.opengl.renderer.caches.GeometryCache;
-import gama.ui.display.opengl.renderer.caches.ITextureCache;
-import gama.ui.display.opengl.renderer.caches.TextureCache2;
-import gama.ui.display.opengl.renderer.caches.GeometryCache.BuiltInGeometry;
-import gama.ui.display.opengl.renderer.helpers.AbstractRendererHelper;
-import gama.ui.display.opengl.renderer.helpers.KeystoneHelper;
-import gama.ui.display.opengl.scene.AbstractObject;
-import gama.ui.display.opengl.scene.ObjectDrawer;
-import gama.ui.display.opengl.scene.geometry.GeometryDrawer;
-import gama.ui.display.opengl.scene.mesh.MeshDrawer;
-import gama.ui.display.opengl.scene.resources.ResourceDrawer;
-import gama.ui.display.opengl.scene.text.TextDrawer;
-import gama.ui.shared.utils.DPIHelper;
-import jogamp.opengl.glu.tessellator.GLUtessellatorImpl;
 import gama.core.common.geometry.Envelope3D;
+import gama.core.common.geometry.GeometryUtils;
 import gama.core.common.geometry.ICoordinates;
 import gama.core.common.geometry.ICoordinates.VertexVisitor;
 import gama.core.common.geometry.Rotation3D;
@@ -66,9 +44,26 @@ import gama.core.common.preferences.GamaPreferences;
 import gama.core.metamodel.shape.GamaPoint;
 import gama.core.metamodel.shape.IShape;
 import gama.core.util.file.GamaGeometryFile;
+import gama.dev.DEBUG;
+import gama.ui.display.opengl.renderer.IOpenGLRenderer;
+import gama.ui.display.opengl.renderer.caches.GeometryCache;
+import gama.ui.display.opengl.renderer.caches.GeometryCache.BuiltInGeometry;
+import gama.ui.display.opengl.renderer.caches.ITextureCache;
+import gama.ui.display.opengl.renderer.caches.TextureCache2;
+import gama.ui.display.opengl.renderer.helpers.AbstractRendererHelper;
+import gama.ui.display.opengl.renderer.helpers.KeystoneHelper;
+import gama.ui.display.opengl.scene.AbstractObject;
+import gama.ui.display.opengl.scene.ObjectDrawer;
+import gama.ui.display.opengl.scene.geometry.GeometryDrawer;
+import gama.ui.display.opengl.scene.mesh.MeshDrawer;
+import gama.ui.display.opengl.scene.mesh.MeshObject;
+import gama.ui.display.opengl.scene.resources.ResourceDrawer;
+import gama.ui.display.opengl.scene.text.TextDrawer;
+import gama.ui.shared.utils.DPIHelper;
 import gaml.core.operators.Maths;
 import gaml.core.statements.draw.DrawingAttributes;
 import gaml.core.statements.draw.DrawingAttributes.DrawerType;
+import jogamp.opengl.glu.tessellator.GLUtessellatorImpl;
 
 /**
  * A class that represents an intermediate state between the rendering and the opengl state. It captures all the
@@ -85,6 +80,9 @@ public class OpenGL extends AbstractRendererHelper implements ITesselator {
 		DEBUG.OFF();
 		GamaPreferences.Displays.DRAW_ROTATE_HELPER.onChange(v -> SHOULD_DRAW_ROTATION_SPHERE = v);
 	}
+
+	/** The mesh drawers. */
+	final Map<MeshDrawer.Signature, MeshDrawer> meshDrawers = new HashMap<>();
 
 	/** The should draw rotation sphere. */
 	private static boolean SHOULD_DRAW_ROTATION_SPHERE = GamaPreferences.Displays.DRAW_ROTATE_HELPER.getValue();
@@ -229,12 +227,14 @@ public class OpenGL extends AbstractRendererHelper implements ITesselator {
 		GLU.gluTessCallback(tobj, GLU.GLU_TESS_BEGIN, this);
 		GLU.gluTessCallback(tobj, GLU.GLU_TESS_END, this);
 		GLU.gluTessProperty(tobj, GLU.GLU_TESS_TOLERANCE, 0.1);
-		drawers.put(DrawerType.STRING,
-				/* FLAGS.USE_LEGACY_DRAWERS ? new LegacyTextDrawer(this) : */ new TextDrawer(this));
-		drawers.put(DrawerType.GEOMETRY, new GeometryDrawer(this));
-		drawers.put(DrawerType.MESH,
-				/* FLAGS.USE_LEGACY_DRAWERS ? new LegacyMeshDrawer(this) : */ new MeshDrawer(this));
-		drawers.put(DrawerType.RESOURCE, new ResourceDrawer(this));
+		TextDrawer td = new TextDrawer(this);
+		var gd = new GeometryDrawer(this);
+		var rd = new ResourceDrawer(this);
+		drawers.put(DrawerType.STRING, /* FLAGS.USE_LEGACY_DRAWERS ? new LegacyTextDrawer(this) : */ td);
+		drawers.put(DrawerType.GEOMETRY, gd);
+		// drawers.put(DrawerType.MESH,
+		// /* FLAGS.USE_LEGACY_DRAWERS ? new LegacyMeshDrawer(this) : */ new MeshDrawer(this));
+		drawers.put(DrawerType.RESOURCE, rd);
 	}
 
 	/**
@@ -244,8 +244,20 @@ public class OpenGL extends AbstractRendererHelper implements ITesselator {
 	 *            the type
 	 * @return the drawer for
 	 */
-	public ObjectDrawer<? extends AbstractObject<?, ?>> getDrawerFor(final DrawerType type) {
-		return drawers.get(type);
+	public ObjectDrawer<? extends AbstractObject<?, ?>> getDrawerFor(final AbstractObject<?, ?> object) {
+		if (object instanceof MeshObject mo) {
+			int cols = (int) mo.getAttributes().getXYDimension().x;
+			int rows = (int) mo.getAttributes().getXYDimension().y;
+			boolean triangles = mo.getAttributes().isTriangulated();
+			MeshDrawer.Signature sig = new MeshDrawer.Signature(cols, rows, triangles);
+			MeshDrawer md = meshDrawers.get(sig);
+			if (md == null) {
+				md = new MeshDrawer(this);
+				meshDrawers.put(sig, md);
+			}
+			return md;
+		}
+		return drawers.get(object.type);
 	}
 
 	/**
@@ -791,16 +803,16 @@ public class OpenGL extends AbstractRendererHelper implements ITesselator {
 	 * @param drawer
 	 */
 	public void drawPolygon(final Polygon p, final ICoordinates yNegatedVertices, final boolean clockwise) {
-		gluTessBeginPolygon(tobj, null);
-		gluTessBeginContour(tobj);
+		GLU.gluTessBeginPolygon(tobj, null);
+		GLU.gluTessBeginContour(tobj);
 		yNegatedVertices.visitClockwise(glTesselatorDrawer);
-		gluTessEndContour(tobj);
-		applyToInnerGeometries(p, geom -> {
-			gluTessBeginContour(tobj);
-			getContourCoordinates(geom).visitYNegatedCounterClockwise(glTesselatorDrawer);
-			gluTessEndContour(tobj);
+		GLU.gluTessEndContour(tobj);
+		GeometryUtils.applyToInnerGeometries(p, geom -> {
+			GLU.gluTessBeginContour(tobj);
+			GeometryUtils.getContourCoordinates(geom).visitYNegatedCounterClockwise(glTesselatorDrawer);
+			GLU.gluTessEndContour(tobj);
 		});
-		gluTessEndPolygon(tobj);
+		GLU.gluTessEndPolygon(tobj);
 		// }
 	}
 
