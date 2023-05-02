@@ -1,28 +1,29 @@
 /*******************************************************************************************************
  *
- * Random2.java, in ummisco.gaml.extensions.maths, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * Random2.java, in gaml.extension.maths, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gaml.extension.maths.random;
 
+import org.apache.commons.math3.distribution.ExponentialDistribution;
 import org.apache.commons.math3.distribution.GammaDistribution;
 import org.apache.commons.math3.distribution.LogNormalDistribution;
 import org.apache.commons.math3.distribution.WeibullDistribution;
 
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.IOperatorCategory;
-import gama.annotations.precompiler.Reason;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.no_test;
 import gama.annotations.precompiler.GamlAnnotations.operator;
 import gama.annotations.precompiler.GamlAnnotations.test;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.IOperatorCategory;
+import gama.annotations.precompiler.Reason;
 import gama.core.runtime.IScope;
 import gama.core.runtime.exceptions.GamaRuntimeException;
 
@@ -34,11 +35,15 @@ public class Random2 {
 	/**
 	 * Op gamma dist.
 	 *
-	 * @param scope the scope
-	 * @param shape the shape
-	 * @param scale the scale
+	 * @param scope
+	 *            the scope
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "gamma_rnd",
@@ -64,11 +69,15 @@ public class Random2 {
 	/**
 	 * Op weibull dist.
 	 *
-	 * @param scope the scope
-	 * @param shape the shape
-	 * @param scale the scale
+	 * @param scope
+	 *            the scope
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "weibull_rnd",
@@ -93,13 +102,85 @@ public class Random2 {
 	}
 
 	/**
+	 * Op exponential dist density.
+	 *
+	 * @param scope
+	 *            the scope
+	 * @param x
+	 *            the x
+	 * @param rate
+	 *            the rate
+	 * @return the double
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
+	 */
+	@operator (
+			value = "exp_density",
+			can_be_const = false,
+			category = { IOperatorCategory.RANDOM },
+			concept = { IConcept.RANDOM })
+	@doc (
+			value = "returns the probability density function (PDF) at the specified point x "
+					+ "of the exponential distribution with the given rate.",
+			examples = { @example (
+					value = "exp_density(5,3) ",
+					equals = "0.731",
+					test = false) },
+			see = { "binomial", "gamma_rnd", "gauss_rnd", "lognormal_rnd", "poisson", "rnd", "skew_gauss",
+					"lognormal_density", "gamma_density" })
+	@no_test (Reason.IMPOSSIBLE_TO_TEST)
+	public static Double OpExpDistDensity(final IScope scope, final Double x, final Double rate)
+			throws GamaRuntimeException {
+		final ExponentialDistribution dist =
+				new ExponentialDistribution(new ForwardingGenerator(scope.getRandom().getGenerator()), rate);
+
+		return dist.density(x);
+	}
+
+	/**
+	 * Op exponential dist.
+	 *
+	 * @param scope
+	 *            the scope
+	 * @param rate
+	 *            the shape
+	 * @return a double
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
+	 */
+	@operator (
+			value = "exp_rnd",
+			can_be_const = false,
+			category = { IOperatorCategory.RANDOM },
+			concept = { IConcept.RANDOM })
+	@doc (
+			value = "returns a random value from a exponential distribution with specified values of the rate (lambda) parameters. See https://mathworld.wolfram.com/ExponentialDistribution.html for more details ). ",
+			examples = { @example (
+					value = "exp_rnd(5) ",
+					equals = "0.731",
+					test = false) },
+			see = { "binomial", "gamma_rnd", "gauss_rnd", "lognormal_rnd", "poisson", "rnd", "skew_gauss",
+					"truncated_gauss", "weibull_trunc_rnd" })
+	@no_test (Reason.IMPOSSIBLE_TO_TEST)
+	public static Double OpExpDist(final IScope scope, final Double rate) throws GamaRuntimeException {
+		final ExponentialDistribution dist =
+				new ExponentialDistribution(new ForwardingGenerator(scope.getRandom().getGenerator()), rate);
+
+		return dist.sample();
+	}
+
+	/**
 	 * Op log normal dist.
 	 *
-	 * @param scope the scope
-	 * @param shape the shape
-	 * @param scale the scale
+	 * @param scope
+	 *            the scope
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "lognormal_rnd",
@@ -125,13 +206,19 @@ public class Random2 {
 	/**
 	 * Op log normal trunc dist.
 	 *
-	 * @param scope the scope
-	 * @param shape the shape
-	 * @param scale the scale
-	 * @param min the min
-	 * @param max the max
+	 * @param scope
+	 *            the scope
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
+	 * @param min
+	 *            the min
+	 * @param max
+	 *            the max
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "lognormal_trunc_rnd",
@@ -152,22 +239,26 @@ public class Random2 {
 			final Double min, final Double max) throws GamaRuntimeException {
 		double tmpResult = 0;
 
-		do {
-			tmpResult = OpLogNormalDist(scope, shape, scale);
-		} while (tmpResult > max || tmpResult < min);
+		do { tmpResult = OpLogNormalDist(scope, shape, scale); } while (tmpResult > max || tmpResult < min);
 		return tmpResult;
 	}
 
 	/**
 	 * Op log normal trunc dist.
 	 *
-	 * @param scope the scope
-	 * @param shape the shape
-	 * @param scale the scale
-	 * @param minmax the minmax
-	 * @param isMax the is max
+	 * @param scope
+	 *            the scope
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
+	 * @param minmax
+	 *            the minmax
+	 * @param isMax
+	 *            the is max
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "lognormal_trunc_rnd",
@@ -189,14 +280,10 @@ public class Random2 {
 
 		if (isMax) {
 			// minmax is a max here
-			do {
-				tmpResult = OpLogNormalDist(scope, shape, scale);
-			} while (tmpResult > minmax);
+			do { tmpResult = OpLogNormalDist(scope, shape, scale); } while (tmpResult > minmax);
 		} else {
 			// minmax is a min here
-			do {
-				tmpResult = OpLogNormalDist(scope, shape, scale);
-			} while (tmpResult < minmax);
+			do { tmpResult = OpLogNormalDist(scope, shape, scale); } while (tmpResult < minmax);
 		}
 		return tmpResult;
 	}
@@ -204,13 +291,19 @@ public class Random2 {
 	/**
 	 * Op weibull trunc dist.
 	 *
-	 * @param scope the scope
-	 * @param shape the shape
-	 * @param scale the scale
-	 * @param min the min
-	 * @param max the max
+	 * @param scope
+	 *            the scope
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
+	 * @param min
+	 *            the min
+	 * @param max
+	 *            the max
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "weibull_trunc_rnd",
@@ -231,22 +324,26 @@ public class Random2 {
 			final Double min, final Double max) throws GamaRuntimeException {
 		double tmpResult = 0;
 
-		do {
-			tmpResult = OpWeibullDist(scope, shape, scale);
-		} while (tmpResult > max || tmpResult < min);
+		do { tmpResult = OpWeibullDist(scope, shape, scale); } while (tmpResult > max || tmpResult < min);
 		return tmpResult;
 	}
 
 	/**
 	 * Op weibull trunc dist.
 	 *
-	 * @param scope the scope
-	 * @param shape the shape
-	 * @param scale the scale
-	 * @param minmax the minmax
-	 * @param isMax the is max
+	 * @param scope
+	 *            the scope
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
+	 * @param minmax
+	 *            the minmax
+	 * @param isMax
+	 *            the is max
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "weibull_trunc_rnd",
@@ -268,14 +365,10 @@ public class Random2 {
 
 		if (isMax) {
 			// minmax is a max here
-			do {
-				tmpResult = OpWeibullDist(scope, shape, scale);
-			} while (tmpResult > minmax);
+			do { tmpResult = OpWeibullDist(scope, shape, scale); } while (tmpResult > minmax);
 		} else {
 			// minmax is a min here
-			do {
-				tmpResult = OpWeibullDist(scope, shape, scale);
-			} while (tmpResult < minmax);
+			do { tmpResult = OpWeibullDist(scope, shape, scale); } while (tmpResult < minmax);
 		}
 		return tmpResult;
 	}
@@ -283,13 +376,19 @@ public class Random2 {
 	/**
 	 * Op gamma trunc dist.
 	 *
-	 * @param scope the scope
-	 * @param shape the shape
-	 * @param scale the scale
-	 * @param min the min
-	 * @param max the max
+	 * @param scope
+	 *            the scope
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
+	 * @param min
+	 *            the min
+	 * @param max
+	 *            the max
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "gamma_trunc_rnd",
@@ -310,22 +409,26 @@ public class Random2 {
 			final Double max) throws GamaRuntimeException {
 		double tmpResult = 0;
 
-		do {
-			tmpResult = OpGammaDist(scope, shape, scale);
-		} while (tmpResult > max || tmpResult < min);
+		do { tmpResult = OpGammaDist(scope, shape, scale); } while (tmpResult > max || tmpResult < min);
 		return tmpResult;
 	}
 
 	/**
 	 * Op gamma trunc dist.
 	 *
-	 * @param scope the scope
-	 * @param shape the shape
-	 * @param scale the scale
-	 * @param minmax the minmax
-	 * @param isMax the is max
+	 * @param scope
+	 *            the scope
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
+	 * @param minmax
+	 *            the minmax
+	 * @param isMax
+	 *            the is max
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "gamma_trunc_rnd",
@@ -347,14 +450,10 @@ public class Random2 {
 
 		if (isMax) {
 			// minmax is a max here
-			do {
-				tmpResult = OpGammaDist(scope, shape, scale);
-			} while (tmpResult > minmax);
+			do { tmpResult = OpGammaDist(scope, shape, scale); } while (tmpResult > minmax);
 		} else {
 			// minmax is a min here
-			do {
-				tmpResult = OpGammaDist(scope, shape, scale);
-			} while (tmpResult < minmax);
+			do { tmpResult = OpGammaDist(scope, shape, scale); } while (tmpResult < minmax);
 		}
 		return tmpResult;
 	}
@@ -362,12 +461,17 @@ public class Random2 {
 	/**
 	 * Op weibull dist density.
 	 *
-	 * @param scope the scope
-	 * @param x the x
-	 * @param shape the shape
-	 * @param scale the scale
+	 * @param scope
+	 *            the scope
+	 * @param x
+	 *            the x
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "weibull_density",
@@ -395,12 +499,17 @@ public class Random2 {
 	/**
 	 * Op log normal dist.
 	 *
-	 * @param scope the scope
-	 * @param x the x
-	 * @param shape the shape
-	 * @param scale the scale
+	 * @param scope
+	 *            the scope
+	 * @param x
+	 *            the x
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "lognormal_density",
@@ -427,12 +536,17 @@ public class Random2 {
 	/**
 	 * Op gamma dist.
 	 *
-	 * @param scope the scope
-	 * @param x the x
-	 * @param shape the shape
-	 * @param scale the scale
+	 * @param scope
+	 *            the scope
+	 * @param x
+	 *            the x
+	 * @param shape
+	 *            the shape
+	 * @param scale
+	 *            the scale
 	 * @return the double
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@operator (
 			value = "gamma_density",
