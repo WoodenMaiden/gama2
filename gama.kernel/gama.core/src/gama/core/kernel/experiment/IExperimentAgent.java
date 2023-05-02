@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * IExperimentAgent.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * IExperimentAgent.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -20,6 +20,21 @@ import gama.core.metamodel.population.IPopulationFactory;
  * The Interface IExperimentAgent.
  */
 public interface IExperimentAgent extends ITopLevelAgent {
+
+	/**
+	 * Sets the maximum duration.
+	 *
+	 * @param d
+	 *            the new maximum duration
+	 */
+	void setMaximumDuration(Double d);
+
+	/**
+	 * Gets the maximum duration.
+	 *
+	 * @return the maximum duration
+	 */
+	Double getMaximumDuration();
 
 	/**
 	 * Gets the species.

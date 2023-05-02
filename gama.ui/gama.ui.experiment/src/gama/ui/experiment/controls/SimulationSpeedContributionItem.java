@@ -172,9 +172,9 @@ public class SimulationSpeedContributionItem extends WorkbenchWindowControlContr
 		double maximum = 1000d;
 		if (a != null) {
 			value = a.getMinimumDuration() * 1000;
-			maximum = a.getInitialMinimumDuration() * 1000;
+			maximum = a.getMaximumDuration() * 1000;
 		}
-		if (maximum > max) { max = maximum; }
+		max = maximum;
 		return positionFromValue(value);
 	}
 
@@ -195,6 +195,16 @@ public class SimulationSpeedContributionItem extends WorkbenchWindowControlContr
 		for (final SimpleSlider slider : sliders) {
 			if (slider == null || slider.isDisposed()) { continue; }
 			slider.updateSlider(i, notify);
+		}
+	}
+
+	@Override
+	public void setMaximum(Double i) {
+		if (i <= 0) { i = 1d; }
+		max = i;
+		for (final SimpleSlider slider : sliders) {
+			if (slider == null || slider.isDisposed()) { continue; }
+			slider.updateSlider(i, false);
 		}
 	}
 
