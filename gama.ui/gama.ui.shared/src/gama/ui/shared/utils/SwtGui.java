@@ -1,7 +1,6 @@
 /*******************************************************************************************************
  *
- * SwtGui.java, in gama.ui.shared.shared, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * SwtGui.java, in gama.ui.shared, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -33,16 +32,16 @@ import org.eclipse.ui.services.ISourceProviderService;
 
 import gama.annotations.common.interfaces.IKeyword;
 import gama.core.common.interfaces.IConsoleDisplayer;
+import gama.core.common.interfaces.IDisplayCreator.DisplayDescription;
 import gama.core.common.interfaces.IDisplaySurface;
 import gama.core.common.interfaces.IGamaView;
-import gama.core.common.interfaces.IGui;
-import gama.core.common.interfaces.IRuntimeExceptionHandler;
-import gama.core.common.interfaces.IStatusDisplayer;
-import gama.core.common.interfaces.IDisplayCreator.DisplayDescription;
 import gama.core.common.interfaces.IGamaView.Error;
 import gama.core.common.interfaces.IGamaView.Parameters;
 import gama.core.common.interfaces.IGamaView.Test;
 import gama.core.common.interfaces.IGamaView.User;
+import gama.core.common.interfaces.IGui;
+import gama.core.common.interfaces.IRuntimeExceptionHandler;
+import gama.core.common.interfaces.IStatusDisplayer;
 import gama.core.common.preferences.GamaPreferences;
 import gama.core.common.util.ImageUtils;
 import gama.core.kernel.experiment.IExperimentController;
@@ -126,8 +125,8 @@ public class SwtGui implements IGui {
 	public boolean confirmClose(final IExperimentPlan exp) {
 		if (exp == null || !GamaPreferences.Runtime.CORE_ASK_CLOSING.getValue()) return true;
 		PerspectiveHelper.switchToSimulationPerspective();
-		return Messages.question("Close simulation confirmation", "Do you want to close experiment '" + exp.getName()
-				+ "' of model '" + exp.getModel().getName() + "' ?");
+		return Messages.modalQuestion("Close simulation confirmation", "Do you want to close experiment '"
+				+ exp.getName() + "' of model '" + exp.getModel().getName() + "' ?");
 	}
 
 	@Override
