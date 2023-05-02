@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * BandsBasedMeshColorProvider.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * BandsBasedMeshColorProvider.java, in gama.core, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -14,6 +14,7 @@ import java.util.List;
 
 import gama.core.runtime.GAMA;
 import gama.core.runtime.exceptions.GamaRuntimeException;
+import gama.core.util.matrix.GamaField;
 import gama.core.util.matrix.IField;
 
 /**
@@ -37,7 +38,7 @@ public class BandsBasedMeshColorProvider implements IMeshColorProvider {
 	 * @param bands
 	 *            the bands
 	 */
-	public BandsBasedMeshColorProvider(final List<IField> bands) {
+	public BandsBasedMeshColorProvider(final List<GamaField> bands) {
 		if (bands.size() < 4)
 			throw GamaRuntimeException.error("Number of bands should be at least 3 ", GAMA.getRuntimeScope());
 		boolean hasAlpha = bands.size() > 4;

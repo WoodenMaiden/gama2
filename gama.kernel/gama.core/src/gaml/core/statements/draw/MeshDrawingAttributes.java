@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * MeshDrawingAttributes.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * MeshDrawingAttributes.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -11,6 +11,7 @@
 package gaml.core.statements.draw;
 
 import java.awt.Color;
+import java.util.List;
 
 import gama.core.common.geometry.Scaling3D;
 import gama.core.common.preferences.GamaPreferences;
@@ -18,6 +19,7 @@ import gama.core.metamodel.shape.GamaPoint;
 import gama.core.outputs.layers.MeshLayerData;
 import gama.core.util.GamaColor;
 import gama.core.util.IList;
+import gama.core.util.matrix.GamaField;
 import gama.core.util.matrix.IField;
 import gaml.core.operators.Colors.GamaGradient;
 import gaml.core.operators.Colors.GamaPalette;
@@ -85,28 +87,29 @@ public class MeshDrawingAttributes extends AssetDrawingAttributes {
 	 * @param colors
 	 *            the new colors
 	 */
-	@SuppressWarnings ("unchecked")
-	public void setColors(final Object colors) {
-		if (colors instanceof GamaColor) {
-			colorProvider = new ColorBasedMeshColorProvider((GamaColor) colors);
-		} else if (colors instanceof GamaPalette) {
-			colorProvider = new PaletteBasedMeshColorProvider((GamaPalette) colors);
-		} else if (colors instanceof GamaScale) {
-			colorProvider = new ScaleBasedMeshColorProvider((GamaScale) colors);
-		} else if (colors instanceof GamaGradient) {
-			colorProvider = new GradientBasedMeshColorProvider((GamaGradient) colors);
-		} else if (colors instanceof IList) {
-			if (((IList) colors).get(0) instanceof IField) {
-				// We have bands
-				colorProvider = new BandsBasedMeshColorProvider((IList<IField>) colors);
-			} else {
-				colorProvider = new ListBasedMeshColorProvider((IList<Color>) colors);
-			}
-		} else if (isGrayscaled()) {
-			colorProvider = IMeshColorProvider.GRAYSCALE;
-		} else {
-			colorProvider = IMeshColorProvider.DEFAULT;
+	public void setColors(final Object colors) { colorProvider = computeColors(colors, isGrayscaled()); }
+
+	/**
+	 * Compute colors.
+	 *
+	 * @param colors
+	 *            the colors
+	 * @param isGrayscale
+	 *            the is grayscale
+	 * @return the i mesh color provider
+	 */
+	public static IMeshColorProvider computeColors(final Object colors, final boolean isGrayscale) {
+		if (isGrayscale) return IMeshColorProvider.GRAYSCALE;
+		if (colors instanceof GamaColor gc) return new ColorBasedMeshColorProvider(gc);
+		if (colors instanceof GamaPalette gp) return new PaletteBasedMeshColorProvider(gp);
+		if (colors instanceof GamaScale gs) return new ScaleBasedMeshColorProvider(gs);
+		if (colors instanceof GamaGradient) return new GradientBasedMeshColorProvider((GamaGradient) colors);
+		if (colors instanceof List) {
+			if (((List) colors).get(0) instanceof GamaField) // We have bands
+				return new BandsBasedMeshColorProvider((List<GamaField>) colors);
+			return new ListBasedMeshColorProvider((IList<Color>) colors);
 		}
+		return IMeshColorProvider.DEFAULT;
 	}
 
 	// Rules are a bit different for the fill color for fields.

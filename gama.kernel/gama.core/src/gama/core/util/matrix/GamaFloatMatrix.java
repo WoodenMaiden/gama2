@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * GamaFloatMatrix.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GamaFloatMatrix.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -12,6 +12,7 @@ package gama.core.util.matrix;
 
 import static org.locationtech.jts.index.quadtree.IntervalSize.isZeroWidth;
 
+import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import org.locationtech.jts.index.quadtree.IntervalSize;
 
 import com.google.common.primitives.Doubles;
 
+import gama.core.common.interfaces.IImageProvider;
 import gama.core.common.util.RandomUtils;
 import gama.core.metamodel.shape.GamaPoint;
 import gama.core.runtime.IScope;
@@ -39,7 +41,7 @@ import one.util.streamex.StreamEx;
  * The Class GamaFloatMatrix.
  */
 @SuppressWarnings ({ "unchecked", "rawtypes" })
-public class GamaFloatMatrix extends GamaMatrix<Double> {
+public class GamaFloatMatrix extends GamaMatrix<Double> implements IImageProvider {
 
 	/**
 	 * From.
@@ -548,6 +550,30 @@ public class GamaFloatMatrix extends GamaMatrix<Double> {
 	@Override
 	public double[] getFieldData(final IScope scope) {
 		return matrix;
+	}
+
+	/**
+	 * Transforms a matrix of integers into the corresponding BufferedImage. The matrix has to follow the ARGB encoding
+	 *
+	 * @param scope
+	 * @param matrix
+	 * @return
+	 */
+	public static BufferedImage constructBufferedImageFromMatrix(final IScope scope, final IMatrix<Integer> matrix) {
+		if (!(matrix instanceof GamaIntMatrix gim)) return null;
+		return gim.getImage(scope);
+	}
+
+	@Override
+	public String getId() { return "matrix" + hashCode(); }
+
+	@Override
+	public BufferedImage getImage(final IScope scope, final boolean useCache, final boolean forOpenGL) {
+		int w = getCols(scope);
+		int h = getRows(scope);
+		BufferedImage ret = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+		for (int i = 0; i < w; i++) { for (int j = 0; j < h; j++) { ret.setRGB(i, j, get(scope, i, j).intValue()); } }
+		return ret;
 	}
 
 }

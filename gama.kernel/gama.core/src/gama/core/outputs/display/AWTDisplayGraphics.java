@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * AWTDisplayGraphics.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * AWTDisplayGraphics.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -71,6 +71,7 @@ import gama.core.outputs.layers.charts.ChartOutput;
 import gama.core.runtime.IScope;
 import gama.core.util.GamaColor;
 import gama.core.util.file.GamaGeometryFile;
+import gama.core.util.matrix.GamaField;
 import gama.core.util.matrix.IField;
 import gaml.core.operators.Cast;
 import gaml.core.operators.Maths;
@@ -197,11 +198,21 @@ public class AWTDisplayGraphics extends AbstractDisplayGraphics implements Image
 	@Override
 	public Rectangle2D drawField(final IField fieldValues, final MeshDrawingAttributes attributes) {
 		final List<?> textures = attributes.getTextures();
-		if (textures == null) return null;
-		final Object image = textures.get(0);
-		if (image instanceof IImageProvider im) return drawAsset(im, attributes);
-		if (image instanceof BufferedImage) return drawImage((BufferedImage) image, attributes);
-		return null;
+		// if (textures == null) return null;
+		if (textures != null) {
+			final Object image = textures.get(0);
+			if (image instanceof IImageProvider im) return drawAsset(im, attributes);
+			if (image instanceof BufferedImage bi) return drawImage(bi, attributes);
+		}
+		if (!(fieldValues instanceof GamaField gf)) return null;
+		GamaField flatten = gf.flatten(null, attributes.getColorProvider());
+		// AD Attempt to provide smoothing but it doesnt work as expected
+		// double[] data = attributes.getSmoothProvider().smooth(flatten.numCols, flatten.numRows, flatten.getMatrix(),
+		// flatten.getNoData(null), attributes.getSmooth());
+		// System.arraycopy(data, 0, flatten.getMatrix(), 0, data.length);
+		attributes.setSize(null);
+		return drawImage(flatten.getImage(null), attributes);
+
 	}
 
 	@Override
