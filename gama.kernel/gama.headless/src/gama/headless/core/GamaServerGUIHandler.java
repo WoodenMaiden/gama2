@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * GamaServerGUIHandler.java, in msi.gama.headless, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * GamaServerGUIHandler.java, in gama.headless, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -79,9 +79,9 @@ public class GamaServerGUIHandler extends NullGuiHandler {
 	 * @return true, if successful
 	 */
 	private boolean canSendDialogMessages(final IScope scope) {
-		if (scope != null && scope.getExperiment() != null && scope.getExperiment().getScope() != null) {
-			return (scope.getExperiment().getScope().getData("dialog") != null) ? (boolean) scope.getExperiment().getScope().getData("dialog") : true;
-		}
+		if (scope != null && scope.getExperiment() != null && scope.getExperiment().getScope() != null)
+			return scope.getExperiment().getScope().getData("dialog") != null
+					? (boolean) scope.getExperiment().getScope().getData("dialog") : true;
 		return true;
 	}
 
@@ -102,7 +102,8 @@ public class GamaServerGUIHandler extends NullGuiHandler {
 	@Override
 	public void runtimeError(final IScope scope, final GamaRuntimeException g) {
 		DEBUG.OUT(g);
-		if (!canSendDialogMessages(scope)) return;
+		// removed to fix #3758
+		// if (!canSendDialogMessages(scope)) return;
 		sendMessage(scope.getExperiment(), g, GamaServerMessageType.SimulationError);
 	}
 
@@ -113,7 +114,7 @@ public class GamaServerGUIHandler extends NullGuiHandler {
 			status = new IStatusDisplayer() {
 
 				private boolean canSendMessage(final IExperimentAgent exp) {
-					if(exp==null) return false;
+					if (exp == null) return false;
 					var scope = exp.getScope();
 					return scope != null && scope.getData("status") != null ? (boolean) scope.getData("status") : true;
 				}
