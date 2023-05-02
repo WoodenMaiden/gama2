@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * GamlModelSpecies.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GamlModelSpecies.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -23,12 +23,12 @@ import java.util.function.Predicate;
 import org.apache.commons.lang3.StringUtils;
 
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.facet;
 import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.kernel.experiment.IExperimentPlan;
 import gama.core.outputs.AbstractOutputManager;
 import gama.core.util.GamaMapFactory;
@@ -182,6 +182,9 @@ public class GamlModelSpecies extends GamlSpecies implements IModel {
 		}
 		return e;
 	}
+
+	@Override
+	public Iterable<IExperimentPlan> getExperiments() { return experiments.values(); }
 
 	@Override
 	public void dispose() {

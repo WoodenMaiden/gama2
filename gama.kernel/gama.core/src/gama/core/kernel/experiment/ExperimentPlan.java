@@ -498,6 +498,15 @@ public class ExperimentPlan extends GamlSpecies implements IExperimentPlan {
 		return keepSimulations;
 	}
 
+	/**
+	 * Sets the concurrency.
+	 *
+	 * @param exp
+	 *            the new concurrency
+	 */
+	@Override
+	public void setConcurrency(final IExpression exp) { concurrency = exp; }
+
 	@Override
 	public void dispose() {
 		GAMA.getPlatformAgent().restorePrefs();

@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * Application.java, in msi.gama.headless, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * Application.java, in gama.headless, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -337,24 +337,6 @@ public class Application implements IApplication {
 		if (args.contains(RUN_LIBRARY_PARAMETER)) return ModelLibraryRunner.getInstance().start();
 		if (args.contains(CHECK_MODEL_PARAMETER)) {
 			ModelLibraryGenerator.start(this, args);
-			// else if (args.contains(WRITE_XMI)) {
-			// String outputDir = "all-resources";
-			// DEBUG.ON();
-			// DEBUG.LOG("Writing xmi files to " + outputDir);
-			// IMap<EClass, Resource> resources = BuiltinGlobalScopeProvider.getResources();
-			// resources.forEach((k, res) -> {
-			// String out = k.getName() + ".xmi";
-			// OutputStream outf;
-			// try {
-			// outf = new FileOutputStream(out);
-			// res.save(outf, null);
-			// DEBUG.LOG("Resource written to " + out);
-			// } catch (Exception e1) {
-			// e1.printStackTrace();
-			// }
-			// });
-			// DEBUG.LOG("Done");
-			// }
 		} else if (args.contains(BATCH_PARAMETER)) {
 			runBatchSimulation(args.get(args.size() - 2), args.get(args.size() - 1));
 		} else if (args.contains(GAML_PARAMETER)) {
@@ -580,10 +562,11 @@ public class Application implements IApplication {
 			uri = URI.createURI(pathToModel);
 		}
 		final IModel mdl = builder.compile(uri, errors);
-		System.out.println("== "+uri);
-		System.out.println(errors);
+		DEBUG.OUT("== " + uri);
+		DEBUG.OUT(errors);
 		if (mdl == null) {
-			System.out.println("GAMA couldn't compile your input file. Please verify that the input file path is correct and ensure that there are no errors in the GAML model.");
+			DEBUG.LOG(
+					"GAMA couldn't compile your input file. Please verify that the input file path is correct and ensure that there are no errors in the GAML model.");
 			System.exit(1);
 		}
 
@@ -613,7 +596,8 @@ public class Application implements IApplication {
 		final String argExperimentName = args.get(args.size() - 2);
 		final String argGamlFile = args.get(args.size() - 1);
 
-		final List<IExperimentJob> jb = ExperimentationPlanFactory.buildExperiment(argGamlFile);
+		Integer numberOfCores = args.contains(THREAD_PARAMETER) ? parseInt(after(args, THREAD_PARAMETER)) : null;
+		final List<IExperimentJob> jb = ExperimentationPlanFactory.buildExperiment(argGamlFile, numberOfCores);
 		ExperimentJob selectedJob = null;
 		for (final IExperimentJob j : jb) {
 			if (j.getExperimentName().equals(argExperimentName)) {
@@ -625,8 +609,7 @@ public class Application implements IApplication {
 		Globals.OUTPUT_PATH = args.get(args.size() - 3);
 
 		selectedJob.setBufferedWriter(new XMLWriter(Globals.OUTPUT_PATH + "/" + Globals.OUTPUT_FILENAME + ".xml"));
-		processorQueue.setNumberOfThreads(
-				args.contains(THREAD_PARAMETER) ? parseInt(after(args, THREAD_PARAMETER)) : DEFAULT_NB_THREADS);
+		processorQueue.setNumberOfThreads(numberOfCores != null ? numberOfCores : DEFAULT_NB_THREADS);
 		processorQueue.execute(selectedJob);
 		processorQueue.shutdown();
 		while (!processorQueue.awaitTermination(100, TimeUnit.MILLISECONDS)) {}

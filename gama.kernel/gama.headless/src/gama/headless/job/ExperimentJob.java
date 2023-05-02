@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * ExperimentJob.java, in msi.gama.headless, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * ExperimentJob.java, in gama.headless, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -28,6 +28,7 @@ import gama.core.kernel.simulation.SimulationAgent;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope;
 import gama.core.runtime.exceptions.GamaRuntimeException;
+import gama.dev.COUNTER;
 import gama.dev.DEBUG;
 import gama.headless.common.Display2D;
 import gama.headless.common.Globals;
@@ -56,9 +57,6 @@ public class ExperimentJob implements IExperimentJob {
 	static {
 		DEBUG.ON();
 	}
-
-	/** The global id generator. */
-	private static long GLOBAL_ID_GENERATOR = 0;
 
 	/**
 	 * The Enum OutputType.
@@ -165,7 +163,7 @@ public class ExperimentJob implements IExperimentJob {
 	 * @return the long
 	 */
 	private static long generateID() {
-		return ExperimentJob.GLOBAL_ID_GENERATOR++;
+		return COUNTER.GET_UNIQUE();
 	}
 
 	/**
@@ -284,8 +282,7 @@ public class ExperimentJob implements IExperimentJob {
 	 * @throws GamaHeadlessException
 	 *             the gama headless exception
 	 */
-	public void load() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException,
-			GamaHeadlessException {
+	public void load() throws IOException, GamaHeadlessException {
 		System.setProperty("user.dir", this.sourcePath);
 		final List<GamlCompilationError> errors = new ArrayList<>();
 		final IModel mdl = HeadlessSimulationLoader.loadModel(new File(this.sourcePath), errors);

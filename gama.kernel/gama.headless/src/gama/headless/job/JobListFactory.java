@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * JobPlan.java, in msi.gama.headless, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * JobListFactory.java, in gama.headless, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -18,16 +18,23 @@ import java.util.List;
 import java.util.Map;
 
 import gama.annotations.common.interfaces.IKeyword;
+import gama.core.kernel.experiment.IExperimentPlan;
 import gama.core.kernel.model.IModel;
 import gama.headless.core.GamaHeadlessException;
 import gama.headless.core.HeadlessSimulationLoader;
+import gaml.core.compilation.GAML;
 import gaml.core.descriptions.ExperimentDescription;
+import gaml.core.expressions.IExpression;
+import gaml.core.types.Types;
 
 /**
  * The Class JobPlan.
  */
 public class JobListFactory {
 
+	/**
+	 * The JobPlanExperimentID.
+	 */
 	public record JobPlanExperimentID(String modelName, String experimentName) {}
 
 	/**
@@ -42,9 +49,13 @@ public class JobListFactory {
 	 * @throws IOException
 	 */
 	public static List<IExperimentJob> constructAllJobs(final String modelPath, final long[] seeds,
-			final long finalStep) throws IOException, GamaHeadlessException {
+			final long finalStep, final Integer numberOfCores) throws IOException, GamaHeadlessException {
 		IModel model = HeadlessSimulationLoader.loadModel(new File(modelPath), null);
 		Map<JobPlanExperimentID, IExperimentJob> originalJobs = new LinkedHashMap<>();
+		if (numberOfCores != null && numberOfCores > 0) {
+			IExpression expr = GAML.getExpressionFactory().createConst(numberOfCores, Types.INT);
+			for (IExperimentPlan plan : model.getExperiments()) { plan.setConcurrency(expr); }
+		}
 		for (final ExperimentDescription expD : model.getDescription().getExperiments()) {
 			if (!IKeyword.BATCH.equals(expD.getLitteral(IKeyword.TYPE))) {
 				final IExperimentJob tj = ExperimentJob.loadAndBuildJob(expD, model.getFilePath(), model);

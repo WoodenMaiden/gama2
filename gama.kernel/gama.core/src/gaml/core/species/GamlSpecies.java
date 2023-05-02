@@ -1,9 +1,8 @@
 /*******************************************************************************************************
  *
- * GamlSpecies.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GamlSpecies.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -14,8 +13,6 @@ import java.util.Collection;
 
 import gama.annotations.common.interfaces.IGamlIssue;
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -23,6 +20,8 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.metamodel.agent.IAgent;
 import gama.core.metamodel.population.IPopulation;
 import gama.core.metamodel.shape.IShape;
@@ -287,6 +286,13 @@ public class GamlSpecies extends AbstractSpecies {
 
 		}
 
+		/**
+		 * Process neighbors.
+		 *
+		 * @param sd
+		 *            the sd
+		 * @return the i expression
+		 */
 		private IExpression processNeighbors(final SpeciesDescription sd) {
 			if (sd.hasFacet(IKeyword.NEIGHBORS) && sd.hasFacet(IKeyword.NEIGHBOURS)) {
 				sd.error("'neighbours' and 'neighbors' cannot be defined at the same time",
@@ -377,7 +383,7 @@ public class GamlSpecies extends AbstractSpecies {
 	}
 
 	/** The concurrency. */
-	private final IExpression concurrency;
+	protected IExpression concurrency;
 
 	/** The schedule. */
 	private final IExpression schedule;

@@ -1,8 +1,8 @@
 /*******************************************************************************************************
  *
- * IModel.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.0).
+ * IModel.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -61,6 +61,13 @@ public interface IModel extends ISpecies {
 	IExperimentPlan getExperiment(final String s);
 
 	/**
+	 * Gets the experiments.
+	 *
+	 * @return the experiments
+	 */
+	Iterable<IExperimentPlan> getExperiments();
+
+	/**
 	 * Gets the working path.
 	 *
 	 * @return the working path
@@ -102,6 +109,11 @@ public interface IModel extends ISpecies {
 	 */
 	List<TestStatement> getAllTests();
 
+	/**
+	 * Gets the description.
+	 *
+	 * @return the description
+	 */
 	@Override
 	ModelDescription getDescription();
 

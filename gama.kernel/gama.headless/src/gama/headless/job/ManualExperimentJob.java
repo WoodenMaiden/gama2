@@ -106,8 +106,7 @@ public class ManualExperimentJob extends ExperimentJob {
 	}
 
 	@Override
-	public void load() throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException,
-			GamaHeadlessException {
+	public void load() throws IOException, GamaHeadlessException {
 		System.setProperty("user.dir", this.sourcePath);
 		final List<GamlCompilationError> errors = new ArrayList<>();
 		final IModel mdl = HeadlessSimulationLoader.loadModel(new File(this.sourcePath), errors);

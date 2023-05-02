@@ -21,6 +21,7 @@ import gama.core.outputs.FileOutput;
 import gama.core.outputs.IOutputManager;
 import gama.core.runtime.IScope;
 import gaml.core.descriptions.ExperimentDescription;
+import gaml.core.expressions.IExpression;
 import gaml.core.species.ISpecies;
 
 /**
@@ -237,6 +238,14 @@ public interface IExperimentPlan extends ISpecies {
 	 * @return the active output managers
 	 */
 	Iterable<IOutputManager> getActiveOutputManagers();
+
+	/**
+	 * Sets the concurrency.
+	 *
+	 * @param exp
+	 *            the new concurrency, expected to be an expression returning an integer.
+	 */
+	void setConcurrency(IExpression exp);
 
 	/**
 	 * Checks if is autorun.
