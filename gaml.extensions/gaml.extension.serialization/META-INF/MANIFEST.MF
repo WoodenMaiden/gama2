@@ -1,7 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Serialize
-Bundle-SymbolicName: gaml.extension.serialize;singleton:=true
+Bundle-Name: GAML Serialization Extension
+Bundle-SymbolicName: gaml.extension.serialization;singleton:=true
+Bundle-Vendor: UMMISCO
 Bundle-Version: 2.0.0.qualifier
 Require-Bundle: gama.core,
  gama.dependencies,
@@ -31,11 +32,11 @@ Export-Package: com.thoughtworks.xstream,
  com.thoughtworks.xstream.io.xml.xppdom,
  com.thoughtworks.xstream.mapper,
  com.thoughtworks.xstream.persistence,
- gaml.extension.serializer.factory,
- gaml.extension.serializer.gamaType,
- gaml.extension.serializer.gamaType.converters,
- gaml.extension.serializer.gamaType.reduced,
- gaml.extension.serializer.gaml
+ gaml.extension.serialization.factory,
+ gaml.extension.serialization.gaml,
+ gaml.extension.serialization.type,
+ gaml.extension.serialization.type.converters,
+ gaml.extension.serialization.type.reduced
 Import-Package: org.osgi.framework;version="1.10.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17

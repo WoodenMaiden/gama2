@@ -52,6 +52,8 @@ import gama.ui.display.ui.utils.DPIHelper;
 import gama.ui.display.ui.utils.WorkbenchHelper;
 import gama.ui.experiment.displays.DisplaySurfaceMenu;
 import gama.ui.experiment.menus.AgentsMenu;
+import gaml.extension.images.GamaImage;
+import gaml.extension.images.ImageHelper;
 import msi.gama.common.geometry.Envelope3D;
 import gama.core.common.interfaces.IDisplaySurface;
 import gama.core.common.interfaces.IGraphics;
@@ -74,8 +76,6 @@ import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope.IGraphicsScope;
 import gama.core.runtime.PlatformHelper;
 import msi.gaml.statements.draw.DrawingAttributes;
-import ummisco.gaml.extensions.image.GamaImage;
-import ummisco.gaml.extensions.image.ImageHelper;
 
 /**
  * Class OpenGLSWTDisplaySurface.

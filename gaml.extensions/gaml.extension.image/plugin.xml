@@ -4,14 +4,14 @@
    <extension
          point="gama.display">
       <implementation
-            class="gaml.extension.images.ImageDisplaySurface"
+            class="gaml.extension.image.ImageDisplaySurface"
             keyword="image">
       </implementation>
    </extension>
    <extension
          point="gama.save">
       <implementation
-            class="gaml.extension.images.ImageSaver">
+            class="gaml.extension.image.ImageSaver">
       </implementation>
    </extension>
    <extension
@@ -20,13 +20,13 @@
    <extension
          point="gama.draw">
       <implementation
-            class="gaml.extension.images.ImageDrawer">
+            class="gaml.extension.image.ImageDrawer">
       </implementation>
    </extension>
    <extension
          point="gama.constants">
       <implementation
-            class="gaml.extension.images.ImageConstantSupplier">
+            class="gaml.extension.image.ImageConstantSupplier">
       </implementation>
    </extension>
 
