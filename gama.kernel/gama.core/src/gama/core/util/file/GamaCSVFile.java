@@ -1,9 +1,8 @@
 /*******************************************************************************************************
  *
- * GamaCSVFile.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GamaCSVFile.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -15,10 +14,10 @@ import static org.apache.commons.lang3.StringUtils.splitByWholeSeparatorPreserve
 import java.io.IOException;
 import java.util.Arrays;
 
-import gama.annotations.precompiler.IConcept;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.file;
+import gama.annotations.precompiler.IConcept;
 import gama.core.common.geometry.Envelope3D;
 import gama.core.metamodel.shape.GamaPoint;
 import gama.core.runtime.GAMA;
@@ -129,7 +128,8 @@ public class GamaCSVFile extends GamaFile<IMatrix<Object>, Object> implements IF
 		public String getDocumentation() {
 			final StringBuilder sb = new StringBuilder();
 			sb.append("CSV File ").append(header ? "with header" : "no header").append(Strings.LN);
-			sb.append("Dimensions: ").append(cols + " columns x " + rows + " rows").append(Strings.LN);
+			sb.append("Dimensions: ").append(cols + " columns x " + (header ? rows - 1 : rows) + " rows")
+					.append(Strings.LN);
 			sb.append("Delimiter: ").append(delimiter).append(Strings.LN);
 			sb.append("Contents type: ").append(type).append(Strings.LN);
 			if (header && headers != null) {
@@ -142,8 +142,8 @@ public class GamaCSVFile extends GamaFile<IMatrix<Object>, Object> implements IF
 
 		@Override
 		public String getSuffix() {
-			return "" + cols + "x" + rows + " | " + (header ? "with header" : "no header") + " | " + "delimiter: '"
-					+ delimiter + "' | " + type;
+			return "" + cols + "x" + (header ? rows - 1 : rows) + " | " + (header ? "with header" : "no header") + " | "
+					+ "delimiter: '" + delimiter + "' | " + type;
 		}
 
 		@Override
@@ -176,8 +176,7 @@ public class GamaCSVFile extends GamaFile<IMatrix<Object>, Object> implements IF
 	String csvSeparator = null;
 
 	/** The text qualifier. */
-	Character textQualifier = null;
-
+	Character textQualifier = '"';
 	/** The contents type. */
 	IType contentsType;
 
@@ -498,6 +497,8 @@ public class GamaCSVFile extends GamaFile<IMatrix<Object>, Object> implements IF
 				// we remove one row so as to not read the headers as well
 				// Cause for issue #3036
 				userSize.y = userSize.y - 1;
+				// Make sure that we do not read more columns than the number of headers
+				userSize.x = headers.size();
 			}
 			// long t = System.currentTimeMillis();
 			setBuffer(createMatrixFrom(scope, reader));
