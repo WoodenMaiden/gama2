@@ -85,10 +85,24 @@ public class GamaServerGUIHandler extends NullGuiHandler {
 		return true;
 	}
 
+	/**
+	 * Can send runtime errors.
+	 *
+	 * @param scope
+	 *            the scope
+	 * @return true, if successful
+	 */
+	private boolean canSendRuntimeErrors(final IScope scope) {
+		if (scope != null && scope.getExperiment() != null && scope.getExperiment().getScope() != null)
+			return scope.getExperiment().getScope().getData("runtime") != null
+					? (boolean) scope.getExperiment().getScope().getData("runtime") : true;
+		return true;
+	}
+
 	@Override
 	public void openMessageDialog(final IScope scope, final String message) {
 		DEBUG.OUT(message);
-		if (!canSendDialogMessages(scope)) return;
+		if (!canSendRuntimeErrors(scope)) return;
 		sendMessage(scope.getExperiment(), message, GamaServerMessageType.SimulationDialog);
 	}
 
@@ -104,6 +118,7 @@ public class GamaServerGUIHandler extends NullGuiHandler {
 		DEBUG.OUT(g);
 		// removed to fix #3758
 		// if (!canSendDialogMessages(scope)) return;
+		if (!canSendDialogMessages(scope)) return;
 		sendMessage(scope.getExperiment(), g, GamaServerMessageType.SimulationError);
 	}
 
