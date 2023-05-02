@@ -64,7 +64,7 @@ public class Messages {
 	 */
 	public static boolean modalQuestion(final String title, final String message) {
 		return WorkbenchHelper.run(() -> MessageDialog.open(MessageDialog.QUESTION, null, title, message,
-				PlatformHelper.isMac() ? SWT.NONE : SWT.SHEET));
+				!PlatformHelper.isMac() ? SWT.NONE : SWT.SHEET));
 	}
 
 	/**
