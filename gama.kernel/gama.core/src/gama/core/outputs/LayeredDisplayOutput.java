@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * LayeredDisplayOutput.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * LayeredDisplayOutput.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -19,9 +19,6 @@ import com.google.common.collect.Iterables;
 
 import gama.annotations.common.interfaces.IGamlIssue;
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.GamlProperties;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -29,12 +26,15 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.GamlProperties;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
+import gama.core.common.interfaces.IDisplayCreator.DisplayDescription;
 import gama.core.common.interfaces.IDisplaySurface;
 import gama.core.common.interfaces.IGamaView;
+import gama.core.common.interfaces.IGamaView.Display;
 import gama.core.common.interfaces.IGui;
 import gama.core.common.interfaces.IOverlayProvider;
-import gama.core.common.interfaces.IDisplayCreator.DisplayDescription;
-import gama.core.common.interfaces.IGamaView.Display;
 import gama.core.common.preferences.GamaPreferences;
 import gama.core.outputs.LayeredDisplayOutput.DisplaySerializer;
 import gama.core.outputs.LayeredDisplayOutput.DisplayValidator;
@@ -100,7 +100,7 @@ import gaml.core.types.IType;
 						type = IType.GEOMETRY,
 						optional = true,
 						doc = @doc (
-								deprecated = "Use 'camera default target: the_agent' to achieve the same effect. And please note that this possibility does not exist on Java2D anymore",
+								deprecated = "Insert a statement 'camera default target: the_agent;' alongside the definition of the layers to achieve the same effect. And please note that this possibility does not exist on Java2D anymore",
 								value = "the geometry (or agent) on which the display will (dynamically) focus")),
 				// WARNING VALIDER EN VERIFIANT LE TYPE DU DISPLAY
 				@facet (
