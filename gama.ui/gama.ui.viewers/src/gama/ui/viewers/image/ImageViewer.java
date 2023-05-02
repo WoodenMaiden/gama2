@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * ImageViewer.java, in gama.ui.shared.viewers, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * ImageViewer.java, in gama.ui.viewers, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -77,9 +77,9 @@ import gama.core.util.file.IGamaFileMetaData;
 import gama.dev.DEBUG;
 import gama.ui.navigator.metadata.ImageDataLoader;
 import gama.ui.shared.resources.GamaColors;
+import gama.ui.shared.resources.GamaColors.GamaUIColor;
 import gama.ui.shared.resources.IGamaColors;
 import gama.ui.shared.resources.IGamaIcons;
-import gama.ui.shared.resources.GamaColors.GamaUIColor;
 import gama.ui.shared.utils.PreferencesHelper;
 import gama.ui.shared.utils.WorkbenchHelper;
 import gama.ui.shared.views.toolbar.GamaToolbar2;
@@ -115,6 +115,9 @@ public class ImageViewer extends EditorPart
 
 	/** The max zoom factor. */
 	double maxZoomFactor = 1.0d;
+
+	/** Variable used to specify if the zoom is locked. */
+	boolean locked = false;
 
 	/** The input listener. */
 	ImageResourceChangeListener inputListener = null;
@@ -677,12 +680,12 @@ public class ImageViewer extends EditorPart
 
 	@Override
 	public void zoomIn() {
-		setZoomFactor(getZoomFactor() * 1.1);
+		if (!locked) { setZoomFactor(getZoomFactor() * 1.1); }
 	}
 
 	@Override
 	public void zoomOut() {
-		setZoomFactor(getZoomFactor() * 0.9);
+		if (!locked) { setZoomFactor(getZoomFactor() * 0.9); }
 	}
 
 	@Override
@@ -692,6 +695,11 @@ public class ImageViewer extends EditorPart
 		} else {
 			setZoomFactor((double) scroll.getSize().y / (double) imageData.height);
 		}
+	}
+
+	@Override
+	public void toggleLock() {
+		locked = !locked;
 	}
 
 	@Override

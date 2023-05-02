@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * NullDisplaySurface.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * NullDisplaySurface.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -26,8 +26,8 @@ import gama.core.metamodel.agent.IAgent;
 import gama.core.metamodel.shape.GamaPoint;
 import gama.core.metamodel.shape.IShape;
 import gama.core.outputs.LayeredDisplayData;
-import gama.core.outputs.LayeredDisplayOutput;
 import gama.core.outputs.LayeredDisplayData.Changes;
+import gama.core.outputs.LayeredDisplayOutput;
 import gama.core.outputs.layers.IEventLayerListener;
 import gama.core.runtime.IScope.IGraphicsScope;
 import gama.core.util.IList;
@@ -94,6 +94,9 @@ public class NullDisplaySurface implements IDisplaySurface {
 	@Override
 	public void zoomFit() {}
 
+	@Override
+	public void toggleLock() {}
+
 	/**
 	 * Method getManager()
 	 *
@@ -129,7 +132,8 @@ public class NullDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method initialize()
 	 *
-	 * @see gama.core.common.interfaces.IDisplaySurface#initialize(double, double, gama.core.outputs.LayeredDisplayOutput)
+	 * @see gama.core.common.interfaces.IDisplaySurface#initialize(double, double,
+	 *      gama.core.outputs.LayeredDisplayOutput)
 	 */
 	@Override
 	public void outputReloaded() {}
@@ -201,7 +205,8 @@ public class NullDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method getModelCoordinatesFrom()
 	 *
-	 * @see gama.core.common.interfaces.IDisplaySurface#getModelCoordinatesFrom(int, int, java.awt.Point, java.awt.Point)
+	 * @see gama.core.common.interfaces.IDisplaySurface#getModelCoordinatesFrom(int, int, java.awt.Point,
+	 *      java.awt.Point)
 	 */
 	@Override
 	public GamaPoint getModelCoordinatesFrom(final int xOnScreen, final int yOnScreen, final Point sizeInPixels,
@@ -373,8 +378,10 @@ public class NullDisplaySurface implements IDisplaySurface {
 
 	@Override
 	public Rectangle getBoundsForRobotSnapshot() { return new Rectangle(); }
-	
+
 	@Override
-	public boolean shouldWaitToBecomeRendered() { return false; }
+	public boolean shouldWaitToBecomeRendered() {
+		return false;
+	}
 
 }

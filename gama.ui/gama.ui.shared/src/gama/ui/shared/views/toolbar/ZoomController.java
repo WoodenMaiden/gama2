@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * ZoomController.java, in gama.ui.shared.shared, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * ZoomController.java, in gama.ui.shared, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -148,10 +148,11 @@ public class ZoomController {
 				};
 				menu.open(tb.getToolbar(SWT.RIGHT), trigger, tb.height, 96);
 			}, SWT.RIGHT);
-			cameraLocked = tb.check(IGamaIcons.CAMERA_LOCK, "Lock/unlock", "Lock/unlock camera", e -> {
-				view.getCameraHelper().toggleCamera();
-			}, SWT.RIGHT);
+
 		}
+		cameraLocked = tb.check(IGamaIcons.CAMERA_LOCK, "Lock/unlock", "Lock/unlock view", e -> {
+			view.getCameraHelper().toggleCamera();
+		}, SWT.RIGHT);
 
 	}
 

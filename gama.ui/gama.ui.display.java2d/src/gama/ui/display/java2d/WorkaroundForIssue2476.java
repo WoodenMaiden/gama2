@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * WorkaroundForIssue2476.java, in ummisco.gama.java2d, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * WorkaroundForIssue2476.java, in gama.ui.display.java2d, is part of the source code of the GAMA modeling and
+ * simulation platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -73,6 +73,12 @@ public class WorkaroundForIssue2476 {
 			public void mouseDragged(final java.awt.event.MouseEvent e) {
 				DEBUG.OUT("Mouse drag on applet");
 				surface.draggedTo(e.getX(), e.getY());
+				// Updates the mouse position. If the surface view is locked, the
+				// mouse actually moves in the environment. Is the surface is
+				// dragged, the environment follows the mouse so the #user_location
+				// technically does not change, but approximations are not likely to
+				// break anything.
+				setMousePosition(surface, e.getX(), e.getY());
 			}
 		});
 		applet.addMouseListener(new java.awt.event.MouseListener() {
@@ -81,13 +87,14 @@ public class WorkaroundForIssue2476 {
 
 			@Override
 			public void mouseReleased(final java.awt.event.MouseEvent e) {
-				surface.setMousePosition(e.getX(), e.getY());
+				setMousePosition(surface, e.getX(), e.getY());
 				surface.dispatchMouseEvent(SWT.MouseUp, e.getX(), e.getY());
 			}
 
 			@Override
 			public void mousePressed(final java.awt.event.MouseEvent e) {
-
+				setMousePosition(surface, e.getX(), e.getY());
+				surface.dispatchMouseEvent(SWT.MouseDown, e.getX(), e.getY());
 			}
 
 			@Override
@@ -111,13 +118,7 @@ public class WorkaroundForIssue2476 {
 					return;
 				}
 
-				if (inMenu) {
-					inMenu = false;
-					return;
-				}
-				// DEBUG.OUT("Click on " + e.getX() + " " + e.getY());
-				setMousePosition(surface, e.getX(), e.getY());
-				surface.dispatchMouseEvent(SWT.MouseDown, e.getX(), e.getY());
+				if (inMenu) { inMenu = false; }
 
 			}
 		});

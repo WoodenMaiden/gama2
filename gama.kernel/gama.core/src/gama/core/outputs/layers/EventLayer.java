@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * EventLayer.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.0).
+ * EventLayer.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -79,6 +79,7 @@ public class EventLayer extends AbstractLayer implements IEventLayerListener {
 			case MouseEventLayerDelegate.MOUSE_CLICKED -> MOUSE_CLICKED;
 			case MouseEventLayerDelegate.MOUSE_MOVED -> MOUSE_MOVED;
 			case MouseEventLayerDelegate.MOUSE_ENTERED -> MOUSE_ENTERED;
+			case MouseEventLayerDelegate.MOUSE_DRAGGED -> MOUSE_DRAGGED;
 			case MouseEventLayerDelegate.MOUSE_EXITED -> MOUSE_EXITED;
 			case MouseEventLayerDelegate.MOUSE_MENU -> MOUSE_MENU;
 			case KeyboardEventLayerDelegate.ARROW_DOWN -> ARROW_DOWN;
@@ -140,6 +141,21 @@ public class EventLayer extends AbstractLayer implements IEventLayerListener {
 	@Override
 	public void mouseDown(final int x, final int y, final int button) {
 		if (MOUSE_PRESS == listenedEvent && button == 1) { executeEvent(x, y); }
+	}
+
+	/**
+	 * Mouse drag.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param button
+	 *            the button
+	 */
+	@Override
+	public void mouseDrag(final int x, final int y, final int button) {
+		if (MOUSE_DRAGGED == listenedEvent && button == 1) { executeEvent(x, y); }
 	}
 
 	@Override

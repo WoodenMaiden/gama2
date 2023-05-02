@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * IToolbarDecoratedView.java, in gama.ui.shared.shared, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * IToolbarDecoratedView.java, in gama.ui.shared, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -38,8 +38,12 @@ import gama.ui.shared.utils.WorkbenchHelper;
  */
 public interface IToolbarDecoratedView {
 
+	/** The null camera. */
 	ICameraHelper NULL_CAMERA = new ICameraHelper() {};
 
+	/**
+	 * The Interface ICameraHelper.
+	 */
 	public interface ICameraHelper {
 		/**
 		 * Gets the camera names.
@@ -75,6 +79,11 @@ public interface IToolbarDecoratedView {
 		 */
 		default void toggleCamera() {}
 
+		/**
+		 * Gets the camera definition.
+		 *
+		 * @return the camera definition
+		 */
 		default String getCameraDefinition() { return ""; }
 	}
 
@@ -263,6 +272,11 @@ public interface IToolbarDecoratedView {
 		void zoomFit();
 
 		/**
+		 * Locks/unlocks the view.
+		 */
+		void toggleLock();
+
+		/**
 		 * @return the controls that will react to gestures / mouse doucle-cliks
 		 */
 		Control[] getZoomableControls();
@@ -272,6 +286,11 @@ public interface IToolbarDecoratedView {
 		 */
 		boolean zoomWhenScrolling();
 
+		/**
+		 * Gets the camera helper.
+		 *
+		 * @return the camera helper
+		 */
 		default ICameraHelper getCameraHelper() { return NULL_CAMERA; }
 
 		/**

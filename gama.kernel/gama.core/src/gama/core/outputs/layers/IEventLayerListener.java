@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * IEventLayerListener.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * IEventLayerListener.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -39,6 +39,9 @@ public interface IEventLayerListener {
 
 	/** The Constant MOUSE_MENU. */
 	int MOUSE_MENU = 7;
+
+	/** The mouse dragged. */
+	int MOUSE_DRAGGED = 8;
 
 	/** The Constant KEY_PRESSED. */
 	int KEY_PRESSED = 3;
@@ -137,6 +140,16 @@ public interface IEventLayerListener {
 	 *            the y
 	 */
 	void mouseExit(int x, int y);
+
+	/**
+	 * Mouse drag.
+	 *
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 */
+	void mouseDrag(int x, int y, int button);
 
 	/**
 	 * Mouse menu.

@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * IDisplaySurface.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * IDisplaySurface.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -24,8 +24,8 @@ import gama.core.metamodel.agent.IAgent;
 import gama.core.metamodel.shape.GamaPoint;
 import gama.core.metamodel.shape.IShape;
 import gama.core.outputs.LayeredDisplayData;
-import gama.core.outputs.LayeredDisplayOutput;
 import gama.core.outputs.LayeredDisplayData.DisplayDataListener;
+import gama.core.outputs.LayeredDisplayOutput;
 import gama.core.outputs.layers.IEventLayerListener;
 import gama.core.runtime.IScope.IGraphicsScope;
 import gaml.core.statements.draw.DrawingAttributes;
@@ -132,6 +132,11 @@ public interface IDisplaySurface extends DisplayDataListener, IScoped, IDisposab
 	 * Zoom fit.
 	 */
 	void zoomFit();
+
+	/**
+	 * Toggles surface view lock.
+	 */
+	void toggleLock();
 
 	/**
 	 * Gets the manager.
@@ -456,6 +461,8 @@ public interface IDisplaySurface extends DisplayDataListener, IScoped, IDisposab
 	 *
 	 * @return true, if is renderable
 	 */
-	default boolean shouldWaitToBecomeRendered() { return true; }
+	default boolean shouldWaitToBecomeRendered() {
+		return true;
+	}
 
 }

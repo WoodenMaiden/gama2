@@ -92,6 +92,9 @@ public class Java2DDisplaySurface extends JPanel implements IDisplaySurface {
 				.set(GamaPreferences.Displays.DISPLAY_NO_ACCELERATION.getValue());
 	}
 
+	/** The is locked. */
+	private boolean isLocked = false;
+
 	/** The output. */
 	final LayeredDisplayOutput output;
 
@@ -224,10 +227,13 @@ public class Java2DDisplaySurface extends JPanel implements IDisplaySurface {
 
 	@Override
 	public void draggedTo(final int x, final int y) {
-		final Point origin = getOrigin();
-		setOrigin(origin.x + x - getMousePosition().x, origin.y + y - getMousePosition().y);
+		if (!isLocked) {
+			final Point origin = getOrigin();
+			setOrigin(origin.x + x - getMousePosition().x, origin.y + y - getMousePosition().y);
+			updateDisplay(true);
+		}
 		setMousePosition(x, y);
-		updateDisplay(true);
+
 	}
 
 	@Override
@@ -248,6 +254,9 @@ public class Java2DDisplaySurface extends JPanel implements IDisplaySurface {
 					break;
 				case SWT.MouseEnter:
 					gl.mouseEnter(x, y);
+					break;
+				case SWT.DragDetect:
+					gl.mouseDrag(x, y, 1);
 					break;
 				case SWT.MouseExit:
 					gl.mouseExit(x, y);
@@ -420,12 +429,17 @@ public class Java2DDisplaySurface extends JPanel implements IDisplaySurface {
 
 	@Override
 	public void zoomIn() {
-		zoom(true);
+		if (!isLocked) { zoom(true); }
 	}
 
 	@Override
 	public void zoomOut() {
-		zoom(false);
+		if (!isLocked) { zoom(false); }
+	}
+
+	@Override
+	public void toggleLock() {
+		isLocked = !isLocked;
 	}
 
 	/**

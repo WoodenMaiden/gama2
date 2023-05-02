@@ -543,6 +543,14 @@ public abstract class LayeredDisplayView extends GamaViewPart
 	}
 
 	/**
+	 * Toggle lock.
+	 */
+	@Override
+	public void toggleLock() {
+		if (getDisplaySurface() != null) { getDisplaySurface().toggleLock(); }
+	}
+
+	/**
 	 * Compute hi DPI.
 	 *
 	 * @return true, if successful

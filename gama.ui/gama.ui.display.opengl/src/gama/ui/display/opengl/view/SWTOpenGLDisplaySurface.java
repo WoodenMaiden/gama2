@@ -132,6 +132,9 @@ public class SWTOpenGLDisplaySurface implements IDisplaySurface.OpenGL {
 	/** The already updating. */
 	private volatile boolean alreadyUpdating;
 
+	/** The current mouse location converted to a world position */
+	private GamaPoint world_position;
+
 	/**
 	 * Instantiates a new SWT open GL display surface.
 	 *
@@ -440,7 +443,8 @@ public class SWTOpenGLDisplaySurface implements IDisplaySurface.OpenGL {
 	 */
 	@Override
 	public GamaPoint getModelCoordinates() {
-		return renderer.getCameraHelper().getWorldPositionOfMouse().yNegated();
+		// return renderer.getCameraHelper().getWorldPositionOfMouse().yNegated();
+		return world_position;
 		// final GamaPoint mp = renderer.getCameraHelper().getMousePosition();
 		// DEBUG.OUT("Coordinates in display " + mp);
 		// if (mp == null) return null;
@@ -448,6 +452,11 @@ public class SWTOpenGLDisplaySurface implements IDisplaySurface.OpenGL {
 		// DEBUG.OUT("Coordinates in env " + p);
 		// if (p == null) return null;
 		// return new GamaPoint(p.x, -p.y);
+	}
+
+	@Override
+	public void toggleLock() {
+		renderer.getCameraHelper().toggleCamera();
 	}
 
 	@Override
@@ -766,6 +775,9 @@ public class SWTOpenGLDisplaySurface implements IDisplaySurface.OpenGL {
 				case SWT.MouseMove:
 					gl.mouseMove(x, y);
 					break;
+				case SWT.DragDetect:
+					gl.mouseDrag(x, y, 1);
+					break;
 				case SWT.MouseEnter:
 					gl.mouseEnter(x, y);
 					break;
@@ -783,6 +795,9 @@ public class SWTOpenGLDisplaySurface implements IDisplaySurface.OpenGL {
 	public void setMousePosition(final int x, final int y) {
 		// Nothing to do (taken in charge by the camera)
 
+		// Callable from non OpenGL context
+		world_position =
+				renderer.getCameraHelper().getWorldPositionFrom(new GamaPoint(x, y), new GamaPoint()).yNegated();
 	}
 
 	@Override

@@ -202,7 +202,18 @@ public class LayeredDisplayMultiListener {
 		// DEBUG.LOG("Mouse moving on " + view.getPartName());
 
 		if (mouseIsDown) {
+			// Depending on the plateform or display, this case is never called,
+			// because DragDetect events are emitted instead. But on Windows
+			// Java2D displays, it seems that MouseMove events are emitted even
+			// when the mouse button is down.
+
+			// Eventually moves the surface view
 			surface.draggedTo(x, y);
+			// Updates the mouse position. If the surface view is locked, the
+			// mouse actually moves in the environment. Is the surface is
+			// dragged, the environment follows the mouse so the #user_location
+			// technically does not change, but approximations are not likely to
+			// break anything.
 			surface.dispatchMouseEvent(SWT.DragDetect, x, y);
 		} else {
 			setMousePosition(x, y);
