@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * GamaPreferences.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GamaPreferences.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -349,6 +349,11 @@ public class GamaPreferences {
 		public static final Pref<Boolean> CORE_ASK_FULLSCREEN =
 				create("pref_experiment_ask_fullscreen", "Ask before entering fullscreen mode", false, IType.BOOL, true)
 						.in(NAME, EXECUTION).hidden();
+
+		/** The Constant CORE_SLIDER_TYPE. */
+		public static final Pref<Boolean> CORE_SLIDER_TYPE = create("pref_experiment_type_slider",
+				"If true, set the step duration slider incrementation to linear, otherwise logarithmic", true,
+				IType.BOOL, true).in(NAME, EXECUTION);
 		// public static final Pref<Double> CORE_DELAY_STEP = create("pref_experiment_default_step",
 		/** The Constant CORE_SYNC. */
 		// "Default step for the delay slider (in sec.)", 0.001, IType.FLOAT, true).in(NAME, EXECUTION).disabled();

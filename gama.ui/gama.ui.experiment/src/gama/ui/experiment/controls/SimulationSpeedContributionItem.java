@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.menus.WorkbenchWindowControlContribution;
 
+import gama.core.common.preferences.GamaPreferences;
 import gama.core.kernel.experiment.ExperimentAgent;
 import gama.core.runtime.GAMA;
 import gama.dev.DEBUG;
@@ -81,10 +82,8 @@ public class SimulationSpeedContributionItem extends WorkbenchWindowControlContr
 	 * @return
 	 */
 	public static double positionFromValue(final double v) {
-		// returns a percentage between 0 and 1 (0 -> max milliseconds; 1 -> 0
-		// milliseconds).
+		if (GamaPreferences.Runtime.CORE_SLIDER_TYPE.getValue()) return 1 - v / max;
 		return 1 - lambda * Math.log(v / max * (Math.exp(1 / lambda) - 1) + 1);
-		// return 1 - v / max; Value for a linear slider (see issue #3761)
 	}
 
 	@Override
@@ -99,8 +98,8 @@ public class SimulationSpeedContributionItem extends WorkbenchWindowControlContr
 	 * @return
 	 */
 	public static double valueFromPosition(final double p) {
+		if (GamaPreferences.Runtime.CORE_SLIDER_TYPE.getValue()) return max - p * max;
 		return (Math.exp((1 - p) / lambda) - 1) / (Math.exp(1 / lambda) - 1) * max;
-		// return max - p * max; Value for a linear slider (see issue #3761)
 	}
 
 	/**
