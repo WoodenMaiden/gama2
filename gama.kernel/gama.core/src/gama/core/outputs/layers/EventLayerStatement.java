@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * EventLayerStatement.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * EventLayerStatement.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -15,8 +15,6 @@ import java.util.List;
 
 import gama.annotations.common.interfaces.IGamlIssue;
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -24,6 +22,8 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.common.interfaces.IEventLayerDelegate;
 import gama.core.metamodel.agent.IAgent;
 import gama.core.outputs.LayeredDisplayOutput;
@@ -34,6 +34,7 @@ import gaml.core.compilation.IDescriptionValidator;
 import gaml.core.compilation.ISymbol;
 import gaml.core.compilation.annotations.validator;
 import gaml.core.descriptions.IDescription;
+import gaml.core.descriptions.IExpressionDescription;
 import gaml.core.descriptions.StatementDescription;
 import gaml.core.expressions.IExpression;
 import gaml.core.factories.DescriptionFactory;
@@ -140,7 +141,13 @@ public class EventLayerStatement extends AbstractLayerStatement {
 
 		@Override
 		public void validate(final StatementDescription description) {
-			final String name = description.getFacet(NAME).getExpression().literalValue();
+			IExpressionDescription nameDesc = description.getFacet(NAME);
+			final String name = nameDesc != null ? nameDesc.getExpression().literalValue() : null;
+			if (name == null) {
+				description.error("Impossible to find this action", IGamlIssue.UNKNOWN_ACTION, ACTION);
+				return;
+			}
+
 			if (name.length() > 1) { // If it is not a char
 				StringBuilder error = new StringBuilder();
 				boolean foundEventName = false;

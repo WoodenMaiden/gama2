@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * GamlExpressionCompiler.java, in gama.core.lang.gaml, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * GamlExpressionCompiler.java, in gaml.compiler, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -55,6 +55,7 @@ import gama.core.runtime.IExecutionContext;
 import gama.core.runtime.exceptions.GamaRuntimeException;
 import gama.core.util.Collector;
 import gama.core.util.GamaMapFactory;
+import gaml.compiler.EGaml;
 import gaml.compiler.gaml.Access;
 import gaml.compiler.gaml.ActionRef;
 import gaml.compiler.gaml.ArgumentPair;
@@ -85,7 +86,6 @@ import gaml.compiler.gaml.UnitName;
 import gaml.compiler.gaml.VarDefinition;
 import gaml.compiler.gaml.VariableRef;
 import gaml.compiler.gaml.util.GamlSwitch;
-import gaml.compiler.EGaml;
 import gaml.compiler.resource.GamlResource;
 import gaml.compiler.resource.GamlResourceServices;
 import gaml.core.compilation.GAML;
@@ -879,11 +879,24 @@ public class GamlExpressionCompiler extends GamlSwitch<IExpression> implements I
 	public IExpression caseActionRef(final ActionRef object) {
 		final String s = EGaml.getInstance().getKeyOf(object);
 		final SpeciesDescription sd = getContext().getSpeciesContext();
+		// Look in the species and its ancestors
 		ActionDescription ad = sd.getAction(s);
+		// If it is not found, maybe it is in the host ?
 		if (ad == null) {
-			ad = sd.getModelDescription().getAction(s);
+			boolean isExp = sd instanceof ExperimentDescription ed;
+			// If we are in an experiment, we cannot call an action defined in the model (see #
+			if (!isExp) {
+				IDescription host = sd.getEnclosingDescription();
+				if (host != null) { ad = host.getAction(s); }
+			}
+
 			if (ad == null) {
-				getContext().error("Unknown action", IGamlIssue.UNKNOWN_ACTION, object);
+				if (isExp) {
+					getContext().error("The action " + s + " must be defined in the experiment",
+							IGamlIssue.UNKNOWN_ACTION, object);
+				} else {
+					getContext().error("The action " + s + " is unknown", IGamlIssue.UNKNOWN_ACTION, object);
+				}
 				return null;
 			}
 		}

@@ -1,7 +1,6 @@
 /*******************************************************************************************************
  *
- * DoStatement.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * DoStatement.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -14,8 +13,6 @@ import java.util.Set;
 
 import gama.annotations.common.interfaces.IGamlIssue;
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -23,6 +20,8 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.runtime.ExecutionResult;
 import gama.core.runtime.IScope;
 import gama.core.runtime.exceptions.GamaRuntimeException;
@@ -59,7 +58,7 @@ import gaml.core.types.IType;
 		concept = { IConcept.ACTION },
 		with_args = true)
 @inside (
-		kinds = { ISymbolKind.BEHAVIOR, ISymbolKind.SEQUENCE_STATEMENT },
+		kinds = { ISymbolKind.BEHAVIOR, ISymbolKind.SEQUENCE_STATEMENT, ISymbolKind.LAYER },
 		symbols = IKeyword.CHART)
 @facets (
 		value = { @facet (
