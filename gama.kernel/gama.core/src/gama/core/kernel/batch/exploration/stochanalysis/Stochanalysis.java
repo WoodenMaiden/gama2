@@ -75,8 +75,8 @@ public class Stochanalysis {
 	 */
 	private static int findMedian(final List<Integer> list, final IScope scope) {
 		List<Integer> list_t = new ArrayList<>();
-		for (int o : list) { if (o != -1) { list_t.add(o); } }
-		Arrays.sort(list_t.toArray());
+		for (int o : list) { if (o > 0) { list_t.add(o); } }
+		Collections.sort(list_t);
 		double median;
 		if (list_t.size() % 2 == 0) {
 			median = ((double) list_t.get(list_t.size() / 2) + (double) list_t.get(list_t.size() / 2 - 1)) / 2;
@@ -96,7 +96,7 @@ public class Stochanalysis {
 
 	private static int findMax(final List<Integer> list, final IScope scope) {
 		int max = 0;
-		for (Integer element : list) { if (element != -1 && max < element) { max = element; } }
+		for (Integer element : list) { if (element > 0 && max < element) { max = element; } }
 		return max;
 	}
 
@@ -120,12 +120,12 @@ public class Stochanalysis {
 		for (String i : Out.keySet()) {
 			for (List<Object> l : Out.get(i).values()) {
 				all_vals.addAll(Cast.asList(scope, l.get(2)).stream().mapToInt(o -> Integer.parseInt(o.toString()))
-						.filter(d -> d > 0).boxed().toList());
+						.map(d -> d < 0 ? nbreplicates : d).boxed().toList());
 			}
 		}
 		sb.append("\tOn average requires: " + all_vals.stream().mapToDouble(i -> i * 1d).average().orElse(0.0));
-		sb.append("\n\tHighest requirements: " + Collections.max(all_vals));
-		sb.append("\n\tLowest requirements: " + Collections.min(all_vals));
+		sb.append("\n\tHighest overall: " + Collections.max(all_vals));
+		sb.append("\n\tLowest overall: " + Collections.min(all_vals));
 		sb.append("\n--- End of summary ---\n\n");
 		for (String outputs : Out.keySet()) {
 			Map<Double, List<Object>> tmp_map = Out.get(outputs);
@@ -153,10 +153,13 @@ public class Stochanalysis {
 
 				// Result
 				if (nb_failed == nbsample) {
-					sb.append("Max number of replication is tow low to satisfy current criteria");
+					sb.append("Max number of replication is too low to satisfy current criteria");
 				} else if (nb_failed > 0) {
 					sb.append("Failed for " + nb_failed + " sampled point" + (nb_failed == 1 ? "" : "s"));
 				} else {
+					if (nb_failed > 0) {
+						sb.append("Failed for " + nb_failed + " sampled point" + (nb_failed == 1 ? "" : "s\n"));
+					}
 					sb.append("Replications number found: \n");
 					sb.append("Advised " + n_mean + " | Median " + findMedian(nb_val, scope) + " | Max "
 							+ findMax(nb_val, scope));
@@ -364,7 +367,7 @@ public class Stochanalysis {
 				double tmp_val = Math.abs(CV.get(i) - CV.get(y));
 				if (tmp_val <= threshold && !thresh_ok) {
 					thresh_ok = true;
-					id_sample = i + 1;
+					id_sample = (1 + i + y) / 2;
 				}
 			}
 		}
@@ -439,24 +442,18 @@ public class Stochanalysis {
 			if (40 < sample_size && sample_size <= 50) return Talpha[31];
 			if (50 < sample_size && sample_size <= 60) return Talpha[32];
 			if (60 < sample_size && sample_size <= 80) return Talpha[33];
-			if (80 < sample_size && sample_size <= 100)
-				return Talpha[34];
-			else if (100 < sample_size && sample_size <= 120)
-				return Talpha[35];
-			else
-				return Talpha[36];
+			if (80 < sample_size && sample_size <= 100) return Talpha[34];
+			if (100 < sample_size && sample_size <= 120) return Talpha[35];
+			return Talpha[36];
 		}
 		if (sample_size <= 30) return Tbeta[sample_size - 1];
 		if (30 < sample_size && sample_size <= 40) return Tbeta[30];
 		if (40 < sample_size && sample_size <= 50) return Tbeta[31];
 		if (50 < sample_size && sample_size <= 60) return Tbeta[32];
 		if (60 < sample_size && sample_size <= 80) return Tbeta[33];
-		if (80 < sample_size && sample_size <= 100)
-			return Tbeta[34];
-		else if (100 < sample_size && sample_size <= 120)
-			return Tbeta[35];
-		else
-			return Tbeta[36];
+		if (80 < sample_size && sample_size <= 100) return Tbeta[34];
+		if (100 < sample_size && sample_size <= 120) return Tbeta[35];
+		return Tbeta[36];
 	}
 
 	/**
