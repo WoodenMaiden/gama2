@@ -1,9 +1,8 @@
 /*******************************************************************************************************
  *
- * Stochanalysis.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * Stochanalysis.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -30,7 +29,7 @@ import gama.core.kernel.experiment.ParametersSet;
 import gama.core.runtime.IScope;
 import gama.core.runtime.exceptions.GamaRuntimeException;
 import gama.core.util.IMap;
-import gama.core.util.file.GamaCSVFile.CSVInfo;
+import gama.core.util.file.IGamaFileMetaData;
 import gaml.core.operators.Cast;
 
 /**
@@ -51,8 +50,7 @@ import gaml.core.operators.Cast;
 public class Stochanalysis {
 
 	/**
-	 * We decided to select alpha = 95%
-	 * https://en.wikipedia.org/wiki/Student%27s_t-distribution
+	 * We decided to select alpha = 95% https://en.wikipedia.org/wiki/Student%27s_t-distribution
 	 */
 	final static double[] Talpha = { 6.314, 2.920, 2.353, 2.132, 2.015, 1.943, 1.895, 1.860, 1.833, 1.812, 1.796, 1.782,
 			1.771, 1.761, 1.753, 1.746, 1.740, 1.734, 1.729, 1.725, 1.721, 1.717, 1.714, 1.711, 1.708, 1.706, 1.703,
@@ -111,10 +109,12 @@ public class Stochanalysis {
 	 * @return
 	 */
 	@SuppressWarnings ("unchecked")
-	private static String buildResultMap(final Map<String, Map<Double, List<Object>>> Out, final IScope scope) {
+	private static String buildResultMap(final Map<String, Map<Double, List<Object>>> Out, final int nbsample,
+			final int nbreplicates, final IScope scope) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("== STOCHASTICITY ANALYSIS: \n");
-		sb.append("\n");
+		sb.append("== STOCHASTICITY ANALYSIS ==\n\n");
+		sb.append(Out.size() + " outputs | " + nbsample + " samples | " + nbreplicates + " max replications");
+		sb.append("\n\n");
 		sb.append("--- Summary of required number of replications ---\n");
 		List<Integer> all_vals = new ArrayList<>();
 		for (String i : Out.keySet()) {
@@ -123,129 +123,47 @@ public class Stochanalysis {
 						.filter(d -> d > 0).boxed().toList());
 			}
 		}
-		sb.append("On average requires: " + all_vals.stream().mapToDouble(i -> i * 1d).average().orElse(0.0));
-		sb.append("\tHighest requirements: " + Collections.max(all_vals));
-		sb.append("\tLowest requirements: " + Collections.min(all_vals));
-		sb.append("--- End of summary ---\n\n");
+		sb.append("\tOn average requires: " + all_vals.stream().mapToDouble(i -> i * 1d).average().orElse(0.0));
+		sb.append("\n\tHighest requirements: " + Collections.max(all_vals));
+		sb.append("\n\tLowest requirements: " + Collections.min(all_vals));
+		sb.append("\n--- End of summary ---\n\n");
 		for (String outputs : Out.keySet()) {
 			Map<Double, List<Object>> tmp_map = Out.get(outputs);
 			sb.append("## Output : ");
 			sb.append(outputs);
 			sb.append("\n");
-			sb.append("\n");
 			for (int i = 0; i < tmp_map.size(); i++) {
-				// Method to write
+
+				sb.append("\n");
+				// Method is based on thresh (Vive les stagiaires)
 				double val = tmp_map.keySet().stream().sorted().toList().get(i);
-				// Minimum size to print
-				int n_min = Cast.asInt(scope, tmp_map.get(val).get(0));
+
+				// wieghted average (failed are considered full replications) size to print
+				int n_mean = Cast.asInt(scope, tmp_map.get(val).get(0));
 				// Number of point failed. (Nb_min > Nb repeat used)
 				int nb_failed = Cast.asInt(scope, tmp_map.get(val).get(1));
 				List<Integer> nb_val = Cast.asList(scope, tmp_map.get(val).get(2));
+
+				// Method
 				if (0 < val && val < 1) {
-					sb.append(" CV method - Threshold : ");
-					sb.append(val);
-					sb.append("\n");
-					sb.append(
-							"Nb minimum replicat found \\ Nb median \\ Nb max replicat found \\ Nb failed (> Nb replicat )");
-					sb.append("\n");
-
-					if (nb_failed >= nb_val.size() / 2) {
-						sb.append("Failed");
-						sb.append(" \\ ");
-						sb.append("Failed");
-					} else {
-						sb.append(n_min);
-						sb.append(" \\ ");
-						sb.append(findMedian(nb_val, scope));
-					}
-					sb.append(" \\ ");
-					int max = findMax(nb_val, scope);
-					if (max != 0) {
-						sb.append(findMax(nb_val, scope));
-					} else {
-						sb.append("Failed");
-					}
-					sb.append(" \\ ");
-					if (nb_failed != 0) {
-						sb.append(nb_failed);
-						sb.append(" (");
-						sb.append(Cast.asFloat(scope, nb_failed) / Cast.asFloat(scope, nb_val.size()) * 100);
-						sb.append("%)");
-					}
-					sb.append("\n");
-					sb.append("All values for each points :");
-					sb.append("\n");
-					sb.append(nb_val);
-					sb.append("\n");
-					sb.append("\n");
+					sb.append(" CV method - Threshold : " + val + "\n");
 				} else if (val == -1) {
-					sb.append(" Student method: ");
-					sb.append("\n");
-					sb.append("Nb minimum replicat found \\ Nb median \\ Nb max replicat found");
-					sb.append("\n");
+					sb.append(" Student method:\n");
+				} else if (val >= 1) { sb.append(" SE method - Percent : " + val + "% \n"); }
 
-					if (nb_failed >= nb_val.size() / 2) {
-						sb.append("Failed");
-						sb.append(" \\ ");
-						sb.append("Failed");
-					} else {
-						sb.append(n_min);
-						sb.append(" \\ ");
-						sb.append(findMedian(nb_val, scope));
-					}
-					sb.append(" \\ ");
-					int max = findMax(nb_val, scope);
-					if (max != 0) {
-						sb.append(findMax(nb_val, scope));
-					} else {
-						sb.append("Failed");
-					}
-					sb.append(" \\ ");
-					sb.append("\n");
-					sb.append("All values for each points:");
-					sb.append("\n");
-					sb.append(nb_val);
-					sb.append("\n");
-					sb.append("\n");
-				} else if (val >= 1) {
-					sb.append(" SE method - Percent : ");
-					sb.append(val);
-					sb.append("% \n");
-					sb.append(
-							"Nb minimum replicat found \\ Nb median \\ Nb max replicat found \\ Nb failed (> Nb replicat )");
-					sb.append("\n");
-
-					if (nb_failed >= nb_val.size() / 2) {
-						sb.append("Failed");
-						sb.append(" \\ ");
-						sb.append("Failed");
-					} else {
-						sb.append(n_min);
-						sb.append(" \\ ");
-						sb.append(findMedian(nb_val, scope));
-					}
-					sb.append(" \\ ");
-					int max = findMax(nb_val, scope);
-					if (max != 0) {
-						sb.append(findMax(nb_val, scope));
-					} else {
-						sb.append("Failed");
-					}
-					sb.append(" \\ ");
-					if (nb_failed != 0) {
-						sb.append(nb_failed);
-						sb.append(" (");
-						sb.append(Cast.asFloat(scope, nb_failed) / Cast.asFloat(scope, nb_val.size()) * 100);
-						sb.append("%)");
-					}
-					sb.append("\n");
-					sb.append("All values for each points :");
-					sb.append("\n");
-					sb.append(nb_val);
-					sb.append("\n");
-					sb.append("\n");
+				// Result
+				if (nb_failed == nbsample) {
+					sb.append("Max number of replication is tow low to satisfy current criteria");
+				} else if (nb_failed > 0) {
+					sb.append("Failed for " + nb_failed + " sampled point" + (nb_failed == 1 ? "" : "s"));
+				} else {
+					sb.append("Replications number found: \n");
+					sb.append("Advised " + n_mean + " | Median " + findMedian(nb_val, scope) + " | Max "
+							+ findMax(nb_val, scope));
 				}
+				sb.append("\n");
 			}
+			sb.append("\n");
 		}
 		return sb.toString();
 
@@ -262,38 +180,40 @@ public class Stochanalysis {
 	 *            the scope
 	 */
 	public static void WriteAndTellReport(final File f, final Map<String, Map<Double, List<Object>>> outputs,
-			final IScope scope) {
+			final int nbsample, final int nbreplicates, final IScope scope) {
 
 		try {
 			try (FileWriter fw = new FileWriter(f, false)) {
-				fw.write(buildResultMap(outputs, scope));
+				fw.write(buildResultMap(outputs, nbsample, nbreplicates, scope));
 			}
 		} catch (IOException e) {
 			throw GamaRuntimeException.error("File " + f.toString() + " not found", scope);
 		}
 	}
-	
+
 	/**
 	 * Rebuild simulations ouptuts to be written in a file
-	 * 
+	 *
 	 * @param Outputs
 	 * @param scope
 	 * @return
 	 */
-	public static String buildSimulationCsv(final IMap<ParametersSet, Map<String, List<Object>>> outputs, IScope scope) {
+	public static String buildSimulationCsv(final IMap<ParametersSet, Map<String, List<Object>>> outputs,
+			final IScope scope) {
 		StringBuilder sb = new StringBuilder();
-		String sep = CSVInfo.DELIMITER;
-		
+		String sep = IGamaFileMetaData.DELIMITER;
+
 		// Write the header
 		for (String param : outputs.keySet().stream().findFirst().get().keySet()) { sb.append(param).append(sep); }
 		for (String output : outputs.anyValue(scope).keySet()) { sb.append(output).append(sep); }
-		
+
 		// Find results and append to global string
 		for (ParametersSet ps : outputs.keySet()) {
 			Map<String, List<Object>> res = outputs.get(ps);
 			int nbr = res.values().stream().findAny().get().size();
-			if (!res.values().stream().allMatch(r -> r.size()==nbr)) { 
-				GamaRuntimeException.warning("Not all sample of stochastic analysis have the same number of replicates", scope); 
+			if (!res.values().stream().allMatch(r -> r.size() == nbr)) {
+				GamaRuntimeException.warning("Not all sample of stochastic analysis have the same number of replicates",
+						scope);
 			}
 			for (int r = 0; r < nbr; r++) {
 				for (Object pvalue : ps.values()) { sb.append(pvalue); }
@@ -303,10 +223,10 @@ public class Stochanalysis {
 
 		return sb.toString();
 	}
-	
+
 	/**
 	 * Write and tell row results from simulations
-	 * 
+	 *
 	 * @param path
 	 * @param Outputs
 	 * @param scope
@@ -339,7 +259,15 @@ public class Stochanalysis {
 		return mean;
 	}
 
-
+	/**
+	 * Compute mean combination.
+	 *
+	 * @param val
+	 *            the val
+	 * @param scope
+	 *            the scope
+	 * @return the list
+	 */
 	/*
 	 * Compute all possible means of combinationSize elements of the list
 	 *
@@ -362,7 +290,7 @@ public class Stochanalysis {
 				List<Object> remainings = new ArrayList<>(val);
 				remainings.remove(r);
 				List<Double> currentMean = new ArrayList<>();
-				while (remainings.size() < combinationSize - 1) {
+				while (remainings.size() > combinationSize - 1) {
 					Collections.shuffle(remainings);
 					List<Object> sample = remainings.stream().limit(combinationSize - 1).toList();
 					currentMean.add(sample.stream().mapToDouble(e -> Cast.asFloat(scope, e).doubleValue()).boxed()
@@ -510,9 +438,8 @@ public class Stochanalysis {
 			if (30 < sample_size && sample_size <= 40) return Talpha[30];
 			if (40 < sample_size && sample_size <= 50) return Talpha[31];
 			if (50 < sample_size && sample_size <= 60) return Talpha[32];
-			if (60 < sample_size && sample_size <= 80)
-				return Talpha[33];
-			else if (80 < sample_size && sample_size <= 100)
+			if (60 < sample_size && sample_size <= 80) return Talpha[33];
+			if (80 < sample_size && sample_size <= 100)
 				return Talpha[34];
 			else if (100 < sample_size && sample_size <= 120)
 				return Talpha[35];
@@ -523,9 +450,8 @@ public class Stochanalysis {
 		if (30 < sample_size && sample_size <= 40) return Tbeta[30];
 		if (40 < sample_size && sample_size <= 50) return Tbeta[31];
 		if (50 < sample_size && sample_size <= 60) return Tbeta[32];
-		if (60 < sample_size && sample_size <= 80)
-			return Tbeta[33];
-		else if (80 < sample_size && sample_size <= 100)
+		if (60 < sample_size && sample_size <= 80) return Tbeta[33];
+		if (80 < sample_size && sample_size <= 100)
 			return Tbeta[34];
 		else if (100 < sample_size && sample_size <= 120)
 			return Tbeta[35];

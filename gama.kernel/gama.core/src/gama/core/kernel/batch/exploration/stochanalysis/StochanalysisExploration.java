@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * StochanalysisExploration.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * StochanalysisExploration.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -19,8 +19,6 @@ import java.util.List;
 import java.util.Map;
 
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -28,14 +26,16 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.common.util.FileUtils;
 import gama.core.kernel.batch.exploration.AExplorationAlgorithm;
 import gama.core.kernel.batch.exploration.Exploration;
 import gama.core.kernel.batch.exploration.sampling.LatinhypercubeSampling;
 import gama.core.kernel.batch.exploration.sampling.OrthogonalSampling;
 import gama.core.kernel.batch.exploration.sampling.RandomSampling;
-import gama.core.kernel.experiment.ParametersSet;
 import gama.core.kernel.experiment.IParameter.Batch;
+import gama.core.kernel.experiment.ParametersSet;
 import gama.core.runtime.IScope;
 import gama.core.runtime.concurrent.GamaExecutorService;
 import gama.core.runtime.exceptions.GamaRuntimeException;
@@ -70,9 +70,8 @@ import gaml.core.types.IType;
 						type = IType.ID,
 						optional = true,
 						doc = @doc ("The sampling method to build parameters sets. Available methods are: "
-								+ IKeyword.LHS + ", " + IKeyword.ORTHOGONAL + ", " 
-								+ IKeyword.FACTORIAL + ", "+ IKeyword.UNIFORM + ", " 
-								+ IKeyword.SALTELLI + ", "+ IKeyword.MORRIS)),
+								+ IKeyword.LHS + ", " + IKeyword.ORTHOGONAL + ", " + IKeyword.FACTORIAL + ", "
+								+ IKeyword.UNIFORM + ", " + IKeyword.SALTELLI + ", " + IKeyword.MORRIS)),
 				@facet (
 						name = IKeyword.BATCH_VAR_OUTPUTS,
 						type = IType.LIST,
@@ -101,7 +100,7 @@ import gaml.core.types.IType;
 		usages = { @usage (
 				value = "For example: ",
 				examples = { @example (
-						value = "method stochanalyse sampling:'latinhypercube' outputs:['my_var'] replicat:10 results:'../path/to/report/file.txt'; ",
+						value = "method stochanalyse sampling:'latinhypercube' outputs:['my_var'] replicat:10 report:'../path/to/report/file.txt'; ",
 						isExecutable = false) }) })
 public class StochanalysisExploration extends AExplorationAlgorithm {
 
@@ -200,15 +199,15 @@ public class StochanalysisExploration extends AExplorationAlgorithm {
 			}
 			MapOutput.put(out.toString(), res_val);
 		}
-		
+
 		// Build report
 		String path = Cast.asString(scope, getFacet(IKeyword.BATCH_REPORT).value(scope));
 		final File f = new File(FileUtils.constructAbsoluteFilePath(scope, path, false));
 		final File parent = f.getParentFile();
 		if (!parent.exists()) { parent.mkdirs(); }
 		if (f.exists()) { f.delete(); }
-		Stochanalysis.WriteAndTellReport(f, MapOutput, scope);
-		
+		Stochanalysis.WriteAndTellReport(f, MapOutput, sample_size, currentExperiment.getSeeds().length, scope);
+
 		/* Save the simulation values in the provided .csv file (input and corresponding output) */
 		if (hasFacet(IKeyword.BATCH_OUTPUT)) {
 			String path_to = Cast.asString(scope, getFacet(IKeyword.BATCH_OUTPUT).value(scope));
