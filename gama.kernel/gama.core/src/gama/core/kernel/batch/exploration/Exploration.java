@@ -1,7 +1,6 @@
 /*******************************************************************************************************
  *
- * Exploration.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * Exploration.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -22,8 +21,6 @@ import java.util.List;
 import java.util.Map;
 
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -31,14 +28,16 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.kernel.batch.exploration.sampling.LatinhypercubeSampling;
 import gama.core.kernel.batch.exploration.sampling.MorrisSampling;
 import gama.core.kernel.batch.exploration.sampling.OrthogonalSampling;
 import gama.core.kernel.batch.exploration.sampling.RandomSampling;
 import gama.core.kernel.batch.exploration.sampling.SaltelliSampling;
 import gama.core.kernel.experiment.IParameter;
-import gama.core.kernel.experiment.ParametersSet;
 import gama.core.kernel.experiment.IParameter.Batch;
+import gama.core.kernel.experiment.ParametersSet;
 import gama.core.metamodel.shape.GamaPoint;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope;
@@ -54,6 +53,7 @@ import gaml.core.types.GamaDateType;
 import gaml.core.types.GamaFloatType;
 import gaml.core.types.GamaPointType;
 import gaml.core.types.IType;
+import gaml.core.types.Types;
 
 /**
  * The Class ExhaustiveSearch.
@@ -76,7 +76,7 @@ import gaml.core.types.IType;
 						name = Exploration.METHODS,
 						type = IType.STRING,
 						optional = true,
-						doc = @doc ("The name of the method (among saltelli/morris/latinhypercube/orthogonal/uniform/factorial)")),
+						doc = @doc ("The name of the sampling method (among saltelli/morris/latinhypercube/orthogonal/uniform/factorial)")),
 				@facet (
 						name = IKeyword.FROM,
 						type = IType.STRING,
@@ -284,6 +284,11 @@ public class Exploration extends AExplorationAlgorithm {
 	private List<ParametersSet> buildParameterFromMap(final IScope scope, final List<ParametersSet> sets,
 			final int index) {
 		IExpression psexp = getFacet(IKeyword.WITH);
+		if (psexp.getDenotedType() != Types.LIST) {
+			GamaRuntimeException.error(
+					"You cannot use " + IKeyword.WITH + " facet without input a list of maps as parameters inputs",
+					scope);
+		}
 		List<Map<String, Object>> parameterSets = Cast.asList(scope, psexp.value(scope));
 
 		for (Map<String, Object> parameterSet : parameterSets) {

@@ -1,7 +1,6 @@
 /*******************************************************************************************************
  *
- * ExperimentPlan.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * ExperimentPlan.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -22,13 +21,13 @@ import com.google.common.collect.Iterables;
 
 import gama.annotations.common.interfaces.IGamlIssue;
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.facet;
 import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.common.preferences.GamaPreferences;
 import gama.core.kernel.batch.BatchOutput;
 import gama.core.kernel.batch.IExploration;
@@ -279,6 +278,12 @@ public class ExperimentPlan extends GamlSpecies implements IExperimentPlan {
 									"The sampling " + tmpDesc.getLitteral(Exploration.METHODS)
 											+ " doesn't exist yet, do you perhaps mean 'saltelli' ?",
 									IGamlIssue.MISSING_FACET);
+							break;
+						case IKeyword.UNIFORM:
+							if (!tmpDesc.hasFacet(Exploration.SAMPLE_SIZE)) {
+								tmpDesc.warning("Sample size not defined, will be 132 by default",
+										IGamlIssue.MISSING_FACET);
+							}
 							break;
 						case IKeyword.FACTORIAL:
 							if (!tmpDesc.hasFacet(Exploration.SAMPLE_SIZE)) {
