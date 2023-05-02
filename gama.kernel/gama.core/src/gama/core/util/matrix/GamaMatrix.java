@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * GamaMatrix.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.0).
+ * GamaMatrix.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -278,8 +278,7 @@ public abstract class GamaMatrix<T> implements IMatrix<T> {
 	@Override
 	public final String stringValue(final IScope scope) throws GamaRuntimeException {
 		final StringBuilder sb = new StringBuilder(numRows * numCols * 5);
-		rowByRow(GAMA.getRuntimeScope(), v -> sb.append(Cast.asString(scope, v)), () -> sb.append(';'),
-				() -> sb.append(Strings.LN));
+		rowByRow(scope, v -> sb.append(Cast.asString(scope, v)), () -> sb.append(';'), () -> sb.append(Strings.LN));
 		return sb.toString();
 	}
 
@@ -300,7 +299,7 @@ public abstract class GamaMatrix<T> implements IMatrix<T> {
 			for (int col = 0; col < numCols; col++) {
 				if (forEachValue != null) {
 					try {
-						forEachValue.accept(get(scope, row, col));
+						forEachValue.accept(get(scope, col, row));
 					} catch (Throwable e) {
 						throw GamaRuntimeException.create(e, scope);
 					}
