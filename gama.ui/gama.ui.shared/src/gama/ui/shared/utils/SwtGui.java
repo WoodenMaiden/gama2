@@ -22,6 +22,8 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.AbstractSourceProvider;
+import org.eclipse.ui.ISourceProviderListener;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
@@ -672,6 +674,29 @@ public class SwtGui implements IGui {
 	public boolean isHiDPI() {
 		int zoom = WorkbenchHelper.run(() -> WorkbenchHelper.getDisplay().getPrimaryMonitor().getZoom());
 		return zoom > 100;
+	}
+
+	/**
+	 * Listen to experiment state.
+	 */
+	public static void listenToExperimentState(final ISourceProviderListener listener) {
+		final ISourceProviderService service = WorkbenchHelper.getService(ISourceProviderService.class);
+		final AbstractSourceProvider stateProvider =
+				(AbstractSourceProvider) service.getSourceProvider("ummisco.gama.ui.experiment.SimulationRunningState");
+		stateProvider.addSourceProviderListener(listener);
+	}
+
+	/**
+	 * Stop listening to experiment state.
+	 *
+	 * @param listener
+	 *            the listener
+	 */
+	public static void stopListeningToExperimentState(final ISourceProviderListener listener) {
+		final ISourceProviderService service = WorkbenchHelper.getService(ISourceProviderService.class);
+		final AbstractSourceProvider stateProvider =
+				(AbstractSourceProvider) service.getSourceProvider("ummisco.gama.ui.experiment.SimulationRunningState");
+		stateProvider.removeSourceProviderListener(listener);
 	}
 
 }

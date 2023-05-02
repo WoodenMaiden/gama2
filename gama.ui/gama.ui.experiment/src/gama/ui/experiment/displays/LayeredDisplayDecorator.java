@@ -13,6 +13,7 @@ package gama.ui.experiment.displays;
 import static gama.ui.shared.bindings.GamaKeyBindings.COMMAND;
 import static gama.ui.shared.bindings.GamaKeyBindings.format;
 
+import java.util.Map;
 import java.util.function.Function;
 
 import org.eclipse.swt.SWT;
@@ -28,6 +29,7 @@ import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IPerspectiveListener;
+import org.eclipse.ui.ISourceProviderListener;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
 
@@ -48,6 +50,7 @@ import gama.ui.shared.menus.GamaMenu;
 import gama.ui.shared.resources.GamaColors;
 import gama.ui.shared.resources.GamaIcon;
 import gama.ui.shared.resources.IGamaIcons;
+import gama.ui.shared.utils.SwtGui;
 import gama.ui.shared.utils.ViewsHelper;
 import gama.ui.shared.utils.WorkbenchHelper;
 import gama.ui.shared.views.toolbar.GamaCommand;
@@ -58,7 +61,7 @@ import gama.ui.shared.views.toolbar.Selector;
 /**
  * The Class LayeredDisplayDecorator.
  */
-public class LayeredDisplayDecorator implements DisplayDataListener {
+public class LayeredDisplayDecorator implements DisplayDataListener, ISourceProviderListener {
 
 	static {
 		DEBUG.OFF();
@@ -111,6 +114,7 @@ public class LayeredDisplayDecorator implements DisplayDataListener {
 		this.view = view;
 		createCommands();
 		WorkbenchHelper.getPage().addPartListener(overlayListener);
+		SwtGui.listenToExperimentState(this);
 	}
 
 	/**
@@ -221,6 +225,9 @@ public class LayeredDisplayDecorator implements DisplayDataListener {
 
 	};
 
+	/** The run experiment item. */
+	ToolItem runExperimentItem = null;
+
 	/**
 	 * Toggle full screen.
 	 */
@@ -237,6 +244,7 @@ public class LayeredDisplayDecorator implements DisplayDataListener {
 				toolbar.setParent(normalParentOfToolbar);
 				normalParentOfToolbar.requestLayout();
 			}
+			runExperimentItem = null;
 			view.getCentralPanel().setParent(normalParentOfFullScreenControl);
 			createOverlay();
 			normalParentOfFullScreenControl.requestLayout();
@@ -300,11 +308,11 @@ public class LayeredDisplayDecorator implements DisplayDataListener {
 	public void addFullscreenToolbarCommands() {
 		toolbar.button(toggleOverlay, SWT.LEFT);
 		toolbar.sep(GamaToolbarFactory.TOOLBAR_SEP, SWT.LEFT);
-		final ToolItem item = toolbar.button(runExperiment, SWT.LEFT);
+		runExperimentItem = toolbar.button(runExperiment, SWT.LEFT);
 		if (GAMA.isPaused()) {
-			item.setImage(GamaIcon.named(IGamaIcons.EXPERIMENT_RUN).image());
+			runExperimentItem.setImage(GamaIcon.named(IGamaIcons.EXPERIMENT_RUN).image());
 		} else {
-			item.setImage(GamaIcon.named(IGamaIcons.MENU_PAUSE_ACTION).image());
+			runExperimentItem.setImage(GamaIcon.named(IGamaIcons.MENU_PAUSE_ACTION).image());
 		}
 		toolbar.button(stepExperiment, SWT.LEFT);
 		toolbar.control(SimulationSpeedContributionItem.create(toolbar.getToolbar(SWT.LEFT)),
@@ -579,6 +587,7 @@ public class LayeredDisplayDecorator implements DisplayDataListener {
 	 * Dispose.
 	 */
 	public void dispose() {
+		SwtGui.stopListeningToExperimentState(this);
 		// FIXME Remove the listeners
 		try {
 			WorkbenchHelper.getWindow().removePerspectiveListener(perspectiveListener);
@@ -611,6 +620,32 @@ public class LayeredDisplayDecorator implements DisplayDataListener {
 			fullScreenShell = null;
 		}
 
+	}
+
+	@Override
+	public void sourceChanged(final int sourcePriority, final String sourceName, final Object sourceValue) {
+		// DEBUG.OUT("Source changed " + sourceName + " " + sourceValue);
+		if ("STOPPED".equals(sourceValue) && isFullScreen() && toolbar != null && toolbar.isVisible()) {
+			runExperimentItem.setImage(GamaIcon.named(IGamaIcons.EXPERIMENT_RUN).image());
+			toolbar.update();
+		}
+		if ("RUNNING".equals(sourceValue) && isFullScreen() && toolbar != null && toolbar.isVisible()) {
+			runExperimentItem.setImage(GamaIcon.named(IGamaIcons.MENU_PAUSE_ACTION).image());
+			toolbar.update();
+		}
+	}
+
+	@Override
+	public void sourceChanged(final int sourcePriority, final Map sourceValuesByName) {
+		// DEBUG.OUT("Source changed " + sourceValuesByName);
+		if (isFullScreen() && toolbar != null && toolbar.isVisible()) {
+			if (GAMA.isPaused()) {
+				runExperimentItem.setImage(GamaIcon.named(IGamaIcons.EXPERIMENT_RUN).image());
+			} else {
+				runExperimentItem.setImage(GamaIcon.named(IGamaIcons.MENU_PAUSE_ACTION).image());
+			}
+			toolbar.update();
+		}
 	}
 
 	@Override
