@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * SobolExploration.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * SobolExploration.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.Map;
 
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -27,16 +25,21 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.common.util.FileUtils;
 import gama.core.kernel.batch.exploration.AExplorationAlgorithm;
-import gama.core.kernel.experiment.ParametersSet;
+import gama.core.kernel.experiment.BatchAgent;
 import gama.core.kernel.experiment.IParameter.Batch;
+import gama.core.kernel.experiment.ParameterAdapter;
+import gama.core.kernel.experiment.ParametersSet;
 import gama.core.runtime.IScope;
 import gama.core.runtime.concurrent.GamaExecutorService;
 import gama.core.runtime.exceptions.GamaRuntimeException;
 import gama.core.util.GamaMapFactory;
 import gama.core.util.IList;
 import gama.core.util.IMap;
+import gama.dev.DEBUG;
 import gaml.core.compilation.ISymbol;
 import gaml.core.descriptions.IDescription;
 import gaml.core.operators.Cast;
@@ -48,6 +51,10 @@ import gaml.core.types.IType;
  *
  * @author kevinchapuis
  *
+ */
+
+/**
+ * The Class SobolExploration.
  */
 @symbol (
 		name = IKeyword.SOBOL,
@@ -244,12 +251,12 @@ public class SobolExploration extends AExplorationAlgorithm {
 
 			// Use the saltelli sequence provided...
 			if (f.exists()) {
-				System.out.println("Sample used : " + path);
+				DEBUG.OUT("Sample used : " + path);
 				sobol_analysis.setSaltelliSamplingFromCsv(f);
 			}
 			// ... or build the saltelli sequence automatically and save it into a file
 			else {
-				System.out.println("Automatic sampling used");
+				DEBUG.OUT("Automatic sampling used");
 				sobol_analysis.setRandomSaltelliSampling();
 				sobol_analysis.saveSaltelliSample(f);
 			}
@@ -274,6 +281,18 @@ public class SobolExploration extends AExplorationAlgorithm {
 		return sets;
 	}
 
+	@Override
+	public void addParametersTo(final List<Batch> exp, final BatchAgent agent) {
+		super.addParametersTo(exp, agent);
+
+		exp.add(new ParameterAdapter("Saltelli sample", IKeyword.SOBOL, IType.STRING) {
+			@Override
+			public Object value() {
+				return _sample;
+			}
+		});
+	}
+
 	/**
 	 * Convert the output of Gaml so it can be read by the Sobol class
 	 *
@@ -288,7 +307,13 @@ public class SobolExploration extends AExplorationAlgorithm {
 		for (String output : outputs) { rebuilt_output.put(output, new ArrayList<>()); }
 
 		for (ParametersSet sol : solutions) {
-			for (String output : outputs) { rebuilt_output.get(output).add(res_outputs.get(sol).get(output).get(0)); }
+			for (String output : outputs) {
+				try {
+					rebuilt_output.get(output).add(res_outputs.get(sol).get(output).get(0));
+				} catch (NullPointerException e) {
+					return rebuilt_output;
+				}
+			}
 		}
 
 		return rebuilt_output;

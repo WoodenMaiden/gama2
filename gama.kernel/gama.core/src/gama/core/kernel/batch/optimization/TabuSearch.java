@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * TabuSearch.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.0).
+ * TabuSearch.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -24,10 +22,11 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.kernel.batch.StoppingCriterion;
 import gama.core.kernel.batch.StoppingCriterionMaxIt;
 import gama.core.kernel.experiment.BatchAgent;
-import gama.core.kernel.experiment.IExperimentPlan;
 import gama.core.kernel.experiment.IParameter;
 import gama.core.kernel.experiment.ParameterAdapter;
 import gama.core.kernel.experiment.ParametersSet;
@@ -189,7 +188,7 @@ public class TabuSearch extends ALocalSearchAlgorithm {
 				for (final ParametersSet neighborSol : neighbors) {
 					if (neighborSol == null) { continue; }
 					Double neighborFitness = testedSolutions.get(neighborSol);
-					if ((neighborFitness != null) && (neighborFitness != Double.MAX_VALUE)) { continue; }
+					if (neighborFitness != null && neighborFitness != Double.MAX_VALUE) { continue; }
 					neighborFitness = (Double) currentExperiment.launchSimulationsWithSolution(neighborSol)
 							.get(IKeyword.FITNESS).get(0);
 					testedSolutions.put(neighborSol, neighborFitness);
@@ -235,7 +234,7 @@ public class TabuSearch extends ALocalSearchAlgorithm {
 	@Override
 	public void addParametersTo(final List<IParameter.Batch> params, final BatchAgent agent) {
 		super.addParametersTo(params, agent);
-		params.add(new ParameterAdapter("Tabu list size", IExperimentPlan.BATCH_CATEGORY_NAME, IType.INT) {
+		params.add(new ParameterAdapter("Tabu list size", BatchAgent.CALIBRATION_EXPERIMENT, IType.INT) {
 
 			@Override
 			public Object value() {
@@ -244,7 +243,7 @@ public class TabuSearch extends ALocalSearchAlgorithm {
 
 		});
 		params.add(
-				new ParameterAdapter("Maximum number of iterations", IExperimentPlan.BATCH_CATEGORY_NAME, IType.FLOAT) {
+				new ParameterAdapter("Maximum number of iterations", BatchAgent.CALIBRATION_EXPERIMENT, IType.FLOAT) {
 
 					@Override
 					public Object value() {

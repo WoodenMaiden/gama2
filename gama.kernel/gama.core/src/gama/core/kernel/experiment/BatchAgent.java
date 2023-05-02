@@ -9,8 +9,6 @@
  ********************************************************************************************************/
 package gama.core.kernel.experiment;
 
-import static gaml.core.operators.Cast.asFloat;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -62,6 +60,18 @@ import gaml.core.variables.IVariable;
 @doc ("Experiments supporting the execution of several simulations in order to explore parameters or reach a specific state")
 @SuppressWarnings ({ "unchecked", "rawtypes" })
 public class BatchAgent extends ExperimentAgent {
+
+	/**
+	 * Name of the different types of batch experiment : exploration, analysis and calibration See wiki
+	 * https://gama-platform.org/wiki/ExplorationMethods for more information
+	 */
+	public final static String BATCH_EXPERIMENT = "Batch experiment";
+
+	/** The Constant EXPLORATION_EXPERIMENT. */
+	public final static String EXPLORATION_EXPERIMENT = "Exploration experiment";
+
+	/** The Constant CALIBRATION_EXPERIMENT. */
+	public final static String CALIBRATION_EXPERIMENT = "Calibration experiment";
 
 	/** The stop condition. */
 	final IExpression stopCondition;
@@ -567,7 +577,7 @@ public class BatchAgent extends ExperimentAgent {
 	 */
 	public void addSpecificParameters(final List<IParameter.Batch> params) {
 
-		params.add(new ParameterAdapter("Stop condition", IExperimentPlan.BATCH_CATEGORY_NAME, IType.STRING) {
+		params.add(new ParameterAdapter("Stop condition", BATCH_EXPERIMENT, IType.STRING) {
 
 			@Override
 			public Object value() {
@@ -576,50 +586,16 @@ public class BatchAgent extends ExperimentAgent {
 
 		});
 
-		params.add(new ParameterAdapter("Parameter space", IExperimentPlan.BATCH_CATEGORY_NAME, "", IType.STRING) {
-
-			@Override
-			public String value() {
-				final Map<String, IParameter.Batch> explorable = getSpecies().getExplorableParameters();
-				if (explorable.isEmpty()) return "1";
-				String result = "";
-				int dim = 1;
-				for (final Map.Entry<String, IParameter.Batch> entry : explorable.entrySet()) {
-					result += entry.getKey() + " (";
-					final int entryDim = getExplorationDimension(entry.getValue());
-					dim = dim * entryDim;
-					result += String.valueOf(entryDim) + ") * ";
-				}
-				result = result.substring(0, result.length() - 2);
-				result += " = " + dim;
-				return result;
-			}
-
-			int getExplorationDimension(final IParameter.Batch p) {
-				IScope scope = getScope();
-
-				// AD TODO Issue a warning in the compilation if a batch experiment tries to explore non-int or
-				// non-float values
-				if (p.getAmongValue(scope) != null) return p.getAmongValue(scope).size();
-				return (int) ((asFloat(scope, p.getMaxValue(scope)) - asFloat(scope, p.getMinValue(scope)))
-						/ asFloat(scope, p.getStepValue(scope))) + 1;
-			}
-
-		});
-
-		params.add(new ParameterAdapter("Last parameter set tested", IExperimentPlan.BATCH_CATEGORY_NAME, "",
-				IType.STRING) {
-
-			@Override
-			public String value() {
-				if (lastSolution == null) return "-";
-				return lastSolution.toString();
-			}
-
-		});
-
 		getSpecies().getExplorationAlgorithm().addParametersTo(params, this);
 	}
+
+	/**
+	 *
+	 * Returns the last explored points explored in the parameter set
+	 *
+	 * @return ParametersSet
+	 */
+	public ParametersSet getLatestSolution() { return this.lastSolution; }
 
 	/**
 	 * Gets the seeds.

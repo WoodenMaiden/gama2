@@ -35,8 +35,10 @@ import gama.core.kernel.batch.exploration.sampling.MorrisSampling;
 import gama.core.kernel.batch.exploration.sampling.OrthogonalSampling;
 import gama.core.kernel.batch.exploration.sampling.RandomSampling;
 import gama.core.kernel.batch.exploration.sampling.SaltelliSampling;
+import gama.core.kernel.experiment.BatchAgent;
 import gama.core.kernel.experiment.IParameter;
 import gama.core.kernel.experiment.IParameter.Batch;
+import gama.core.kernel.experiment.ParameterAdapter;
 import gama.core.kernel.experiment.ParametersSet;
 import gama.core.metamodel.shape.GamaPoint;
 import gama.core.runtime.GAMA;
@@ -239,7 +241,9 @@ public class Exploration extends AExplorationAlgorithm {
 					new ArrayList<>());
 			default -> buildParameterSets(scope, new ArrayList<>(), 0);
 		};
-		if (sets.isEmpty()) { sets.add(new ParametersSet()); }
+		if (sets.isEmpty()) {
+			sets.add(new ParametersSet());
+		} else if (sample_size == 132) { sample_size = sets.size(); }
 
 		if (GamaExecutorService.shouldRunAllSimulationsInParallel(currentExperiment)) {
 			currentExperiment.launchSimulationsWithSolution(sets);
@@ -269,6 +273,29 @@ public class Exploration extends AExplorationAlgorithm {
 		}
 		if (index == variables.size() - 1) return sets2;
 		return buildParameterSets(scope, sets2, index + 1);
+	}
+
+	@Override
+	public void addParametersTo(final List<Batch> exp, final BatchAgent agent) {
+		super.addParametersTo(exp, agent);
+
+		exp.add(new ParameterAdapter("Sampled points", BatchAgent.EXPLORATION_EXPERIMENT, IType.STRING) {
+			@Override
+			public Object value() {
+				return sample_size;
+			}
+		});
+
+		exp.add(new ParameterAdapter("Sampling method", BatchAgent.EXPLORATION_EXPERIMENT, IType.STRING) {
+			@Override
+			public Object value() {
+				if (hasFacet(IKeyword.FROM)) return FROM_FILE;
+				if (hasFacet(IKeyword.WITH)) return FROM_LIST;
+				return hasFacet(Exploration.METHODS)
+						? Cast.asString(agent.getScope(), getFacet(METHODS).value(agent.getScope())) : "exhaustive";
+			}
+		});
+
 	}
 
 	/**

@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * SimulatedAnnealing.java, in msi.gama.core, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * SimulatedAnnealing.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.core.kernel.batch.optimization;
 
@@ -14,8 +14,6 @@ import java.util.Collections;
 import java.util.List;
 
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -23,8 +21,9 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.kernel.experiment.BatchAgent;
-import gama.core.kernel.experiment.IExperimentPlan;
 import gama.core.kernel.experiment.IParameter;
 import gama.core.kernel.experiment.ParameterAdapter;
 import gama.core.kernel.experiment.ParametersSet;
@@ -110,32 +109,33 @@ public class SimulatedAnnealing extends ALocalSearchAlgorithm {
 
 	/** The temperature end. */
 	double temperatureEnd = 1;
-	
+
 	/** The temp dim coeff. */
 	double tempDimCoeff = 0.5;
-	
+
 	/** The temperature init. */
 	double temperatureInit = 100;
-	
+
 	/** The nb iter cst temp. */
 	int nbIterCstTemp = 5;
 
 	/** The Constant TEMP_END. */
 	protected static final String TEMP_END = "temp_end";
-	
+
 	/** The Constant TEMP_DECREASE. */
 	protected static final String TEMP_DECREASE = "temp_decrease";
-	
+
 	/** The Constant TEMP_INIT. */
 	protected static final String TEMP_INIT = "temp_init";
-	
+
 	/** The Constant NB_ITER. */
 	protected static final String NB_ITER = "nb_iter_cst_temp";
 
 	/**
 	 * Instantiates a new simulated annealing.
 	 *
-	 * @param species the species
+	 * @param species
+	 *            the species
 	 */
 	public SimulatedAnnealing(final IDescription species) {
 		super(species);
@@ -151,29 +151,22 @@ public class SimulatedAnnealing extends ALocalSearchAlgorithm {
 	@Override
 	public void initParams(final IScope scope) {
 		final IExpression tempend = getFacet(TEMP_END);
-		if (tempend != null) {
-			temperatureEnd = Cast.asFloat(scope, tempend.value(scope));
-		}
+		if (tempend != null) { temperatureEnd = Cast.asFloat(scope, tempend.value(scope)); }
 		final IExpression tempdecrease = getFacet(TEMP_DECREASE);
-		if (tempdecrease != null) {
-			tempDimCoeff = Cast.asFloat(scope, tempdecrease.value(scope));
-		}
+		if (tempdecrease != null) { tempDimCoeff = Cast.asFloat(scope, tempdecrease.value(scope)); }
 		final IExpression tempinit = getFacet(TEMP_INIT);
-		if (tempinit != null) {
-			temperatureInit = Cast.asFloat(scope, tempinit.value(scope));
-		}
+		if (tempinit != null) { temperatureInit = Cast.asFloat(scope, tempinit.value(scope)); }
 
 		final IExpression nbIterCstT = getFacet(NB_ITER);
-		if (nbIterCstT != null) {
-			nbIterCstTemp = Cast.asInt(scope, nbIterCstT.value(scope));
-		}
+		if (nbIterCstT != null) { nbIterCstTemp = Cast.asInt(scope, nbIterCstT.value(scope)); }
 	}
 
 	@Override
 	public ParametersSet findBestSolution(final IScope scope) throws GamaRuntimeException {
 		initializeTestedSolutions();
 		setBestSolution(new ParametersSet(this.solutionInit));
-		double currentFitness = (Double) currentExperiment.launchSimulationsWithSolution(getBestSolution()).get(IKeyword.FITNESS).get(0);
+		double currentFitness = (Double) currentExperiment.launchSimulationsWithSolution(getBestSolution())
+				.get(IKeyword.FITNESS).get(0);
 		ParametersSet bestSolutionAlgo = this.solutionInit;
 		testedSolutions.put(getBestSolution(), getBestFitness());
 		setBestFitness(currentFitness);
@@ -181,35 +174,34 @@ public class SimulatedAnnealing extends ALocalSearchAlgorithm {
 
 		while (temperature > temperatureEnd) {
 			final List<ParametersSet> neighbors = neighborhood.neighbor(scope, bestSolutionAlgo);
-			if (neighbors.isEmpty()) {
-				break;
-			}
+			if (neighbors.isEmpty()) { break; }
 			int iter = 0;
 			while (iter < nbIterCstTemp) {
 				final ParametersSet neighborSol = neighbors.get(scope.getRandom().between(0, neighbors.size() - 1));
 				if (neighborSol == null) {
 					neighbors.removeAll(Collections.singleton(null));
-					if (neighbors.isEmpty()) {
-						break;
-					}
+					if (neighbors.isEmpty()) { break; }
 					continue;
 				}
 				Double neighborFitness = testedSolutions.get(neighborSol);
 				if (neighborFitness == null || neighborFitness == Double.MAX_VALUE) {
-					neighborFitness = (Double) currentExperiment.launchSimulationsWithSolution(neighborSol).get(IKeyword.FITNESS).get(0);
+					neighborFitness = (Double) currentExperiment.launchSimulationsWithSolution(neighborSol)
+							.get(IKeyword.FITNESS).get(0);
 					testedSolutions.put(neighborSol, neighborFitness);
 				}
 
 				if (isMaximize()) {
-					if (neighborFitness >= currentFitness || scope.getRandom().next() < Math.exp(Math.abs(neighborFitness - currentFitness) / temperature)) {
+					if (neighborFitness >= currentFitness || scope.getRandom().next() < Math
+							.exp(Math.abs(neighborFitness - currentFitness) / temperature)) {
 						bestSolutionAlgo = neighborSol;
 						currentFitness = neighborFitness;
 					}
-				
-				} else if (neighborFitness <= currentFitness || scope.getRandom().next() < Math.exp(Math.abs(currentFitness - neighborFitness) / temperature)) {
+
+				} else if (neighborFitness <= currentFitness || scope.getRandom().next() < Math
+						.exp(Math.abs(currentFitness - neighborFitness) / temperature)) {
 					bestSolutionAlgo = neighborSol;
 					currentFitness = neighborFitness;
-					
+
 				}
 				iter++;
 			}
@@ -222,7 +214,7 @@ public class SimulatedAnnealing extends ALocalSearchAlgorithm {
 	@Override
 	public void addParametersTo(final List<IParameter.Batch> params, final BatchAgent agent) {
 		super.addParametersTo(params, agent);
-		params.add(new ParameterAdapter("Final temperature", IExperimentPlan.BATCH_CATEGORY_NAME, IType.FLOAT) {
+		params.add(new ParameterAdapter("Final temperature", BatchAgent.CALIBRATION_EXPERIMENT, IType.FLOAT) {
 
 			@Override
 			public Object value() {
@@ -230,7 +222,7 @@ public class SimulatedAnnealing extends ALocalSearchAlgorithm {
 			}
 
 		});
-		params.add(new ParameterAdapter("Initial temperature", IExperimentPlan.BATCH_CATEGORY_NAME, IType.FLOAT) {
+		params.add(new ParameterAdapter("Initial temperature", BatchAgent.CALIBRATION_EXPERIMENT, IType.FLOAT) {
 
 			@Override
 			public Object value() {
@@ -238,7 +230,7 @@ public class SimulatedAnnealing extends ALocalSearchAlgorithm {
 			}
 
 		});
-		params.add(new ParameterAdapter("Coefficient of diminution", IExperimentPlan.BATCH_CATEGORY_NAME, IType.FLOAT) {
+		params.add(new ParameterAdapter("Coefficient of diminution", BatchAgent.CALIBRATION_EXPERIMENT, IType.FLOAT) {
 
 			@Override
 			public Object value() {
@@ -247,7 +239,7 @@ public class SimulatedAnnealing extends ALocalSearchAlgorithm {
 
 		});
 		params.add(new ParameterAdapter("Number of iterations at constant temperature",
-				IExperimentPlan.BATCH_CATEGORY_NAME, IType.INT) {
+				BatchAgent.CALIBRATION_EXPERIMENT, IType.INT) {
 
 			@Override
 			public Object value() {

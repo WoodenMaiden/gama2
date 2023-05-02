@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * BetaExploration.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * BetaExploration.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.Map;
 
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -27,13 +25,17 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.common.util.FileUtils;
 import gama.core.kernel.batch.exploration.AExplorationAlgorithm;
 import gama.core.kernel.batch.exploration.Exploration;
 import gama.core.kernel.batch.exploration.sampling.RandomSampling;
 import gama.core.kernel.batch.exploration.sampling.SaltelliSampling;
-import gama.core.kernel.experiment.ParametersSet;
+import gama.core.kernel.experiment.BatchAgent;
 import gama.core.kernel.experiment.IParameter.Batch;
+import gama.core.kernel.experiment.ParameterAdapter;
+import gama.core.kernel.experiment.ParametersSet;
 import gama.core.runtime.IScope;
 import gama.core.runtime.concurrent.GamaExecutorService;
 import gama.core.runtime.exceptions.GamaRuntimeException;
@@ -87,7 +89,7 @@ import gaml.core.types.IType;
 						name = Exploration.SAMPLE_SIZE,
 						type = IType.INT,
 						optional = true,
-						doc = @doc ("The number of sample required.")),
+						doc = @doc ("The number of automated steps to swip over, when step facet is missing in parameter definition. Default is 9")),
 				@facet (
 						name = Exploration.SAMPLE_FACTORIAL,
 						type = IType.LIST,
@@ -217,7 +219,31 @@ public class BetaExploration extends AExplorationAlgorithm {
 	}
 
 	@Override
-	public List<ParametersSet> buildParameterSets(final IScope scope, final List<ParametersSet> sets, final int index) { return null; }
+	public List<ParametersSet> buildParameterSets(final IScope scope, final List<ParametersSet> sets, final int index) {
+		return null;
+	}
+
+	@Override
+	public void addParametersTo(final List<Batch> exp, final BatchAgent agent) {
+		super.addParametersTo(exp, agent);
+
+		exp.add(new ParameterAdapter("Sampled points", IKeyword.BETAD, IType.STRING) {
+			@Override
+			public Object value() {
+				return Cast.asInt(agent.getScope(), getFacet(Exploration.SAMPLE_SIZE).value(agent.getScope()));
+			}
+		});
+
+		exp.add(new ParameterAdapter("Sampling method", IKeyword.BETAD, IType.STRING) {
+			@Override
+			public Object value() {
+				return hasFacet(Exploration.METHODS)
+						? Cast.asString(agent.getScope(), getFacet(Exploration.METHODS).value(agent.getScope()))
+						: "exhaustive";
+			}
+		});
+
+	}
 
 	/**
 	 * Builds the report string.

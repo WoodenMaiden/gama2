@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * GeneticAlgorithm.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GeneticAlgorithm.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -18,8 +18,6 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -27,11 +25,12 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.kernel.batch.Neighborhood;
 import gama.core.kernel.batch.Neighborhood1Var;
 import gama.core.kernel.batch.optimization.AOptimizationAlgorithm;
 import gama.core.kernel.experiment.BatchAgent;
-import gama.core.kernel.experiment.IExperimentPlan;
 import gama.core.kernel.experiment.IParameter;
 import gama.core.kernel.experiment.ParameterAdapter;
 import gama.core.kernel.experiment.ParametersSet;
@@ -366,7 +365,7 @@ public class GeneticAlgorithm extends AOptimizationAlgorithm {
 	@Override
 	public void addParametersTo(final List<IParameter.Batch> params, final BatchAgent agent) {
 		super.addParametersTo(params, agent);
-		params.add(new ParameterAdapter("Mutation probability", IExperimentPlan.BATCH_CATEGORY_NAME, IType.FLOAT) {
+		params.add(new ParameterAdapter("Mutation probability", BatchAgent.CALIBRATION_EXPERIMENT, IType.FLOAT) {
 
 			@Override
 			public Object value() {
@@ -374,7 +373,7 @@ public class GeneticAlgorithm extends AOptimizationAlgorithm {
 			}
 
 		});
-		params.add(new ParameterAdapter("Crossover probability", IExperimentPlan.BATCH_CATEGORY_NAME, IType.FLOAT) {
+		params.add(new ParameterAdapter("Crossover probability", BatchAgent.CALIBRATION_EXPERIMENT, IType.FLOAT) {
 
 			@Override
 			public Object value() {
@@ -382,7 +381,7 @@ public class GeneticAlgorithm extends AOptimizationAlgorithm {
 			}
 
 		});
-		params.add(new ParameterAdapter("Population dimension", IExperimentPlan.BATCH_CATEGORY_NAME, IType.INT) {
+		params.add(new ParameterAdapter("Population dimension", BatchAgent.CALIBRATION_EXPERIMENT, IType.INT) {
 
 			@Override
 			public Object value() {
@@ -390,7 +389,7 @@ public class GeneticAlgorithm extends AOptimizationAlgorithm {
 			}
 
 		});
-		params.add(new ParameterAdapter("Preliminary number of generations", IExperimentPlan.BATCH_CATEGORY_NAME,
+		params.add(new ParameterAdapter("Preliminary number of generations", BatchAgent.CALIBRATION_EXPERIMENT,
 				IType.FLOAT) {
 
 			@Override
@@ -399,15 +398,14 @@ public class GeneticAlgorithm extends AOptimizationAlgorithm {
 			}
 
 		});
-		params.add(
-				new ParameterAdapter("Max. number of generations", IExperimentPlan.BATCH_CATEGORY_NAME, IType.FLOAT) {
+		params.add(new ParameterAdapter("Max. number of generations", BatchAgent.CALIBRATION_EXPERIMENT, IType.FLOAT) {
 
-					@Override
-					public Object value() {
-						return maxGenerations;
-					}
+			@Override
+			public Object value() {
+				return maxGenerations;
+			}
 
-				});
+		});
 	}
 
 	/**
