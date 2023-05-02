@@ -546,17 +546,10 @@ public class CameraHelper extends AbstractRendererHelper implements IMultiListen
 		if (!data.isCameraLocked() && isCtrl) {
 			final int horizMovement = (int) (newPoint.x - lastMousePressedPosition.x);
 			final int vertMovement = (int) (newPoint.y - lastMousePressedPosition.y);
-			// if (flipped) {
-			// horizMovement = -horizMovement;
-			// vertMovement = -vertMovement;
-			// }
-
 			final double horizMovement_real = horizMovement;
 			final double vertMovement_real = vertMovement;
-
 			lastMousePressedPosition.setLocation(newPoint);
 			theta = theta - horizMovement_real * getSensivity();
-
 			if (flipped) {
 				if (vertMovement_real > 0) {
 					// down drag : phi increase
@@ -593,7 +586,6 @@ public class CameraHelper extends AbstractRendererHelper implements IMultiListen
 				theta += 180;
 			}
 
-			// phi = phi - vertMovement_real * get_sensivity();
 			updateCartesianCoordinatesFromAngles();
 		} else if (shiftPressed && isViewInXYPlan()) {
 			getMousePosition().x = x;

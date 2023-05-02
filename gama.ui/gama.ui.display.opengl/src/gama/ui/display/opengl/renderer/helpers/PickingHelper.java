@@ -115,15 +115,6 @@ public class PickingHelper extends AbstractRendererHelper {
 	}
 
 	/**
-	 * Checks for picked.
-	 *
-	 * @return true, if successful
-	 */
-	// public boolean hasPicked() {
-	// return isPicking && pickedIndex != NONE;
-	// }
-
-	/**
 	 * Checks if is beginning picking.
 	 *
 	 * @return true, if is beginning picking
