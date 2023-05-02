@@ -1,9 +1,8 @@
 /*******************************************************************************************************
  *
- * CSVModel.java, in gama.ui.shared.viewers, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * CSVModel.java, in gama.ui.viewers, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -21,11 +20,11 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 
 import gama.core.runtime.GAMA;
-import gama.core.util.file.IGamaFileMetaData;
 import gama.core.util.file.GamaCSVFile.CSVInfo;
+import gama.core.util.file.IGamaFileMetaData;
+import gama.core.util.file.csv.AbstractCSVManipulator;
 import gama.core.util.file.csv.CsvReader;
 import gama.core.util.file.csv.CsvWriter;
-import gama.core.util.file.csv.CsvWriter.Letters;
 import gama.dev.DEBUG;
 import gama.ui.shared.interfaces.IRefreshHandler;
 import gama.ui.shared.utils.WorkbenchHelper;
@@ -105,29 +104,11 @@ public class CSVModel implements IRowChangesListener {
 	}
 
 	/**
-	 * Get the character that defines comment lines
+	 * Gets the text qualifier.
 	 *
-	 * @return the comment line starting character. If no comments are allowed in this file, then Character.UNASSIGNED
-	 *         constant must be returned;
-	 *
+	 * @return the text qualifier
 	 */
-	public char getCommentChar() { return Character.UNASSIGNED; }
-
-	/**
-	 * Get custom text qualifier to use as a text qualifier in the data
-	 *
-	 * @return the text qualifier character to use as a text qualifier in the data
-	 */
-	public Character getTextQualifier() { return Character.UNASSIGNED; }
-
-	/**
-	 * check if the text qualifier has to be use for all fields or not
-	 *
-	 * @return true if the text qualifier is to be used for all data fields
-	 */
-	public boolean useQualifier() {
-		return getTextQualifier() != null;
-	}
+	public Character getTextQualifier() { return AbstractCSVManipulator.getDefaultQualifier(); }
 
 	/**
 	 * @param text
@@ -142,20 +123,8 @@ public class CSVModel implements IRowChangesListener {
 	 */
 	protected CsvReader initializeReader(final Reader reader) {
 		final CsvReader csvReader = new CsvReader(reader);
-
 		final char customDelimiter = getCustomDelimiter();
 		csvReader.setDelimiter(customDelimiter);
-
-		final char commentChar = getCommentChar();
-		if (commentChar != Character.UNASSIGNED) {
-			csvReader.setComment(commentChar);
-			// prevent loss of comment in csv source file
-			csvReader.setUseComments(false);
-		}
-
-		csvReader.setTextQualifier(Letters.QUOTE);
-		csvReader.setUseTextQualifier(true);
-
 		return csvReader;
 	}
 
@@ -186,16 +155,14 @@ public class CSVModel implements IRowChangesListener {
 				final String[] rowValues = csvReader.getValues();
 				if (rowValues.length > info.cols) { info.cols = rowValues.length; }
 				final CSVRow csvRow = new CSVRow(rowValues, this);
-				if (!rowValues[0].startsWith(String.valueOf(getCommentChar()))) {
-					if (info.header && !setHeader) {
-						setHeader = true;
-						csvRow.setHeader(true);
-						getInfo().headers = new String[getInfo().cols];
-						for (int i = 0; i < getInfo().cols; i++) { getInfo().headers[i] = rowValues[i]; }
-					}
-				} else {
-					csvRow.setCommentLine(true);
+
+				if (info.header && !setHeader) {
+					setHeader = true;
+					csvRow.setHeader(true);
+					getInfo().headers = new String[getInfo().cols];
+					for (int i = 0; i < getInfo().cols; i++) { getInfo().headers[i] = rowValues[i]; }
 				}
+
 				rows.add(csvRow);
 			}
 			if (!info.header) {
@@ -224,22 +191,6 @@ public class CSVModel implements IRowChangesListener {
 	// ----------------------------------
 	// Helper method on rows management
 	// ----------------------------------
-
-	/**
-	 * @param row
-	 */
-	// public void duplicateRow(final CSVRow row) {
-	// CSVRow newRow = new CSVRow(row, this);
-	// CSVInfo info = getInfo();
-	// int indexRow = findRow(row);
-	// if ( indexRow != -1 ) {
-	// rows.add(indexRow, newRow);
-	// } else {
-	// addRow(newRow);
-	// }
-	// info.rows++;
-	// saveMetaData();
-	// }
 
 	/**
 	 *
@@ -302,11 +253,7 @@ public class CSVModel implements IRowChangesListener {
 		final ArrayList<CSVRow> myrows = new ArrayList<>();
 		for (final CSVRow row : rows) {
 			// should we return the comment line
-			if (row.isCommentLine()) {
-				if (includeCommentLine) { myrows.add(row); }
-			}
-			// we do not add the header line
-			else if (!row.isHeader()) { myrows.add(row); }
+			if (!row.isHeader()) { myrows.add(row); }
 		}
 		return myrows.toArray();
 	}
@@ -374,13 +321,7 @@ public class CSVModel implements IRowChangesListener {
 			info.headers = cols.toArray(new String[cols.size()]);
 		}
 		info.cols--;
-		for (final CSVRow row : rows) {
-			if (!row.isCommentLine()) {
-				// DEBUG.LOG("remove elmt:[" + colIndex + "] in row ["
-				// + row + "]");
-				row.removeElementAt(colIndex);
-			}
-		}
+		for (final CSVRow row : rows) { row.removeElementAt(colIndex); }
 		saveMetaData();
 	}
 
@@ -420,8 +361,6 @@ public class CSVModel implements IRowChangesListener {
 		final char delimiter = getCustomDelimiter();
 		final CsvWriter csvWriter = new CsvWriter(writer, delimiter);
 		csvWriter.setTextQualifier(getTextQualifier());
-		csvWriter.setForceQualifier(useQualifier());
-		csvWriter.setComment(getCommentChar());
 		return csvWriter;
 	}
 
@@ -432,13 +371,7 @@ public class CSVModel implements IRowChangesListener {
 
 		try (final StringWriter sw = new StringWriter(); final CsvWriter clw = initializeWriter(sw);) {
 
-			for (final CSVRow row : rows) {
-				if (row.isCommentLine()) {
-					clw.writeComment(row.getComment());
-				} else {
-					clw.writeRecord(row.getEntriesAsArray());
-				}
-			}
+			for (final CSVRow row : rows) { clw.writeRecord(row.getEntriesAsArray()); }
 			return sw.toString();
 		} catch (final Exception e) {
 			DEBUG.ERR("cannot write csv file");

@@ -40,6 +40,7 @@ import gama.core.util.GamaFont;
 import gama.core.util.GamaMapFactory;
 import gama.core.util.file.GenericFile;
 import gama.core.util.file.IGamaFile;
+import gama.core.util.file.csv.AbstractCSVManipulator;
 import gaml.core.compilation.GAML;
 import gaml.core.compilation.kernel.GamaMetaModel;
 import gaml.core.operators.Cast;
@@ -816,6 +817,19 @@ public class GamaPreferences {
 							if (codes.isEmpty()) return false;
 							return true;
 						});
+
+		/** The Constant CSV_STRING_QUALIFIER. */
+		public static final Pref<String> CSV_STRING_QUALIFIER =
+				GamaPreferences
+						.create("pref_csv_string_qualifier", "Default separator for strings",
+								String.valueOf(AbstractCSVManipulator.Letters.QUOTE), IType.STRING, true)
+						.in(NAME, "CSV Files");
+
+		/** The Constant CSV_SEPARATOR. */
+		public static final Pref<String> CSV_SEPARATOR = GamaPreferences
+				.create("pref_csv_separator", "Default separator for fields",
+						String.valueOf(AbstractCSVManipulator.Letters.COMMA), IType.STRING, true)
+				.in(GamaPreferences.External.NAME, "CSV Files");
 	}
 
 	/**

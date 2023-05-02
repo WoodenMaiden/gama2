@@ -1,9 +1,8 @@
 /*******************************************************************************************************
  *
- * MonitorOutput.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * MonitorOutput.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -16,8 +15,6 @@ import java.io.FileWriter;
 import java.util.List;
 
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.facet;
@@ -25,6 +22,8 @@ import gama.annotations.precompiler.GamlAnnotations.facets;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
 import gama.annotations.precompiler.GamlAnnotations.usage;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.common.interfaces.IGui;
 import gama.core.common.interfaces.IValue;
 import gama.core.common.interfaces.ItemList;
@@ -148,7 +147,8 @@ public class MonitorOutput extends AbstractValuedDisplayOutput implements IExper
 	/**
 	 * Sets the color.
 	 *
-	 * @param gamaColor the new color
+	 * @param gamaColor
+	 *            the new color
 	 */
 	public void setColor(final GamaColor gamaColor) {
 		color = gamaColor;
@@ -272,7 +272,7 @@ public class MonitorOutput extends AbstractValuedDisplayOutput implements IExper
 				monitorFolder + "/" + "monitor_" + getName() + "_cycle_" + getScope().getClock().getCycle() + ".csv";
 		file = FileUtils.constructAbsoluteFilePath(getScope(), file, false);
 		try (final BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-				final CsvWriter w = new CsvWriter(bw, CsvWriter.Letters.COMMA)) {
+				final CsvWriter w = new CsvWriter(bw)) {
 			for (final Object o : history) {
 				String[] strings = null;
 				if (o instanceof Number) {

@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * MultiPageCSVEditor.java, in gama.ui.shared.viewers, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * MultiPageCSVEditor.java, in gama.ui.viewers, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -45,6 +45,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 
+import gama.core.util.file.csv.AbstractCSVManipulator.Letters;
 import gama.ui.shared.menus.GamaMenu;
 import gama.ui.shared.resources.IGamaIcons;
 import gama.ui.shared.utils.WorkbenchHelper;
@@ -524,7 +525,7 @@ public class MultiPageCSVEditor extends MultiPageEditorPart
 
 								@Override
 								public void widgetSelected(final SelectionEvent e1) {
-									refreshWithDelimiter(',');
+									refreshWithDelimiter(Letters.COMMA);
 								}
 
 							}, null);
@@ -532,7 +533,7 @@ public class MultiPageCSVEditor extends MultiPageEditorPart
 
 								@Override
 								public void widgetSelected(final SelectionEvent e1) {
-									refreshWithDelimiter(';');
+									refreshWithDelimiter(Letters.SEMICOLUMN);
 								}
 
 							}, null);
@@ -540,7 +541,7 @@ public class MultiPageCSVEditor extends MultiPageEditorPart
 
 								@Override
 								public void widgetSelected(final SelectionEvent e1) {
-									refreshWithDelimiter(' ');
+									refreshWithDelimiter(Letters.SPACE);
 								}
 
 							}, null);
@@ -548,7 +549,7 @@ public class MultiPageCSVEditor extends MultiPageEditorPart
 
 								@Override
 								public void widgetSelected(final SelectionEvent e1) {
-									refreshWithDelimiter('\t');
+									refreshWithDelimiter(Letters.TAB);
 								}
 
 							}, null);
@@ -556,7 +557,7 @@ public class MultiPageCSVEditor extends MultiPageEditorPart
 
 								@Override
 								public void widgetSelected(final SelectionEvent e1) {
-									refreshWithDelimiter(':');
+									refreshWithDelimiter(Letters.COLUMN);
 								}
 
 							}, null);
@@ -564,7 +565,7 @@ public class MultiPageCSVEditor extends MultiPageEditorPart
 
 								@Override
 								public void widgetSelected(final SelectionEvent e1) {
-									refreshWithDelimiter('|');
+									refreshWithDelimiter(Letters.PIPE);
 
 								}
 
