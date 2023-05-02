@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * LegacyTextDrawer.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * LegacyTextDrawer.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -11,10 +11,6 @@
 package gama.ui.display.opengl.scene.text;
 
 import static com.jogamp.common.nio.Buffers.newDirectDoubleBuffer;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_WINDING_NONZERO;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_WINDING_ODD;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_WINDING_RULE;
-import static java.awt.geom.PathIterator.WIND_EVEN_ODD;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -31,14 +27,14 @@ import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.glu.GLUtessellator;
 import com.jogamp.opengl.util.gl2.GLUT;
 
+import gama.core.common.geometry.AxisAngle;
+import gama.core.common.geometry.ICoordinates;
+import gama.core.metamodel.shape.GamaPoint;
 import gama.ui.display.opengl.ITesselator;
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.scene.ObjectDrawer;
-import gama.ui.display.ui.utils.DPIHelper;
-import msi.gama.common.geometry.AxisAngle;
-import msi.gama.common.geometry.ICoordinates;
-import msi.gama.metamodel.shape.GamaPoint;
-import msi.gaml.statements.draw.TextDrawingAttributes;
+import gama.ui.shared.utils.DPIHelper;
+import gaml.core.statements.draw.TextDrawingAttributes;
 
 /**
  *
@@ -184,8 +180,8 @@ public class LegacyTextDrawer extends ObjectDrawer<StringObject> implements ITes
 	void process(final PathIterator pi) {
 		boolean wireframe = gl.isWireframe();
 		if (!wireframe) {
-			GLU.gluTessProperty(tobj, GLU_TESS_WINDING_RULE,
-					pi.getWindingRule() == WIND_EVEN_ODD ? GLU_TESS_WINDING_ODD : GLU_TESS_WINDING_NONZERO);
+			GLU.gluTessProperty(tobj, GLU.GLU_TESS_WINDING_RULE, pi.getWindingRule() == PathIterator.WIND_EVEN_ODD
+					? GLU.GLU_TESS_WINDING_ODD : GLU.GLU_TESS_WINDING_NONZERO);
 			GLU.gluTessNormal(tobj, 0, 0, -1);
 			GLU.gluTessBeginPolygon(tobj, (double[]) null);
 		}

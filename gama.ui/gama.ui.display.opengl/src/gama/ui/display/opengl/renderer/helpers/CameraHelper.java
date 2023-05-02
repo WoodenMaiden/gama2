@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * CameraHelper.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * CameraHelper.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -9,8 +9,6 @@
  *
  ********************************************************************************************************/
 package gama.ui.display.opengl.renderer.helpers;
-
-import static msi.gama.util.GamaListFactory.createWithoutCasting;
 
 import java.nio.FloatBuffer;
 import java.util.Collection;
@@ -24,22 +22,23 @@ import com.jogamp.opengl.GL2ES2;
 import com.jogamp.opengl.GLRunnable;
 import com.jogamp.opengl.glu.GLU;
 
-import gama.ui.display.dev.utils.DEBUG;
+import gama.annotations.common.interfaces.IKeyword;
+import gama.core.common.geometry.Envelope3D;
+import gama.core.common.preferences.GamaPreferences;
+import gama.core.metamodel.shape.GamaPoint;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.PlatformHelper;
+import gama.core.util.GamaListFactory;
+import gama.dev.DEBUG;
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.camera.IMultiListener;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
-import gama.ui.display.ui.bindings.GamaKeyBindings;
-import gama.ui.display.ui.utils.ViewsHelper;
-import gama.ui.display.ui.utils.WorkbenchHelper;
-import gama.ui.experiment.views.toolbar.IToolbarDecoratedView.ICameraHelper;
-import msi.gama.common.geometry.Envelope3D;
-import gama.core.common.interfaces.IKeyword;
-import gama.core.common.preferences.GamaPreferences;
-import msi.gama.metamodel.shape.GamaPoint;
-import gama.core.runtime.GAMA;
-import gama.core.runtime.PlatformHelper;
-import msi.gaml.operators.Maths;
-import msi.gaml.types.Types;
+import gama.ui.shared.bindings.GamaKeyBindings;
+import gama.ui.shared.utils.ViewsHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
+import gama.ui.shared.views.toolbar.IToolbarDecoratedView.ICameraHelper;
+import gaml.core.operators.Maths;
+import gaml.core.types.Types;
 
 /**
  * The Class CameraHelper.
@@ -1238,8 +1237,8 @@ public class CameraHelper extends AbstractRendererHelper implements IMultiListen
 			getRenderer().getSurface().zoomFit();
 			getRenderer().getKeystoneHelper().startDrawHelper();
 		} else {
-			String def = IKeyword.KEYSTONE + ": "
-					+ createWithoutCasting(Types.POINT, data.getKeystone().toCoordinateArray()).serialize(false);
+			String def = IKeyword.KEYSTONE + ": " + GamaListFactory
+					.createWithoutCasting(Types.POINT, data.getKeystone().toCoordinateArray()).serialize(false);
 			getRenderer().getKeystoneHelper().stopDrawHelper();
 			WorkbenchHelper.copy(def);
 		}
@@ -1424,26 +1423,55 @@ public class CameraHelper extends AbstractRendererHelper implements IMultiListen
 		getCanvas().removeCameraListeners(this);
 	}
 
+	/**
+	 * Gets the camera names.
+	 *
+	 * @return the camera names
+	 */
 	@Override
 	public Collection<String> getCameraNames() { return data.getCameraNames(); }
 
+	/**
+	 * Sets the camera name.
+	 *
+	 * @param p
+	 *            the new camera name
+	 */
 	@Override
 	public void setCameraName(final String p) {
 		data.setCameraNameFromUser(p);
 		applyPreset(p);
 	}
 
+	/**
+	 * Gets the camera name.
+	 *
+	 * @return the camera name
+	 */
 	@Override
 	public String getCameraName() { return data.getCameraName(); }
 
+	/**
+	 * Checks if is camera locked.
+	 *
+	 * @return true, if is camera locked
+	 */
 	@Override
 	public boolean isCameraLocked() { return data.isCameraLocked(); }
 
+	/**
+	 * Toggle camera.
+	 */
 	@Override
 	public void toggleCamera() {
 		data.setCameraLocked(!data.isCameraLocked());
 	}
 
+	/**
+	 * Gets the camera definition.
+	 *
+	 * @return the camera definition
+	 */
 	@Override
 	public String getCameraDefinition() {
 		StringBuilder text = new StringBuilder(IKeyword.CAMERA).append(" 'default' ").append(IKeyword.LOCATION)

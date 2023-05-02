@@ -5,8 +5,9 @@ Bundle-SymbolicName: gaml.extension.simplebdi;singleton:=true
 Bundle-Version: 2.0.0.qualifier
 Require-Bundle: gama.core,
  gama.dependencies,
- gaml.extension.serialize,
- gama.dev;bundle-version="2.0.0"
+ gaml.extension.serialization,
+ gama.dev;bundle-version="2.0.0",
+ gaml.extension.serialization
 Export-Package: gaml.extension.simplebdi
 Bundle-ClassPath: .
 Bundle-ActivationPolicy: lazy

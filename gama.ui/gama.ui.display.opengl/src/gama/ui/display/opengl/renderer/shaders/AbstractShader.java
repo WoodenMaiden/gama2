@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * AbstractShader.java, in ummisco.gama.opengl, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * AbstractShader.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.display.opengl.renderer.shaders;
 
@@ -14,10 +14,12 @@ import java.io.InputStream;
 import java.nio.FloatBuffer;
 import java.util.Scanner;
 
+import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.GL2ES2;
 
-import gama.ui.display.dev.utils.DEBUG;
-import msi.gama.metamodel.shape.GamaPoint;
+import gama.core.metamodel.shape.GamaPoint;
+import gama.dev.DEBUG;
 
 /**
  * The Class AbstractShader.
@@ -32,10 +34,10 @@ public abstract class AbstractShader {
 
 	/** The program ID. */
 	private int programID;
-	
+
 	/** The vertex shader ID. */
 	private final int vertexShaderID;
-	
+
 	/** The fragment shader ID. */
 	private final int fragmentShaderID;
 
@@ -54,9 +56,12 @@ public abstract class AbstractShader {
 	/**
 	 * Instantiates a new abstract shader.
 	 *
-	 * @param gl the gl
-	 * @param vertexFile the vertex file
-	 * @param fragmentFile the fragment file
+	 * @param gl
+	 *            the gl
+	 * @param vertexFile
+	 *            the vertex file
+	 * @param fragmentFile
+	 *            the fragment file
 	 */
 	protected AbstractShader(final GL2 gl, final String vertexFile, final String fragmentFile) {
 		this.gl = gl;
@@ -76,8 +81,8 @@ public abstract class AbstractShader {
 			return;
 		}
 
-		vertexShaderID = loadShader(vertexInputStream, GL2.GL_VERTEX_SHADER);
-		fragmentShaderID = loadShader(fragmentInputStream, GL2.GL_FRAGMENT_SHADER);
+		vertexShaderID = loadShader(vertexInputStream, GL2ES2.GL_VERTEX_SHADER);
+		fragmentShaderID = loadShader(fragmentInputStream, GL2ES2.GL_FRAGMENT_SHADER);
 
 		// Each shaderProgram must have
 		// one vertex shader and one fragment shader.
@@ -98,8 +103,10 @@ public abstract class AbstractShader {
 	/**
 	 * Load shader.
 	 *
-	 * @param is the is
-	 * @param type the type
+	 * @param is
+	 *            the is
+	 * @param type
+	 *            the type
 	 * @return the int
 	 */
 	private int loadShader(final InputStream is, final int type) {
@@ -112,19 +119,19 @@ public abstract class AbstractShader {
 			final int shaderID = gl.glCreateShader(type);
 
 			// Compile the vertexShader String into a program.
-			final String[] vlines = new String[] { shaderString };
-			final int[] vlengths = new int[] { vlines[0].length() };
+			final String[] vlines = { shaderString };
+			final int[] vlengths = { vlines[0].length() };
 			gl.glShaderSource(shaderID, vlines.length, vlines, vlengths, 0);
 			gl.glCompileShader(shaderID);
-			gl.glEnable(GL2.GL_BLEND);
-			gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
+			gl.glEnable(GL.GL_BLEND);
+			gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
 
 			// Check compile status.
 			final int[] compiled = new int[1];
-			gl.glGetShaderiv(shaderID, GL2.GL_COMPILE_STATUS, compiled, 0);
+			gl.glGetShaderiv(shaderID, GL2ES2.GL_COMPILE_STATUS, compiled, 0);
 			if (compiled[0] == 0) {
 				final int[] logLength = new int[1];
-				gl.glGetShaderiv(shaderID, GL2.GL_INFO_LOG_LENGTH, logLength, 0);
+				gl.glGetShaderiv(shaderID, GL2ES2.GL_INFO_LOG_LENGTH, logLength, 0);
 
 				final byte[] log = new byte[logLength[0]];
 				gl.glGetShaderInfoLog(shaderID, logLength[0], (int[]) null, 0, log, 0);
@@ -155,23 +162,21 @@ public abstract class AbstractShader {
 	 *
 	 * @return the program ID
 	 */
-	public int getProgramID() {
-		return programID;
-	}
+	public int getProgramID() { return programID; }
 
 	/**
 	 * Sets the program ID.
 	 *
-	 * @param programID the new program ID
+	 * @param programID
+	 *            the new program ID
 	 */
-	public void setProgramID(final int programID) {
-		this.programID = programID;
-	}
+	public void setProgramID(final int programID) { this.programID = programID; }
 
 	/**
 	 * Gets the uniform location.
 	 *
-	 * @param uniformName the uniform name
+	 * @param uniformName
+	 *            the uniform name
 	 * @return the uniform location
 	 */
 	public int getUniformLocation(final String uniformName) {
@@ -186,8 +191,10 @@ public abstract class AbstractShader {
 	/**
 	 * Bind attribute.
 	 *
-	 * @param attribute the attribute
-	 * @param variableName the variable name
+	 * @param attribute
+	 *            the attribute
+	 * @param variableName
+	 *            the variable name
 	 */
 	protected void bindAttribute(final int attribute, final String variableName) {
 		gl.glBindAttribLocation(programID, attribute, variableName);
@@ -232,8 +239,10 @@ public abstract class AbstractShader {
 	/**
 	 * Load float.
 	 *
-	 * @param location the location
-	 * @param value the value
+	 * @param location
+	 *            the location
+	 * @param value
+	 *            the value
 	 */
 	public void loadFloat(final int location, final float value) {
 		gl.glUniform1f(location, value);
@@ -242,8 +251,10 @@ public abstract class AbstractShader {
 	/**
 	 * Load int.
 	 *
-	 * @param location the location
-	 * @param value the value
+	 * @param location
+	 *            the location
+	 * @param value
+	 *            the value
 	 */
 	protected void loadInt(final int location, final int value) {
 		gl.glUniform1i(location, value);
@@ -252,7 +263,8 @@ public abstract class AbstractShader {
 	/**
 	 * Sets the layer alpha.
 	 *
-	 * @param layerAlpha the new layer alpha
+	 * @param layerAlpha
+	 *            the new layer alpha
 	 */
 	public void setLayerAlpha(final float layerAlpha) {
 		loadFloat(location_layerAlpha, layerAlpha);
@@ -263,18 +275,14 @@ public abstract class AbstractShader {
 	 *
 	 * @return the translation
 	 */
-	public GamaPoint getTranslation() {
-		return new GamaPoint(0, 0, 0);
-	}
+	public GamaPoint getTranslation() { return new GamaPoint(0, 0, 0); }
 
 	/**
 	 * Checks if is overlay.
 	 *
 	 * @return true, if is overlay
 	 */
-	public boolean isOverlay() {
-		return isOverlay;
-	}
+	public boolean isOverlay() { return isOverlay; }
 
 	/**
 	 * Use normal.

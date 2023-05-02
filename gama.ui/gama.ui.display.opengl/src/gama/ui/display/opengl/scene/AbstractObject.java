@@ -1,8 +1,8 @@
 
 /*******************************************************************************************************
  *
- * AbstractObject.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * AbstractObject.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -14,12 +14,12 @@ package gama.ui.display.opengl.scene;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
 
-import gama.ui.display.opengl.OpenGL;
-import gama.core.common.interfaces.IDisposable;
+import gama.annotations.common.interfaces.IDisposable;
 import gama.core.common.interfaces.IImageProvider;
-import msi.gama.metamodel.shape.GamaPoint;
-import msi.gaml.statements.draw.DrawingAttributes;
-import msi.gaml.statements.draw.DrawingAttributes.DrawerType;
+import gama.core.metamodel.shape.GamaPoint;
+import gama.ui.display.opengl.OpenGL;
+import gaml.core.statements.draw.DrawingAttributes;
+import gaml.core.statements.draw.DrawingAttributes.DrawerType;
 
 /**
  * The Class AbstractObject.
@@ -65,6 +65,9 @@ public abstract class AbstractObject<T, ATT extends DrawingAttributes> implement
 		}
 	}
 
+	/**
+	 * Dispose.
+	 */
 	@Override
 	public void dispose() {}
 

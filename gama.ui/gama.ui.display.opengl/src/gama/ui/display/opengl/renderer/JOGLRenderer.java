@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * JOGLRenderer.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * JOGLRenderer.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -20,39 +20,39 @@ import org.locationtech.jts.geom.Geometry;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 
-import gama.ui.display.dev.utils.DEBUG;
-import gama.ui.display.dev.utils.FLAGS;
-import gama.ui.display.opengl.OpenGL;
-import gama.ui.display.opengl.renderer.helpers.CameraHelper;
-import gama.ui.display.opengl.renderer.helpers.KeystoneHelper;
-import gama.ui.display.opengl.renderer.helpers.LightHelper;
-import gama.ui.display.opengl.renderer.helpers.PickingHelper;
-import gama.ui.display.opengl.renderer.helpers.SceneHelper;
-import gama.ui.display.opengl.renderer.helpers.AbstractRendererHelper.Pass;
-import gama.ui.display.opengl.scene.ModelScene;
-import gama.ui.display.opengl.view.GamaGLCanvas;
-import gama.ui.display.opengl.view.SWTOpenGLDisplaySurface;
-import gama.ui.display.ui.utils.DPIHelper;
-import gama.ui.display.ui.utils.WorkbenchHelper;
 import gama.core.common.interfaces.IAsset;
 import gama.core.common.interfaces.IDisplaySurface;
 import gama.core.common.interfaces.IImageProvider;
 import gama.core.common.interfaces.ILayer;
 import gama.core.common.preferences.GamaPreferences;
-import msi.gama.metamodel.shape.GamaPoint;
-import msi.gama.metamodel.shape.IShape;
+import gama.core.metamodel.shape.GamaPoint;
+import gama.core.metamodel.shape.IShape;
 import gama.core.outputs.display.AbstractDisplayGraphics;
 import gama.core.outputs.layers.charts.ChartOutput;
 import gama.core.runtime.GAMA;
-import msi.gama.util.GamaColor;
-import msi.gama.util.file.GamaGeometryFile;
-import msi.gama.util.matrix.IField;
-import msi.gaml.statements.draw.AssetDrawingAttributes;
-import msi.gaml.statements.draw.DrawingAttributes;
-import msi.gaml.statements.draw.MeshDrawingAttributes;
-import msi.gaml.statements.draw.ShapeDrawingAttributes;
-import msi.gaml.statements.draw.TextDrawingAttributes;
-import msi.gaml.types.GamaGeometryType;
+import gama.core.util.GamaColor;
+import gama.core.util.file.GamaGeometryFile;
+import gama.core.util.matrix.IField;
+import gama.dev.DEBUG;
+import gama.dev.FLAGS;
+import gama.ui.display.opengl.OpenGL;
+import gama.ui.display.opengl.renderer.helpers.AbstractRendererHelper.Pass;
+import gama.ui.display.opengl.renderer.helpers.CameraHelper;
+import gama.ui.display.opengl.renderer.helpers.KeystoneHelper;
+import gama.ui.display.opengl.renderer.helpers.LightHelper;
+import gama.ui.display.opengl.renderer.helpers.PickingHelper;
+import gama.ui.display.opengl.renderer.helpers.SceneHelper;
+import gama.ui.display.opengl.scene.ModelScene;
+import gama.ui.display.opengl.view.GamaGLCanvas;
+import gama.ui.display.opengl.view.SWTOpenGLDisplaySurface;
+import gama.ui.shared.utils.DPIHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
+import gaml.core.statements.draw.AssetDrawingAttributes;
+import gaml.core.statements.draw.DrawingAttributes;
+import gaml.core.statements.draw.MeshDrawingAttributes;
+import gaml.core.statements.draw.ShapeDrawingAttributes;
+import gaml.core.statements.draw.TextDrawingAttributes;
+import gaml.core.types.GamaGeometryType;
 
 /**
  * This class plays the role of Renderer and IGraphics. Class JOGLRenderer.

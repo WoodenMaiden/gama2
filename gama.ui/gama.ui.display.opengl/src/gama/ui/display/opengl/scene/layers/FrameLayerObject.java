@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * FrameLayerObject.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * FrameLayerObject.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -12,16 +12,16 @@ package gama.ui.display.opengl.scene.layers;
 
 import java.util.List;
 
+import gama.core.metamodel.agent.IAgent;
+import gama.core.metamodel.shape.GamaPoint;
+import gama.core.metamodel.shape.IShape;
+import gama.core.util.GamaColor;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
 import gama.ui.display.opengl.scene.AbstractObject;
 import gama.ui.display.opengl.scene.geometry.GeometryObject;
-import msi.gama.metamodel.agent.IAgent;
-import msi.gama.metamodel.shape.GamaPoint;
-import msi.gama.metamodel.shape.IShape;
-import msi.gama.util.GamaColor;
-import msi.gaml.statements.draw.DrawingAttributes;
-import msi.gaml.statements.draw.ShapeDrawingAttributes;
-import msi.gaml.types.GamaGeometryType;
+import gaml.core.statements.draw.DrawingAttributes;
+import gaml.core.statements.draw.ShapeDrawingAttributes;
+import gaml.core.types.GamaGeometryType;
 
 /**
  * The Class FrameLayerObject.

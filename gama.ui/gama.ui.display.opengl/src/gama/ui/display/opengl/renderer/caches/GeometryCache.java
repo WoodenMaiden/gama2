@@ -1,37 +1,27 @@
 /*******************************************************************************************************
  *
- * GeometryCache.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GeometryCache.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
  ********************************************************************************************************/
 package gama.ui.display.opengl.renderer.caches;
 
-import static com.google.common.cache.CacheBuilder.newBuilder;
-import static java.util.concurrent.TimeUnit.MINUTES;
-import static msi.gama.common.geometry.GeometryUtils.getTypeOf;
-import static msi.gama.metamodel.shape.IShape.Type.CIRCLE;
-import static msi.gama.metamodel.shape.IShape.Type.CONE;
-import static msi.gama.metamodel.shape.IShape.Type.CUBE;
-import static msi.gama.metamodel.shape.IShape.Type.CYLINDER;
-import static msi.gama.metamodel.shape.IShape.Type.POINT;
-import static msi.gama.metamodel.shape.IShape.Type.PYRAMID;
-import static msi.gama.metamodel.shape.IShape.Type.SPHERE;
-import static msi.gama.metamodel.shape.IShape.Type.SQUARE;
-
 import java.nio.DoubleBuffer;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFilter;
 
 import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.jogamp.common.nio.Buffers;
@@ -40,20 +30,20 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GL2GL3;
 import com.jogamp.opengl.fixedfunc.GLPointerFunc;
 
-import gama.ui.display.dev.utils.DEBUG;
+import gama.core.common.geometry.Envelope3D;
+import gama.core.common.geometry.GeometryUtils;
+import gama.core.common.geometry.ICoordinates;
+import gama.core.common.preferences.GamaPreferences;
+import gama.core.metamodel.shape.GamaPoint;
+import gama.core.metamodel.shape.IShape;
+import gama.core.runtime.GAMA;
+import gama.core.runtime.IScope;
+import gama.core.util.file.GamaGeometryFile;
+import gama.core.util.file.GamaObjFile;
+import gama.dev.DEBUG;
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.files.ObjFileDrawer;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
-import msi.gama.common.geometry.Envelope3D;
-import msi.gama.common.geometry.ICoordinates;
-import gama.core.common.preferences.GamaPreferences;
-import msi.gama.metamodel.shape.GamaPoint;
-import msi.gama.metamodel.shape.IShape;
-import msi.gama.metamodel.shape.IShape.Type;
-import gama.core.runtime.GAMA;
-import gama.core.runtime.IScope;
-import msi.gama.util.file.GamaGeometryFile;
-import msi.gama.util.file.GamaObjFile;
 
 /**
  * The Class GeometryCache.
@@ -191,20 +181,22 @@ public class GeometryCache {
 	 */
 	public GeometryCache(final IOpenGLRenderer renderer) {
 		this.scope = renderer.getSurface().getScope().copy("in opengl geometry cache");
-		this.drawer = g -> renderer.getOpenGLHelper().getGeometryDrawer().drawGeometry(g, null, 0, getTypeOf(g));
-		envelopes = newBuilder().expireAfterAccess(10, MINUTES).build();
-		builtInCache = newBuilder().concurrencyLevel(2).initialCapacity(10).build();
-		fileCache = newBuilder().expireAfterAccess(10, MINUTES).initialCapacity(10).removalListener(notif -> {
-			if (renderer.isDisposed()) return;
-			renderer.getOpenGLHelper().getGL().glDeleteLists((Integer) notif.getValue(), 1);
+		this.drawer = g -> renderer.getOpenGLHelper().getGeometryDrawer().drawGeometry(g, null, 0,
+				GeometryUtils.getTypeOf(g));
+		envelopes = CacheBuilder.newBuilder().expireAfterAccess(10, TimeUnit.MINUTES).build();
+		builtInCache = CacheBuilder.newBuilder().concurrencyLevel(2).initialCapacity(10).build();
+		fileCache = CacheBuilder.newBuilder().expireAfterAccess(10, TimeUnit.MINUTES).initialCapacity(10)
+				.removalListener(notif -> {
+					if (renderer.isDisposed()) return;
+					renderer.getOpenGLHelper().getGL().glDeleteLists((Integer) notif.getValue(), 1);
 
-		}).build(new CacheLoader<String, Integer>() {
+				}).build(new CacheLoader<String, Integer>() {
 
-			@Override
-			public Integer load(final String file) {
-				return buildList(renderer.getOpenGLHelper(), file);
-			}
-		});
+					@Override
+					public Integer load(final String file) {
+						return buildList(renderer.getOpenGLHelper(), file);
+					}
+				});
 	}
 
 	/**
@@ -327,7 +319,7 @@ public class GeometryCache {
 	 * @param value
 	 *            the value
 	 */
-	public void put(final Type key, final BuiltInGeometry value) {
+	public void put(final IShape.Type key, final BuiltInGeometry value) {
 		builtInCache.put(key, value);
 	}
 
@@ -340,28 +332,26 @@ public class GeometryCache {
 	public void initialize(final OpenGL gl) {
 		final int slices = GamaPreferences.Displays.DISPLAY_SLICE_NUMBER.getValue();
 		final int stacks = slices;
-		put(SPHERE, BuiltInGeometry.assemble().faces(gl.compileAsList(() -> {
+		put(IShape.Type.SPHERE, BuiltInGeometry.assemble().faces(gl.compileAsList(() -> {
 			gl.translateBy(0d, 0d, 1d);
 			drawSphere(gl, 1.0, slices, stacks);
 			gl.translateBy(0, 0, -1d);
 		})));
-		put(CYLINDER,
-				BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> { drawDisk(gl, 0d, 1d, slices, slices / 3); }))
-						.top(gl.compileAsList(() -> {
-							gl.translateBy(0d, 0d, 1d);
-							drawDisk(gl, 0d, 1d, slices, slices / 3);
-							gl.translateBy(0d, 0d, -1d);
-						})).faces(gl.compileAsList(() -> { drawCylinder(gl, 1.0d, 1.0d, 1.0d, slices, stacks); })));
-		put(CONE,
-				BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> { drawDisk(gl, 0d, 1d, slices, slices / 3); }))
-						.faces(gl.compileAsList(() -> {
-							drawCylinder(gl, 1.0, 0.0, 1.0, slices, stacks);
-						})));
+		put(IShape.Type.CYLINDER, BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> {
+			drawDisk(gl, 0d, 1d, slices, slices / 3);
+		})).top(gl.compileAsList(() -> {
+			gl.translateBy(0d, 0d, 1d);
+			drawDisk(gl, 0d, 1d, slices, slices / 3);
+			gl.translateBy(0d, 0d, -1d);
+		})).faces(gl.compileAsList(() -> { drawCylinder(gl, 1.0d, 1.0d, 1.0d, slices, stacks); })));
+		put(IShape.Type.CONE, BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> {
+			drawDisk(gl, 0d, 1d, slices, slices / 3);
+		})).faces(gl.compileAsList(() -> { drawCylinder(gl, 1.0, 0.0, 1.0, slices, stacks); })));
 		final ICoordinates baseVertices = ICoordinates.ofLength(5);
 		final ICoordinates faceVertices = ICoordinates.ofLength(5);
 		baseVertices.setTo(-0.5, 0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0);
 
-		put(CUBE, BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> {
+		put(IShape.Type.CUBE, BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> {
 			gl.drawSimpleShape(baseVertices, 4, false, true, null);
 		})).top(gl.compileAsList(() -> {
 			baseVertices.translateBy(0, 0, 1);
@@ -374,7 +364,8 @@ public class GeometryCache {
 				gl.drawSimpleShape(faceVertices, 4, true, true, null);
 			});
 		})));
-		put(POINT, BuiltInGeometry.assemble().faces(gl.compileAsList(() -> { drawSphere(gl, 1.0, 5, 5); })));
+		put(IShape.Type.POINT,
+				BuiltInGeometry.assemble().faces(gl.compileAsList(() -> { drawSphere(gl, 1.0, 5, 5); })));
 
 		put(IShape.Type.ROUNDED, BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> {
 			// Align with SQUARE; see issue #3542
@@ -382,14 +373,15 @@ public class GeometryCache {
 			drawRoundedRectangle(gl.getGL());
 			gl.translateBy(.5d, .5d);
 		})));
-		put(SQUARE, BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> {
+		put(IShape.Type.SQUARE, BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> {
 			gl.drawSimpleShape(baseVertices, 4, true, true, null);
 		})));
-		put(CIRCLE, BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> { drawDisk(gl, 0.0, 1.0, slices, 1); })));
+		put(IShape.Type.CIRCLE,
+				BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> { drawDisk(gl, 0.0, 1.0, slices, 1); })));
 		final ICoordinates triangleVertices = ICoordinates.ofLength(4);
 		final ICoordinates vertices = ICoordinates.ofLength(5);
 		vertices.setTo(-0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0);
-		put(PYRAMID, BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> {
+		put(IShape.Type.PYRAMID, BuiltInGeometry.assemble().bottom(gl.compileAsList(() -> {
 			gl.drawSimpleShape(vertices, 4, false, true, null);
 		})).faces(gl.compileAsList(() -> {
 			final GamaPoint top = new GamaPoint(0, 0, 1);

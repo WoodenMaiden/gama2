@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * MeshDrawer.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * MeshDrawer.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -22,14 +22,14 @@ import com.jogamp.opengl.GL2GL3;
 import com.jogamp.opengl.fixedfunc.GLPointerFunc;
 import com.jogamp.opengl.util.gl2.GLUT;
 
-import gama.ui.display.dev.utils.DEBUG;
+import gama.core.common.geometry.ICoordinates;
+import gama.core.metamodel.shape.GamaPoint;
+import gama.core.outputs.layers.MeshLayerData;
+import gama.core.util.matrix.IField;
+import gama.dev.DEBUG;
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.scene.ObjectDrawer;
-import msi.gama.common.geometry.ICoordinates;
-import msi.gama.metamodel.shape.GamaPoint;
-import gama.core.outputs.layers.MeshLayerData;
-import msi.gama.util.matrix.IField;
-import msi.gaml.statements.draw.IMeshColorProvider;
+import gaml.core.statements.draw.IMeshColorProvider;
 
 /**
  *

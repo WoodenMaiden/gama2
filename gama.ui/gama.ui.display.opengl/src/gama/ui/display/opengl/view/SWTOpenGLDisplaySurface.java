@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * SWTOpenGLDisplaySurface.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * SWTOpenGLDisplaySurface.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and
+ * simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -43,39 +43,39 @@ import com.jogamp.opengl.GLAnimatorControl;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLContext;
 
-import gama.ui.display.dev.utils.DEBUG;
-import gama.ui.display.opengl.renderer.IOpenGLRenderer;
-import gama.ui.display.opengl.renderer.JOGLRenderer;
-import gama.ui.display.ui.resources.GamaIcon;
-import gama.ui.display.ui.resources.IGamaIcons;
-import gama.ui.display.ui.utils.DPIHelper;
-import gama.ui.display.ui.utils.WorkbenchHelper;
-import gama.ui.experiment.displays.DisplaySurfaceMenu;
-import gama.ui.experiment.menus.AgentsMenu;
-import gaml.extension.images.GamaImage;
-import gaml.extension.images.ImageHelper;
-import msi.gama.common.geometry.Envelope3D;
+import gama.annotations.precompiler.GamlAnnotations.display;
+import gama.annotations.precompiler.GamlAnnotations.doc;
+import gama.core.common.geometry.Envelope3D;
 import gama.core.common.interfaces.IDisplaySurface;
 import gama.core.common.interfaces.IGraphics;
 import gama.core.common.interfaces.ILayer;
 import gama.core.common.interfaces.ILayerManager;
 import gama.core.common.preferences.GamaPreferences;
-import msi.gama.metamodel.agent.IAgent;
-import msi.gama.metamodel.shape.GamaPoint;
-import msi.gama.metamodel.shape.IShape;
-import msi.gama.metamodel.topology.filter.Different;
+import gama.core.metamodel.agent.IAgent;
+import gama.core.metamodel.shape.GamaPoint;
+import gama.core.metamodel.shape.IShape;
+import gama.core.metamodel.topology.filter.Different;
 import gama.core.outputs.LayeredDisplayData;
 import gama.core.outputs.LayeredDisplayData.Changes;
 import gama.core.outputs.LayeredDisplayOutput;
 import gama.core.outputs.display.LayerManager;
 import gama.core.outputs.layers.IEventLayerListener;
 import gama.core.outputs.layers.OverlayLayer;
-import msi.gama.precompiler.GamlAnnotations.display;
-import msi.gama.precompiler.GamlAnnotations.doc;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope.IGraphicsScope;
 import gama.core.runtime.PlatformHelper;
-import msi.gaml.statements.draw.DrawingAttributes;
+import gama.dev.DEBUG;
+import gama.ui.display.opengl.renderer.IOpenGLRenderer;
+import gama.ui.display.opengl.renderer.JOGLRenderer;
+import gama.ui.experiment.displays.DisplaySurfaceMenu;
+import gama.ui.experiment.menus.AgentsMenu;
+import gama.ui.shared.resources.GamaIcon;
+import gama.ui.shared.resources.IGamaIcons;
+import gama.ui.shared.utils.DPIHelper;
+import gama.ui.shared.utils.WorkbenchHelper;
+import gaml.core.statements.draw.DrawingAttributes;
+import gaml.extension.image.GamaImage;
+import gaml.extension.image.ImageHelper;
 
 /**
  * Class OpenGLSWTDisplaySurface.
@@ -490,7 +490,8 @@ public class SWTOpenGLDisplaySurface implements IDisplaySurface.OpenGL {
 	/**
 	 * Method getModelCoordinatesFrom()
 	 *
-	 * @see gama.core.common.interfaces.IDisplaySurface#getModelCoordinatesFrom(int, int, java.awt.Point, java.awt.Point)
+	 * @see gama.core.common.interfaces.IDisplaySurface#getModelCoordinatesFrom(int, int, java.awt.Point,
+	 *      java.awt.Point)
 	 */
 	@Override
 	public GamaPoint getModelCoordinatesFrom(final int xOnScreen, final int yOnScreen, final Point sizeInPixels,
@@ -811,16 +812,22 @@ public class SWTOpenGLDisplaySurface implements IDisplaySurface.OpenGL {
 	public Rectangle getBoundsForRobotSnapshot() {
 		var rect = WorkbenchHelper.displaySizeOf(renderer.getCanvas());
 		// For some reason, macOS requires the native dimension for the robot to snapshot correctly
-		if (PlatformHelper.isMac() ) rect = DPIHelper.autoScaleUp(renderer.getCanvas().getMonitor(),
-				rect);
+		if (PlatformHelper.isMac()) { rect = DPIHelper.autoScaleUp(renderer.getCanvas().getMonitor(), rect); }
 		return new Rectangle(rect.x, rect.y, rect.width, rect.height);
 	}
-	
+
+	/**
+	 * Gets the bounds for regular snapshot.
+	 *
+	 * @return the bounds for regular snapshot
+	 */
 	public Rectangle getBoundsForRegularSnapshot() {
 		var rect = WorkbenchHelper.displaySizeOf(renderer.getCanvas());
-		// For some reason, macOS and Windows require the native dimension for the internal process to snapshot correctly
-		if (PlatformHelper.isMac() || PlatformHelper.isWindows()) rect = DPIHelper.autoScaleUp(renderer.getCanvas().getMonitor(),
-				rect);
+		// For some reason, macOS and Windows require the native dimension for the internal process to snapshot
+		// correctly
+		if (PlatformHelper.isMac() || PlatformHelper.isWindows()) {
+			rect = DPIHelper.autoScaleUp(renderer.getCanvas().getMonitor(), rect);
+		}
 		return new Rectangle(rect.x, rect.y, rect.width, rect.height);
 	}
 

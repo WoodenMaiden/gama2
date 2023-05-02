@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * OverlayLayerObject.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * OverlayLayerObject.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -12,17 +12,17 @@ package gama.ui.display.opengl.scene.layers;
 
 import com.jogamp.opengl.fixedfunc.GLMatrixFunc;
 
-import gama.ui.display.dev.utils.DEBUG;
-import gama.ui.display.opengl.OpenGL;
-import gama.ui.display.opengl.renderer.IOpenGLRenderer;
-import gama.core.common.interfaces.IKeyword;
+import gama.annotations.common.interfaces.IKeyword;
 import gama.core.common.interfaces.ILayer;
-import msi.gama.metamodel.shape.GamaPoint;
-import msi.gama.metamodel.shape.IShape;
+import gama.core.metamodel.shape.GamaPoint;
+import gama.core.metamodel.shape.IShape;
 import gama.core.outputs.layers.OverlayLayerData;
 import gama.core.runtime.IScope;
-import msi.gaml.expressions.IExpression;
-import msi.gaml.operators.Cast;
+import gama.dev.DEBUG;
+import gama.ui.display.opengl.OpenGL;
+import gama.ui.display.opengl.renderer.IOpenGLRenderer;
+import gaml.core.expressions.IExpression;
+import gaml.core.operators.Cast;
 
 /**
  * The Class OverlayLayerObject.

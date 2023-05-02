@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * TextDrawer.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * TextDrawer.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -18,27 +18,6 @@ import static com.jogamp.opengl.GL2GL3.GL_DOUBLE;
 import static com.jogamp.opengl.fixedfunc.GLPointerFunc.GL_NORMAL_ARRAY;
 import static com.jogamp.opengl.fixedfunc.GLPointerFunc.GL_TEXTURE_COORD_ARRAY;
 import static com.jogamp.opengl.fixedfunc.GLPointerFunc.GL_VERTEX_ARRAY;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_BEGIN;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_COMBINE;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_EDGE_FLAG;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_END;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_ERROR;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_VERTEX;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_WINDING_NONZERO;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_WINDING_ODD;
-import static com.jogamp.opengl.glu.GLU.GLU_TESS_WINDING_RULE;
-import static com.jogamp.opengl.glu.GLU.gluTessBeginContour;
-import static com.jogamp.opengl.glu.GLU.gluTessBeginPolygon;
-import static com.jogamp.opengl.glu.GLU.gluTessCallback;
-import static com.jogamp.opengl.glu.GLU.gluTessEndContour;
-import static com.jogamp.opengl.glu.GLU.gluTessEndPolygon;
-import static com.jogamp.opengl.glu.GLU.gluTessNormal;
-import static com.jogamp.opengl.glu.GLU.gluTessProperty;
-import static com.jogamp.opengl.glu.GLU.gluTessVertex;
-import static java.awt.geom.PathIterator.SEG_CLOSE;
-import static java.awt.geom.PathIterator.SEG_LINETO;
-import static java.awt.geom.PathIterator.SEG_MOVETO;
-import static java.awt.geom.PathIterator.WIND_EVEN_ODD;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -49,18 +28,19 @@ import java.awt.geom.PathIterator;
 import java.awt.geom.Rectangle2D;
 import java.nio.DoubleBuffer;
 
+import com.jogamp.opengl.GL;
 import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.glu.GLUtessellator;
 import com.jogamp.opengl.util.gl2.GLUT;
 
+import gama.core.common.geometry.AxisAngle;
+import gama.core.common.geometry.ICoordinates;
+import gama.core.metamodel.shape.GamaPoint;
 import gama.ui.display.opengl.ITesselator;
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.scene.ObjectDrawer;
-import gama.ui.display.ui.utils.DPIHelper;
-import msi.gama.common.geometry.AxisAngle;
-import msi.gama.common.geometry.ICoordinates;
-import msi.gama.metamodel.shape.GamaPoint;
-import msi.gaml.statements.draw.TextDrawingAttributes;
+import gama.ui.shared.utils.DPIHelper;
+import gaml.core.statements.draw.TextDrawingAttributes;
 
 /**
  *
@@ -130,12 +110,12 @@ public class TextDrawer extends ObjectDrawer<StringObject> implements ITesselato
 	 */
 	public TextDrawer(final OpenGL gl) {
 		super(gl);
-		gluTessCallback(tobj, GLU_TESS_BEGIN, this);
-		gluTessCallback(tobj, GLU_TESS_END, this);
-		gluTessCallback(tobj, GLU_TESS_ERROR, this);
-		gluTessCallback(tobj, GLU_TESS_VERTEX, this);
-		gluTessCallback(tobj, GLU_TESS_COMBINE, this);
-		gluTessCallback(tobj, GLU_TESS_EDGE_FLAG, this);
+		GLU.gluTessCallback(tobj, GLU.GLU_TESS_BEGIN, this);
+		GLU.gluTessCallback(tobj, GLU.GLU_TESS_END, this);
+		GLU.gluTessCallback(tobj, GLU.GLU_TESS_ERROR, this);
+		GLU.gluTessCallback(tobj, GLU.GLU_TESS_VERTEX, this);
+		GLU.gluTessCallback(tobj, GLU.GLU_TESS_COMBINE, this);
+		GLU.gluTessCallback(tobj, GLU.GLU_TESS_EDGE_FLAG, this);
 	}
 
 	@Override
@@ -206,43 +186,43 @@ public class TextDrawer extends ObjectDrawer<StringObject> implements ITesselato
 	void process(final PathIterator pi) {
 		boolean wireframe = gl.isWireframe();
 		if (!wireframe) {
-			gluTessProperty(tobj, GLU_TESS_WINDING_RULE,
-					pi.getWindingRule() == WIND_EVEN_ODD ? GLU_TESS_WINDING_ODD : GLU_TESS_WINDING_NONZERO);
-			gluTessNormal(tobj, 0, 0, -1);
-			gluTessBeginPolygon(tobj, (double[]) null);
+			GLU.gluTessProperty(tobj, GLU.GLU_TESS_WINDING_RULE, pi.getWindingRule() == PathIterator.WIND_EVEN_ODD
+					? GLU.GLU_TESS_WINDING_ODD : GLU.GLU_TESS_WINDING_NONZERO);
+			GLU.gluTessNormal(tobj, 0, 0, -1);
+			GLU.gluTessBeginPolygon(tobj, (double[]) null);
 		}
 		double x0 = 0, y0 = 0;
 		while (!pi.isDone()) {
 			final var coords = new double[6];
 			switch (pi.currentSegment(coords)) {
-				case SEG_MOVETO:
+				case PathIterator.SEG_MOVETO:
 					// We begin a new contour within the global polygon
 					// If we are solid, we pass the information to the tesselation algorithm
 					if (!wireframe) {
-						gluTessBeginContour(tobj);
-						gluTessVertex(tobj, coords, 0, coords);
+						GLU.gluTessBeginContour(tobj);
+						GLU.gluTessVertex(tobj, coords, 0, coords);
 					}
 					x0 = coords[0];
 					y0 = coords[1];
 					beginNewContour();
 					addContourVertex0(x0, y0);
 					break;
-				case SEG_LINETO:
+				case PathIterator.SEG_LINETO:
 					// If we are solid, we pass the coordinates to the tesselation algorithm
-					if (!wireframe) { gluTessVertex(tobj, coords, 0, coords); }
+					if (!wireframe) { GLU.gluTessVertex(tobj, coords, 0, coords); }
 					// We also pass the coordinates to the side buffer, which will decide whether to create depth
 					// level coordinates and compute the normal vector associated with this vertex
 					addContourVertex0(coords[0], coords[1]);
 					break;
-				case SEG_CLOSE:
-					if (!wireframe) { gluTessEndContour(tobj); }
+				case PathIterator.SEG_CLOSE:
+					if (!wireframe) { GLU.gluTessEndContour(tobj); }
 					// We close the contour by adding it explicitly to the sideBuffer in order to close the loop
 					addContourVertex0(x0, y0);
 					endContour();
 			}
 			pi.next();
 		}
-		if (!wireframe) { gluTessEndPolygon(tobj); }
+		if (!wireframe) { GLU.gluTessEndPolygon(tobj); }
 		sideQuadsBuffer.flip();
 		sideNormalBuffer.flip();
 		faceVertexBuffer.flip();
@@ -520,7 +500,7 @@ public class TextDrawer extends ObjectDrawer<StringObject> implements ITesselato
 		while (i < currentIndex) {
 			var begin = indices[++i];
 			var end = indices[++i];
-			gl.beginDrawing(GL_LINE_LOOP);
+			gl.beginDrawing(GL.GL_LINE_LOOP);
 			for (var index = begin; index < end; index += stride) {
 				gl.outputVertex(sideQuadsBuffer.get(index), sideQuadsBuffer.get(index + 1),
 						sideQuadsBuffer.get(index + 2));

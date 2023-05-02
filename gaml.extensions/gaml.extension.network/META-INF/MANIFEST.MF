@@ -48,7 +48,8 @@ Export-Package:
  org.java_websocket.util,
  org.slf4j
 Require-Bundle: gama.core,
- gama.dev;bundle-version="2.0.0"
+ gama.dev;bundle-version="2.0.0",
+ gaml.extension.serialization
 Bundle-ClassPath: .,
  ext/arduino.jar,
  ext/jSerialComm-2.9.3.jar,

@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * GamaGLAnimator.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GamaGLAnimator.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -17,10 +17,10 @@ import com.jogamp.opengl.FPSCounter;
 import com.jogamp.opengl.GLAnimatorControl;
 import com.jogamp.opengl.GLAutoDrawable;
 
-import gama.ui.display.dev.utils.DEBUG;
-import gama.ui.display.dev.utils.THREADS;
-import gama.ui.display.ui.utils.WorkbenchHelper;
 import gama.core.common.preferences.GamaPreferences;
+import gama.dev.DEBUG;
+import gama.dev.THREADS;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * Single Thread Animator (with target FPS)

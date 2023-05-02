@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * GamaGLCanvas.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GamaGLCanvas.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -41,13 +41,13 @@ import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.GLRunnable;
 import com.jogamp.opengl.swt.GLCanvas;
 
-import gama.ui.display.dev.utils.DEBUG;
-import gama.ui.display.dev.utils.FLAGS;
+import gama.core.runtime.PlatformHelper;
+import gama.dev.DEBUG;
+import gama.dev.FLAGS;
 import gama.ui.display.opengl.camera.IMultiListener;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
-import gama.ui.display.ui.bindings.IDelegateEventsToParent;
-import gama.ui.display.ui.utils.WorkbenchHelper;
-import gama.core.runtime.PlatformHelper;
+import gama.ui.shared.bindings.IDelegateEventsToParent;
+import gama.ui.shared.utils.WorkbenchHelper;
 
 /**
  * The Class GamaGLCanvas.

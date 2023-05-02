@@ -1,19 +1,19 @@
 /*******************************************************************************************************
  *
- * MeshObject.java, in ummisco.gama.opengl, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * MeshObject.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.display.opengl.scene.mesh;
 
+import gama.core.util.matrix.IField;
 import gama.ui.display.opengl.scene.AbstractObject;
-import msi.gama.util.matrix.IField;
-import msi.gaml.statements.draw.DrawingAttributes.DrawerType;
-import msi.gaml.statements.draw.MeshDrawingAttributes;
+import gaml.core.statements.draw.DrawingAttributes.DrawerType;
+import gaml.core.statements.draw.MeshDrawingAttributes;
 
 /**
  * The Class MeshObject.
@@ -23,8 +23,10 @@ public class MeshObject extends AbstractObject<IField, MeshDrawingAttributes> {
 	/**
 	 * Instantiates a new mesh object.
 	 *
-	 * @param dem the dem
-	 * @param attributes the attributes
+	 * @param dem
+	 *            the dem
+	 * @param attributes
+	 *            the attributes
 	 */
 	public MeshObject(final IField dem, final MeshDrawingAttributes attributes) {
 		super(dem, attributes, DrawerType.MESH);

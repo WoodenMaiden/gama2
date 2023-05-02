@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * ModelScene.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * ModelScene.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -14,7 +14,13 @@ import org.locationtech.jts.geom.Geometry;
 
 import com.jogamp.opengl.fixedfunc.GLMatrixFunc;
 
-import gama.ui.display.dev.utils.DEBUG;
+import gama.core.common.interfaces.ILayer;
+import gama.core.common.preferences.GamaPreferences;
+import gama.core.util.GamaMapFactory;
+import gama.core.util.IMap;
+import gama.core.util.file.GamaGeometryFile;
+import gama.core.util.matrix.IField;
+import gama.dev.DEBUG;
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
 import gama.ui.display.opengl.scene.layers.AxesLayerObject;
@@ -22,15 +28,9 @@ import gama.ui.display.opengl.scene.layers.FrameLayerObject;
 import gama.ui.display.opengl.scene.layers.LayerObject;
 import gama.ui.display.opengl.scene.layers.LayerObjectWithTrace;
 import gama.ui.display.opengl.scene.layers.OverlayLayerObject;
-import gama.core.common.interfaces.ILayer;
-import gama.core.common.preferences.GamaPreferences;
-import msi.gama.util.GamaMapFactory;
-import msi.gama.util.IMap;
-import msi.gama.util.file.GamaGeometryFile;
-import msi.gama.util.matrix.IField;
-import msi.gaml.statements.draw.DrawingAttributes;
-import msi.gaml.statements.draw.MeshDrawingAttributes;
-import msi.gaml.statements.draw.TextDrawingAttributes;
+import gaml.core.statements.draw.DrawingAttributes;
+import gaml.core.statements.draw.MeshDrawingAttributes;
+import gaml.core.statements.draw.TextDrawingAttributes;
 
 /**
  *

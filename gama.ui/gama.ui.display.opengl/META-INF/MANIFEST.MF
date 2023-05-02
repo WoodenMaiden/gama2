@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.core.runtime,
  gama.ui.shared;bundle-version="2.0.0",
  gama.dev;bundle-version="2.0.0",
  gaml.extension.physics;bundle-version="2.0.0",
- gaml.extension.images;bundle-version="2.0.0",
+ gaml.extension.image;bundle-version="2.0.0",
  gama.ui.application;bundle-version="2.0.0",
  gama.headless;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy

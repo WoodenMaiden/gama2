@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * Java2DDisplaySurface.java, in ummisco.gama.java2d, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * Java2DDisplaySurface.java, in gama.ui.display.java2d, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -36,7 +36,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Monitor;
 import org.locationtech.jts.geom.Envelope;
 
-import gama.ui.experiment.displays.DisplaySurfaceMenu;
+import gama.annotations.precompiler.GamlAnnotations.display;
+import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.core.common.interfaces.IDisplaySurface;
 import gama.core.common.interfaces.IGraphics;
 import gama.core.common.interfaces.ILayer;
@@ -52,16 +53,15 @@ import gama.core.outputs.display.AWTDisplayGraphics;
 import gama.core.outputs.display.LayerManager;
 import gama.core.outputs.layers.IEventLayerListener;
 import gama.core.outputs.layers.OverlayLayer;
-import gama.annotations.precompiler.GamlAnnotations.display;
-import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.IScope.IGraphicsScope;
 import gama.core.runtime.PlatformHelper;
 import gama.dev.DEBUG;
 import gama.dev.THREADS;
+import gama.ui.experiment.displays.DisplaySurfaceMenu;
 import gama.ui.shared.utils.DPIHelper;
-import gaml.extension.images.GamaImage;
-import gaml.extension.images.ImageHelper;
+import gaml.extension.image.GamaImage;
+import gaml.extension.image.ImageHelper;
 
 /**
  * The Class Java2DDisplaySurface.

@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * KeystoneHelper.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * KeystoneHelper.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -20,19 +20,19 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.fixedfunc.GLMatrixFunc;
 import com.jogamp.opengl.util.gl2.GLUT;
 
+import gama.core.common.geometry.ICoordinates;
+import gama.core.common.geometry.Scaling3D;
+import gama.core.metamodel.shape.GamaPoint;
+import gama.core.metamodel.shape.IShape;
+import gama.core.outputs.LayeredDisplayData;
+import gama.core.util.GamaColor.NamedGamaColor;
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
 import gama.ui.display.opengl.renderer.shaders.AbstractPostprocessingShader;
 import gama.ui.display.opengl.renderer.shaders.AbstractShader;
 import gama.ui.display.opengl.renderer.shaders.FrameBufferObject;
 import gama.ui.display.opengl.renderer.shaders.KeystoneShaderProgram;
-import gama.ui.display.ui.utils.DPIHelper;
-import msi.gama.common.geometry.ICoordinates;
-import msi.gama.common.geometry.Scaling3D;
-import msi.gama.metamodel.shape.GamaPoint;
-import msi.gama.metamodel.shape.IShape;
-import gama.core.outputs.LayeredDisplayData;
-import msi.gama.util.GamaColor.NamedGamaColor;
+import gama.ui.shared.utils.DPIHelper;
 
 /**
  * The Class KeystoneHelper.

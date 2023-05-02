@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * AxesLayerObject.java, in ummisco.gama.opengl, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * AxesLayerObject.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -10,34 +10,34 @@
  ********************************************************************************************************/
 package gama.ui.display.opengl.scene.layers;
 
-import static msi.gama.common.geometry.Rotation3D.MINUS_I;
-import static msi.gama.common.geometry.Rotation3D.PLUS_J;
-import static msi.gama.common.geometry.Scaling3D.of;
-import static msi.gama.util.GamaColor.getNamed;
+import static gama.core.common.geometry.Rotation3D.MINUS_I;
+import static gama.core.common.geometry.Rotation3D.PLUS_J;
+import static gama.core.util.GamaColor.getNamed;
 import static gaml.core.constants.GamlCoreConstants.bottom_center;
 import static gaml.core.constants.GamlCoreConstants.left_center;
 import static gaml.core.constants.GamlCoreConstants.top_center;
-import static msi.gaml.types.GamaGeometryType.buildCone3D;
-import static msi.gaml.types.GamaGeometryType.buildLineCylinder;
+import static gaml.core.types.GamaGeometryType.buildCone3D;
+import static gaml.core.types.GamaGeometryType.buildLineCylinder;
 
 import java.util.List;
 
+import gama.core.common.geometry.AxisAngle;
+import gama.core.common.geometry.Scaling3D;
+import gama.core.common.preferences.GamaPreferences;
+import gama.core.metamodel.agent.IAgent;
+import gama.core.metamodel.shape.GamaPoint;
+import gama.core.metamodel.shape.GamaShape;
+import gama.core.metamodel.shape.IShape;
+import gama.core.util.GamaColor;
+import gama.core.util.GamaFont;
 import gama.ui.display.opengl.OpenGL;
 import gama.ui.display.opengl.renderer.IOpenGLRenderer;
 import gama.ui.display.opengl.scene.AbstractObject;
 import gama.ui.display.opengl.scene.geometry.GeometryObject;
 import gama.ui.display.opengl.scene.text.StringObject;
-import msi.gama.common.geometry.AxisAngle;
-import gama.core.common.preferences.GamaPreferences;
-import msi.gama.metamodel.agent.IAgent;
-import msi.gama.metamodel.shape.GamaPoint;
-import msi.gama.metamodel.shape.GamaShape;
-import msi.gama.metamodel.shape.IShape;
-import msi.gama.util.GamaColor;
-import msi.gama.util.GamaFont;
-import msi.gaml.statements.draw.DrawingAttributes;
-import msi.gaml.statements.draw.ShapeDrawingAttributes;
-import msi.gaml.statements.draw.TextDrawingAttributes;
+import gaml.core.statements.draw.DrawingAttributes;
+import gaml.core.statements.draw.ShapeDrawingAttributes;
+import gaml.core.statements.draw.TextDrawingAttributes;
 
 /**
  * The Class AxesLayerObject.
@@ -125,7 +125,7 @@ public class AxesLayerObject extends StaticLayerObject.World {
 			addSyntheticObject(list, axes[i], COLORS[i], IShape.Type.LINECYLINDER);
 			// build labels
 			final TextDrawingAttributes text =
-					new TextDrawingAttributes(of(1), null, p.times(1.3).yNegated(), COLORS[i]);
+					new TextDrawingAttributes(Scaling3D.of(1), null, p.times(1.3).yNegated(), COLORS[i]);
 			text.setAnchor(ANCHORS[i]);
 			text.setFont(AXES_FONT);
 			text.setPerspective(false);
