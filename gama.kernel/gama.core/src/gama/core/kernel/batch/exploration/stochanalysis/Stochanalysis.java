@@ -29,7 +29,6 @@ import gama.core.kernel.experiment.ParametersSet;
 import gama.core.runtime.IScope;
 import gama.core.runtime.exceptions.GamaRuntimeException;
 import gama.core.util.IMap;
-import gama.core.util.file.IGamaFileMetaData;
 import gaml.core.operators.Cast;
 
 /**
@@ -204,7 +203,8 @@ public class Stochanalysis {
 	public static String buildSimulationCsv(final IMap<ParametersSet, Map<String, List<Object>>> outputs,
 			final IScope scope) {
 		StringBuilder sb = new StringBuilder();
-		String sep = IGamaFileMetaData.DELIMITER;
+		String sep = ";";
+		String linesep = "\n";
 
 		// Write the header
 		for (String param : outputs.keySet().stream().findFirst().get().keySet()) { sb.append(param).append(sep); }
@@ -219,8 +219,9 @@ public class Stochanalysis {
 						scope);
 			}
 			for (int r = 0; r < nbr; r++) {
-				for (Object pvalue : ps.values()) { sb.append(pvalue); }
-				for (String output : res.keySet()) { sb.append(res.get(output).get(r)); }
+				sb.append(linesep);
+				for (Object pvalue : ps.values()) { sb.append(pvalue).append(sep); }
+				for (String output : res.keySet()) { sb.append(res.get(output).get(r)).append(sep); }
 			}
 		}
 
@@ -508,7 +509,7 @@ public class Stochanalysis {
 				}
 			}
 			int min_replicat = tmp_replicat / sample.size();
-			if (min_replicat == 0) { min_replicat = 1; }
+			// if (min_replicat == 0) { min_replicat = 1; }
 			return Arrays.asList(min_replicat, compteur_failed, n_min_list);
 		}
 		if (threshold == -1) {
@@ -523,11 +524,15 @@ public class Stochanalysis {
 				double t1 = computeT(true, mean.size());
 				double t2 = computeT(false, mean.size());
 				int nb_tmp = Student(s, delta, t1, t2);
+				if (nb_tmp == 0) {
+					nb_tmp = -1;
+					compteur_failed++;
+				}
 				n_min_list.add(nb_tmp);
-				tmp_replicat += nb_tmp;
+				tmp_replicat += nb_tmp <= 0 ? mean.size() : nb_tmp;
 			}
 			int min_replicat = tmp_replicat / sample.size();
-			if (min_replicat == 0) { min_replicat = -1; }
+			// if (min_replicat == 0) { min_replicat = -1; }
 			return Arrays.asList(min_replicat, compteur_failed, n_min_list);
 
 		}
@@ -563,7 +568,7 @@ public class Stochanalysis {
 			}
 		}
 		int min_replicat = tmp_replicat / sample.size();
-		if (min_replicat == 0) { min_replicat = 1; }
+		// if (min_replicat == 0) { min_replicat = 1; }
 		return Arrays.asList(min_replicat, compteur_failed, n_min_list);
 	}
 	/*
