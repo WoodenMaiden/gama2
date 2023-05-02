@@ -7,11 +7,11 @@
          name="Base product"
          point="org.eclipse.core.runtime.products">
       <product
-            application="gama.ui.application.GamaApplication"
+            application="gama.ui.application.application"
             name="Gama">
          <property
                name="windowImages"
-               value="icons/window/icon16.png,icons/window/icon32.png,icons/window/icon48.png,icons/window/icon64.png,icons/window/icon128.png,icons/window/icon256.png">
+               value="/msi.gama.application/icons/window/icon16.png,/msi.gama.application/icons/window/icon32.png,/msi.gama.application/icons/window/icon48.png,/msi.gama.application/icons/window/icon64.png,/msi.gama.application/icons/window/icon128.png,/msi.gama.application/icons/window/icon256.png">
          </property> 
          <property
                name="aboutText"
@@ -19,7 +19,7 @@
          </property>
          <property
                name="aboutImage"
-               value="icons/window/icon128.png">
+               value="/msi.gama.application/icons/window/icon128.png">
          </property>
          <property
                name="startupProgressRect"
@@ -37,11 +37,12 @@
    </extension>
 
    <extension
-         id="GamaApplication"
-         name="Gama"
+         id="application"
+         name="UI Gama"
          point="org.eclipse.core.runtime.applications">
        <application
-            icon="/icons/window/icon256.png">
+             icon="/icons/window/icon256.png"
+             visible="true">
          <run
                class="gama.ui.application.Application">
             <parameter

@@ -2,31 +2,29 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         id="product"
+         point="gaml.extension">
+   </extension>
+   <extension
+         id="application"
          name="Headless Gama"
          point="org.eclipse.core.runtime.applications">
       <application
             cardinality="singleton-global"
             thread="main"
             visible="true">
-         <run
-               class="gama.headless.Application">
-         </run>
       </application>
    </extension>
    <extension
-         point="gaml.extension">
+         id="gama.headless.product"
+         point="org.eclipse.core.runtime.products">
    </extension>
    <extension
          id="product"
+         name="Base product"
          point="org.eclipse.core.runtime.products">
       <product
-            application="gama.runtime.product"
-            name="gama.headless">
-         <property
-               name="appName"
-               value="gama.headless">
-         </property>
+            application="gama.headless.application"
+            name="Headless">
       </product>
    </extension>
 
