@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * DrivingSkill.java, in simtools.gaml.extensions.traffic, is part of the source code of the GAMA modeling and
- * simulation platform (v.1.9.0).
+ * DrivingSkill.java, in gaml.extension.traffic, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -23,7 +23,6 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.locationtech.jts.geom.Coordinate;
 
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
 import gama.annotations.precompiler.GamlAnnotations.action;
 import gama.annotations.precompiler.GamlAnnotations.arg;
 import gama.annotations.precompiler.GamlAnnotations.doc;
@@ -33,6 +32,7 @@ import gama.annotations.precompiler.GamlAnnotations.setter;
 import gama.annotations.precompiler.GamlAnnotations.skill;
 import gama.annotations.precompiler.GamlAnnotations.variable;
 import gama.annotations.precompiler.GamlAnnotations.vars;
+import gama.annotations.precompiler.IConcept;
 import gama.core.metamodel.agent.IAgent;
 import gama.core.metamodel.shape.GamaPoint;
 import gama.core.metamodel.shape.IShape;
@@ -347,9 +347,21 @@ import gaml.extension.traffic.carfollowing.Utils;
 @skill (
 		name = DrivingSkill.ADVANCED_DRIVING,
 		concept = { IConcept.TRANSPORT, IConcept.SKILL },
-		doc = @doc ("A skill that provides driving primitives and operators"))
+		doc = @doc (
+				value = "A skill that provides driving primitives and operators",
+				deprecated = "please use the name `driving` instead"))
 @SuppressWarnings ({ "unchecked", "rawtypes" })
 public class DrivingSkill extends MovingSkill {
+
+	/**
+	 * The Class NewDrivingSkill.
+	 */
+	@skill (
+			name = "driving",
+			concept = { IConcept.TRANSPORT, IConcept.SKILL },
+			doc = @doc ("A skill that provides driving primitives and operators"))
+	public static class NewDrivingSkill extends DrivingSkill {}
+
 	static {
 		DEBUG.OFF();
 	}
@@ -2638,8 +2650,16 @@ public class DrivingSkill extends MovingSkill {
 		setCurrentRoad(driver, null);
 		return true;
 	}
-	
-	
+
+	/**
+	 * Prim goto drive.
+	 *
+	 * @param scope
+	 *            the scope
+	 * @return the i path
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
+	 */
 	@action (
 			name = "goto_drive",
 			args = { @arg (
@@ -2675,50 +2695,47 @@ public class DrivingSkill extends MovingSkill {
 			doc = @doc (
 					value = "moves the agent towards the target passed in the arguments.",
 					returns = "optional: the path followed by the agent.",
-					examples = {
-							@example ("do goto_drive target: one_of road on: road_network;") }))
+					examples = { @example ("do goto_drive target: one_of road on: road_network;") }))
 	public IPath primGotoDrive(final IScope scope) throws GamaRuntimeException {
 		final IAgent agent = getCurrentAgent(scope);
-		final IAgent target = (IAgent)scope.getArg("target", IType.GEOMETRY);
+		final IAgent target = (IAgent) scope.getArg("target", IType.GEOMETRY);
 		IPath current_path = getCurrentPath(agent);
 		final IAgent finalTarget = getFinalTarget(agent);
-	
-		if (target == null) {
-			throw GamaRuntimeException.create(new IllegalArgumentException("target parameter in goto_drive can not be null"), scope);
-		}
-		
-		
-		if(finalTarget != null && !finalTarget.equals(target.getLocation())) { 
+
+		if (target == null) throw GamaRuntimeException
+				.create(new IllegalArgumentException("target parameter in goto_drive can not be null"), scope);
+
+		if (finalTarget != null && !finalTarget.equals(target.getLocation())) {
 			// agent changed course, we have to recompute path
-			
+
 			// check if there is a given path to follow
-			final IPath path = (IPath)scope.getArg("follow", IType.PATH);
-			
+			final IPath path = (IPath) scope.getArg("follow", IType.PATH);
+
 			if (path != null && !current_path.equals(path)) {
-				//we changed path, let's update it
+				// we changed path, let's update it
 				setCurrentPath(agent, path);
 				setFinalTarget(agent, target);
 				current_path = path;
-			}else {
+			} else {
 				// else we recompute path
 				current_path = null;
 			}
-		}else if(finalTarget == null) {
+		} else if (finalTarget == null) {
 			// clear current path
 			current_path = null;
 		}
-		
-		if (current_path != null) {	
+
+		if (current_path != null) {
 			// follow your path
 			primDrive(scope);
-		}else {
+		} else {
 			// compute your path
 			Object o = scope.getArg("on", IType.NONE);
 			scope.getExecutionContext().putLocalVar("graph", o);
 			primComputePath(scope);
-					
+
 		}
 		return getCurrentPath(agent);
 	}
-	
+
 }

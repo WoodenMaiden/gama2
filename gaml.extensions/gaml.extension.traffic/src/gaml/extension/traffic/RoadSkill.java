@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * RoadSkill.java, in simtools.gaml.extensions.traffic, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * RoadSkill.java, in gaml.extension.traffic, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -17,8 +17,6 @@ import org.apache.commons.collections4.OrderedBidiMap;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ITypeProvider;
 import gama.annotations.precompiler.GamlAnnotations.action;
 import gama.annotations.precompiler.GamlAnnotations.arg;
 import gama.annotations.precompiler.GamlAnnotations.doc;
@@ -28,6 +26,8 @@ import gama.annotations.precompiler.GamlAnnotations.setter;
 import gama.annotations.precompiler.GamlAnnotations.skill;
 import gama.annotations.precompiler.GamlAnnotations.variable;
 import gama.annotations.precompiler.GamlAnnotations.vars;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ITypeProvider;
 import gama.core.common.geometry.GeometryUtils;
 import gama.core.metamodel.agent.IAgent;
 import gama.core.metamodel.shape.GamaPoint;
@@ -94,9 +94,20 @@ import gaml.extension.traffic.carfollowing.CustomDualTreeBidiMap;
 @skill (
 		name = RoadSkill.SKILL_ROAD,
 		concept = { IConcept.TRANSPORT, IConcept.SKILL },
-		doc = @doc ("A skill for agents representing roads in traffic simulations"))
+		doc = @doc (
+				value = "A skill for agents representing roads in traffic simulations",
+				deprecated = "please use the name `road_skill` instead"))
 @SuppressWarnings ({ "unchecked", "rawtypes" })
 public class RoadSkill extends Skill {
+
+	/**
+	 * The Class NewRoadSkill.
+	 */
+	@skill (
+			name = "road_skill",
+			concept = { IConcept.TRANSPORT, IConcept.SKILL },
+			doc = @doc ("A skill for agents representing roads in traffic simulations"))
+	public static class NewRoadSkill extends RoadSkill {}
 
 	/** The Constant SKILL_ROAD. */
 	public static final String SKILL_ROAD = "skill_road";

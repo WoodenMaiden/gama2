@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * DrivingGraph.java, in simtools.gaml.extensions.traffic, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * DrivingGraph.java, in gaml.extension.traffic, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gaml.extension.traffic;
 
@@ -24,20 +24,23 @@ import gama.core.runtime.exceptions.GamaRuntimeException;
 import gama.core.util.IContainer;
 import gama.core.util.IMap;
 import gama.core.util.graph.GraphEvent;
-import gama.core.util.graph._Edge;
 import gama.core.util.graph.GraphEvent.GraphEventType;
+import gama.core.util.graph._Edge;
 
 /**
  * The Class DrivingGraph.
  */
 public class DrivingGraph extends GamaSpatialGraph {
-	
+
 	/**
 	 * Instantiates a new driving graph.
 	 *
-	 * @param edges the edges
-	 * @param vertices the vertices
-	 * @param scope the scope
+	 * @param edges
+	 *            the edges
+	 * @param vertices
+	 *            the vertices
+	 * @param scope
+	 *            the scope
 	 */
 	public DrivingGraph(final IContainer edges, final IContainer vertices, final IScope scope) {
 		super(scope, vertices.getGamlType().getContentType(), edges.getGamlType().getContentType());
@@ -55,18 +58,14 @@ public class DrivingGraph extends GamaSpatialGraph {
 		final IShape v2 = nodes.get(ptT);
 		if (v2 == null) return false;
 
-		if (e instanceof IAgent && ((IAgent) e).getSpecies().implementsSkill("skill_road")) {
+		if (e instanceof IAgent && ((IAgent) e).getSpecies().implementsSkill("road_skill")) {
 			final IAgent roadAgent = e.getAgent();
 			final IAgent source = v1.getAgent();
 			final IAgent target = v2.getAgent();
 			final List<IAgent> v1ro = RoadNodeSkill.getRoadsOut(source);
-			if (!v1ro.contains(roadAgent)) {
-				v1ro.add(roadAgent);
-			}
+			if (!v1ro.contains(roadAgent)) { v1ro.add(roadAgent); }
 			final List<IAgent> v2ri = RoadNodeSkill.getRoadsIn(target);
-			if (!v2ri.contains(roadAgent)) {
-				v2ri.add(roadAgent);
-			}
+			if (!v2ri.contains(roadAgent)) { v2ri.add(roadAgent); }
 			RoadSkill.setSourceNode(roadAgent, source);
 			RoadSkill.setTargetNode(roadAgent, target);
 		}
