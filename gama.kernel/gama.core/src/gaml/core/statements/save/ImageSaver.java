@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * ImageSaver.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.0).
+ * ImageSaver.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -173,7 +173,7 @@ public class ImageSaver extends AbstractSaver {
 			fw.write(cw + "\n0.0\n0.0\n" + ch + "\n" + x + "\n" + y);
 		}
 		final BufferedImage image = new BufferedImage(cols, rows, BufferedImage.TYPE_INT_RGB);
-		double[] minmaxVal = field.getMinMax(null);
+		double[] minmaxVal = field.getMinMax();
 		for (int row = 0; row < rows; row++) {
 			for (int col = 0; col < cols; col++) {
 				double v = field.get(scope, col, row);
