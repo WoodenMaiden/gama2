@@ -1,9 +1,9 @@
 /*******************************************************************************************************
  *
- * AbstractTopology.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * AbstractTopology.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
@@ -278,23 +278,22 @@ public abstract class AbstractTopology implements ITopology {
 	@Override
 	public GamaPoint normalizeLocation(final GamaPoint point, final boolean nullIfOutside) {
 
-		// TODO Subclass (or rewrite) this naive implementation to take care of
-		// irregular
-		// geometries.
+		boolean covers = environment.getGeometry().covers(point);
+		if (covers) return point;
 
-		// TODO Take into account the fact that some topologies may consider
-		// invalid locations.
-		if (environment.getGeometry().covers(point)) return point;
+		if (!isTorus()) {
+			if (nullIfOutside) return null;
+			return point;
+		}
 
-		if (isTorus()) {
-			final Point pt = GeometryUtils.GEOMETRY_FACTORY.createPoint(point);
-
-			for (int cnt = 0; cnt < 8; cnt++) {
-				final AffineTransformation at = new AffineTransformation();
-				at.translate(getAdjustedXYVector()[cnt][0], getAdjustedXYVector()[cnt][1]);
-				final GamaPoint newPt = new GamaPoint(at.transform(pt).getCoordinate());
-				if (environment.getGeometry().covers(newPt)) return newPt;
-			}
+		// final Point pt = GeometryUtils.GEOMETRY_FACTORY.createPoint(point);
+		// final AffineTransformation at = new AffineTransformation();
+		GamaPoint p = new GamaPoint();
+		for (int cnt = 0; cnt < 8; cnt++) {
+			// at.setToTranslation(getAdjustedXYVector()[cnt][0], getAdjustedXYVector()[cnt][1]);
+			// final GamaPoint newPt = new GamaPoint(at.transform(pt).getCoordinate());
+			p.setLocation(point).add(getAdjustedXYVector()[cnt][0], getAdjustedXYVector()[cnt][1], 0);
+			if (environment.getGeometry().covers(p)) return p;
 		}
 		// See if rounding errors of double do not interfere with the
 		// computation.
@@ -323,7 +322,7 @@ public abstract class AbstractTopology implements ITopology {
 		// if ( yy == nil ) { return null; }
 		// point.setLocation(xx, yy, point.getZ());
 
-		return null;
+		return nullIfOutside ? null : point;
 	}
 
 	@Override
@@ -590,10 +589,8 @@ public abstract class AbstractTopology implements ITopology {
 		if (rel == SpatialRelation.INSIDE) return pg1.covers(g2);
 		if (rel == SpatialRelation.COVER) return pg1.coveredBy(g2);
 		if (rel == SpatialRelation.CROSS) return pg1.crosses(g2);
-		if (rel == SpatialRelation.PARTIALLY_OVERLAP)
-			return pg1.overlaps(g2);
-		else
-			return pg1.touches(g2);
+		if (rel == SpatialRelation.PARTIALLY_OVERLAP) return pg1.overlaps(g2);
+		return pg1.touches(g2);
 	}
 
 	@Override

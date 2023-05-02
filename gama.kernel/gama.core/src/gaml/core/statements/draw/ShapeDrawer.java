@@ -1,7 +1,6 @@
 /*******************************************************************************************************
  *
- * ShapeDrawer.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * ShapeDrawer.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -11,7 +10,6 @@
 package gaml.core.statements.draw;
 
 import java.awt.geom.Rectangle2D;
-import java.util.List;
 
 import org.locationtech.jts.geom.Envelope;
 import org.locationtech.jts.geom.Geometry;
@@ -27,7 +25,6 @@ import gama.core.common.interfaces.IImageProvider;
 import gama.core.common.preferences.GamaPreferences;
 import gama.core.metamodel.shape.GamaPoint;
 import gama.core.metamodel.shape.IShape;
-import gama.core.metamodel.topology.ITopology;
 import gama.core.runtime.IScope;
 import gama.core.runtime.IScope.IGraphicsScope;
 import gama.core.runtime.exceptions.GamaRuntimeException;
@@ -170,16 +167,16 @@ public class ShapeDrawer implements IDrawDelegate {
 	 * @return
 	 */
 	private Geometry addToroidalParts(final IScope scope, final Geometry shape) {
-		Geometry result = shape;
-		final ITopology t = scope.getTopology();
-		if (t != null && t.isTorus()) {
-			final List<Geometry> geoms = t.listToroidalGeometries(shape);
-			final Geometry all = GeometryUtils.GEOMETRY_FACTORY.buildGeometry(geoms);
-			final Geometry world = scope.getSimulation().getInnerGeometry();
-			result = all.intersection(world);
-			// WARNING Does not correctly handle rotations or translations
-		}
-		return result;
+
+		// final ITopology t = scope.getTopology();
+		// if (t != null && t.isTorus()) {
+		// final List<Geometry> geoms = t.listToroidalGeometries(shape);
+		// final Geometry all = GeometryUtils.GEOMETRY_FACTORY.buildGeometry(geoms);
+		// final Geometry world = scope.getSimulation().getInnerGeometry();
+		// result = all.intersection(world);
+		// // WARNING Does not correctly handle rotations or translations
+		// }
+		return shape;
 	}
 
 	/** The temp arrow list. */
