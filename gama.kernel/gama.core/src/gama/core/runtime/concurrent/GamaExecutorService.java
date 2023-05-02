@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * GamaExecutorService.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GamaExecutorService.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -92,8 +92,8 @@ public abstract class GamaExecutorService {
 
 	/** The Constant CONCURRENCY_SIMULATIONS_ALL. */
 	public static final Pref<Boolean> CONCURRENCY_SIMULATIONS_ALL = create("pref_parallel_simulations_all",
-			"In batch mode, allow to run simulations with different parameter sets in parallel", false, IType.BOOL,
-			true).in(GamaPreferences.Runtime.NAME, GamaPreferences.Runtime.CONCURRENCY);
+			"In batch mode, allow to run simulations with different parameter sets in parallel + \\n[WARNING: if true, disabled reflexes and permanent displays of batch experiments]",
+			false, IType.BOOL, true).in(GamaPreferences.Runtime.NAME, GamaPreferences.Runtime.CONCURRENCY);
 
 	/** The Constant CONCURRENCY_GRID. */
 	public static final Pref<Boolean> CONCURRENCY_GRID = create("pref_parallel_grids",
