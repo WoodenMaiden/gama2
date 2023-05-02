@@ -1,7 +1,6 @@
 /*******************************************************************************************************
  *
- * GamaImageFile.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GamaImageFile.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -21,19 +20,24 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.nio.channels.FileChannel;
+import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
 import javax.imageio.ImageIO;
 
+import org.geotools.data.PrjFileReader;
 import org.locationtech.jts.geom.Envelope;
 import org.opengis.referencing.FactoryException;
 
-import gama.annotations.precompiler.IConcept;
+import com.google.common.io.Files;
+
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.example;
 import gama.annotations.precompiler.GamlAnnotations.file;
+import gama.annotations.precompiler.IConcept;
 import gama.core.common.geometry.Envelope3D;
 import gama.core.common.interfaces.IImageProvider;
 import gama.core.common.util.ImageUtils;
@@ -48,8 +52,8 @@ import gama.core.util.IList;
 import gama.core.util.matrix.GamaIntMatrix;
 import gama.core.util.matrix.IField;
 import gama.core.util.matrix.IMatrix;
-import gaml.core.operators.Strings;
 import gaml.core.operators.Spatial.Projections;
+import gaml.core.operators.Strings;
 import gaml.core.statements.Facets;
 import gaml.core.types.GamaMatrixType;
 import gaml.core.types.IContainerType;
@@ -602,8 +606,35 @@ public class GamaImageFile extends GamaFile<IMatrix<Integer>, Integer> implement
 		GamaPoint maxCorner =
 				new GamaPoint(xNeg ? Math.min(x1, x2) : Math.max(x1, x2), yNeg ? Math.min(y1, y2) : Math.max(y1, y2));
 		if (geodataFile != null) {
-			minCorner = Projections.to_GAMA_CRS(scope, minCorner, "EPSG:3857").getLocation();
-			maxCorner = Projections.to_GAMA_CRS(scope, maxCorner, "EPSG:3857").getLocation();
+			String fp = this.getPath(scope);
+			String path = fp.replace(Files.getFileExtension(fp), "prj");
+			File f = new File(path);
+			String crs = "EPSG:3857";
+			if (f.exists()) {
+				FileChannel rdc = null;
+				try {
+					rdc = FileChannel.open(f.toPath(), StandardOpenOption.READ);
+				} catch (IOException e) {}
+				if (rdc != null) {
+					try (PrjFileReader pfr = new PrjFileReader(rdc)) {
+						if (pfr.getCoordinateReferenceSystem() != null) {
+							IProjection gis = scope.getSimulation().getProjectionFactory().forSavingWith(scope,
+									pfr.getCoordinateReferenceSystem());
+							if (gis != null) {
+								minCorner = new GamaShape(gis.transform(minCorner.getInnerGeometry())).getLocation();
+								maxCorner = new GamaShape(gis.transform(maxCorner.getInnerGeometry())).getLocation();
+								return Envelope3D.of(minCorner.x, maxCorner.x, minCorner.y, maxCorner.y, 0, 0);
+							}
+
+						}
+					} catch (IOException | FactoryException e) {}
+
+				}
+
+			}
+
+			minCorner = Projections.to_GAMA_CRS(scope, minCorner, crs).getLocation();
+			maxCorner = Projections.to_GAMA_CRS(scope, maxCorner, crs).getLocation();
 		}
 
 		return Envelope3D.of(minCorner.x, maxCorner.x, minCorner.y, maxCorner.y, 0, 0);
