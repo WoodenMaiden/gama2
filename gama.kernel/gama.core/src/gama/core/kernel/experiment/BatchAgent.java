@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * BatchAgent.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.0).
+ * BatchAgent.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -347,7 +347,10 @@ public class BatchAgent extends ExperimentAgent {
 				// test the condition first in case it is paused
 				final boolean stopConditionMet = dead
 						|| Cast.asBool(agent.getScope(), agent.getScope().evaluate(stopCondition, agent).getValue());
-				final boolean mustStop = stopConditionMet || agent.dead() || agent.getScope().isPaused();
+				final boolean mustStop = stopConditionMet || agent.dead();
+				// AD -- removed because it would prevent simulations from running if 'do pause' was called in the
+				// experiment
+				// || agent.getScope().isPaused();
 				if (mustStop) {
 					pop.unscheduleSimulation(agent);
 					// pop.remove(agent);
@@ -465,7 +468,10 @@ public class BatchAgent extends ExperimentAgent {
 					// test the condition first in case it is paused
 					final boolean stopConditionMet =
 							dead || Cast.asBool(sim.getScope(), sim.getScope().evaluate(stopCondition, sim).getValue());
-					final boolean mustStop = stopConditionMet || agent.dead() || agent.getScope().isPaused();
+					final boolean mustStop = stopConditionMet || agent.dead();
+					// AD -- removed because it would prevent simulations from running if 'do pause' was called in the
+					// experiment
+					// || agent.getScope().isPaused();
 					if (mustStop) {
 						pop.unscheduleSimulation(agent);
 						Map<String, Object> out =
