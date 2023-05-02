@@ -1,7 +1,6 @@
 /*******************************************************************************************************
  *
- * GamaMatrixType.java, in msi.gama.core, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * GamaMatrixType.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -14,10 +13,10 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.type;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.metamodel.shape.GamaPoint;
 import gama.core.runtime.IScope;
 import gama.core.runtime.concurrent.GamaExecutorService;
@@ -30,7 +29,6 @@ import gama.core.util.matrix.GamaObjectMatrix;
 import gama.core.util.matrix.IField;
 import gama.core.util.matrix.IMatrix;
 import gaml.core.expressions.IExpression;
-import gaml.core.expressions.data.ListExpression;
 import gaml.core.expressions.data.MapExpression;
 import gaml.core.operators.Cast;
 
@@ -294,13 +292,9 @@ public class GamaMatrixType extends GamaContainerType<IMatrix> {
 		final IType itemType = exp.getGamlType();
 		final IType cType = itemType.getContentType();
 		if (itemType.id() == IType.LIST && cType.id() == IType.LIST) {
-			if (exp instanceof ListExpression) {
-				final IExpression[] array = ((ListExpression) exp).getElements();
-				if (array.length == 0) return Types.NO_TYPE;
-				return array[0].getGamlType().getContentType();
-			}
-			if (!(exp instanceof MapExpression)) return cType.getContentType();
-			final IExpression[] array = ((MapExpression) exp).valuesArray();
+			// cf. issue #3792 -- the computation of type is now taken in charge by ListExpression itself
+			if (!(exp instanceof MapExpression me)) return cType.getContentType();
+			final IExpression[] array = me.valuesArray();
 			if (array.length == 0) return Types.NO_TYPE;
 			return array[0].getGamlType().getContentType();
 		}
