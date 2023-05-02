@@ -37,6 +37,7 @@ import gama.ui.experiment.parameters.AgentAttributesEditorsList;
 import gama.ui.shared.controls.FlatButton;
 import gama.ui.shared.controls.ParameterExpandBar;
 import gama.ui.shared.controls.ParameterExpandItem;
+import gama.ui.shared.resources.GamaColors;
 import gama.ui.shared.resources.GamaColors.GamaUIColor;
 import gama.ui.shared.resources.IGamaColors;
 import gama.ui.shared.views.toolbar.IToolbarDecoratedView;
@@ -135,7 +136,7 @@ public class AgentInspectView extends AttributesEditorsView<IAgent>
 			final boolean isSubParameter) {
 		final Label label = new Label(parent, SWT.WRAP | SWT.RIGHT);
 		label.setBackground(parent.getBackground());
-		label.setForeground(getTextColorForBackground(parent.getBackground()).color());
+		label.setForeground(GamaColors.getTextColorForBackground(parent.getBackground()).color());
 		final GridData d = new GridData(SWT.END, SWT.CENTER, true, true);
 		d.minimumWidth = 70;
 		d.horizontalIndent = isSubParameter ? 30 : 0;

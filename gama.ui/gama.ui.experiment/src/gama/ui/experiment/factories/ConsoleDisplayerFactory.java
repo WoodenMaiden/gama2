@@ -28,6 +28,7 @@ import gama.core.util.GamaColor;
 import gama.ui.application.workbench.PerspectiveHelper;
 import gama.ui.shared.utils.ViewsHelper;
 import gama.ui.shared.utils.WorkbenchHelper;
+import gaml.core.operators.Strings;
 
 /**
  * A factory for creating ConsoleDisplayer objects.
@@ -91,8 +92,8 @@ public class ConsoleDisplayerFactory extends AbstractServiceFactory {
 		@Override
 		public void toggleConsoleViews(final ITopLevelAgent agent, final boolean show) {
 			if (!show) {
-				hideView(IGui.CONSOLE_VIEW_ID);
-				hideView(IGui.INTERACTIVE_CONSOLE_VIEW_ID);
+				ViewsHelper.hideView(IGui.CONSOLE_VIEW_ID);
+				ViewsHelper.hideView(IGui.INTERACTIVE_CONSOLE_VIEW_ID);
 			} else {
 				final IGamaView.Console icv = (Console) GAMA.getGui().showView(null, IGui.INTERACTIVE_CONSOLE_VIEW_ID,
 						null, IWorkbenchPage.VIEW_VISIBLE);

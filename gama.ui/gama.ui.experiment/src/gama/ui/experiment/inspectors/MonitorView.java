@@ -33,6 +33,7 @@ import gama.core.util.GamaColor;
 import gama.dev.COUNTER;
 import gama.ui.shared.parameters.EditorFactory;
 import gama.ui.shared.parameters.EditorsGroup;
+import gama.ui.shared.resources.GamaColors;
 import gama.ui.shared.resources.IGamaIcons;
 import gama.ui.shared.utils.WorkbenchHelper;
 import gama.ui.shared.views.ExpandableItemsView;
@@ -95,7 +96,7 @@ public class MonitorView extends ExpandableItemsView<MonitorOutput> implements I
 	public boolean addItem(final MonitorOutput output) {
 		if (output != null) {
 			createItem(getParentComposite(), output, output.getValue() == null,
-					output.getColor(null) == null ? null : get(output.getColor(null)));
+					output.getColor(null) == null ? null : GamaColors.get(output.getColor(null)));
 			return true;
 		}
 		return false;
