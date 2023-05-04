@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * GamlAnnotationImageProvider.java, in gama.ui.shared.modeling, is part of the source code of the GAMA modeling and
+ * GamlAnnotationImageProvider.java, in gama.ui.editor, is part of the source code of the GAMA modeling and
  * simulation platform (v.1.9.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)

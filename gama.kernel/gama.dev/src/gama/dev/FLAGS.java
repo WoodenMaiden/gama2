@@ -138,7 +138,7 @@ public class FLAGS {
 
 	/**
 	 * The Constant PRODUCE_ICONS. Used to tell GAMA to produce the PNG icons from the SVG ones in
-	 * ummisco.gama.ui.shared
+	 * gama.ui.shared
 	 */
 	// public static final boolean PRODUCE_ICONS = get("produce_icons", false);
 

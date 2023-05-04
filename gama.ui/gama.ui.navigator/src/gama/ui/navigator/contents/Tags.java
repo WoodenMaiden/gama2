@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * Tags.java, in gama.ui.shared.navigator, is part of the source code of the GAMA modeling and simulation platform
+ * Tags.java, in gama.ui.navigator, is part of the source code of the GAMA modeling and simulation platform
  * (v.1.9.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
@@ -51,7 +51,7 @@ public class Tags extends VirtualContent<WrappedFile> {
 	/**
 	 * Method hasChildren()
 	 *
-	 * @see gama.ui.shared.navigator.contents.VirtualContent#hasChildren()
+	 * @see gama.ui.navigator.contents.VirtualContent#hasChildren()
 	 */
 	@Override
 	public boolean hasChildren() {
@@ -61,7 +61,7 @@ public class Tags extends VirtualContent<WrappedFile> {
 	/**
 	 * Method getNavigatorChildren()
 	 *
-	 * @see gama.ui.shared.navigator.contents.VirtualContent#getNavigatorChildren()
+	 * @see gama.ui.navigator.contents.VirtualContent#getNavigatorChildren()
 	 */
 	@Override
 	public Object[] getNavigatorChildren() {
@@ -72,7 +72,7 @@ public class Tags extends VirtualContent<WrappedFile> {
 	/**
 	 * Method getImage()
 	 *
-	 * @see gama.ui.shared.navigator.contents.VirtualContent#getImage()
+	 * @see gama.ui.navigator.contents.VirtualContent#getImage()
 	 */
 	@Override
 	public ImageDescriptor getImageDescriptor() { return GamaIcon.named(IGamaIcons.ATTRIBUTES).descriptor(); }
@@ -80,7 +80,7 @@ public class Tags extends VirtualContent<WrappedFile> {
 	/**
 	 * Method getColor()
 	 *
-	 * @see gama.ui.shared.navigator.contents.VirtualContent#getColor()
+	 * @see gama.ui.navigator.contents.VirtualContent#getColor()
 	 */
 	@Override
 	public Color getColor() {

@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * IGamaIcons.java, in gama.ui.shared.shared, is part of the source code of the GAMA modeling and simulation platform
+ * IGamaIcons.java, in gama.ui.shared, is part of the source code of the GAMA modeling and simulation platform
  * (v.1.9.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
@@ -497,7 +497,7 @@ public interface IGamaIcons {
 	String ICONS_PATH = "/icons/";
 
 	/** The Constant PLUGIN_ID. */
-	String PLUGIN_ID = "gama.ui.shared.shared";
+	String PLUGIN_ID = "gama.ui.shared";
 
 	/** The Constant DVG_PATH. */
 	String SVG_PATH = "/svg/";

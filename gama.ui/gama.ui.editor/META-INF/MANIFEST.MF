@@ -37,9 +37,10 @@ Export-Package: gama.ui.editor,
  gama.ui.editor.editor.toolbar,
  gama.ui.editor.highlight,
  gama.ui.editor.hover,
+ gama.ui.editor.internal,
  gama.ui.editor.labeling,
  gama.ui.editor.markers,
- gama.ui.editor.modeling,
+ gama.ui.editor.menu,
  gama.ui.editor.outline,
  gama.ui.editor.perspective,
  gama.ui.editor.quickfix,
@@ -48,15 +49,14 @@ Export-Package: gama.ui.editor,
  gama.ui.editor.utils,
  gama.ui.editor.views,
  gaml.compiler.ide,
+ gaml.compiler.ide.contentassist.antlr,
+ gaml.compiler.ide.contentassist.antlr.internal,
  gaml.compiler.ui,
  gaml.compiler.ui.contentassist,
  gaml.compiler.ui.labeling,
  gaml.compiler.ui.outline,
- gaml.compiler.ui.quickfix,
- gama.ui.editor.internal,
- gaml.compiler.ide.contentassist.antlr.internal,
- gaml.compiler.ide.contentassist.antlr
-Bundle-Activator: gama.ui.shared.modeling.internal.EditorActivator
+ gaml.compiler.ui.quickfix
+Bundle-Activator: gama.ui.editor.internal.EditorActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: msi.gama.application
 Import-Package: gama.headless.core,

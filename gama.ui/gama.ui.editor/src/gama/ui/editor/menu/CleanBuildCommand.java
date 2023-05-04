@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * CleanBuildCommand.java, in gama.ui.shared.modeling, is part of the source code of the GAMA modeling and simulation
+ * CleanBuildCommand.java, in gama.ui.editor, is part of the source code of the GAMA modeling and simulation
  * platform (v.1.9.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
@@ -8,7 +8,7 @@
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  *
  ********************************************************************************************************/
-package gama.ui.editor.modeling;
+package gama.ui.editor.menu;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;

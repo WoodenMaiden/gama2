@@ -8,7 +8,7 @@
          name="serialize"
          point="gama.experiment">
       <implementation
-            class="gaml.extension.serializer.experiment.ExperimentBackwardAgent"
+            class="gaml.extension.serialization.experiment.ExperimentBackwardAgent"
             keyword="memorize">
       </implementation>
    </extension>
@@ -21,7 +21,7 @@
    <extension
          point="gama.create">
       <implementation
-            class="gaml.extension.serializer.gaml.CreateFromSavedSimulationDelegate"
+            class="gaml.extension.serialization.gaml.CreateFromSavedSimulationDelegate"
             description="Create simulation from saved simulation">
       </implementation>
    </extension>   

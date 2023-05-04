@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * WebHelper.java, in gama.ui.shared.shared, is part of the source code of the
+ * WebHelper.java, in gama.ui.shared, is part of the source code of the
  * GAMA modeling and simulation platform (v.1.9.0).
  *
  * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
@@ -65,7 +65,7 @@ public class WebHelper implements IWebHelper {
 		if (HOME_URL == null)
 			try {
 				final var welcomePage = "/welcome/" + (isDark() ? "dark" : "light") + "/welcome.html";
-				HOME_URL = toFileURL(getBundle("gama.ui.shared.shared").getEntry(welcomePage));
+				HOME_URL = toFileURL(getBundle("gama.ui.shared").getEntry(welcomePage));
 			} catch (final IOException e) {
 				e.printStackTrace();
 			}

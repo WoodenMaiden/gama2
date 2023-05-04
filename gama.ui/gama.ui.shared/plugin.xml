@@ -5,7 +5,7 @@
    <extension
          point="org.eclipse.ui.ide.projectNatureImages">
       <image
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/navigator/files/folder.model.png"
+            icon="platform:/plugin/gama.ui.shared/icons/navigator/files/folder.model.png"
             id="gama.ui.application.nature.gamaNature.img"
             natureId="gama.ui.application.gamaNature">
       </image>
@@ -98,59 +98,59 @@
          point="org.eclipse.ui.commandImages">
       <image
             commandId="org.eclipse.ui.edit.copy"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.copy.png">
+            icon="platform:/plugin/gama.ui.shared/icons/generic/menu.copy.png">
       </image>
       <image
             commandId="org.eclipse.ui.edit.cut"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.cut.png">
+            icon="platform:/plugin/gama.ui.shared/icons/generic/menu.cut.png">
       </image>
       <image
             commandId="org.eclipse.ui.edit.delete"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.delete.png">
+            icon="platform:/plugin/gama.ui.shared/icons/generic/menu.delete.png">
       </image>
       <image
             commandId="org.eclipse.ui.edit.paste"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.paste.png">
+            icon="platform:/plugin/gama.ui.shared/icons/generic/menu.paste.png">
       </image>
       <image
             commandId="org.eclipse.ui.file.print"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.print.png">
+            icon="platform:/plugin/gama.ui.shared/icons/generic/menu.print.png">
       </image>
       <image
             commandId="org.eclipse.ui.edit.undo"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.undo.png">
+            icon="platform:/plugin/gama.ui.shared/icons/generic/menu.undo.png">
       </image>
       <image
             commandId="org.eclipse.ui.edit.redo"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.redo.png">
+            icon="platform:/plugin/gama.ui.shared/icons/generic/menu.redo.png">
       </image>
       <image
             commandId="org.eclipse.ui.file.save"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.save.png"> 
+            icon="platform:/plugin/gama.ui.shared/icons/generic/menu.save.png"> 
       </image>
       <image
             commandId="org.eclipse.ui.file.saveAll"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.saveall.png">
+            icon="platform:/plugin/gama.ui.shared/icons/generic/menu.saveall.png">
       </image>
       <image
             commandId="org.eclipse.ui.file.saveAs"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.saveas.png">
+            icon="platform:/plugin/gama.ui.shared/icons/generic/menu.saveas.png">
       </image>
       <image
             commandId="org.eclipse.ui.file.refresh"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/navigator/file.refresh.png">
+            icon="platform:/plugin/gama.ui.shared/icons/navigator/file.refresh.png">
       </image>
       <image
             commandId="org.eclipse.ui.file.export"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/navigator/menu.export.png">
+            icon="platform:/plugin/gama.ui.shared/icons/navigator/menu.export.png">
       </image>
       <image
             commandId="org.eclipse.ui.file.import"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/navigator/menu.import.png">
+            icon="platform:/plugin/gama.ui.shared/icons/navigator/menu.import.png">
       </image>
       <image
             commandId="org.eclipse.ui.window.preferences"
-            icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.open.preferences.png">
+            icon="platform:/plugin/gama.ui.shared/icons/generic/menu.open.preferences.png">
       </image>
    </extension>
    <extension
@@ -213,8 +213,8 @@
                label="Common">
             <command
                   commandId="gama.ui.application.goto.modeling"
-                  disabledIcon="platform:/plugin/ummisco.gama.ui.shared/icons/views/perspective.modeling_disabled.png"
-                  icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/perspective.modeling.png"
+                  disabledIcon="platform:/plugin/gama.ui.shared/icons/views/perspective.modeling_disabled.png"
+                  icon="platform:/plugin/gama.ui.shared/icons/views/perspective.modeling.png"
                   label="Modeling perspective"
                   style="push"
                   tooltip="Open modeling perspective">
@@ -238,13 +238,13 @@
             locationURI="menu:file?after=open.ext">
          <command
                commandId="ummisco.gama.ui.switchWorkspace"
-               icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.switch.png"
+               icon="platform:/plugin/gama.ui.shared/icons/generic/menu.switch.png"
                label="Switch workspace..."
                style="push">
          </command>
          <command
                commandId="ummisco.gama.ui.restart"
-               icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.restart.png"
+               icon="platform:/plugin/gama.ui.shared/icons/generic/menu.restart.png"
                label="Restart GAMA"
                style="push">
          </command>
@@ -253,34 +253,34 @@
             allPopups="false"
             locationURI="menu:help?after=group.about.ext">
          <separator
-               name="ummisco.gama.ui.shared.help.separator2"
+               name="gama.ui.shared.help.separator2"
                visible="true">
          </separator>
          <command
                commandId="ummisco.gama.ui.update"
-               icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.update.png"
+               icon="platform:/plugin/gama.ui.shared/icons/generic/menu.update.png"
                label="Check for updates"
                style="push">
          </command>
          <command
                commandId="ummisco.gama.ui.install"
-               icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.install.png"
+               icon="platform:/plugin/gama.ui.shared/icons/generic/menu.install.png"
                label="Install new plugins..."
                style="push">
          </command>
          <command 
                commandId="ummisco.gama.ui.details"
-               icon="platform:/plugin/ummisco.gama.ui.shared/icons/generic/menu.details.png"
+               icon="platform:/plugin/gama.ui.shared/icons/generic/menu.details.png"
                label="Installation details"
                style="push">
          </command>
          <separator
-               name="ummisco.gama.ui.shared.help.separator"
+               name="gama.ui.shared.help.separator"
                visible="true">
          </separator>
          <command
                commandId="gama.ui.application.command.web"
-               icon="platform:/plugin/ummisco.gama.ui.shared/icons/views/open.web.png"
+               icon="platform:/plugin/gama.ui.shared/icons/views/open.web.png"
                label="Welcome page"
                style="push">
          </command>
@@ -344,18 +344,18 @@
    </extension>
    <extension point="org.eclipse.ui.services">
       <serviceFactory
-            factoryClass="gama.ui.shared.shared.WebHelperFactory">
+            factoryClass="gama.ui.shared.factories.WebHelperFactory">
          <service
                serviceClass="gama.ui.application.workbench.IWebHelper">
          </service>
       </serviceFactory>
       <serviceFactory
-            factoryClass="gama.ui.shared.shared.IconProviderFactory">
+            factoryClass="gama.ui.shared.factories.IconProviderFactory">
          <service
                serviceClass="gama.ui.application.workbench.IIconProvider"></service>
       </serviceFactory>
       <serviceFactory
-            factoryClass="gama.ui.shared.shared.PreferenceHelperFactory">
+            factoryClass="gama.ui.shared.factories.PreferenceHelperFactory">
          <service
                serviceClass="gama.ui.application.workbench.IPreferenceHelper">
          </service>

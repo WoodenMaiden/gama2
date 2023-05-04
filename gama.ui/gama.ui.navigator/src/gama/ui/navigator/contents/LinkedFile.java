@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * LinkedFile.java, in gama.ui.shared.navigator, is part of the source code of the GAMA modeling and simulation
+ * LinkedFile.java, in gama.ui.navigator, is part of the source code of the GAMA modeling and simulation
  * platform (v.1.9.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
@@ -48,7 +48,7 @@ public class LinkedFile extends VirtualContent<Category> implements IAdaptable {
 	/**
 	 * Method hasChildren()
 	 *
-	 * @see gama.ui.shared.navigator.contents.VirtualContent#hasChildren()
+	 * @see gama.ui.navigator.contents.VirtualContent#hasChildren()
 	 */
 	@Override
 	public boolean hasChildren() {
@@ -58,7 +58,7 @@ public class LinkedFile extends VirtualContent<Category> implements IAdaptable {
 	/**
 	 * Method getNavigatorChildren()
 	 *
-	 * @see gama.ui.shared.navigator.contents.VirtualContent#getNavigatorChildren()
+	 * @see gama.ui.navigator.contents.VirtualContent#getNavigatorChildren()
 	 */
 	@Override
 	public Object[] getNavigatorChildren() { return EMPTY; }
@@ -66,7 +66,7 @@ public class LinkedFile extends VirtualContent<Category> implements IAdaptable {
 	/**
 	 * Method getImage()
 	 *
-	 * @see gama.ui.shared.navigator.contents.VirtualContent#getImage()
+	 * @see gama.ui.navigator.contents.VirtualContent#getImage()
 	 */
 	@Override
 	public ImageDescriptor getImageDescriptor() { return  ImageDescriptor.createFromImage(DEFAULT_LABEL_PROVIDER.getImage(file.getResource())); }

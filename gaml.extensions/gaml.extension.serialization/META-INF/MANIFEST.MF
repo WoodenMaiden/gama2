@@ -41,4 +41,4 @@ Import-Package: org.osgi.framework;version="1.10.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: gaml.extension.serialize
-Bundle-Activator: gaml.extension.serializer.Activator
+Bundle-Activator: gaml.extension.serialization.Activator

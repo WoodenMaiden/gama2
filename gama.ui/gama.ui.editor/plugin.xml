@@ -207,8 +207,8 @@
         allPopups="false"
         locationURI="menu:org.eclipse.ui.main.menu">
      <dynamic
-           class="gama.ui.shared.modeling.EditorMenu"
-           id="gama.ui.shared.modeling.dynamic5">
+           class="gama.ui.editor.menu.EditorMenu"
+           id="gama.ui.editor.dynamic5">
         <visibleWhen
               checkEnabled="false">
            <reference
@@ -222,8 +222,8 @@
            locationURI="menu:file?before=save.ext">
         <command
               commandId="ummisco.command.clean.build"
-              disabledIcon="platform:/plugin/gama.ui.shared.shared/icons/build/build.all_disabled.png"
-              icon="platform:/plugin/gama.ui.shared.shared/icons/build/build.all.png"
+              disabledIcon="platform:/plugin/gama.ui.shared/icons/build/build.all_disabled.png"
+              icon="platform:/plugin/gama.ui.shared/icons/build/build.all.png"
               label="Clean and validate all"
               style="push">
            <visibleWhen
@@ -349,7 +349,7 @@
 			name="Quick Outline">
 		</command>
   <command
-        defaultHandler="gama.ui.shared.modeling.CleanBuildCommand"
+        defaultHandler="gama.ui.editor.menu.CleanBuildCommand"
         id="ummisco.command.clean.build"
         name="Clean and build all models">
   </command>
@@ -371,7 +371,7 @@
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
 			class="msi.gama.lang.gaml.ui.GamlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="gama.ui.shared.modeling.gaml.check.fast">
+			markerType="gama.ui.editor.gaml.check.fast">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">
@@ -379,7 +379,7 @@
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
 			class="msi.gama.lang.gaml.ui.GamlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="gama.ui.shared.modeling.gaml.check.normal">
+			markerType="gama.ui.editor.gaml.check.normal">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">
@@ -387,7 +387,7 @@
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
 			class="msi.gama.lang.gaml.ui.GamlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="gama.ui.shared.modeling.gaml.check.expensive">
+			markerType="gama.ui.editor.gaml.check.expensive">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">
@@ -452,7 +452,7 @@
           allowMultiple="false"
           category="msi.gama.gui.category.gama"
           class="org.eclipse.ui.views.contentoutline.ContentOutline"
-          icon="platform:/plugin/gama.ui.shared.shared/icons/views/tabs/view.outline.png"
+          icon="platform:/plugin/gama.ui.shared/icons/views/tabs/view.outline.png"
           id="gama.ui.application.outline"
           name="Outline"
           restorable="true">
@@ -461,7 +461,7 @@
           allowMultiple="false"
           category="msi.gama.gui.category.gama"
           class="gama.ui.shared.views.SyntaxErrorsView"
-          icon="platform:/plugin/gama.ui.shared.shared/icons/views/tabs/view.problems.png"
+          icon="platform:/plugin/gama.ui.shared/icons/views/tabs/view.problems.png"
           id="gama.ui.application.problems"
           name="Validation"
           restorable="true">
@@ -501,25 +501,25 @@
                       name="org.eclipse.core.resources.IFile">
                 </objectClass>
                 <objectClass
-                      name="gama.ui.shared.navigator.contents.WrappedProject">
+                      name="gama.ui.navigator.contents.WrappedProject">
                 </objectClass>
                 <objectClass
-                      name="gama.ui.shared.navigator.contents.WrappedFolder">
+                      name="gama.ui.navigator.contents.WrappedFolder">
                 </objectClass>
                 <objectClass
-                      name="gama.ui.shared.navigator.contents.TopLevelFolder">
+                      name="gama.ui.navigator.contents.TopLevelFolder">
                 </objectClass>
                 <objectClass
-                      name="gama.ui.shared.navigator.contents.WrappedModelContent">
+                      name="gama.ui.navigator.contents.WrappedModelContent">
                 </objectClass>
                 <objectClass
-                      name="gama.ui.shared.navigator.contents.WrappedExperimentContent">
+                      name="gama.ui.navigator.contents.WrappedExperimentContent">
                 </objectClass>
                 <objectClass
-                      name="gama.ui.shared.navigator.contents.WrappedSyntacticContent">
+                      name="gama.ui.navigator.contents.WrappedSyntacticContent">
                 </objectClass>
                 <objectClass
-                      name="gama.ui.shared.navigator.contents.WrappedLink">
+                      name="gama.ui.navigator.contents.WrappedLink">
                 </objectClass>
              </or>
           </enablement>
@@ -553,13 +553,13 @@
              
              
           <markerTypeReference
-                id="gama.ui.shared.modeling.gaml.check.expensive">
+                id="gama.ui.editor.gaml.check.expensive">
           </markerTypeReference>
           <markerTypeReference
-                id="gama.ui.shared.modeling.gaml.check.normal">
+                id="gama.ui.editor.gaml.check.normal">
           </markerTypeReference>
           <markerTypeReference
-                id="gama.ui.shared.modeling.gaml.check.fast">
+                id="gama.ui.editor.gaml.check.fast">
           </markerTypeReference>
              
          <markerGrouping
@@ -588,7 +588,7 @@
             <markerAttributeGrouping
                   attribute="severity"
                   defaultGroupingEntry="org.eclipse.ui.ide.allmarkers.other"
-                  markerType="gama.ui.shared.modeling.gaml.check.fast">
+                  markerType="gama.ui.editor.gaml.check.fast">
                <markerAttributeMapping
                      markerGroupingEntry="org.eclipse.ui.ide.allmarkers.errorSeverity"
                      value="2">
@@ -609,7 +609,7 @@
                         <markerAttributeGrouping
                               attribute="severity"
                               defaultGroupingEntry="org.eclipse.ui.ide.allmarkers.other"
-                              markerType="gama.ui.shared.modeling.gaml.check.normal">
+                              markerType="gama.ui.editor.gaml.check.normal">
                <markerAttributeMapping
                      markerGroupingEntry="org.eclipse.ui.ide.allmarkers.errorSeverity"
                      value="2">
@@ -630,7 +630,7 @@
                         <markerAttributeGrouping
                               attribute="severity"
                               defaultGroupingEntry="org.eclipse.ui.ide.allmarkers.other"
-                              markerType="gama.ui.shared.modeling.gaml.check.expensive">
+                              markerType="gama.ui.editor.gaml.check.expensive">
                <markerAttributeMapping
                      markerGroupingEntry="org.eclipse.ui.ide.allmarkers.errorSeverity"
                      value="2">
@@ -711,17 +711,17 @@
        <imageprovider
              class="gama.ui.editor.markers.GamlMarkerImageProvider"
              id="msi.gama.lang.gaml.ui.imageprovider.normal"
-             markertype="gama.ui.shared.modeling.gaml.check.normal">
+             markertype="gama.ui.editor.gaml.check.normal">
        </imageprovider>
        <imageprovider
              class="gama.ui.editor.markers.GamlMarkerImageProvider"
              id="msi.gama.lang.gaml.ui.imageprovider.expensive"
-             markertype="gama.ui.shared.modeling.gaml.check.expensive">
+             markertype="gama.ui.editor.gaml.check.expensive">
        </imageprovider>
        <imageprovider
              class="gama.ui.editor.markers.GamlMarkerImageProvider"
              id="msi.gama.lang.gaml.ui.imageprovider.fast"
-             markertype="gama.ui.shared.modeling.gaml.check.fast">
+             markertype="gama.ui.editor.gaml.check.fast">
        </imageprovider>
     </extension>
     <extension
@@ -760,7 +760,7 @@
              visible="true">
           <action
                 class="gama.ui.editor.editor.DelegateForAllElements"
-                icon="platform:/plugin/gama.ui.shared.shared/icons/generic/menu.searchtext.png"
+                icon="platform:/plugin/gama.ui.shared/icons/generic/menu.searchtext.png"
                 id="gama.ui.application.action1"
                 label="GAML elements in models..."
                 menubarPath="org.eclipse.search.menu/extraSearchGroup"
@@ -831,9 +831,9 @@
     <extension
           point="org.eclipse.ui.perspectives">
        <perspective
-             class="gama.ui.shared.perspective.ModelingPerspective"
+             class="gama.ui.editor.perspective.ModelingPerspective"
              fixed="false"
-             icon="platform:/plugin/gama.ui.shared.shared/icons/views/perspective.modeling.png"
+             icon="platform:/plugin/gama.ui.shared/icons/views/perspective.modeling.png"
              id="gama.ui.application.perspectives.ModelingPerspective"
              name="Modeling">
           <description> 

@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * WebHelperFactory.java, in gama.ui.shared.shared, is part of the source code of the
+ * PreferenceHelperFactory.java, in gama.ui.shared, is part of the source code of the
  * GAMA modeling and simulation platform (v.1.9.0).
  *
  * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
@@ -8,23 +8,28 @@
  * Visit https://github.com/gama-platform/gama for license information and contacts.
  * 
  ********************************************************************************************************/
-package gama.ui.shared.shared;
+package gama.ui.shared.factories;
 
 import org.eclipse.ui.services.AbstractServiceFactory;
 import org.eclipse.ui.services.IServiceLocator;
 
-import gama.ui.application.workbench.IWebHelper;
-import gama.ui.shared.utils.WebHelper;
+import gama.ui.application.workbench.IPreferenceHelper;
+import gama.ui.shared.views.GamaPreferencesView;
 
 /**
- * A factory for creating WebHelper objects.
+ * A factory for creating PreferenceHelper objects.
  */
-public class WebHelperFactory extends AbstractServiceFactory {
+public class PreferenceHelperFactory extends AbstractServiceFactory implements IPreferenceHelper {
 
 	@Override
-	public IWebHelper create(final Class serviceInterface, final IServiceLocator parentLocator,
+	public Object create(final Class serviceInterface, final IServiceLocator parentLocator,
 			final IServiceLocator locator) {
-		return WebHelper.getInstance();
+		return this;
+	}
+
+	@Override
+	public void openPreferences() {
+		GamaPreferencesView.show();
 	}
 
 }

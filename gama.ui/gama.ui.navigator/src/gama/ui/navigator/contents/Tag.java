@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * Tag.java, in gama.ui.shared.navigator, is part of the source code of the GAMA modeling and simulation platform
+ * Tag.java, in gama.ui.navigator, is part of the source code of the GAMA modeling and simulation platform
  * (v.1.9.0).
  *
  * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
@@ -45,7 +45,7 @@ public class Tag extends VirtualContent<Tags> {
 	/**
 	 * Method hasChildren()
 	 *
-	 * @see gama.ui.shared.navigator.contents.VirtualContent#hasChildren()
+	 * @see gama.ui.navigator.contents.VirtualContent#hasChildren()
 	 */
 	@Override
 	public boolean hasChildren() {
@@ -55,7 +55,7 @@ public class Tag extends VirtualContent<Tags> {
 	/**
 	 * Method getNavigatorChildren()
 	 *
-	 * @see gama.ui.shared.navigator.contents.VirtualContent#getNavigatorChildren()
+	 * @see gama.ui.navigator.contents.VirtualContent#getNavigatorChildren()
 	 */
 	@Override
 	public Object[] getNavigatorChildren() { return EMPTY; }
@@ -63,7 +63,7 @@ public class Tag extends VirtualContent<Tags> {
 	/**
 	 * Method getImage()
 	 *
-	 * @see gama.ui.shared.navigator.contents.VirtualContent#getImage()
+	 * @see gama.ui.navigator.contents.VirtualContent#getImage()
 	 */
 	@Override
 	public ImageDescriptor getImageDescriptor() { return null; }

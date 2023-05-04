@@ -1,6 +1,6 @@
 /*******************************************************************************************************
  *
- * FileMetaDataProvider.java, in gama.ui.shared.navigator, is part of the source code of the GAMA modeling and
+ * FileMetaDataProvider.java, in gama.ui.navigator, is part of the source code of the GAMA modeling and
  * simulation platform (v.1.9.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
@@ -700,7 +700,7 @@ public class FileMetaDataProvider implements IFileMetaDataProvider {
 		// }).start();
 
 		try {
-			workspace.addSaveParticipant("gama.ui.shared.modeling", getSaveParticipant());
+			workspace.addSaveParticipant("gama.ui.editor", getSaveParticipant());
 		} catch (final CoreException e) {
 			e.printStackTrace();
 		}

@@ -38,7 +38,7 @@ Export-Package: gama.ui.shared,
  gama.ui.shared.menus,
  gama.ui.shared.parameters,
  gama.ui.shared.resources,
- gama.ui.shared.shared,
+ gama.ui.shared,
  gama.ui.shared.utils,
  gama.ui.shared.views,
  gama.ui.shared.views.toolbar

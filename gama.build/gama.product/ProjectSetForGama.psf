@@ -36,7 +36,7 @@
 <project reference="1.0,https://github.com/gama-platform/gama.git,GAMA_1.9.0,ummisco.gama.ui.experiment"/>
 <project reference="1.0,https://github.com/gama-platform/gama.git,GAMA_1.9.0,ummisco.gama.ui.modeling"/>
 <project reference="1.0,https://github.com/gama-platform/gama.git,GAMA_1.9.0,ummisco.gama.ui.navigator"/>
-<project reference="1.0,https://github.com/gama-platform/gama.git,GAMA_1.9.0,ummisco.gama.ui.shared"/>
+<project reference="1.0,https://github.com/gama-platform/gama.git,GAMA_1.9.0,gama.ui.shared"/>
 <project reference="1.0,https://github.com/gama-platform/gama.git,GAMA_1.9.0,ummisco.gama.ui.viewers"/>
 <project reference="1.0,https://github.com/gama-platform/gama.git,GAMA_1.9.0,ummisco.gaml.extensions.maths"/>
 <project reference="1.0,https://github.com/gama-platform/gama.git,GAMA_1.9.0,ummisco.gaml.extensions.sound"/>
@@ -93,7 +93,7 @@
 <workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1567497192748_9" label="=============================== UI" name="=============================== UI">
 <item elementID="=ummisco.gama.java2d" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=ummisco.gama.opengl" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=ummisco.gama.ui.shared" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=gama.ui.shared" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=msi.gama.application" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=ummisco.gama.ui.navigator" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=ummisco.gama.ui.experiment" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
