@@ -88,15 +88,15 @@
    </plugins>
 
    <features>
-      <feature id="ummisco.gama.feature.dependencies" version="1.9.2.qualifier" installMode="root"/>
-      <feature id="ummisco.gama.feature.dependencies.ui" version="1.9.2.qualifier" installMode="root"/>
-      <feature id="ummisco.gama.feature.core.ui" version="1.9.2.qualifier" installMode="root"/>
-      <feature id="ummisco.gama.feature.core.extensions" version="1.9.2.qualifier" installMode="root"/>
-      <feature id="ummisco.gama.feature.core" version="1.9.2.qualifier" installMode="root"/>
-      <feature id="ummisco.gama.feature.models" version="1.9.2.qualifier" installMode="root"/>
-      <feature id="ummisco.gama.feature.experiment.ui" version="1.9.2.qualifier" installMode="root"/>
-      <feature id="ummisco.gama.feature.modeling.ui" version="1.9.2.qualifier" installMode="root"/>
-      <feature id="ummisco.gama.feature.image" version="1.9.2.qualifier" installMode="root"/>
+      <feature id="gama.feature.annotations" installMode="root"/>
+      <feature id="gama.feature.compiler" installMode="root"/>
+      <feature id="gama.feature.core" installMode="root"/>
+      <feature id="gama.feature.dependencies" installMode="root"/>
+      <feature id="gama.feature.extensions" installMode="root"/>
+      <feature id="gama.feature.runtime" installMode="root"/>
+      <feature id="gama.feature.ui" installMode="root"/>
+      <feature id="gama.feature.ui.dependencies" installMode="root"/>
+      <feature id="gama.feature.ui.editor" installMode="root"/>
    </features>
 
    <configurations>
