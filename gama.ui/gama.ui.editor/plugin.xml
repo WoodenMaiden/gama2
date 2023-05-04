@@ -460,7 +460,7 @@
     <view
           allowMultiple="false"
           category="msi.gama.gui.category.gama"
-          class="gama.ui.shared.views.SyntaxErrorsView"
+          class="gama.ui.editor.views.SyntaxErrorsView"
           icon="platform:/plugin/gama.ui.shared/icons/views/tabs/view.problems.png"
           id="gama.ui.application.problems"
           name="Validation"
@@ -676,7 +676,7 @@
                 id="msi.gama.lang.gaml.ui.markerFieldConfiguration1"
                 name="Problems"
                 scope="ON_ANY"
-                values="gama.ui.shared.views.GamlProblems">
+                values="gama.ui.editor.views.GamlProblems">
           </markerFieldConfiguration>
           <markerFieldReference
                 id="msi.gama.lang.gaml.ui.description.field"
