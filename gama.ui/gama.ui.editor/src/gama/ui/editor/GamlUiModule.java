@@ -57,6 +57,7 @@ import com.google.inject.name.Names;
 
 import gama.core.common.interfaces.IGamlLabelProvider;
 import gama.dev.DEBUG;
+import gama.ui.editor.InternalGamlLexer;
 import gama.ui.editor.contentassist.GamlTemplateProposalProvider;
 import gama.ui.editor.decorators.GamlImageHelper;
 import gama.ui.editor.decorators.GamlMarkerUpdater;

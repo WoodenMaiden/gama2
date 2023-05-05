@@ -829,10 +829,10 @@
       <serviceFactory
             factoryClass="gama.ui.navigator.MetaDataServiceFactory">
          <service
-               serviceClass="msi.gama.util.file.IFileMetaDataProvider"></service>
+               serviceClass="gama.ui.navigator.metadata.FileMetaDataProvider"></service>
       </serviceFactory>
       <serviceFactory
-            factoryClass="gama.ui.shared.commands.RefreshServiceFactory">
+            factoryClass="gama.ui.navigator.commands.RefreshServiceFactory">
          <service
                serviceClass="gama.ui.shared.interfaces.IRefreshHandler">
          </service>

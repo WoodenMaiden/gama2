@@ -14,15 +14,14 @@ Workflow {
 		scanClassPath = true
 		platformUri = "../${runtimeProjectName}/.."
 	}
-
-	component = DirectoryCleaner {skipOnErrors=false
+	component = DirectoryCleaner {
+		skipOnErrors = false
 		directory = "${runtimeProjectName}/src-gen"
 	}
-
-	component = DirectoryCleaner {skipOnErrors=false
+	component = DirectoryCleaner {
+		skipOnErrors = false
 		directory = "${ideProjectName}/src-gen"
 	}
-
 	component = XtextGenerator {
 		configuration = {
 			project = model.project.StandardProjectConfig {
@@ -56,10 +55,15 @@ Workflow {
 			}
 		}
 		language = StandardLanguage {
+			projectWizard = {
+				generate = false
+				pluginProject = false
+			}
 			grammarUri = "platform:/resource/gaml.grammar/src/gaml/Gaml.xtext"
 			name = "Gaml"
 			fileExtensions = "gaml,experiment"
 			validator = {
+				generatePropertyPage = false
 				generateXtendStub = false
 			}
 			generator = {
@@ -73,6 +77,7 @@ Workflow {
 				generateXtendStub = false
 			}
 			junitSupport = {
+				generateStub = false
 				generateXtendStub = false
 			}
 			labelProvider = {
@@ -85,6 +90,5 @@ Workflow {
 				generateXtendStub = false
 			}
 		}
-
 	}
 }

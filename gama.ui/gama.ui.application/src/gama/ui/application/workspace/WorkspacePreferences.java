@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
  * WorkspacePreferences.java, in gama.ui.application, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -151,29 +151,34 @@ public class WorkspacePreferences {
 	 */
 	public static void setSelectedWorkspaceRootLocation(final String s) { selectedWorkspaceRootLocation = s; }
 
+	/** The Constant gamaStamp. */
+	private static final String gamaStamp = ".built_in_models_";
+
 	/**
 	 * Gets the current gama stamp string.
 	 *
 	 * @return the current gama stamp string
 	 */
 	public static String getCurrentGamaStampString() {
-		String gamaStamp = null;
+
 		try {
 			final URL tmpURL = new URL("platform:/plugin/msi.gama.models/models/");
-			final URL resolvedFileURL = FileLocator.toFileURL(tmpURL);
+			URL resolvedFileURL = FileLocator.toFileURL(tmpURL);
+
 			// We need to use the 3-arg constructor of URI in order to properly escape file system chars
 			final URI resolvedURI = new URI(resolvedFileURL.getProtocol(), resolvedFileURL.getPath(), null).normalize();
 			final File modelsRep = new File(resolvedURI);
 			final long time = modelsRep.lastModified();
-			gamaStamp = ".built_in_models_" + time;
 			LocalDateTime localDateTime = Files.getLastModifiedTime(modelsRep.toPath()).toInstant()
 					.atZone(ZoneId.systemDefault()).toLocalDateTime();
 			String date = localDateTime.format(DateTimeFormatter.ofPattern("MMM dd,yyyy HH:mm:ss"));
 			DEBUG.BANNER("GAMA: Checking date of models library", "modified", "" + date);
+			return gamaStamp + time;
 		} catch (final IOException | URISyntaxException e) {
 			e.printStackTrace();
+			return gamaStamp + "0";
 		}
-		return gamaStamp;
+
 	}
 
 	/**
@@ -208,7 +213,7 @@ public class WorkspacePreferences {
 					return null;
 				} catch (final RuntimeException | IOException er) {
 					er.printStackTrace();
-					return "Error creating directories, please check folder permissions";
+					return "Error creating directories";
 				}
 			}
 			if (!Files.notExists(workspaceDirectoryPath)) return "The selected directory does not exist";
