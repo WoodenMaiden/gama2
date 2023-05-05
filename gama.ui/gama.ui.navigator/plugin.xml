@@ -735,7 +735,7 @@
       </category>
       <wizard
             category="msi.gama.gui.wizards.GAMA"
-            class="gama.ui.shared.wizards.NewFileWizard"
+            class="gama.ui.navigator.wizards.NewFileWizard"
             hasPages="true"
             icon="platform:/plugin/gama.ui.shared/icons/navigator/new.model2.png"
             id="msi.gama.gui.wizards.NewFileWizard"
@@ -744,7 +744,7 @@
       </wizard>
        <wizard
              category="msi.gama.gui.wizards.GAMA"
-             class="gama.ui.shared.wizards.NewExperimentWizard"
+             class="gama.ui.navigator.wizards.NewExperimentWizard"
              hasPages="true"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/new.model2.png"
              id="msi.gama.gui.wizards.NewExperimentWizard"
@@ -753,7 +753,7 @@
       </wizard>
       <wizard
             category="msi.gama.gui.wizards.GAMA"
-            class="gama.ui.shared.wizards.NewProjectWizard"
+            class="gama.ui.navigator.wizards.NewProjectWizard"
             hasPages="true"
             icon="platform:/plugin/gama.ui.shared/icons/navigator/new.project2.png"
             id="msi.gama.gui.wizards.newProjectWizard"
@@ -762,7 +762,7 @@
       </wizard>
       <wizard
             category="msi.gama.gui.wizards.GAMA"
-            class="gama.ui.shared.wizards.NewTestExperimentWizard"
+            class="gama.ui.navigator.wizards.NewTestExperimentWizard"
             hasPages="true"
             icon="platform:/plugin/gama.ui.shared/icons/navigator/new.model2.png"
             id="msi.gama.gui.wizards.NewTestExperimentWizard"
@@ -829,7 +829,7 @@
       <serviceFactory
             factoryClass="gama.ui.navigator.MetaDataServiceFactory">
          <service
-               serviceClass="gama.ui.navigator.metadata.FileMetaDataProvider"></service>
+               serviceClass="gama.core.util.file.IFileMetaDataProvider"></service>
       </serviceFactory>
       <serviceFactory
             factoryClass="gama.ui.navigator.commands.RefreshServiceFactory">
@@ -852,21 +852,21 @@ type="java.lang.Object">
           point="org.eclipse.ui.importWizards">
        <wizard
              category="msi.gama.gui.wizards.GAMA"
-             class="gama.ui.shared.wizards.ImportProjectWizard"
+             class="gama.ui.navigator.wizards.ImportProjectWizard"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/import.project.png"
              id="gama.ui.shared.import.ExternalProject"
              name="GAMA Project">
        </wizard>
        <wizard
              category="msi.gama.gui.wizards.GAMA"
-             class="gama.ui.shared.wizards.FileImportWizard"
+             class="gama.ui.navigator.wizards.FileImportWizard"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/import.disk.png"
              id="gama.ui.shared.import.ExternalFile"
              name="External files from disk">
        </wizard>
        <wizard
              category="msi.gama.gui.wizards.GAMA"
-             class="gama.ui.shared.wizards.ZipImportWizard"
+             class="gama.ui.navigator.wizards.ZipImportWizard"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/import.archive.png"
              id="gama.ui.shared.import.ZipFile"
              name="External files from archive">
@@ -919,14 +919,14 @@ type="java.lang.Object">
           point="org.eclipse.ui.exportWizards">
        <wizard
              category="msi.gama.gui.wizards.GAMA"
-             class="gama.ui.shared.wizards.ExportProjectWizard"
+             class="gama.ui.navigator.wizards.ExportProjectWizard"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/import.archive.png"
              id="gama.ui.shared.export.ExternalProject"
              name="GAMA Project">
        </wizard>
        <wizard
              category="msi.gama.gui.wizards.GAMA"
-             class="gama.ui.shared.wizards.ZipExportWizard"
+             class="gama.ui.navigator.wizards.ZipExportWizard"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/import.archive.png"
              id="gama.ui.shared.export.ZipFile"
              name="External files to archive">
@@ -943,7 +943,7 @@ type="java.lang.Object">
     <extension
           point="org.eclipse.ui.handlers">
        <handler
-             class="gama.ui.shared.commands.RevealInWorkspace"
+             class="gama.ui.navigator.commands.RevealInWorkspace"
              commandId="ummisco.gama.navigator.reveal">
           <enabledWhen>
              <with
