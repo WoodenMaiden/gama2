@@ -15,11 +15,11 @@ Workflow {
 		platformUri = "../${runtimeProjectName}/.."
 	}
 
-	component = DirectoryCleaner {
+	component = DirectoryCleaner {skipOnErrors=false
 		directory = "${runtimeProjectName}/src-gen"
 	}
 
-	component = DirectoryCleaner {
+	component = DirectoryCleaner {skipOnErrors=false
 		directory = "${ideProjectName}/src-gen"
 	}
 

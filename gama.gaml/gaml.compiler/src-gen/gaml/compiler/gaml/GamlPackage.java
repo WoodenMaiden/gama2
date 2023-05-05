@@ -39,7 +39,7 @@ public interface GamlPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  String eNS_URI = "http://www.gama.msi/lang/gaml/Gaml";
+  String eNS_URI = "http://gaml/compiler/Gaml";
 
   /**
    * The package namespace name.

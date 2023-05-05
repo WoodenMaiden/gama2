@@ -44,8 +44,8 @@ public class GamlStandaloneSetupGenerated implements ISetup {
 	}
 	
 	public void register(Injector injector) {
-		if (!EPackage.Registry.INSTANCE.containsKey("http://www.gama.msi/lang/gaml/Gaml")) {
-			EPackage.Registry.INSTANCE.put("http://www.gama.msi/lang/gaml/Gaml", GamlPackage.eINSTANCE);
+		if (!EPackage.Registry.INSTANCE.containsKey("http://gaml/compiler/Gaml")) {
+			EPackage.Registry.INSTANCE.put("http://gaml/compiler/Gaml", GamlPackage.eINSTANCE);
 		}
 		IResourceFactory resourceFactory = injector.getInstance(IResourceFactory.class);
 		IResourceServiceProvider serviceProvider = injector.getInstance(IResourceServiceProvider.class);
