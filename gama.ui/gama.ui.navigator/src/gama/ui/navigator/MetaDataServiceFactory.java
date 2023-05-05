@@ -29,8 +29,7 @@ public class MetaDataServiceFactory extends AbstractServiceFactory {
 	@Override
 	public IFileMetaDataProvider create(final Class serviceInterface, final IServiceLocator parentLocator,
 			final IServiceLocator locator) {
-		if (IFileMetaDataProvider.class.equals(serviceInterface)) return FileMetaDataProvider.getInstance();
-		return null;
+		return FileMetaDataProvider.getInstance();
 	}
 
 }
