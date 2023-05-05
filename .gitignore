@@ -23,3 +23,4 @@ release/
 /*/bin/
 .__*
 /*/.tycho-consumer-pom.xml
+**/models/*/.project
