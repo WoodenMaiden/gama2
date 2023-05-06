@@ -443,7 +443,7 @@
                      icon="platform:/plugin/gama.ui.shared/icons/views/open.view.png"
                      label="Show View">
                   <dynamic
-                        class="gama.ui.experiment.commands.ShowViewContributionItem"
+                        class="gama.ui.shared.commands.ShowViewContributionItem"
                         id="gama.ui.application.showView">
                   </dynamic>
                </menu>
@@ -617,7 +617,7 @@
                </visibleWhen>
             </command>
             <control
-                  class="gama.ui.experiment.controls.Separator"
+                  class="gama.ui.shared.controls.Separator"
                   id="separator2876">
             </control>
       </menuContribution>
@@ -744,7 +744,7 @@
             commandId="gama.ui.application.ShowErrors">
       </handler>
       <handler
-            class="gama.ui.experiment.commands.SwitchToModeling"
+            class="gama.ui.shared.commands.SwitchToModeling"
             commandId="gama.ui.application.goto.modeling">
          <activeWhen>
             <or>
@@ -786,7 +786,7 @@
          </activeWhen>
       </handler>
       <handler
-            class="gama.ui.experiment.commands.SwitchToSimulation"
+            class="gama.ui.shared.commands.SwitchToSimulation"
             commandId="gama.ui.application.goto.simulation">
          <activeWhen>
             <and>
@@ -1127,12 +1127,12 @@
       <serviceFactory
             factoryClass="gama.ui.experiment.factories.AgentMenuFactory">
          <service
-               serviceClass="ummisco.gama.ui.interfaces.IAgentMenuFactory"></service>
+               serviceClass="gama.ui.shared.interfaces.IAgentMenuFactory"></service>
       </serviceFactory>
       <serviceFactory
             factoryClass="gama.ui.experiment.factories.UserDialogFactory">
          <service
-               serviceClass="ummisco.gama.ui.interfaces.IUserDialogFactory"></service>
+               serviceClass="gama.ui.shared.interfaces.IUserDialogFactory"></service>
       </serviceFactory>
       <sourceProvider
             provider="gama.ui.experiment.commands.SimulationStateProvider">
@@ -1148,7 +1148,7 @@
       <serviceFactory
             factoryClass="gama.ui.experiment.factories.SpeedDisplayerFactory">
          <service
-               serviceClass="ummisco.gama.ui.interfaces.ISpeedDisplayer">
+               serviceClass="gama.ui.shared.interfaces.ISpeedDisplayer">
          </service>
       </serviceFactory>
       <serviceFactory
@@ -1166,7 +1166,7 @@
       <serviceFactory
             factoryClass="gama.ui.experiment.factories.DisplayLayoutFactory">
          <service
-               serviceClass="ummisco.gama.ui.interfaces.IDisplayLayoutManager">
+               serviceClass="gama.ui.shared.interfaces.IDisplayLayoutManager">
          </service>
       </serviceFactory>
       <serviceFactory
