@@ -1,10 +1,11 @@
 /*******************************************************************************************************
  *
- * DXFBlock.java, in msi.gama.ext, is part of the source code of the GAMA modeling and simulation platform (v.1.9.0).
+ * DXFBlock.java, in gama.dependencies, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
- * Visit https://github.com/gama-platform/gama for license information and contacts.
+ * Visit https://github.com/gama-platform/gama2 for license information and contacts.
  *
  ********************************************************************************************************/
 package gama.dependencies.kabeja.dxf;
@@ -140,12 +141,7 @@ public class DXFBlock {
 	public void setDXFDocument(final DXFDocument doc) {
 		this.doc = doc;
 
-		Iterator i = entities.iterator();
-
-		while (i.hasNext()) {
-			DXFEntity entity = (DXFEntity) i.next();
-			entity.setDXFDocument(doc);
-		}
+		for (DXFEntity entity : entities) { entity.setDXFDocument(doc); }
 	}
 
 	/**
@@ -161,12 +157,7 @@ public class DXFBlock {
 	 */
 	public double getLength() {
 		double length = 0;
-		Iterator i = entities.iterator();
-
-		while (i.hasNext()) {
-			DXFEntity entity = (DXFEntity) i.next();
-			length += entity.getLength();
-		}
+		for (DXFEntity entity : entities) { length += entity.getLength(); }
 
 		return length;
 	}
@@ -184,13 +175,7 @@ public class DXFBlock {
 	 */
 	public DXFEntity getDXFEntityByID(final String id) {
 		DXFEntity entity = null;
-		Iterator i = this.entities.iterator();
-
-		while (i.hasNext()) {
-			DXFEntity e = (DXFEntity) i.next();
-
-			if (e.getID().equals(id)) return e;
-		}
+		for (DXFEntity e : this.entities) { if (e.getID().equals(id)) return e; }
 
 		return entity;
 	}

@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * FIPAMessage.java, in msi.gaml.extensions.fipa, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * FIPAMessage.java, in gaml.extension.fipa, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
- * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ * Visit https://github.com/gama-platform/gama2 for license information and contacts.
+ *
  ********************************************************************************************************/
 package gaml.extension.fipa;
 
@@ -103,14 +103,10 @@ public class FIPAMessage extends GamaMessage {
 	 *
 	 * @return the conversation
 	 */
-	public Conversation getConversation() {
-		return getData().getConversation();
-	}
+	public Conversation getConversation() { return getData().getConversation(); }
 
 	@Override
-	public IList<IAgent> getReceivers() {
-		return getData().getReceivers();
-	}
+	public IList<IAgent> getReceivers() { return getData().getReceivers(); }
 
 	// @Override
 	// public FIPAMessage clone() {
@@ -152,24 +148,21 @@ public class FIPAMessage extends GamaMessage {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gaml.extensions.fipa.IMessage#getMessage()
+	 * @see gaml.extensions.fipa.IMessage#getMessage()
 	 */
 	public MessageData getData() {
-		if (data == null)
-			data = new MessageData();
+		if (data == null) { data = new MessageData(); }
 		return data;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gaml.extensions.fipa.IMessage#getSender()
+	 * @see gaml.extensions.fipa.IMessage#getSender()
 	 */
 	@Override
 	@getter (FIPAMessage.SENDER)
-	public IAgent getSender() {
-		return getData().getSender();
-	}
+	public IAgent getSender() { return getData().getSender(); }
 
 	/**
 	 * Sets the sender.
@@ -179,8 +172,7 @@ public class FIPAMessage extends GamaMessage {
 	 */
 	@setter (FIPAMessage.SENDER)
 	public void setSender(final IAgent sender) {
-		if (getData() != null)
-			getData().setSender(sender);
+		if (getData() != null) { getData().setSender(sender); }
 	}
 
 	/**
@@ -188,24 +180,23 @@ public class FIPAMessage extends GamaMessage {
 	 *
 	 * @return the performative
 	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see msi.gaml.extensions.fipa.IMessage#getPerformative()
-	 */
-	public Performative getPerformative() {
-		return getData().getPerformative();
-	}
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see gaml.extensions.fipa.IMessage#getPerformative()
+		 */
+	public Performative getPerformative() { return getData().getPerformative(); }
 
 	/**
 	 * Sets the performative.
 	 *
-	 * @param performative the new performative
+	 * @param performative
+	 *            the new performative
 	 */
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gaml.extensions.fipa.IMessage#setPerformative(int)
+	 * @see gaml.extensions.fipa.IMessage#setPerformative(int)
 	 */
 	public void setPerformative(final Performative performative) {
 		getData().setPerformative(performative);
@@ -229,7 +220,7 @@ public class FIPAMessage extends GamaMessage {
 
 	@Override
 	public String stringValue(final IScope scope) throws GamaRuntimeException {
-		
+
 		return "message[sender: " + getData().getSender() + "; receivers: " + getData().getReceivers()
 				+ "; performative: " + getData().getPerformativeName() + "; content: " + getData().getContent()
 				+ "; content" + "]";
@@ -237,15 +228,15 @@ public class FIPAMessage extends GamaMessage {
 
 	@Override
 	public FIPAMessage copy(final IScope scope) throws GamaRuntimeException {
-		final FIPAMessage m = new FIPAMessage(getSender(), getReceivers(), (IList<IAgent>) getContents(scope),
-				getPerformative(), getConversation());
-		return m;
+		return new FIPAMessage(getSender(), getReceivers(), (IList<IAgent>) getContents(scope), getPerformative(),
+				getConversation());
 	}
 
 	/**
 	 * Sets the receivers.
 	 *
-	 * @param receivers the new receivers
+	 * @param receivers
+	 *            the new receivers
 	 */
 	public void setReceivers(final IList receivers) {
 		getData().setReceivers(receivers);
@@ -256,14 +247,13 @@ public class FIPAMessage extends GamaMessage {
 	 *
 	 * @return the performative name
 	 */
-	public String getPerformativeName() {
-		return getData().getPerformativeName();
-	}
+	public String getPerformativeName() { return getData().getPerformativeName(); }
 
 	/**
 	 * Sets the conversation.
 	 *
-	 * @param conversation2 the new conversation
+	 * @param conversation2
+	 *            the new conversation
 	 */
 	public void setConversation(final Conversation conversation2) {
 		getData().setConversation(conversation2);

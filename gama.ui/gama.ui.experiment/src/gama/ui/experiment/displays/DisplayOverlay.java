@@ -495,7 +495,7 @@ public class DisplayOverlay implements IUpdaterTarget<OverlayInfo> {
 	/**
 	 * Method updateWith()
 	 *
-	 * @see msi.gama.gui.swt.controls.IUpdaterTarget#updateWith(java.lang.Object)
+	 * @see gama.gui.swt.controls.IUpdaterTarget#updateWith(java.lang.Object)
 	 */
 	@Override
 	public void updateWith(final OverlayInfo m) {

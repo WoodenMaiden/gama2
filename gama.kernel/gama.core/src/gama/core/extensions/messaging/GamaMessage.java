@@ -102,7 +102,7 @@ public class GamaMessage implements IValue {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gama.extensions.fipa.IGamaMessage#getSender()
+	 * @see gama.extensions.fipa.IGamaMessage#getSender()
 	 */
 	@getter(GamaMessage.SENDER)
 	public Object getSender() {
@@ -128,7 +128,7 @@ public class GamaMessage implements IValue {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gama.extensions.fipa.IGamaMessage#getSender()
+	 * @see gama.extensions.fipa.IGamaMessage#getSender()
 	 */
 	@getter(GamaMessage.RECEIVERS)
 	public Object getReceivers() {
@@ -197,7 +197,7 @@ public class GamaMessage implements IValue {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gama.extensions.fipa.IGamaMessage#getTimestamp()
+	 * @see gama.extensions.fipa.IGamaMessage#getTimestamp()
 	 */
 	@getter(GamaMessage.EMISSION_TIMESTAMP)
 	public int getEmissionTimestamp() {

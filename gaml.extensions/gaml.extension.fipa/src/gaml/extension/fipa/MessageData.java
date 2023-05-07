@@ -1,11 +1,11 @@
 /*******************************************************************************************************
  *
- * MessageData.java, in msi.gaml.extensions.fipa, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * MessageData.java, in gaml.extension.fipa, is part of the source code of the
+ * GAMA modeling and simulation platform (v.2.0.0).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
- * Visit https://github.com/gama-platform/gama for license information and contacts.
+ * Visit https://github.com/gama-platform/gama2 for license information and contacts.
  * 
  ********************************************************************************************************/
 package gaml.extension.fipa;
@@ -42,7 +42,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.misc.current_development.IMessage#getSender()
+	 * @see misc.current_development.IMessage#getSender()
 	 */
 	public IAgent getSender() {
 		return sender;
@@ -56,7 +56,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.misc.current_development.IMessage#setSender(msi.gama.metamodel.agent .interfaces.BasicEntity)
+	 * @see misc.current_development.IMessage#setSender(msi.gama.metamodel.agent .interfaces.BasicEntity)
 	 */
 	public void setSender(final IAgent sender) {
 		this.sender = sender;
@@ -70,7 +70,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.misc.current_development.IMessage#getReceivers()
+	 * @see misc.current_development.IMessage#getReceivers()
 	 */
 	public IList getReceivers() {
 		return receivers;
@@ -84,7 +84,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.misc.current_development.IMessage#setReceivers(java.util.List)
+	 * @see misc.current_development.IMessage#setReceivers(java.util.List)
 	 */
 	public void setReceivers(final IList receivers) {
 		this.receivers = receivers;
@@ -98,7 +98,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.misc.current_development.IMessage#getContent()
+	 * @see misc.current_development.IMessage#getContent()
 	 */
 	public IList getContent() {
 		return content;
@@ -112,7 +112,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.misc.current_development.IMessage#setContent(java.lang.String)
+	 * @see misc.current_development.IMessage#setContent(java.lang.String)
 	 */
 	public void setContent(final IList content) {
 		if (content != null) {
@@ -128,7 +128,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.misc.current_development.IMessage#getPerformative()
+	 * @see misc.current_development.IMessage#getPerformative()
 	 */
 	public String getPerformativeName() {
 		return performative.name();
@@ -142,7 +142,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gaml.extensions.fipa.IMessage#getPerformative()
+	 * @see gaml.extensions.fipa.IMessage#getPerformative()
 	 */
 	public Performative getPerformative() {
 		return performative;
@@ -156,7 +156,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.misc.current_development.IMessage#setPerformative(java.lang.String)
+	 * @see misc.current_development.IMessage#setPerformative(java.lang.String)
 	 */
 	public void setPerformativeName(final String performative) {
 		this.performative = Performative.valueOf(performative);
@@ -170,7 +170,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gaml.extensions.fipa.IMessage#setPerformative(int)
+	 * @see gaml.extensions.fipa.IMessage#setPerformative(int)
 	 */
 	public void setPerformative(final Performative performative) {
 		this.performative = performative;
@@ -184,7 +184,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.misc.current_development.IMessage#getConversation()
+	 * @see misc.current_development.IMessage#getConversation()
 	 */
 	public Conversation getConversation() {
 		return conversation;
@@ -198,7 +198,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.misc.current_development.IMessage#setConversation(msi.gama.metamodel .agent.interfaces.BasicEntity)
+	 * @see misc.current_development.IMessage#setConversation(msi.gama.metamodel .agent.interfaces.BasicEntity)
 	 */
 	public void setConversation(final Conversation conv) {
 		conversation = conv;
@@ -225,7 +225,7 @@ public class MessageData {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.misc.current_development.IMessage#getMessage()
+	 * @see misc.current_development.IMessage#getMessage()
 	 */
 	public MessageData getMessage() {
 		return this;

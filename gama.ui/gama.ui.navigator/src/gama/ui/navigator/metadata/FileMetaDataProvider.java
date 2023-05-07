@@ -348,7 +348,7 @@ public class FileMetaDataProvider implements IFileMetaDataProvider {
 	/**
 	 * Method getMetaData()
 	 *
-	 * @see msi.gama.gui.navigator.IFileMetaDataProvider#getMetaData(org.eclipse.core.resources.IFile)
+	 * @see gama.gui.navigator.IFileMetaDataProvider#getMetaData(org.eclipse.core.resources.IFile)
 	 */
 	@Override
 	public IGamaFileMetaData getMetaData(final Object element, final boolean includeOutdated,

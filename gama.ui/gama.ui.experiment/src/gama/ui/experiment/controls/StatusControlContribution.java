@@ -280,7 +280,7 @@ public class StatusControlContribution extends WorkbenchWindowControlContributio
 	/**
 	 * Method updateWith()
 	 *
-	 * @see msi.gama.gui.swt.controls.ThreadedUpdater.IUpdaterTarget#updateWith(java.lang.Object)
+	 * @see gama.gui.swt.controls.ThreadedUpdater.IUpdaterTarget#updateWith(java.lang.Object)
 	 */
 	@Override
 	public void updateWith(final IStatusMessage m) {

@@ -69,7 +69,7 @@ public class CsvReader extends AbstractCSVManipulator {
 	String[] values = new String[INITIAL_COLUMN_COUNT];
 
 	/**
-	 * Creates a {@link msi.gama.util.file.csv.csvreader.CsvReader CsvReader} object using a file as the data
+	 * Creates a {@link  gama.util.file.csv.csvreader.CsvReader CsvReader} object using a file as the data
 	 * source.&nbsp;Uses ISO-8859-1 as the {@link java.nio.charset.Charset Charset}.
 	 *
 	 * @param fileName
@@ -85,7 +85,7 @@ public class CsvReader extends AbstractCSVManipulator {
 	}
 
 	/**
-	 * Creates a {@link msi.gama.util.file.csv.csvreader.CsvReader CsvReader} object using a file as the data
+	 * Creates a {@link  gama.util.file.csv.csvreader.CsvReader CsvReader} object using a file as the data
 	 * source.&nbsp;Uses a comma as the column delimiter and ISO-8859-1 as the {@link java.nio.charset.Charset Charset}.
 	 *
 	 * @param fileName
@@ -96,7 +96,7 @@ public class CsvReader extends AbstractCSVManipulator {
 	}
 
 	/**
-	 * Constructs a {@link msi.gama.util.file.csv.csvreader.CsvReader CsvReader} object using a {@link java.io.Reader
+	 * Constructs a {@link  gama.util.file.csv.csvreader.CsvReader CsvReader} object using a {@link java.io.Reader
 	 * Reader} object as the data source.
 	 *
 	 * @param inputStream
@@ -110,7 +110,7 @@ public class CsvReader extends AbstractCSVManipulator {
 	}
 
 	/**
-	 * Constructs a {@link msi.gama.util.file.csv.csvreader.CsvReader CsvReader} object using a {@link java.io.Reader
+	 * Constructs a {@link  gama.util.file.csv.csvreader.CsvReader CsvReader} object using a {@link java.io.Reader
 	 * Reader} object as the data source.&nbsp;Uses a comma as the column delimiter.
 	 *
 	 * @param inputStream
@@ -129,10 +129,10 @@ public class CsvReader extends AbstractCSVManipulator {
 
 	/**
 	 * Gets the count of headers read in by a previous call to
-	 * {@link msi.gama.util.file.csv.csvreader.CsvReader#readHeaders readHeaders()}.
+	 * {@link  gama.util.file.csv.csvreader.CsvReader#readHeaders readHeaders()}.
 	 *
 	 * @return The count of headers read in by a previous call to
-	 *         {@link msi.gama.util.file.csv.csvreader.CsvReader#readHeaders readHeaders()}.
+	 *         {@link  gama.util.file.csv.csvreader.CsvReader#readHeaders readHeaders()}.
 	 */
 	public int getHeaderCount() { return headersHolder == null ? 0 : headersHolder.names.length; }
 

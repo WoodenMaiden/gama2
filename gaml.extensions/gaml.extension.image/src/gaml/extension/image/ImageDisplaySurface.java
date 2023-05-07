@@ -92,7 +92,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	}
 
 	/**
-	 * @see msi.gama.common.interfaces.IDisplaySurface#initialize(double, double, msi.gama.outputs.IDisplayOutput)
+	 * @see gama.common.interfaces.IDisplaySurface#initialize(double, double, msi.gama.outputs.IDisplayOutput)
 	 */
 	@Override
 	public void outputReloaded() {
@@ -206,7 +206,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gama.gui.graphics.IDisplaySurface#zoomIn(msi.gama.gui.views. IGamaView)
+	 * @see gama.gui.graphics.IDisplaySurface#zoomIn(msi.gama.gui.views. IGamaView)
 	 */
 	@Override
 	public void zoomIn() {
@@ -219,7 +219,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gama.gui.graphics.IDisplaySurface#zoomOut(msi.gama.gui.views. IGamaView)
+	 * @see gama.gui.graphics.IDisplaySurface#zoomOut(msi.gama.gui.views. IGamaView)
 	 */
 	@Override
 	public void zoomOut() {
@@ -232,7 +232,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gama.gui.graphics.IDisplaySurface#zoomFit(msi.gama.gui.views. IGamaView)
+	 * @see gama.gui.graphics.IDisplaySurface#zoomFit(msi.gama.gui.views. IGamaView)
 	 */
 	@Override
 	public void zoomFit() {
@@ -254,7 +254,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gama.gui.graphics.IDisplaySurface#focusOn(msi.gama.util.GamaGeometry, msi.gama.gui.displays.IDisplay)
+	 * @see gama.gui.graphics.IDisplaySurface#focusOn(msi.gama.util.GamaGeometry, msi.gama.gui.displays.IDisplay)
 	 */
 	@Override
 	public void focusOn(final IShape geometry) {
@@ -262,13 +262,13 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	}
 
 	/**
-	 * @see msi.gama.common.interfaces.IDisplaySurface#getWidth()
+	 * @see gama.common.interfaces.IDisplaySurface#getWidth()
 	 */
 	@Override
 	public int getWidth() { return width; }
 
 	/**
-	 * @see msi.gama.common.interfaces.IDisplaySurface#getHeight()
+	 * @see gama.common.interfaces.IDisplaySurface#getHeight()
 	 */
 	@Override
 	public int getHeight() { return height; }
@@ -317,7 +317,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method getModelCoordinates()
 	 *
-	 * @see msi.gama.common.interfaces.IDisplaySurface#getModelCoordinates()
+	 * @see gama.common.interfaces.IDisplaySurface#getModelCoordinates()
 	 */
 	@Override
 	public GamaPoint getModelCoordinates() { return null; }
@@ -325,7 +325,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method getZoomLevel()
 	 *
-	 * @see msi.gama.common.interfaces.IDisplaySurface#getZoomLevel()
+	 * @see gama.common.interfaces.IDisplaySurface#getZoomLevel()
 	 */
 	@Override
 	public double getZoomLevel() { return 1.0; }
@@ -333,7 +333,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method setSize()
 	 *
-	 * @see msi.gama.common.interfaces.IDisplaySurface#setSize(int, int)
+	 * @see gama.common.interfaces.IDisplaySurface#setSize(int, int)
 	 */
 	@Override
 	public void setSize(final int x, final int y) {
@@ -343,7 +343,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method removeMouseListener()
 	 *
-	 * @see msi.gama.common.interfaces.IDisplaySurface#removeMouseListener(java.awt.event.MouseListener)
+	 * @see gama.common.interfaces.IDisplaySurface#removeMouseListener(java.awt.event.MouseListener)
 	 */
 	@Override
 	public void removeListener(final IEventLayerListener e) {}
@@ -392,7 +392,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method getOutput()
 	 *
-	 * @see msi.gama.common.interfaces.IDisplaySurface#getOutput()
+	 * @see gama.common.interfaces.IDisplaySurface#getOutput()
 	 */
 	@Override
 	public LayeredDisplayOutput getOutput() { return output; }
@@ -400,7 +400,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method waitForUpdateAndRun()
 	 *
-	 * @see msi.gama.common.interfaces.IDisplaySurface#waitForUpdateAndRun(java.lang.Runnable)
+	 * @see gama.common.interfaces.IDisplaySurface#waitForUpdateAndRun(java.lang.Runnable)
 	 */
 	@Override
 	public void runAndUpdate(final Runnable r) {
@@ -410,7 +410,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method getData()
 	 *
-	 * @see msi.gama.common.interfaces.IDisplaySurface#getData()
+	 * @see gama.common.interfaces.IDisplaySurface#getData()
 	 */
 	@Override
 	public LayeredDisplayData getData() { return data; }
@@ -418,7 +418,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method layersChanged()
 	 *
-	 * @see msi.gama.common.interfaces.IDisplaySurface#layersChanged()
+	 * @see gama.common.interfaces.IDisplaySurface#layersChanged()
 	 */
 	@Override
 	public void layersChanged() {}
@@ -426,7 +426,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method changed()
 	 *
-	 * @see msi.gama.outputs.LayeredDisplayData.DisplayDataListener#changed(msi.gama.outputs.LayeredDisplayData.Changes,
+	 * @see gama.outputs.LayeredDisplayData.DisplayDataListener#changed(msi.gama.outputs.LayeredDisplayData.Changes,
 	 *      boolean)
 	 */
 	@Override
@@ -435,7 +435,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method getVisibleRegionForLayer()
 	 *
-	 * @see msi.gama.common.interfaces.IDisplaySurface#getVisibleRegionForLayer(msi.gama.common.interfaces.ILayer)
+	 * @see gama.common.interfaces.IDisplaySurface#getVisibleRegionForLayer(msi.gama.common.interfaces.ILayer)
 	 */
 	@Override
 	public Envelope getVisibleRegionForLayer(final ILayer currentLayer) {
@@ -445,7 +445,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Method getFPS()
 	 *
-	 * @see msi.gama.common.interfaces.IDisplaySurface#getFPS()
+	 * @see gama.common.interfaces.IDisplaySurface#getFPS()
 	 */
 	@Override
 	public int getFPS() { return 0; }

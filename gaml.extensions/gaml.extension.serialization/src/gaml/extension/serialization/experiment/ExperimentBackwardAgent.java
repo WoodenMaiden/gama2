@@ -62,7 +62,7 @@ public class ExperimentBackwardAgent extends ExperimentAgent {
 	/**
 	 * Redefinition of the callback method
 	 *
-	 * @see msi.gama.metamodel.agent.GamlAgent#_init_(msi.gama.runtime.IScope)
+	 * @see gama.metamodel.agent.GamlAgent#_init_(msi.gama.runtime.IScope)
 	 */
 	@Override
 	public Object _init_(final IScope scope) {

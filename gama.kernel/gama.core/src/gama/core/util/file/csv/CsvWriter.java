@@ -27,7 +27,7 @@ public class CsvWriter extends AbstractCSVManipulator {
 	private Writer outputStream = null;
 
 	/**
-	 * Creates a {@link msi.gama.util.file.csv.csvreader.CsvWriter CsvWriter} object using a file as the data
+	 * Creates a {@link  gama.util.file.csv.csvreader.CsvWriter CsvWriter} object using a file as the data
 	 * destination.
 	 *
 	 * @param fileName
@@ -44,7 +44,7 @@ public class CsvWriter extends AbstractCSVManipulator {
 	}
 
 	/**
-	 * Creates a {@link msi.gama.util.file.csv.csvreader.CsvWriter CsvWriter} object using a file as the data
+	 * Creates a {@link  gama.util.file.csv.csvreader.CsvWriter CsvWriter} object using a file as the data
 	 * destination.&nbsp;Uses a comma as the column delimiter and ISO-8859-1 as the {@link java.nio.charset.Charset
 	 * Charset}.
 	 *
@@ -56,7 +56,7 @@ public class CsvWriter extends AbstractCSVManipulator {
 	}
 
 	/**
-	 * Creates a {@link msi.gama.util.file.csv.csvreader.CsvWriter CsvWriter} object using a Writer to write data to.
+	 * Creates a {@link  gama.util.file.csv.csvreader.CsvWriter CsvWriter} object using a Writer to write data to.
 	 *
 	 * @param outputStream
 	 *            The stream to write the column delimited data to.

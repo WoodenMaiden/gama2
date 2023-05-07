@@ -269,7 +269,7 @@ public class GamaSqlConnection extends GamaGisFile {
 	}
 
 	/**
-	 * @see msi.gama.util.GamaFile#fillBuffer()
+	 * @see gama.util.GamaFile#fillBuffer()
 	 */
 	@Override
 	protected void fillBuffer(final IScope scope) throws GamaRuntimeException {

@@ -336,7 +336,7 @@ public class GamaSavedSimulationFile extends GamaFile<IList<String>, String> {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gama.util.GamaFile#fillBuffer()
+	 * @see gama.util.GamaFile#fillBuffer()
 	 */
 	@Override
 	protected void fillBuffer(final IScope scope) throws GamaRuntimeException {
@@ -375,7 +375,7 @@ public class GamaSavedSimulationFile extends GamaFile<IList<String>, String> {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see msi.gama.util.GamaFile#flushBuffer()
+	 * @see gama.util.GamaFile#flushBuffer()
 	 */
 	@Override
 	protected void flushBuffer(final IScope scope, final Facets facets) throws GamaRuntimeException {

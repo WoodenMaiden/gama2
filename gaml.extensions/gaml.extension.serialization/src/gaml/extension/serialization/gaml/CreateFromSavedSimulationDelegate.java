@@ -44,7 +44,7 @@ public class CreateFromSavedSimulationDelegate implements ICreateDelegate {
 	/**
 	 * Method acceptSource()
 	 *
-	 * @see msi.gama.common.interfaces.ICreateDelegate#acceptSource(IScope, java.lang.Object)
+	 * @see gama.common.interfaces.ICreateDelegate#acceptSource(IScope, java.lang.Object)
 	 */
 	@Override
 	public boolean acceptSource(final IScope scope, final Object source) {
@@ -52,7 +52,7 @@ public class CreateFromSavedSimulationDelegate implements ICreateDelegate {
 	}
 
 	/**
-	 * @see msi.gama.common.interfaces.ICreateDelegate#createFrom(msi.gama.runtime.IScope, java.util.List, int,
+	 * @see gama.common.interfaces.ICreateDelegate#createFrom(msi.gama.runtime.IScope, java.util.List, int,
 	 *      java.lang.Object)
 	 */
 	@Override
@@ -92,7 +92,7 @@ public class CreateFromSavedSimulationDelegate implements ICreateDelegate {
 	/**
 	 * Method fromFacetType()
 	 *
-	 * @see msi.gama.common.interfaces.ICreateDelegate#fromFacetType()
+	 * @see gama.common.interfaces.ICreateDelegate#fromFacetType()
 	 */
 	@Override
 	public IType fromFacetType() {

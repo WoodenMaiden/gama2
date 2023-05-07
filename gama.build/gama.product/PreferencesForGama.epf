@@ -563,7 +563,6 @@
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.importorder=java;javax;org;com;
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.ondemandthreshold=99
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.overrideannotation=true
-/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.pkgNameAbbreviationPatternForPackagesView=msi.gama\=gama|\nmsi.gaml\=gaml|\nummisco.gaml\=gaml|\nummisco.gama\=gama|
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.staticondemandthreshold=99
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.visibility.order=B,V,R,D,
