@@ -682,7 +682,7 @@ public class SwtGui implements IGui {
 	public static void listenToExperimentState(final ISourceProviderListener listener) {
 		final ISourceProviderService service = WorkbenchHelper.getService(ISourceProviderService.class);
 		final AbstractSourceProvider stateProvider =
-				(AbstractSourceProvider) service.getSourceProvider("ummisco.gama.ui.experiment.SimulationRunningState");
+				(AbstractSourceProvider) service.getSourceProvider("gama.ui.experiment.SimulationRunningState");
 		stateProvider.addSourceProviderListener(listener);
 	}
 
@@ -695,7 +695,7 @@ public class SwtGui implements IGui {
 	public static void stopListeningToExperimentState(final ISourceProviderListener listener) {
 		final ISourceProviderService service = WorkbenchHelper.getService(ISourceProviderService.class);
 		final AbstractSourceProvider stateProvider =
-				(AbstractSourceProvider) service.getSourceProvider("ummisco.gama.ui.experiment.SimulationRunningState");
+				(AbstractSourceProvider) service.getSourceProvider("gama.ui.experiment.SimulationRunningState");
 		stateProvider.removeSourceProviderListener(listener);
 	}
 

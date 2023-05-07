@@ -6,8 +6,8 @@
          point="org.eclipse.ui.ide.projectNatureImages">
       <image
             icon="platform:/plugin/gama.ui.shared/icons/navigator/files/folder.model.png"
-            id="gama.ui.application.nature.gamaNature.img"
-            natureId="gama.ui.application.gamaNature">
+            id="gama.project.nature.gaml.img"
+            natureId="gama.project.nature.gaml">
       </image>
    </extension>
    <extension
@@ -55,12 +55,12 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            id="msi.gama.gui.category.gama"
+            id="gama.gui.category.gama"
             name="Gama">
       </category>
             <view
             allowMultiple="false"
-            category="msi.gama.gui.category.gama"
+            category="gama.gui.category.gama"
             class="gama.ui.shared.views.InteractiveConsoleView"
             icon="/icons/views/tabs/view.interactive.png"
             id="gama.ui.application.view.InteractiveConsoleView"
@@ -69,7 +69,7 @@
       </view>
             <view 
                   allowMultiple="false"
-                  category="msi.gama.gui.category.gama"
+                  category="gama.gui.category.gama"
                   class="gama.ui.shared.views.TestView"
                   icon="/icons/views/tabs/view.test.png"
                   id="gama.ui.application.view.TestView"
@@ -80,13 +80,13 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            categoryId="msi.gama.category"
+            categoryId="gama.category"
             defaultHandler="gama.ui.shared.commands.OpenGamaWebsiteHandler"
             id="gama.ui.application.command.web"
             name="Welcome page">
       </command>
       <category
-            id="msi.gama.category"
+            id="gama.category"
             name="Specific to GAMA">
       </category>
       <commandParameterType
@@ -237,13 +237,13 @@
             allPopups="false"
             locationURI="menu:file?after=open.ext">
          <command
-               commandId="ummisco.gama.ui.switchWorkspace"
+               commandId="gama.ui.switchWorkspace"
                icon="platform:/plugin/gama.ui.shared/icons/generic/menu.switch.png"
                label="Switch workspace..."
                style="push">
          </command>
          <command
-               commandId="ummisco.gama.ui.restart"
+               commandId="gama.ui.restart"
                icon="platform:/plugin/gama.ui.shared/icons/generic/menu.restart.png"
                label="Restart GAMA"
                style="push">
@@ -257,19 +257,19 @@
                visible="true">
          </separator>
          <command
-               commandId="ummisco.gama.ui.update"
+               commandId="gama.ui.update"
                icon="platform:/plugin/gama.ui.shared/icons/generic/menu.update.png"
                label="Check for updates"
                style="push">
          </command>
          <command
-               commandId="ummisco.gama.ui.install"
+               commandId="gama.ui.install"
                icon="platform:/plugin/gama.ui.shared/icons/generic/menu.install.png"
                label="Install new plugins..."
                style="push">
          </command>
          <command 
-               commandId="ummisco.gama.ui.details"
+               commandId="gama.ui.details"
                icon="platform:/plugin/gama.ui.shared/icons/generic/menu.details.png"
                label="Installation details"
                style="push">
@@ -289,33 +289,33 @@
    <extension  point="org.eclipse.ui.commands">
       
       <command
-            categoryId="msi.gama.category"
+            categoryId="gama.category"
             defaultHandler="gama.ui.shared.commands.DetailsHandler"
-            id="ummisco.gama.ui.details"
+            id="gama.ui.details"
             name="Installation details">
       </command>
       <command
-            categoryId="msi.gama.category"
+            categoryId="gama.category"
             defaultHandler="gama.ui.shared.commands.SwitchWorkspaceHandler"
-            id="ummisco.gama.ui.switchWorkspace"
+            id="gama.ui.switchWorkspace"
             name="Switch Workspace">
      </command>
       <command
-            categoryId="msi.gama.category"
+            categoryId="gama.category"
             defaultHandler="gama.ui.shared.commands.InstallHandler"
-            id="ummisco.gama.ui.install"
+            id="gama.ui.install"
             name="Install new plugins...">
       </command>
       <command
-            categoryId="msi.gama.category"
+            categoryId="gama.category"
             defaultHandler="gama.ui.shared.commands.UpdateHandler"
-            id="ummisco.gama.ui.update"
+            id="gama.ui.update"
             name="Check for updates">
       </command>
       <command
-            categoryId="msi.gama.category"
+            categoryId="gama.category"
             defaultHandler="gama.ui.shared.commands.RestartHandler"
-            id="ummisco.gama.ui.restart"
+            id="gama.ui.restart"
             name="Restart GAMA">
       </command>
    </extension>

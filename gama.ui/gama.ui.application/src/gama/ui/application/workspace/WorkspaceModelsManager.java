@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
  * WorkspaceModelsManager.java, in gama.ui.application, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * platform (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -78,19 +78,19 @@ public class WorkspaceModelsManager {
 	}
 
 	/** The Constant GAMA_NATURE. */
-	public final static String GAMA_NATURE = "gama.ui.application.gamaNature";
+	public final static String GAMA_NATURE = "gama.project.nature.gaml";
 
 	/** The Constant XTEXT_NATURE. */
 	public final static String XTEXT_NATURE = "org.eclipse.xtext.ui.shared.xtextNature";
 
 	/** The Constant PLUGIN_NATURE. */
-	public final static String PLUGIN_NATURE = "gama.ui.application.pluginNature";
+	public final static String PLUGIN_NATURE = "gama.project.nature.plugin";
 
 	/** The Constant TEST_NATURE. */
-	public final static String TEST_NATURE = "gama.ui.application.testNature";
+	public final static String TEST_NATURE = "gama.project.nature.test";
 
 	/** The Constant BUILTIN_NATURE. */
-	public final static String BUILTIN_NATURE = "gama.ui.application.builtinNature";
+	public final static String BUILTIN_NATURE = "gama.project.nature.builtin";
 
 	/** The Constant BUILTIN_PROPERTY. */
 	public static final QualifiedName BUILTIN_PROPERTY = new QualifiedName("gama.builtin", "models");

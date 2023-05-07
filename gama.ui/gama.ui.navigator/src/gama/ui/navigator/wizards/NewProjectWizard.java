@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * NewProjectWizard.java, in gama.ui.navigator, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * NewProjectWizard.java, in gama.ui.navigator, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.navigator.wizards;
 
@@ -48,19 +48,18 @@ import gama.ui.shared.utils.WorkbenchHelper;
 public class NewProjectWizard extends Wizard implements INewWizard, IExecutableExtension {
 
 	/** The Constant NATURE_ID. */
-	public static final String NATURE_ID = "gama.ui.application.nature.gamaNature";
-	
+	public static final String NATURE_ID = "gama.project.nature.gaml";
+
 	/** The wizard page. */
 	private NewProjectWizardPage wizardPage;
-	
+
 	/** The project. */
 	private IProject project;
 
 	/**
 	 * Instantiates a new new project wizard.
 	 */
-	public NewProjectWizard() {
-	}
+	public NewProjectWizard() {}
 
 	@Override
 	public void addPages() {

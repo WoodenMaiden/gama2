@@ -52,7 +52,6 @@ import gama.headless.common.Globals;
 import gama.headless.common.HeadLessErrors;
 import gama.headless.core.GamaHeadlessException;
 import gama.headless.core.HeadlessSimulationLoader;
-import gama.headless.documentation.ModelLibraryGenerator;
 import gama.headless.job.ExperimentJob;
 import gama.headless.job.IExperimentJob;
 import gama.headless.listener.GamaListener;
@@ -335,9 +334,10 @@ public class Application implements IApplication {
 		if (args.contains(VALIDATE_LIBRARY_PARAMETER)) return ModelLibraryValidator.getInstance().start();
 		if (args.contains(TEST_LIBRARY_PARAMETER)) return ModelLibraryTester.getInstance().start();
 		if (args.contains(RUN_LIBRARY_PARAMETER)) return ModelLibraryRunner.getInstance().start();
-		if (args.contains(CHECK_MODEL_PARAMETER)) {
-			ModelLibraryGenerator.start(this, args);
-		} else if (args.contains(BATCH_PARAMETER)) {
+		// if (args.contains(CHECK_MODEL_PARAMETER)) {
+		// ModelLibraryGenerator.start(this, args);
+		// } else
+		if (args.contains(BATCH_PARAMETER)) {
 			runBatchSimulation(args.get(args.size() - 2), args.get(args.size() - 1));
 		} else if (args.contains(GAML_PARAMETER)) {
 			runGamlSimulation(args);

@@ -11,7 +11,7 @@
             id="msi.gama.gui.images.editor.ImageViewer"
             name="Image Viewer">
          <contentTypeBinding
-               contentTypeId="msi.gama.gui.images.type">
+               contentTypeId="gama.file.type.images">
          </contentTypeBinding>
       </editor>
         <editor
@@ -22,7 +22,7 @@
             id="msi.gama.gui.csv.editor.CustomizableCSVEditor"
             name="CSV Editor">
          <contentTypeBinding
-               contentTypeId="msi.gama.gui.csv.type">
+               contentTypeId="gama.file.type.csv">
          </contentTypeBinding>
       </editor>
       <editor
@@ -33,7 +33,7 @@
             id="gama.ui.application.browser"
             name="HTML Viewer">
          <contentTypeBinding
-               contentTypeId="msi.gama.gui.html.type">
+               contentTypeId="gama.file.type.html">
          </contentTypeBinding>
       </editor>
       <editor
@@ -44,7 +44,7 @@
             id="gama.ui.application.shape.viewer"
             name="ShapeFile Viewer">
          <contentTypeBinding
-               contentTypeId="msi.gama.gui.shapefile.type">
+               contentTypeId="gama.file.type.shapefile">
          </contentTypeBinding>
       </editor>
       <editor
@@ -55,7 +55,7 @@
             id="gama.ui.application.osm.viewer"
             name="OSM Viewer">
          <contentTypeBinding
-               contentTypeId="msi.gama.gui.osm.type">
+               contentTypeId="gama.file.type.osm">
          </contentTypeBinding>
       </editor>
    </extension>

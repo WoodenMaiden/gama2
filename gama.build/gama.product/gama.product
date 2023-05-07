@@ -63,10 +63,10 @@
       </vmArgsWin>
    </launcherArgs>
 
-   <windowImages i16="/msi.gama.application/icons/window/icon16.png" i32="/msi.gama.application/icons/window/icon32.png" i48="/msi.gama.application/icons/window/icon48.png" i64="/msi.gama.application/icons/window/icon64.png" i128="/msi.gama.application/icons/window/icon128.png" i256="/msi.gama.application/icons/window/icon256.png"/>
+   <windowImages i16="/gama.ui.application/icons/window/icon16.png" i32="/gama.ui.application/icons/window/icon32.png" i48="/gama.ui.application/icons/window/icon48.png" i64="/gama.ui.application/icons/window/icon64.png" i128="/gama.ui.application/icons/window/icon128.png" i256="/gama.ui.application/icons/window/icon256.png"/>
 
    <splash
-      location="msi.gama.application"
+      location="gama.ui.application"
       startupProgressRect="71,515,500,12" />
    <launcher name="Gama">
       <linux icon="extraresources/launcher/icon.xpm"/>

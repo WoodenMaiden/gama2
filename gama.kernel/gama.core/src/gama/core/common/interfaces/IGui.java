@@ -153,7 +153,7 @@ public interface IGui {
 	String PARAMETER_VIEW_ID = "gama.ui.application.view.ParameterView";
 
 	/** The navigator view id. */
-	String NAVIGATOR_VIEW_ID = "msi.gama.gui.view.GamaNavigator";
+	String NAVIGATOR_VIEW_ID = "gama.ui.navigator.GamaNavigator";
 
 	/** The navigator lightweight decorator id. */
 	String NAVIGATOR_LIGHTWEIGHT_DECORATOR_ID = "gama.ui.application.decorator";
@@ -162,7 +162,7 @@ public interface IGui {
 	String CONSOLE_VIEW_ID = "gama.ui.application.view.ConsoleView";
 
 	/** The user control view id. */
-	String USER_CONTROL_VIEW_ID = "msi.gama.views.userControlView";
+	String USER_CONTROL_VIEW_ID = "gama.views.userControlView";
 
 	/** The paused. */
 	String PAUSED = "STOPPED";

@@ -29,31 +29,31 @@
                   <or>
                      <objectState
                            name="contentTypeId"
-                           value="msi.gama.gui.gaml.type">
+                           value="gama.file.type.gaml">
                      </objectState>
                      <objectState
                            name="contentTypeId"
-                           value="msi.gama.gui.shapefile.type">
+                           value="gama.file.type.shapefile">
                      </objectState>
                      <objectState
                            name="contentTypeId"
-                           value="msi.gama.gui.csv.type">
+                           value="gama.file.type.csv">
                      </objectState>
                      <objectState
                            name="contentTypeId"
-                           value="msi.gama.gui.images.type">
+                           value="gama.file.type.images">
                      </objectState>
                      <objectState
                            name="contentTypeId"
-                           value="msi.gama.gui.shapefile.support.type">
+                           value="gama.file.type.shapefile.support">
                      </objectState>
                      <objectState
                            name="contentTypeId"
-                           value="msi.gama.gui.osm.type">
+                           value="gama.file.type.osm">
                      </objectState>
                      <objectState
                            name="contentTypeId"
-                           value="msi.gama.gui.gsim.type">
+                           value="gama.file.type.gsim">
                      </objectState>                     
                   </or>
                </and>
@@ -774,14 +774,14 @@
          point="org.eclipse.core.contenttype.contentTypes">
       <content-type
             file-extensions="shp,SHP"
-            id="msi.gama.gui.shapefile.type"
+            id="gama.file.type.shapefile"
             name="Shapefile"
             priority="high">
       </content-type>
       <content-type
             default-charset="UTF-8"
             file-extensions="qml,QML,cpg,CPG,prj,shx,dbf,xml,sbn,sbx,qix,qpj,fix,PRJ,SHX,DBF,XML,SBN,SBX,QIX,QPJ,FIX"
-            id="msi.gama.gui.shapefile.support.type"
+            id="gama.file.type.shapefile.support"
             name="Shapefile support"
             priority="high">
          <property
@@ -790,7 +790,7 @@
       </content-type>
       <content-type
             file-extensions="PNG,png,GIF,gif,JPEG,jpeg,JPG,jpg,BMP,bmp,ICO,ico,TIFF,tiff,TIF,tif,ASC,asc,PGM,pgm"
-            id="msi.gama.gui.images.type"
+            id="gama.file.type.images"
             name="Image"
             priority="high">
       </content-type>
@@ -798,7 +798,7 @@
             base-type="org.eclipse.core.runtime.text"
             default-charset="UTF-8"
             file-extensions="CSV,csv,TSV,tsv"
-            id="msi.gama.gui.csv.type"
+            id="gama.file.type.csv"
             name="CSV"
             priority="high">
       </content-type>
@@ -806,20 +806,20 @@
             base-type="org.eclipse.core.runtime.text"
             default-charset="UTF-8"
             file-extensions="gaml,experiment"
-            id="msi.gama.gui.gaml.type"
+            id="gama.file.type.gaml"
             name="GAML"
             priority="high">
       </content-type>
       <content-type
             base-type="org.eclipse.core.runtime.text"
             file-extensions="html, HTML, htm, HTM, svg, SVG"
-            id="msi.gama.gui.html.type"
+            id="gama.file.type.html"
             name="HTML (in GAMA)"
             priority="normal">
       </content-type>
       <content-type
             file-extensions="osm,OSM,pbf,PBF,bz2,BZ2,gz,GZ"
-            id="msi.gama.gui.osm.type"
+            id="gama.file.type.osm"
             name="OSM"
             priority="high">
       </content-type>

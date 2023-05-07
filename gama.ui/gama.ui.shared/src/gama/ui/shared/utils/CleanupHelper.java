@@ -1,7 +1,7 @@
 /*******************************************************************************************************
  *
- * CleanupHelper.java, in gama.ui.shared, is part of the source code of the GAMA modeling and simulation
- * platform (v.1.9.0).
+ * CleanupHelper.java, in gama.ui.shared, is part of the source code of the GAMA modeling and simulation platform
+ * (v.1.9.2).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
@@ -166,8 +166,8 @@ public class CleanupHelper {
 	static class RemoveUnwantedActionSets extends PerspectiveAdapter /* implements IStartup */ {
 
 		/** The toolbar action sets to remove. */
-		String[] TOOLBAR_ACTION_SETS_TO_REMOVE = { "org.eclipse", "msi.gama.lang.gaml.Gaml",
-				"org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo" };
+		String[] TOOLBAR_ACTION_SETS_TO_REMOVE =
+				{ "org.eclipse", "gaml.Gaml", "org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo" };
 
 		/** The menus to remove. */
 		String[] MENUS_TO_REMOVE = { "org.eclipse.ui.run", "window", "navigate", "project" };

@@ -54,7 +54,7 @@
    </extension>
 
       <extension
-         id="gamaNature"
+         id="gama.project.nature.gaml"
          name="GAMA project"
          point="org.eclipse.core.resources.natures">
       <runtime>
@@ -63,12 +63,12 @@
          </run>
       </runtime>
       <content-type
-            id="msi.gama.gui.gaml.type">
+            id="gama.file.type.gaml">
       </content-type>
    </extension>
    
          <extension
-               id="builtinNature"
+               id="gama.project.nature.builtin"
                name="GAMA built-in project"
                point="org.eclipse.core.resources.natures">
             <runtime>
@@ -77,11 +77,11 @@
                </run>
             </runtime>
             <requires-nature
-                  id="gama.ui.application.gamaNature">
+                  id="gama.project.nature.gaml">
             </requires-nature>
          </extension>
          <extension
-               id="pluginNature"
+               id="gama.project.nature.plugin"
                name="GAMA plugin project"
                point="org.eclipse.core.resources.natures">
             <runtime>
@@ -90,12 +90,12 @@
                </run>
             </runtime>
             <requires-nature
-                  id="gama.ui.application.gamaNature">
+                  id="gama.project.nature.gaml">
             </requires-nature>
          </extension>
 
          <extension
-               id="testNature"
+               id="gama.project.nature.test"
                name="GAMA test project"
                point="org.eclipse.core.resources.natures">
             <runtime>
@@ -104,7 +104,7 @@
                </run>
             </runtime>
              <requires-nature
-                  id="gama.ui.application.gamaNature">
+                  id="gama.project.nature.gaml">
             </requires-nature>
          </extension>
 

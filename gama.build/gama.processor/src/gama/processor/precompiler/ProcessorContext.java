@@ -598,8 +598,8 @@ public class ProcessorContext implements ProcessingEnvironment, RoundEnvironment
 					+ "			<arguments>\n" + "			</arguments>\n" + "		</buildCommand>\n"
 					+ "	</buildSpec>\n" + "	<natures>\n"
 					+ "		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>\n"
-					+ "		<nature>gama.core.applications.gamaNature</nature>\n"
-					+ "		<nature>gama.core.applications.testNature</nature>\n" + "	</natures>\n"
+					+ "		<nature>gama.project.nature.gaml</nature>\n"
+					+ "		<nature>gama.project.nature.test</nature>\n" + "	</natures>\n"
 					+ "</projectDescription>\n" + "");
 		} catch (final IOException t) {
 			emitWarning("", t);

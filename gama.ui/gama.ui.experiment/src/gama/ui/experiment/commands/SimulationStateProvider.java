@@ -27,10 +27,10 @@ import gama.core.runtime.ISimulationStateProvider;
 public class SimulationStateProvider extends AbstractSourceProvider implements ISimulationStateProvider {
 
 	/** The Constant SIMULATION_RUNNING_STATE. */
-	public final static String SIMULATION_RUNNING_STATE = "ummisco.gama.ui.experiment.SimulationRunningState";
+	public final static String SIMULATION_RUNNING_STATE = "gama.ui.experiment.SimulationRunningState";
 
 	/** The Constant SIMULATION_TYPE. */
-	public final static String SIMULATION_TYPE = "ummisco.gama.ui.experiment.SimulationType";
+	public final static String SIMULATION_TYPE = "gama.ui.experiment.SimulationType";
 
 	/** The Constant SIMULATION_STEPBACK. */
 	public final static String SIMULATION_STEPBACK = "ummisco.gama.ui.experiment.SimulationStepBack";
