@@ -1,17 +1,16 @@
 /*******************************************************************************************************
  *
- * AggregatorGenerator.java, in msi.gama.ext, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * AggregatorGenerator.java, in gama.dependencies, is part of the source code of the GAMA modeling and simulation
+ * platform (v.2.0.0).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
- * Visit https://github.com/gama-platform/gama for license information and contacts.
+ * Visit https://github.com/gama-platform/gama2 for license information and contacts.
  *
  ********************************************************************************************************/
 package gama.dependencies.kabeja.xml;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -63,12 +62,7 @@ public class AggregatorGenerator extends AbstractSAXFilter implements SAXGenerat
 	 *             the SAX exception
 	 */
 	protected void doGenerate() throws SAXException {
-		Iterator i = this.generators.iterator();
-
-		while (i.hasNext()) {
-			SAXGenerator generator = (SAXGenerator) i.next();
-			generator.generate(this.doc, this, null);
-		}
+		for (SAXGenerator generator : this.generators) { generator.generate(this.doc, this, null); }
 	}
 
 	@Override

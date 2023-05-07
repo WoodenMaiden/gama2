@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * CodePageParser.java, in msi.gama.ext, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * CodePageParser.java, in gama.dependencies, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
- * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ * Visit https://github.com/gama-platform/gama2 for license information and contacts.
+ *
  ********************************************************************************************************/
 package gama.dependencies.kabeja.tools;
 
@@ -20,23 +20,24 @@ import gama.dependencies.kabeja.dxf.DXFConstants;
  *
  */
 public class CodePageParser {
-	
+
 	/** The Constant CODEPAGE_CODE. */
 	public static final String CODEPAGE_CODE = "$DWGCODEPAGE";
-	
+
 	/** The Constant GROUPCODE. */
 	public static final String GROUPCODE = "3";
-	
+
 	/** The Constant prefix. */
 	private static final String[] prefix = { "ansi_", "dos" };
-	
+
 	/** The Constant javaPrefix. */
 	private static final String javaPrefix = "Cp";
 
 	/**
 	 * Parses the encoding.
 	 *
-	 * @param reader the reader
+	 * @param reader
+	 *            the reader
 	 * @return the string
 	 */
 	public String parseEncoding(final BufferedReader reader) {
@@ -80,7 +81,8 @@ public class CodePageParser {
 	/**
 	 * Translate code page.
 	 *
-	 * @param cp the cp
+	 * @param cp
+	 *            the cp
 	 * @return the string
 	 */
 	public String translateCodePage(final String cp) {

@@ -1,12 +1,11 @@
 /*******************************************************************************************************
  *
- * FlyTo.java, in msi.gama.ext, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * FlyTo.java, in gama.dependencies, is part of the source code of the GAMA modeling and simulation platform (v.2.0.0).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
- * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ * Visit https://github.com/gama-platform/gama2 for license information and contacts.
+ *
  ********************************************************************************************************/
 
 package gama.dependencies.kml.gx;
@@ -95,19 +94,19 @@ public class FlyTo extends TourPrimitive implements Cloneable {
 	 * When a duration is included within a <gx:FlyTo> element, it specifies the length of time that the browser takes
 	 * to fly from the previous point to the specified point.
 	 * </p>
-	 * 
+	 *
 	 * Syntax:
 	 *
 	 * <pre>
 	 * &lt;gx:duration&gt;0.0&lt;/gx:duration&gt;            &lt;!-- double --&gt;
 	 * </pre>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElement (
 			defaultValue = "0.0") protected double duration;
-	
+
 	/** The fly to mode. */
 	@XmlElement (
 			defaultValue = "bounce") protected FlyToMode flyToMode;
@@ -120,27 +119,27 @@ public class FlyTo extends TourPrimitive implements Cloneable {
 	 * This is an abstract element and cannot be used directly in a KML file. This element is extended by the <Camera>
 	 * and <LookAt> elements.
 	 * </p>
-	 * 
+	 *
 	 * Syntax:
 	 *
 	 * <pre>
 	 * &lt;!-- abstract element; do not create --&gt;
-	 * <strong>&lt;!--<em> AbstractView</em> --&gt;</strong>                   &lt;!-- Camera, LookAt --&gt;                
+	 * <strong>&lt;!--<em> AbstractView</em> --&gt;</strong>                   &lt;!-- Camera, LookAt --&gt;
 	 *   &lt;!-- extends <span class="style1">Object</span> --&gt;
 	 *   <em>&lt;TimePrimitive&gt;...&lt;/TimePrimitive&gt;</em>                        &lt;!-- gx:TimeSpan or gx:TimeStamp --&gt;
 	 * <strong>&lt;-- /<em>AbstractView</em> --&gt;</strong>
 	 * </pre>
-	 * 
+	 *
 	 * Extends:
 	 *
 	 * @see: <Object>
-	 * 
+	 *
 	 *       Extended By:
 	 * @see: <Camera>
 	 * @see: <LookAt>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElementRef (
 			name = "AbstractViewGroup",
@@ -150,59 +149,58 @@ public class FlyTo extends TourPrimitive implements Cloneable {
 	/**
 	 * Instantiates a new fly to.
 	 */
-	public FlyTo() {
-	}
+	public FlyTo() {}
 
 	/**
 	 * @see duration
-	 * 
+	 *
 	 * @return possible object is {@link Double}
-	 * 
+	 *
 	 */
 	public double getDuration() { return duration; }
 
 	/**
 	 * @see duration
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link Double}
-	 * 
+	 *
 	 */
 	public void setDuration(final double value) { this.duration = value; }
 
 	/**
 	 * @see flyToMode
-	 * 
+	 *
 	 * @return possible object is {@link FlyToMode}
-	 * 
+	 *
 	 */
 	public FlyToMode getFlyToMode() { return flyToMode; }
 
 	/**
 	 * @see flyToMode
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link FlyToMode}
-	 * 
+	 *
 	 */
 	public void setFlyToMode(final FlyToMode value) { this.flyToMode = value; }
 
 	/**
 	 * @see abstractView
-	 * 
+	 *
 	 * @return possible object is
 	 *         {@code <}{@link AbstractView}{@code>} {@code <}{@link LookAt}{@code>} {@code <}{@link Camera}{@code>}
-	 * 
+	 *
 	 */
 	public AbstractView getAbstractView() { return abstractView; }
 
 	/**
 	 * @see abstractView
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is
 	 *            {@code <}{@link AbstractView}{@code>} {@code <}{@link LookAt}{@code>} {@code <}{@link Camera}{@code>}
-	 * 
+	 *
 	 */
 	public void setAbstractView(final AbstractView value) { this.abstractView = value; }
 
@@ -214,26 +212,25 @@ public class FlyTo extends TourPrimitive implements Cloneable {
 	@Override
 	public boolean equals(final Object obj) {
 		if (this == obj) return true;
-		if ((obj == null) || !(obj instanceof FlyTo)) return false;
-		FlyTo other = (FlyTo) obj;
+		if (obj == null || !(obj instanceof FlyTo other)) return false;
 		if (duration != other.duration) return false;
-		if (flyToMode == null) {
-			if (other.flyToMode != null) return false;
-		} else if (!flyToMode.equals(other.flyToMode)) return false;
-		if (abstractView == null) {
-			if (other.abstractView != null) return false;
-		} else if (!abstractView.equals(other.abstractView)) return false;
+		if (!Objects.equals(flyToMode, other.flyToMode)) {
+			return false;
+		}
+		if (!Objects.equals(abstractView, other.abstractView)) {
+			return false;
+		}
 		return true;
 	}
 
 	/**
 	 * Creates a new instance of {@link LookAt} and set it to abstractView.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * LookAt lookAt = new LookAt();
 	 * this.setAbstractView(lookAt); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public LookAt createAndSetLookAt() {
 		LookAt newValue = new LookAt();
@@ -243,12 +240,12 @@ public class FlyTo extends TourPrimitive implements Cloneable {
 
 	/**
 	 * Creates a new instance of {@link Camera} and set it to abstractView.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * Camera camera = new Camera();
 	 * this.setAbstractView(camera); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public Camera createAndSetCamera() {
 		Camera newValue = new Camera();
@@ -260,7 +257,7 @@ public class FlyTo extends TourPrimitive implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setDuration(double)
-	 * 
+	 *
 	 * @param duration
 	 *            required parameter
 	 */
@@ -273,7 +270,7 @@ public class FlyTo extends TourPrimitive implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setFlyToMode(FlyToMode)
-	 * 
+	 *
 	 * @param flyToMode
 	 *            required parameter
 	 */
@@ -286,7 +283,7 @@ public class FlyTo extends TourPrimitive implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setAbstractView(AbstractView)
-	 * 
+	 *
 	 * @param abstractView
 	 *            required parameter
 	 */

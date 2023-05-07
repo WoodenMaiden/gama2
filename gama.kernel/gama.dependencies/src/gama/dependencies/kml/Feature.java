@@ -1,18 +1,19 @@
 /*******************************************************************************************************
  *
- * Feature.java, in msi.gama.ext, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * Feature.java, in gama.dependencies, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
- * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ * Visit https://github.com/gama-platform/gama2 for license information and contacts.
+ *
  ********************************************************************************************************/
 
 package gama.dependencies.kml;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -95,9 +96,9 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * User-defined text displayed in the 3D viewer as the label for the object (for example, for a Placemark, Folder,
 	 * or NetworkLink).
 	 * </p>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	protected String name;
 	/**
@@ -107,9 +108,9 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * a feature to be visible, the <visibility> tag of all its ancestors must also be set to 1. In the Google Earth
 	 * List View, each Feature has a checkbox that allows the user to control visibility of the Feature.
 	 * </p>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElement (
 			defaultValue = "1")
@@ -121,9 +122,9 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * panel. 0=collapsed (the default), 1=expanded. See also <ListStyle>. This element applies only to Document,
 	 * Folder, and NetworkLink.
 	 * </p>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElement (
 			defaultValue = "0")
@@ -146,9 +147,9 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * These elements are defined in the Atom Syndication Format. The complete specification is found at
 	 * http://atompub.org. (see the sample that follows).
 	 * </p>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElement (
 			name = "author",
@@ -198,17 +199,17 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * and is used if no <viewFormat> element is included in the file). a second format string that is specified in the
 	 * <httpQuery> element.
 	 * </p>
-	 * 
+	 *
 	 * Syntax:
 	 *
 	 * <pre>
 	 * <strong>&lt;Link id="ID"&gt;</strong>
 	 *   &lt;!-- specific to Link --&gt;
 	 *   &lt;href&gt;<em>...</em>&lt;/href&gt;                      &lt;!-- <span>string</span> --&gt;
-	 *   &lt;refreshMode&gt;onChange&lt;/refreshMode&gt;   
-	 *     &lt;!-- refreshModeEnum: onChange, onInterval, <em>or</em> onExpire --&gt;   
+	 *   &lt;refreshMode&gt;onChange&lt;/refreshMode&gt;
+	 *     &lt;!-- refreshModeEnum: onChange, onInterval, <em>or</em> onExpire --&gt;
 	 *   &lt;refreshInterval&gt;4&lt;/refreshInterval&gt;  &lt;!-- float --&gt;
-	 *   &lt;viewRefreshMode&gt;never&lt;/viewRefreshMode&gt; 
+	 *   &lt;viewRefreshMode&gt;never&lt;/viewRefreshMode&gt;
 	 *     &lt;!-- viewRefreshModeEnum: never, onStop, onRequest, onRegion --&gt;
 	 *   &lt;viewRefreshTime&gt;4&lt;/viewRefreshTime&gt;  &lt;!-- float --&gt;
 	 *   &lt;viewBoundScale&gt;1&lt;/viewBoundScale&gt;    &lt;!-- float --&gt;
@@ -217,19 +218,19 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 *   &lt;httpQuery&gt;...&lt;/httpQuery&gt;            &lt;!-- string --&gt;
 	 * <strong>&lt;/Link&gt;</strong>
 	 * </pre>
-	 * 
+	 *
 	 * Extends:
 	 *
 	 * @see: <Object>
-	 * 
+	 *
 	 *       Contained By:
 	 * @see: <Model>
 	 * @see: <NetworkLink>
-	 * 
+	 *
 	 *       See Also: <NetworkLinkControl> <Region>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElement (
 			name = "link",
@@ -242,9 +243,9 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * longitude coordinates. (However, if a <Point> is provided, it takes precedence over the <address>.) To find out
 	 * which locales are supported for this tag in Google Earth, go to the Google Maps Help.
 	 * </p>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	protected String address;
 	/**
@@ -263,17 +264,17 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * include the namespace for this element in any KML file that uses it:
 	 * xmlns:xal="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"
 	 * </p>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElement (
 			name = "AddressDetails",
 			namespace = "urn:oasis:names:tc:ciq:xsdschema:xAL:2.0") protected AddressDetails xalAddressDetails;
 	/**
 	 * <phonenumber>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	protected String phoneNumber;
 	/**
@@ -286,13 +287,13 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * HTML markup. <Snippet> has a maxLines attribute, an integer that specifies the maximum number of lines to
 	 * display.
 	 * </p>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElement (
 			name = "Snippet") protected Snippet snippet;
-	
+
 	/** The snippetd. */
 	@XmlElement (
 			name = "snippet") protected String snippetd;
@@ -318,9 +319,9 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * accessed, even if on the local filesystem. Cookies are completely disabled, including cookies set or read by
 	 * content contained within a iFrame. There are no exceptions to this rule. Doctype declarations are ignored.
 	 * </p>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	protected String description;
 	/**
@@ -332,27 +333,27 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * This is an abstract element and cannot be used directly in a KML file. This element is extended by the <Camera>
 	 * and <LookAt> elements.
 	 * </p>
-	 * 
+	 *
 	 * Syntax:
 	 *
 	 * <pre>
 	 * &lt;!-- abstract element; do not create --&gt;
-	 * <strong>&lt;!--<em> AbstractView</em> --&gt;</strong>                   &lt;!-- Camera, LookAt --&gt;                
+	 * <strong>&lt;!--<em> AbstractView</em> --&gt;</strong>                   &lt;!-- Camera, LookAt --&gt;
 	 *   &lt;!-- extends <span class="style1">Object</span> --&gt;
 	 *   <em>&lt;TimePrimitive&gt;...&lt;/TimePrimitive&gt;</em>                        &lt;!-- gx:TimeSpan or gx:TimeStamp --&gt;
 	 * <strong>&lt;-- /<em>AbstractView</em> --&gt;</strong>
 	 * </pre>
-	 * 
+	 *
 	 * Extends:
 	 *
 	 * @see: <Object>
-	 * 
+	 *
 	 *       Extended By:
 	 * @see: <Camera>
 	 * @see: <LookAt>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElementRef (
 			name = "AbstractViewGroup",
@@ -367,26 +368,26 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * This is an abstract element and cannot be used directly in a KML file. This element is extended by the <TimeSpan>
 	 * and <TimeStamp> elements.
 	 * </p>
-	 * 
+	 *
 	 * Syntax:
 	 *
 	 * <pre>
 	 * &lt;!-- abstract element; do not create --&gt;
-	 * <strong>&lt;!-- TimePrimitive id="ID" --&gt;            &lt;!-- TimeSpan,TimeStamp --&gt;               
+	 * <strong>&lt;!-- TimePrimitive id="ID" --&gt;            &lt;!-- TimeSpan,TimeStamp --&gt;
 	 *  </strong> &lt;!-- extends Object --&gt;<strong>
 	 * &lt;!-- /TimePrimitive --&gt;</strong>
 	 * </pre>
-	 * 
+	 *
 	 * Extends:
 	 *
 	 * @see: <Object>
-	 * 
+	 *
 	 *       Extended By:
 	 * @see: <TimeSpan>
 	 * @see: <TimeStamp>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElementRef (
 			name = "AbstractTimePrimitiveGroup",
@@ -400,9 +401,9 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * <styleUrl>#myIconStyleID</styleUrl> <styleUrl>http://someserver.com/somestylefile.xml#restaurant</styleUrl>
 	 * <styleUrl>eateries.kml#my-lunch-spot</styleUrl>
 	 * </p>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlSchemaType (
 			name = "anyURI") protected String styleUrl;
@@ -418,7 +419,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * NetworkLink, Placemark, or ScreenOverlay—the value for the Feature's inline style takes precedence over the value
 	 * for the shared style.
 	 * </p>
-	 * 
+	 *
 	 * Syntax:
 	 *
 	 * <pre>
@@ -426,17 +427,17 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * <strong>&lt;!-- <em>StyleSelector</em> id="ID" --&gt;               </strong>  &lt;!-- Style,StyleMap --&gt;<strong>
 	 * &lt;!-- /<em>StyleSelector</em> --&gt;</strong>
 	 * </pre>
-	 * 
+	 *
 	 * Extends:
 	 *
 	 * @see: <Object>
-	 * 
+	 *
 	 *       Extended By:
 	 * @see: <Style>
 	 * @see: <StyleMap>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElementRef (
 			name = "AbstractStyleSelectorGroup",
@@ -456,47 +457,47 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * <p>
 	 * Features and geometry associated with a Region are drawn only when the Region is active. See <Region>.
 	 * </p>
-	 * 
+	 *
 	 * Syntax:
 	 *
 	 * <pre>
 	 * <strong>&lt;Region id="ID"&gt; </strong>
-	 *   &lt;LatLonAltBox&gt; 
+	 *   &lt;LatLonAltBox&gt;
 	 *     &lt;north&gt;&lt;/north&gt;                            &lt;!-- required; kml:angle90 --&gt;
-	 *     &lt;south&gt;&lt;/south&gt;                            &lt;!-- required; kml:angle90 --&gt; 
+	 *     &lt;south&gt;&lt;/south&gt;                            &lt;!-- required; kml:angle90 --&gt;
 	 *     &lt;east&gt;&lt;/east&gt;                              &lt;!-- required; kml:angle180 --&gt;
 	 *     &lt;west&gt;&lt;/west&gt;                              &lt;!-- required; kml:angle180 --&gt;
 	 *     &lt;minAltitude&gt;0&lt;/minAltitude&gt;               &lt;!-- float --&gt;
 	 *     &lt;maxAltitude&gt;0&lt;/maxAltitude&gt;               &lt;!-- float --&gt;
-	 *     &lt;altitudeMode&gt;clampToGround&lt;/altitudeMode&gt; 
+	 *     &lt;altitudeMode&gt;clampToGround&lt;/altitudeMode&gt;
 	 *         &lt;!-- kml:altitudeModeEnum: clampToGround, relativeToGround, or absolute --&gt;
-	 *         &lt;!-- or, substitute gx:altitudeMode: clampToSeaFloor, relativeToSeaFloor --&gt; 
-	 *   &lt;/LatLonAltBox&gt; 
+	 *         &lt;!-- or, substitute gx:altitudeMode: clampToSeaFloor, relativeToSeaFloor --&gt;
+	 *   &lt;/LatLonAltBox&gt;
 	 *   &lt;Lod&gt;
 	 *     &lt;minLodPixels&gt;0&lt;/minLodPixels&gt;             &lt;!-- float --&gt;
 	 *     &lt;maxLodPixels&gt;-1&lt;/maxLodPixels&gt;            &lt;!-- float --&gt;
-	 *     &lt;minFadeExtent&gt;0&lt;/minFadeExtent&gt;           &lt;!-- float --&gt; 
+	 *     &lt;minFadeExtent&gt;0&lt;/minFadeExtent&gt;           &lt;!-- float --&gt;
 	 *     &lt;maxFadeExtent&gt;0&lt;/maxFadeExtent&gt;           &lt;!-- float --&gt;
 	 *   &lt;/Lod&gt;
 	 * <strong>&lt;/Region&gt; </strong>
 	 * </pre>
-	 * 
+	 *
 	 * Extends:
 	 *
 	 * @see: <Object>
-	 * 
+	 *
 	 *       Contained By:
 	 * @see: <Feature>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElement (
 			name = "Region") protected Region region;
 	/**
 	 * <metadata> (deprecated in kml 2.2; use <extendeddata> instead)
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	@XmlElement (
 			name = "Metadata") protected Metadata metadata;
@@ -522,7 +523,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * <p>
 	 * These techniques can be combined within a single KML file or Feature for different pieces of data.
 	 * </p>
-	 * 
+	 *
 	 * Syntax:
 	 *
 	 * <pre>
@@ -531,15 +532,15 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 *   &lt;namespace_prefix:other&gt;...&lt;/namespace_prefix:other&gt;
 	 * &lt;/ExtendedData&gt;
 	 * </pre>
-	 * 
+	 *
 	 * Contained By:
 	 *
 	 * @see: <Feature>
-	 * 
+	 *
 	 *       See Also: Schema
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElement (
 			name = "ExtendedData") protected ExtendedData extendedData;
@@ -551,7 +552,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * that have already been loaded into Google Earth. The id attribute must be assigned if the <Update> mechanism is
 	 * to be used.
 	 * </p>
-	 * 
+	 *
 	 * Syntax:
 	 *
 	 * <pre>
@@ -559,9 +560,9 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * &lt;!-- <em>Object</em> id="ID" targetId="NCName" --&gt;
 	 * &lt;!-- /<em>Object</em>&gt; --&gt;</strong>
 	 * </pre>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElement (
 			name = "AbstractFeatureSimpleExtensionGroup") protected List<Object> featureSimpleExtension;
@@ -573,7 +574,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * that have already been loaded into Google Earth. The id attribute must be assigned if the <Update> mechanism is
 	 * to be used.
 	 * </p>
-	 * 
+	 *
 	 * Syntax:
 	 *
 	 * <pre>
@@ -581,9 +582,9 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * &lt;!-- <em>Object</em> id="ID" targetId="NCName" --&gt;
 	 * &lt;!-- /<em>Object</em>&gt; --&gt;</strong>
 	 * </pre>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	@XmlElement (
 			name = "AbstractFeatureObjectExtensionGroup") protected List<AbstractObject> featureObjectExtension;
@@ -591,252 +592,251 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	/**
 	 * Instantiates a new feature.
 	 */
-	public Feature() {
-	}
+	public Feature() {}
 
 	/**
 	 * @see name
-	 * 
+	 *
 	 * @return possible object is {@link String}
-	 * 
+	 *
 	 */
 	public String getName() { return name; }
 
 	/**
 	 * @see name
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link String}
-	 * 
+	 *
 	 */
 	public void setName(final String value) { this.name = value; }
 
 	/**
-	 * 
+	 *
 	 * @return possible object is {@link Boolean}
-	 * 
+	 *
 	 */
 	public Boolean isVisibility() { return visibility; }
 
 	/**
 	 * @see visibility
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link Boolean}
-	 * 
+	 *
 	 */
 	public void setVisibility(final Boolean value) { this.visibility = value; }
 
 	/**
-	 * 
+	 *
 	 * @return possible object is {@link Boolean}
-	 * 
+	 *
 	 */
 	public Boolean isOpen() { return open; }
 
 	/**
 	 * @see open
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link Boolean}
-	 * 
+	 *
 	 */
 	public void setOpen(final Boolean value) { this.open = value; }
 
 	/**
 	 * @see atomAuthor
-	 * 
+	 *
 	 * @return possible object is {@link Author}
-	 * 
+	 *
 	 */
 	public Author getAtomAuthor() { return atomAuthor; }
 
 	/**
 	 * @see atomAuthor
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link Author}
-	 * 
+	 *
 	 */
 	public void setAtomAuthor(final Author value) { this.atomAuthor = value; }
 
 	/**
 	 * @see atomLink
-	 * 
+	 *
 	 * @return possible object is {@link Link}
-	 * 
+	 *
 	 */
 	public Link getAtomLink() { return atomLink; }
 
 	/**
 	 * @see atomLink
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link Link}
-	 * 
+	 *
 	 */
 	public void setAtomLink(final Link value) { this.atomLink = value; }
 
 	/**
 	 * @see address
-	 * 
+	 *
 	 * @return possible object is {@link String}
-	 * 
+	 *
 	 */
 	public String getAddress() { return address; }
 
 	/**
 	 * @see address
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link String}
-	 * 
+	 *
 	 */
 	public void setAddress(final String value) { this.address = value; }
 
 	/**
 	 * @see xalAddressDetails
-	 * 
+	 *
 	 * @return possible object is {@link AddressDetails}
-	 * 
+	 *
 	 */
 	public AddressDetails getXalAddressDetails() { return xalAddressDetails; }
 
 	/**
 	 * @see xalAddressDetails
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link AddressDetails}
-	 * 
+	 *
 	 */
 	public void setXalAddressDetails(final AddressDetails value) { this.xalAddressDetails = value; }
 
 	/**
 	 * @see phoneNumber
-	 * 
+	 *
 	 * @return possible object is {@link String}
-	 * 
+	 *
 	 */
 	public String getPhoneNumber() { return phoneNumber; }
 
 	/**
 	 * @see phoneNumber
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link String}
-	 * 
+	 *
 	 */
 	public void setPhoneNumber(final String value) { this.phoneNumber = value; }
 
 	/**
 	 * @see snippet
-	 * 
+	 *
 	 * @return possible object is {@link Snippet}
-	 * 
+	 *
 	 */
 	public Snippet getSnippet() { return snippet; }
 
 	/**
 	 * @see snippet
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link Snippet}
-	 * 
+	 *
 	 */
 	public void setSnippet(final Snippet value) { this.snippet = value; }
 
 	/**
 	 * @see snippetd
-	 * 
+	 *
 	 * @return possible object is {@link String}
-	 * 
+	 *
 	 */
 	public String getSnippetd() { return snippetd; }
 
 	/**
 	 * @see snippetd
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link String}
-	 * 
+	 *
 	 */
 	public void setSnippetd(final String value) { this.snippetd = value; }
 
 	/**
 	 * @see description
-	 * 
+	 *
 	 * @return possible object is {@link String}
-	 * 
+	 *
 	 */
 	public String getDescription() { return description; }
 
 	/**
 	 * @see description
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link String}
-	 * 
+	 *
 	 */
 	public void setDescription(final String value) { this.description = value; }
 
 	/**
 	 * @see abstractView
-	 * 
+	 *
 	 * @return possible object is
 	 *         {@code <}{@link AbstractView}{@code>} {@code <}{@link LookAt}{@code>} {@code <}{@link Camera}{@code>}
-	 * 
+	 *
 	 */
 	public AbstractView getAbstractView() { return abstractView; }
 
 	/**
 	 * @see abstractView
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is
 	 *            {@code <}{@link AbstractView}{@code>} {@code <}{@link LookAt}{@code>} {@code <}{@link Camera}{@code>}
-	 * 
+	 *
 	 */
 	public void setAbstractView(final AbstractView value) { this.abstractView = value; }
 
 	/**
 	 * @see timePrimitive
-	 * 
+	 *
 	 * @return possible object is
 	 *         {@code <}{@link TimeSpan}{@code>} {@code <}{@link TimeStamp}{@code>} {@code <}{@link TimePrimitive}{@code>}
-	 * 
+	 *
 	 */
 	public TimePrimitive getTimePrimitive() { return timePrimitive; }
 
 	/**
 	 * @see timePrimitive
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is
 	 *            {@code <}{@link TimeSpan}{@code>} {@code <}{@link TimeStamp}{@code>} {@code <}{@link TimePrimitive}{@code>}
-	 * 
+	 *
 	 */
 	public void setTimePrimitive(final TimePrimitive value) { this.timePrimitive = value; }
 
 	/**
 	 * @see styleUrl
-	 * 
+	 *
 	 * @return possible object is {@link String}
-	 * 
+	 *
 	 */
 	public String getStyleUrl() { return styleUrl; }
 
 	/**
 	 * @see styleUrl
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link String}
-	 * 
+	 *
 	 */
 	public void setStyleUrl(final String value) { this.styleUrl = value; }
 
 	/**
 	 * @see styleSelector
-	 * 
+	 *
 	 */
 	public List<StyleSelector> getStyleSelector() {
 		if (styleSelector == null) { styleSelector = new ArrayList<>(); }
@@ -845,58 +845,58 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * @see region
-	 * 
+	 *
 	 * @return possible object is {@link Region}
-	 * 
+	 *
 	 */
 	public Region getRegion() { return region; }
 
 	/**
 	 * @see region
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link Region}
-	 * 
+	 *
 	 */
 	public void setRegion(final Region value) { this.region = value; }
 
 	/**
 	 * @see metadata
-	 * 
+	 *
 	 * @return possible object is {@link Metadata}
-	 * 
+	 *
 	 */
 	public Metadata getMetadata() { return metadata; }
 
 	/**
 	 * @see metadata
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link Metadata}
-	 * 
+	 *
 	 */
 	public void setMetadata(final Metadata value) { this.metadata = value; }
 
 	/**
 	 * @see extendedData
-	 * 
+	 *
 	 * @return possible object is {@link ExtendedData}
-	 * 
+	 *
 	 */
 	public ExtendedData getExtendedData() { return extendedData; }
 
 	/**
 	 * @see extendedData
-	 * 
+	 *
 	 * @param value
 	 *            allowed object is {@link ExtendedData}
-	 * 
+	 *
 	 */
 	public void setExtendedData(final ExtendedData value) { this.extendedData = value; }
 
 	/**
 	 * @see featureSimpleExtension
-	 * 
+	 *
 	 */
 	public List<Object> getFeatureSimpleExtension() {
 		if (featureSimpleExtension == null) { featureSimpleExtension = new ArrayList<>(); }
@@ -905,7 +905,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * @see featureObjectExtension
-	 * 
+	 *
 	 */
 	public List<AbstractObject> getFeatureObjectExtension() {
 		if (featureObjectExtension == null) { featureObjectExtension = new ArrayList<>(); }
@@ -941,79 +941,78 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	@Override
 	public boolean equals(final Object obj) {
 		if (this == obj) return true;
-		if ((obj == null) || !super.equals(obj) || !(obj instanceof Feature)) return false;
-		Feature other = (Feature) obj;
-		if (name == null) {
-			if (other.name != null) return false;
-		} else if (!name.equals(other.name)) return false;
-		if (visibility == null) {
-			if (other.visibility != null) return false;
-		} else if (!visibility.equals(other.visibility)) return false;
-		if (open == null) {
-			if (other.open != null) return false;
-		} else if (!open.equals(other.open)) return false;
-		if (atomAuthor == null) {
-			if (other.atomAuthor != null) return false;
-		} else if (!atomAuthor.equals(other.atomAuthor)) return false;
-		if (atomLink == null) {
-			if (other.atomLink != null) return false;
-		} else if (!atomLink.equals(other.atomLink)) return false;
-		if (address == null) {
-			if (other.address != null) return false;
-		} else if (!address.equals(other.address)) return false;
-		if (xalAddressDetails == null) {
-			if (other.xalAddressDetails != null) return false;
-		} else if (!xalAddressDetails.equals(other.xalAddressDetails)) return false;
-		if (phoneNumber == null) {
-			if (other.phoneNumber != null) return false;
-		} else if (!phoneNumber.equals(other.phoneNumber)) return false;
-		if (snippet == null) {
-			if (other.snippet != null) return false;
-		} else if (!snippet.equals(other.snippet)) return false;
-		if (snippetd == null) {
-			if (other.snippetd != null) return false;
-		} else if (!snippetd.equals(other.snippetd)) return false;
-		if (description == null) {
-			if (other.description != null) return false;
-		} else if (!description.equals(other.description)) return false;
-		if (abstractView == null) {
-			if (other.abstractView != null) return false;
-		} else if (!abstractView.equals(other.abstractView)) return false;
-		if (timePrimitive == null) {
-			if (other.timePrimitive != null) return false;
-		} else if (!timePrimitive.equals(other.timePrimitive)) return false;
-		if (styleUrl == null) {
-			if (other.styleUrl != null) return false;
-		} else if (!styleUrl.equals(other.styleUrl)) return false;
-		if (styleSelector == null) {
-			if (other.styleSelector != null) return false;
-		} else if (!styleSelector.equals(other.styleSelector)) return false;
-		if (region == null) {
-			if (other.region != null) return false;
-		} else if (!region.equals(other.region)) return false;
-		if (metadata == null) {
-			if (other.metadata != null) return false;
-		} else if (!metadata.equals(other.metadata)) return false;
-		if (extendedData == null) {
-			if (other.extendedData != null) return false;
-		} else if (!extendedData.equals(other.extendedData)) return false;
-		if (featureSimpleExtension == null) {
-			if (other.featureSimpleExtension != null) return false;
-		} else if (!featureSimpleExtension.equals(other.featureSimpleExtension)) return false;
-		if (featureObjectExtension == null) {
-			if (other.featureObjectExtension != null) return false;
-		} else if (!featureObjectExtension.equals(other.featureObjectExtension)) return false;
+		if (obj == null || !super.equals(obj) || !(obj instanceof Feature other)) return false;
+		if (!Objects.equals(name, other.name)) {
+			return false;
+		}
+		if (!Objects.equals(visibility, other.visibility)) {
+			return false;
+		}
+		if (!Objects.equals(open, other.open)) {
+			return false;
+		}
+		if (!Objects.equals(atomAuthor, other.atomAuthor)) {
+			return false;
+		}
+		if (!Objects.equals(atomLink, other.atomLink)) {
+			return false;
+		}
+		if (!Objects.equals(address, other.address)) {
+			return false;
+		}
+		if (!Objects.equals(xalAddressDetails, other.xalAddressDetails)) {
+			return false;
+		}
+		if (!Objects.equals(phoneNumber, other.phoneNumber)) {
+			return false;
+		}
+		if (!Objects.equals(snippet, other.snippet)) {
+			return false;
+		}
+		if (!Objects.equals(snippetd, other.snippetd)) {
+			return false;
+		}
+		if (!Objects.equals(description, other.description)) {
+			return false;
+		}
+		if (!Objects.equals(abstractView, other.abstractView)) {
+			return false;
+		}
+		if (!Objects.equals(timePrimitive, other.timePrimitive)) {
+			return false;
+		}
+		if (!Objects.equals(styleUrl, other.styleUrl)) {
+			return false;
+		}
+		if (!Objects.equals(styleSelector, other.styleSelector)) {
+			return false;
+		}
+		if (!Objects.equals(region, other.region)) {
+			return false;
+		}
+		if (!Objects.equals(metadata, other.metadata)) {
+			return false;
+		}
+		if (!Objects.equals(extendedData, other.extendedData)) {
+			return false;
+		}
+		if (!Objects.equals(featureSimpleExtension, other.featureSimpleExtension)) {
+			return false;
+		}
+		if (!Objects.equals(featureObjectExtension, other.featureObjectExtension)) {
+			return false;
+		}
 		return true;
 	}
 
 	/**
 	 * Creates a new instance of {@link Author} and set it to atomAuthor.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * Author author = new Author();
 	 * this.setAtomAuthor(author); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public Author createAndSetAtomAuthor() {
 		Author newValue = new Author();
@@ -1023,12 +1022,12 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * Creates a new instance of {@link Link} and set it to atomLink.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * Link link = new Link();
 	 * this.setAtomLink(link); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 * @param href
 	 *            required parameter
 	 */
@@ -1040,12 +1039,12 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * Creates a new instance of {@link AddressDetails} and set it to xalAddressDetails.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * AddressDetails addressDetails = new AddressDetails();
 	 * this.setXalAddressDetails(addressDetails); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 * @param xalAddress
 	 *            required parameter
 	 * @param addressLines
@@ -1070,12 +1069,12 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * Creates a new instance of {@link Snippet} and set it to snippet.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * Snippet snippet = new Snippet();
 	 * this.setSnippet(snippet); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public Snippet createAndSetSnippet() {
 		Snippet newValue = new Snippet();
@@ -1085,12 +1084,12 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * Creates a new instance of {@link LookAt} and set it to abstractView.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * LookAt lookAt = new LookAt();
 	 * this.setAbstractView(lookAt); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public LookAt createAndSetLookAt() {
 		LookAt newValue = new LookAt();
@@ -1100,12 +1099,12 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * Creates a new instance of {@link Camera} and set it to abstractView.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * Camera camera = new Camera();
 	 * this.setAbstractView(camera); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public Camera createAndSetCamera() {
 		Camera newValue = new Camera();
@@ -1115,12 +1114,12 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * Creates a new instance of {@link TimeSpan} and set it to timePrimitive.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * TimeSpan timeSpan = new TimeSpan();
 	 * this.setTimePrimitive(timeSpan); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public TimeSpan createAndSetTimeSpan() {
 		TimeSpan newValue = new TimeSpan();
@@ -1130,12 +1129,12 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * Creates a new instance of {@link TimeStamp} and set it to timePrimitive.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * TimeStamp timeStamp = new TimeStamp();
 	 * this.setTimePrimitive(timeStamp); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public TimeStamp createAndSetTimeStamp() {
 		TimeStamp newValue = new TimeStamp();
@@ -1147,8 +1146,8 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * Creates a new instance of {@link Style} and adds it to styleSelector. This method is a short version for: <code>
 	 * Style style = new Style();
 	 * this.getStyleSelector().add(style); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public Style createAndAddStyle() {
 		Style newValue = new Style();
@@ -1161,8 +1160,8 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * <code>
 	 * StyleMap styleMap = new StyleMap();
 	 * this.getStyleSelector().add(styleMap); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public StyleMap createAndAddStyleMap() {
 		StyleMap newValue = new StyleMap();
@@ -1172,12 +1171,12 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * Creates a new instance of {@link Region} and set it to region.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * Region region = new Region();
 	 * this.setRegion(region); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public Region createAndSetRegion() {
 		Region newValue = new Region();
@@ -1187,12 +1186,12 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * Creates a new instance of {@link Metadata} and set it to metadata.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * Metadata metadata = new Metadata();
 	 * this.setMetadata(metadata); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public Metadata createAndSetMetadata() {
 		Metadata newValue = new Metadata();
@@ -1202,12 +1201,12 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * Creates a new instance of {@link ExtendedData} and set it to extendedData.
-	 * 
+	 *
 	 * This method is a short version for: <code>
 	 * ExtendedData extendedData = new ExtendedData();
 	 * this.setExtendedData(extendedData); </code>
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public ExtendedData createAndSetExtendedData() {
 		ExtendedData newValue = new ExtendedData();
@@ -1217,14 +1216,14 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * @see styleSelector
-	 * 
+	 *
 	 * @param styleSelector
 	 */
 	public void setStyleSelector(final List<StyleSelector> styleSelector) { this.styleSelector = styleSelector; }
 
 	/**
 	 * add a value to the styleSelector property collection
-	 * 
+	 *
 	 * @param styleSelector
 	 *            Objects of the following type are allowed in the list:
 	 *            {@code <}{@link Style}{@code>}{@link JAXBElement}{@code <}{@link StyleSelector}{@code>}{@link JAXBElement}{@code <}{@link StyleMap}{@code>}
@@ -1237,7 +1236,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * @see featureSimpleExtension
-	 * 
+	 *
 	 * @param featureSimpleExtension
 	 */
 	public void setFeatureSimpleExtension(final List<Object> featureSimpleExtension) {
@@ -1246,7 +1245,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * add a value to the featureSimpleExtension property collection
-	 * 
+	 *
 	 * @param featureSimpleExtension
 	 *            Objects of the following type are allowed in the list:
 	 *            {@code <}{@link Double}{@code>}{@link JAXBElement}{@code <}{@link Object}{@code>}{@link JAXBElement}{@code <}{@link Boolean}{@code>}
@@ -1259,7 +1258,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * @see featureObjectExtension
-	 * 
+	 *
 	 * @param featureObjectExtension
 	 */
 	public void setFeatureObjectExtension(final List<AbstractObject> featureObjectExtension) {
@@ -1268,7 +1267,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * add a value to the featureObjectExtension property collection
-	 * 
+	 *
 	 * @param featureObjectExtension
 	 *            Objects of the following type are allowed in the list: {@link AbstractObject}
 	 * @return <tt>true</tt> (as general contract of <tt>Collection.add</tt>).
@@ -1280,7 +1279,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 
 	/**
 	 * @see objectSimpleExtension
-	 * 
+	 *
 	 */
 	@Obvious
 	@Override
@@ -1299,7 +1298,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setName(String)
-	 * 
+	 *
 	 * @param name
 	 *            required parameter
 	 */
@@ -1312,7 +1311,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setVisibility(Boolean)
-	 * 
+	 *
 	 * @param visibility
 	 *            required parameter
 	 */
@@ -1325,7 +1324,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setOpen(Boolean)
-	 * 
+	 *
 	 * @param open
 	 *            required parameter
 	 */
@@ -1338,7 +1337,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setAtomAuthor(Author)
-	 * 
+	 *
 	 * @param atomAuthor
 	 *            required parameter
 	 */
@@ -1351,7 +1350,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setAtomLink(Link)
-	 * 
+	 *
 	 * @param atomLink
 	 *            required parameter
 	 */
@@ -1364,7 +1363,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setAddress(String)
-	 * 
+	 *
 	 * @param address
 	 *            required parameter
 	 */
@@ -1377,7 +1376,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setXalAddressDetails(AddressDetails)
-	 * 
+	 *
 	 * @param xalAddressDetails
 	 *            required parameter
 	 */
@@ -1390,7 +1389,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setPhoneNumber(String)
-	 * 
+	 *
 	 * @param phoneNumber
 	 *            required parameter
 	 */
@@ -1403,7 +1402,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setSnippet(Snippet)
-	 * 
+	 *
 	 * @param snippet
 	 *            required parameter
 	 */
@@ -1416,7 +1415,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setSnippetd(String)
-	 * 
+	 *
 	 * @param snippetd
 	 *            required parameter
 	 */
@@ -1429,7 +1428,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setDescription(String)
-	 * 
+	 *
 	 * @param description
 	 *            required parameter
 	 */
@@ -1442,7 +1441,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setAbstractView(AbstractView)
-	 * 
+	 *
 	 * @param abstractView
 	 *            required parameter
 	 */
@@ -1455,7 +1454,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setTimePrimitive(TimePrimitive)
-	 * 
+	 *
 	 * @param timePrimitive
 	 *            required parameter
 	 */
@@ -1468,7 +1467,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setStyleUrl(String)
-	 * 
+	 *
 	 * @param styleUrl
 	 *            required parameter
 	 */
@@ -1481,7 +1480,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setStyleSelector(List<StyleSelector>)
-	 * 
+	 *
 	 * @param styleSelector
 	 *            required parameter
 	 */
@@ -1494,7 +1493,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setRegion(Region)
-	 * 
+	 *
 	 * @param region
 	 *            required parameter
 	 */
@@ -1507,7 +1506,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setMetadata(Metadata)
-	 * 
+	 *
 	 * @param metadata
 	 *            required parameter
 	 */
@@ -1520,7 +1519,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setExtendedData(ExtendedData)
-	 * 
+	 *
 	 * @param extendedData
 	 *            required parameter
 	 */
@@ -1533,7 +1532,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setFeatureSimpleExtension(List<Object>)
-	 * 
+	 *
 	 * @param featureSimpleExtension
 	 *            required parameter
 	 */
@@ -1546,7 +1545,7 @@ public abstract class Feature extends AbstractObject implements Cloneable {
 	 * fluent setter
 	 *
 	 * @see #setFeatureObjectExtension(List<AbstractObject>)
-	 * 
+	 *
 	 * @param featureObjectExtension
 	 *            required parameter
 	 */

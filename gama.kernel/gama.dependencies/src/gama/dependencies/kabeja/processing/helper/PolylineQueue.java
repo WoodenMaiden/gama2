@@ -1,11 +1,11 @@
 /*******************************************************************************************************
  *
- * PolylineQueue.java, in msi.gama.ext, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * PolylineQueue.java, in gama.dependencies, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
- * Visit https://github.com/gama-platform/gama for license information and contacts.
+ * Visit https://github.com/gama-platform/gama2 for license information and contacts.
  *
  ********************************************************************************************************/
 package gama.dependencies.kabeja.processing.helper;
@@ -97,7 +97,8 @@ public class PolylineQueue {
 			this.elements.add(0, e);
 
 			return true;
-		} else if (DXFUtils.equals(this.endPoint, end, radius)) {
+		}
+		if (DXFUtils.equals(this.endPoint, end, radius)) {
 			// we need to reverse then the entity
 			this.endPoint = start;
 			reverse(e);
@@ -155,7 +156,8 @@ public class PolylineQueue {
 			insertBefore(queue);
 
 			return true;
-		} else if (DXFUtils.equals(queue.getEndPoint(), this.endPoint, radius)) {
+		}
+		if (DXFUtils.equals(queue.getEndPoint(), this.endPoint, radius)) {
 			queue.reverse();
 			add(queue);
 
@@ -177,11 +179,7 @@ public class PolylineQueue {
 		DXFVertex first = new DXFVertex(this.startPoint);
 		pline.addVertex(first);
 
-		Iterator i = this.elements.iterator();
-
-		while (i.hasNext()) {
-			DXFEntity e = (DXFEntity) i.next();
-
+		for (DXFEntity e : this.elements) {
 			if (DXFConstants.ENTITY_TYPE_LINE.equals(e.getType())) {
 				DXFLine line = (DXFLine) e;
 				first = new DXFVertex(line.getEndPoint());

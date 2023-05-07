@@ -1,23 +1,27 @@
 /*******************************************************************************************************
  *
- * Fileformat.java, in msi.gama.ext, is part of the source code of the
- * GAMA modeling and simulation platform (v.1.9.0).
+ * Fileformat.java, in gama.dependencies, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
- * (c) 2007-2022 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
+ * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
- * Visit https://github.com/gama-platform/gama for license information and contacts.
- * 
+ * Visit https://github.com/gama-platform/gama2 for license information and contacts.
+ *
  ********************************************************************************************************/
 // source: src/main/protobuf/fileformat.proto
 
 package gama.dependencies.osmosis;
+
+import java.io.IOException;
+
+import com.google.protobuf.InvalidProtocolBufferException;
 
 /**
  * The Class Fileformat.
  */
 @SuppressWarnings ("deprecation")
 public final class Fileformat {
-	
+
 	/**
 	 * Instantiates a new fileformat.
 	 */
@@ -26,7 +30,8 @@ public final class Fileformat {
 	/**
 	 * Register all extensions.
 	 *
-	 * @param registry the registry
+	 * @param registry
+	 *            the registry
 	 */
 	public static void registerAllExtensions(final com.google.protobuf.ExtensionRegistryLite registry) {}
 
@@ -136,7 +141,7 @@ public final class Fileformat {
 	public static final class Blob extends com.google.protobuf.GeneratedMessageLite<Blob, Blob.Builder> implements
 			// @@protoc_insertion_point(message_implements:OSMPBF.Blob)
 			BlobOrBuilder {
-		
+
 		/**
 		 * Instantiates a new blob.
 		 */
@@ -149,10 +154,10 @@ public final class Fileformat {
 
 		/** The bit field 0. */
 		private int bitField0_;
-		
+
 		/** The Constant RAW_FIELD_NUMBER. */
 		public static final int RAW_FIELD_NUMBER = 1;
-		
+
 		/** The raw. */
 		private com.google.protobuf.ByteString raw_;
 
@@ -205,7 +210,7 @@ public final class Fileformat {
 
 		/** The Constant RAW_SIZE_FIELD_NUMBER. */
 		public static final int RAW_SIZE_FIELD_NUMBER = 2;
-		
+
 		/** The raw size. */
 		private int rawSize_;
 
@@ -257,7 +262,7 @@ public final class Fileformat {
 
 		/** The Constant ZLIB_DATA_FIELD_NUMBER. */
 		public static final int ZLIB_DATA_FIELD_NUMBER = 3;
-		
+
 		/** The zlib data. */
 		private com.google.protobuf.ByteString zlibData_;
 
@@ -310,7 +315,7 @@ public final class Fileformat {
 
 		/** The Constant LZMA_DATA_FIELD_NUMBER. */
 		public static final int LZMA_DATA_FIELD_NUMBER = 4;
-		
+
 		/** The lzma data. */
 		private com.google.protobuf.ByteString lzmaData_;
 
@@ -363,7 +368,7 @@ public final class Fileformat {
 
 		/** The Constant OBSOLETE_BZIP2_DATA_FIELD_NUMBER. */
 		public static final int OBSOLETE_BZIP2_DATA_FIELD_NUMBER = 5;
-		
+
 		/** The o BSOLETE bzip 2 data. */
 		private com.google.protobuf.ByteString oBSOLETEBzip2Data_;
 
@@ -455,9 +460,11 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
+		 * @param data
+		 *            the data
 		 * @return the blob
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static Blob parseFrom(final java.nio.ByteBuffer data)
 				throws com.google.protobuf.InvalidProtocolBufferException {
@@ -467,10 +474,13 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
-		 * @param extensionRegistry the extension registry
+		 * @param data
+		 *            the data
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static Blob parseFrom(final java.nio.ByteBuffer data,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -481,9 +491,11 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
+		 * @param data
+		 *            the data
 		 * @return the blob
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static Blob parseFrom(final com.google.protobuf.ByteString data)
 				throws com.google.protobuf.InvalidProtocolBufferException {
@@ -493,10 +505,13 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
-		 * @param extensionRegistry the extension registry
+		 * @param data
+		 *            the data
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static Blob parseFrom(final com.google.protobuf.ByteString data,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -507,9 +522,11 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
+		 * @param data
+		 *            the data
 		 * @return the blob
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static Blob parseFrom(final byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
 			return com.google.protobuf.GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, data);
@@ -518,10 +535,13 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
-		 * @param extensionRegistry the extension registry
+		 * @param data
+		 *            the data
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static Blob parseFrom(final byte[] data,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -532,9 +552,11 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param input the input
+		 * @param input
+		 *            the input
 		 * @return the blob
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static Blob parseFrom(final java.io.InputStream input) throws java.io.IOException {
 			return com.google.protobuf.GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, input);
@@ -543,10 +565,13 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param input the input
-		 * @param extensionRegistry the extension registry
+		 * @param input
+		 *            the input
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static Blob parseFrom(final java.io.InputStream input,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
@@ -556,9 +581,11 @@ public final class Fileformat {
 		/**
 		 * Parses the delimited from.
 		 *
-		 * @param input the input
+		 * @param input
+		 *            the input
 		 * @return the blob
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static Blob parseDelimitedFrom(final java.io.InputStream input) throws java.io.IOException {
 			return parseDelimitedFrom(DEFAULT_INSTANCE, input);
@@ -567,10 +594,13 @@ public final class Fileformat {
 		/**
 		 * Parses the delimited from.
 		 *
-		 * @param input the input
-		 * @param extensionRegistry the extension registry
+		 * @param input
+		 *            the input
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static Blob parseDelimitedFrom(final java.io.InputStream input,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
@@ -580,9 +610,11 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param input the input
+		 * @param input
+		 *            the input
 		 * @return the blob
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static Blob parseFrom(final com.google.protobuf.CodedInputStream input) throws java.io.IOException {
 			return com.google.protobuf.GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, input);
@@ -591,10 +623,13 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param input the input
-		 * @param extensionRegistry the extension registry
+		 * @param input
+		 *            the input
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static Blob parseFrom(final com.google.protobuf.CodedInputStream input,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
@@ -621,7 +656,7 @@ public final class Fileformat {
 				extends com.google.protobuf.GeneratedMessageLite.Builder<Fileformat.Blob, Builder> implements
 				// @@protoc_insertion_point(builder_implements:OSMPBF.Blob)
 				BlobOrBuilder {
-			
+
 			/**
 			 * Instantiates a new builder.
 			 */
@@ -1066,7 +1101,7 @@ public final class Fileformat {
 			extends com.google.protobuf.GeneratedMessageLite<BlobHeader, BlobHeader.Builder> implements
 			// @@protoc_insertion_point(message_implements:OSMPBF.BlobHeader)
 			BlobHeaderOrBuilder {
-		
+
 		/**
 		 * Instantiates a new blob header.
 		 */
@@ -1077,10 +1112,10 @@ public final class Fileformat {
 
 		/** The bit field 0. */
 		private int bitField0_;
-		
+
 		/** The Constant TYPE_FIELD_NUMBER. */
 		public static final int TYPE_FIELD_NUMBER = 1;
-		
+
 		/** The type. */
 		private java.lang.String type_;
 
@@ -1134,7 +1169,7 @@ public final class Fileformat {
 
 		/** The Constant INDEXDATA_FIELD_NUMBER. */
 		public static final int INDEXDATA_FIELD_NUMBER = 2;
-		
+
 		/** The indexdata. */
 		private com.google.protobuf.ByteString indexdata_;
 
@@ -1171,7 +1206,7 @@ public final class Fileformat {
 
 		/** The Constant DATASIZE_FIELD_NUMBER. */
 		public static final int DATASIZE_FIELD_NUMBER = 3;
-		
+
 		/** The datasize. */
 		private int datasize_;
 
@@ -1236,9 +1271,11 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
+		 * @param data
+		 *            the data
 		 * @return the blob header
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static BlobHeader parseFrom(final java.nio.ByteBuffer data)
 				throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1248,10 +1285,13 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
-		 * @param extensionRegistry the extension registry
+		 * @param data
+		 *            the data
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob header
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static BlobHeader parseFrom(final java.nio.ByteBuffer data,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1262,9 +1302,11 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
+		 * @param data
+		 *            the data
 		 * @return the blob header
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static BlobHeader parseFrom(final com.google.protobuf.ByteString data)
 				throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1274,10 +1316,13 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
-		 * @param extensionRegistry the extension registry
+		 * @param data
+		 *            the data
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob header
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static BlobHeader parseFrom(final com.google.protobuf.ByteString data,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1288,9 +1333,11 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
+		 * @param data
+		 *            the data
 		 * @return the blob header
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static BlobHeader parseFrom(final byte[] data)
 				throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1300,10 +1347,13 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param data the data
-		 * @param extensionRegistry the extension registry
+		 * @param data
+		 *            the data
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob header
-		 * @throws InvalidProtocolBufferException the invalid protocol buffer exception
+		 * @throws InvalidProtocolBufferException
+		 *             the invalid protocol buffer exception
 		 */
 		public static BlobHeader parseFrom(final byte[] data,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1314,9 +1364,11 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param input the input
+		 * @param input
+		 *            the input
 		 * @return the blob header
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static BlobHeader parseFrom(final java.io.InputStream input) throws java.io.IOException {
 			return com.google.protobuf.GeneratedMessageLite.parseFrom(DEFAULT_INSTANCE, input);
@@ -1325,10 +1377,13 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param input the input
-		 * @param extensionRegistry the extension registry
+		 * @param input
+		 *            the input
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob header
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static BlobHeader parseFrom(final java.io.InputStream input,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
@@ -1338,9 +1393,11 @@ public final class Fileformat {
 		/**
 		 * Parses the delimited from.
 		 *
-		 * @param input the input
+		 * @param input
+		 *            the input
 		 * @return the blob header
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static BlobHeader parseDelimitedFrom(final java.io.InputStream input) throws java.io.IOException {
 			return parseDelimitedFrom(DEFAULT_INSTANCE, input);
@@ -1349,10 +1406,13 @@ public final class Fileformat {
 		/**
 		 * Parses the delimited from.
 		 *
-		 * @param input the input
-		 * @param extensionRegistry the extension registry
+		 * @param input
+		 *            the input
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob header
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static BlobHeader parseDelimitedFrom(final java.io.InputStream input,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
@@ -1362,9 +1422,11 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param input the input
+		 * @param input
+		 *            the input
 		 * @return the blob header
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static BlobHeader parseFrom(final com.google.protobuf.CodedInputStream input)
 				throws java.io.IOException {
@@ -1374,10 +1436,13 @@ public final class Fileformat {
 		/**
 		 * Parses the from.
 		 *
-		 * @param input the input
-		 * @param extensionRegistry the extension registry
+		 * @param input
+		 *            the input
+		 * @param extensionRegistry
+		 *            the extension registry
 		 * @return the blob header
-		 * @throws IOException Signals that an I/O exception has occurred.
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
 		 */
 		public static BlobHeader parseFrom(final com.google.protobuf.CodedInputStream input,
 				final com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
@@ -1396,7 +1461,8 @@ public final class Fileformat {
 		/**
 		 * New builder.
 		 *
-		 * @param prototype the prototype
+		 * @param prototype
+		 *            the prototype
 		 * @return the builder
 		 */
 		public static Builder newBuilder(final BlobHeader prototype) {
@@ -1410,7 +1476,7 @@ public final class Fileformat {
 				implements
 				// @@protoc_insertion_point(builder_implements:OSMPBF.BlobHeader)
 				BlobHeaderOrBuilder {
-			
+
 			/**
 			 * Instantiates a new builder.
 			 */
@@ -1550,7 +1616,7 @@ public final class Fileformat {
 				case IS_INITIALIZED: {
 					final byte isInitialized = memoizedIsInitialized;
 					if (isInitialized == 1) return DEFAULT_INSTANCE;
-					if ((isInitialized == 0) || !hasType() || !hasDatasize()) return null;
+					if (isInitialized == 0 || !hasType() || !hasDatasize()) return null;
 					return DEFAULT_INSTANCE;
 
 				}
