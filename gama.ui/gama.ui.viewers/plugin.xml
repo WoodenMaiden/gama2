@@ -8,7 +8,7 @@
             default="false"
             extensions="JPG,jpg,JPEG,jpeg,PNG,png,BMP,bmp,TIFF,tiff,TIF,tif,ICO,ico,ASC,asc,PGM,pgm"
             icon="platform:/plugin/gama.ui.shared/icons/navigator/files/file.image.png"
-            id="msi.gama.gui.images.editor.ImageViewer"
+            id="gama.ui.application.image.viewer"
             name="Image Viewer">
          <contentTypeBinding
                contentTypeId="gama.file.type.images">
@@ -19,7 +19,7 @@
             default="true"
             extensions="CSV,csv"
             icon="platform:/plugin/gama.ui.shared/icons/navigator/files/file.csv.png"
-            id="msi.gama.gui.csv.editor.CustomizableCSVEditor"
+            id="gama.ui.application.csv.viewer"
             name="CSV Editor">
          <contentTypeBinding
                contentTypeId="gama.file.type.csv">

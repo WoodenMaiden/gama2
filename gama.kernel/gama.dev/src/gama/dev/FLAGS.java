@@ -1,11 +1,10 @@
 /*******************************************************************************************************
  *
- * FLAGS.java, in ummisco.gama.annotations, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * FLAGS.java, in gama.dev, is part of the source code of the GAMA modeling and simulation platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
- * Visit https://github.com/gama-platform/gama for license information and contacts.
+ * Visit https://github.com/gama-platform/gama2 for license information and contacts.
  *
  ********************************************************************************************************/
 package gama.dev;
@@ -57,7 +56,9 @@ public class FLAGS {
 		String v = System.getProperty(name);
 		if (v == null) return def;
 		boolean b = Boolean.parseBoolean(v);
-		if (b) { System.out.println(STRINGS.PAD("> FLAG: " + name, 55, ' ') + STRINGS.PAD(" set to", 15, '_') + " " + b); }
+		if (b) {
+			System.out.println(STRINGS.PAD("> FLAG: " + name, 55, ' ') + STRINGS.PAD(" set to", 15, '_') + " " + b);
+		}
 		return b;
 	}
 
@@ -117,28 +118,25 @@ public class FLAGS {
 	// public static final boolean USE_OLD_TABS = get("use_old_tabs", true);
 
 	/**
-	 * Used in ummisco.gama.opengl.OpenGL to impose the use of the "legacy" text and mesh drawers (ie without VBO/VBA).
-	 * False by default.
+	 * Used in opengl to impose the use of the "legacy" text and mesh drawers (ie without VBO/VBA). False by default.
 	 */
 	// public static final boolean USE_LEGACY_DRAWERS = get("use_legacy_drawers", false);
 
 	/**
-	 * Originally used in gama.ui.application.workbench.ApplicationWorkbenchWindowAdvisor to work around issue #3195.
-	 * If true, makes the workbench window resize its views asynchronously. Could prove useful in all environments, for
+	 * Originally used in gama.ui.application.workbench.ApplicationWorkbenchWindowAdvisor to work around issue #3195. If
+	 * true, makes the workbench window resize its views asynchronously. Could prove useful in all environments, for
 	 * instance in the presence of slow graphic cards/computers. False by default
 	 */
 	// public static final boolean USE_DELAYED_RESIZE = get("use_delayed_resize", true);
 
 	/**
-	 * Used in JOGL displays, esp. ummisco.gama.opengl.view.SWTOpenGLDisplaySurface to create a NEWT window instead of a
-	 * GLCanvas. Advantages are multiple (smaller memory footprint, immediate opening and resizing, etc.), and only a
-	 * few glitches remain (esp. on macOS). True by defautl
+	 * Used in JOGL displays to create a NEWT window instead of a GLCanvas. Advantages are multiple (smaller memory
+	 * footprint, immediate opening and resizing, etc.), and only a few glitches remain (esp. on macOS). True by defautl
 	 */
 	public static final boolean USE_NATIVE_OPENGL_WINDOW = true; // get("use_native_opengl_window", true);
 
 	/**
-	 * The Constant PRODUCE_ICONS. Used to tell GAMA to produce the PNG icons from the SVG ones in
-	 * gama.ui.shared
+	 * The Constant PRODUCE_ICONS. Used to tell GAMA to produce the PNG icons from the SVG ones in gama.ui.shared
 	 */
 	// public static final boolean PRODUCE_ICONS = get("produce_icons", false);
 

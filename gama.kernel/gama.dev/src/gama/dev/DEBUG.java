@@ -1,11 +1,10 @@
 /*******************************************************************************************************
  *
- * DEBUG.java, in ummisco.gama.annotations, is part of the source code of the GAMA modeling and simulation platform
- * (v.1.9.0).
+ * DEBUG.java, in gama.dev, is part of the source code of the GAMA modeling and simulation platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
- * Visit https://github.com/gama-platform/gama for license information and contacts.
+ * Visit https://github.com/gama-platform/gama2 for license information and contacts.
  *
  ********************************************************************************************************/
 package gama.dev;
@@ -70,8 +69,8 @@ public class DEBUG {
 	 * @return the name of the class that has called the method that has called this method
 	 */
 	static String findCallingClassName() {
-		Optional<String> caller = STACK_WALKER.walk(frames -> frames.map(StackFrame::getClassName)
-				.filter(s -> !s.contains("ummisco.gama.dev.utils")).findFirst());
+		Optional<String> caller = STACK_WALKER
+				.walk(frames -> frames.map(StackFrame::getClassName).filter(s -> !s.contains("gama.dev")).findFirst());
 		if (caller.isEmpty()) return SECURITY_MANAGER.getCallerClassName(3);
 		return caller.get();
 	}

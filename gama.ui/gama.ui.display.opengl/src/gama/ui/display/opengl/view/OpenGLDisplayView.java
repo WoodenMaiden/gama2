@@ -34,7 +34,7 @@ public class OpenGLDisplayView extends LayeredDisplayView {
 	}
 
 	/** The id. */
-	public static String ID = "gama.ui.application.view.OpenGLDisplayView";
+	public static String ID = "gama.ui.view.OpenGLDisplayView";
 
 	@Override
 	public SWTOpenGLDisplaySurface getDisplaySurface() { return (SWTOpenGLDisplaySurface) super.getDisplaySurface(); }

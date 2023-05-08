@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * ImageDisplaySurface.java, in gaml.extension.image, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * ImageDisplaySurface.java, in gaml.extension.image, is part of the source code of the GAMA modeling and simulation
+ * platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gaml.extension.image;
 
@@ -203,11 +203,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Zoom in.
 	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see gama.gui.graphics.IDisplaySurface#zoomIn(msi.gama.gui.views. IGamaView)
-	 */
+
 	@Override
 	public void zoomIn() {
 
@@ -216,11 +212,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Zoom out.
 	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see gama.gui.graphics.IDisplaySurface#zoomOut(msi.gama.gui.views. IGamaView)
-	 */
+
 	@Override
 	public void zoomOut() {
 
@@ -229,11 +221,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Zoom fit.
 	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see gama.gui.graphics.IDisplaySurface#zoomFit(msi.gama.gui.views. IGamaView)
-	 */
+
 	@Override
 	public void zoomFit() {
 
@@ -250,11 +238,6 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	 *
 	 * @param geometry
 	 *            the geometry
-	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see gama.gui.graphics.IDisplaySurface#focusOn(msi.gama.util.GamaGeometry, msi.gama.gui.displays.IDisplay)
 	 */
 	@Override
 	public void focusOn(final IShape geometry) {
@@ -276,7 +259,7 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	/**
 	 * Adds the listener.
 	 *
-	 * @param e
+	 * @param e 
 	 *            the e
 	 */
 	@Override

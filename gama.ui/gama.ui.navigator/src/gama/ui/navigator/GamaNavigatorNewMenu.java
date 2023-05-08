@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * GamaNavigatorNewMenu.java, in gama.ui.navigator, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * GamaNavigatorNewMenu.java, in gama.ui.navigator, is part of the source code of the GAMA modeling and simulation
+ * platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.navigator;
 
@@ -45,7 +45,7 @@ public class GamaNavigatorNewMenu extends GamaNavigatorMenu { // NO_UCD (unused 
 
 		@Override
 		public void widgetSelected(final SelectionEvent e) {
-			openWizard("msi.gama.gui.wizards.NewFileWizard", selection);
+			openWizard("gama.ui.wizards.new.model", selection);
 		}
 
 	};
@@ -55,7 +55,7 @@ public class GamaNavigatorNewMenu extends GamaNavigatorMenu { // NO_UCD (unused 
 
 		@Override
 		public void widgetSelected(final SelectionEvent e) {
-			openWizard("msi.gama.gui.wizards.NewExperimentWizard", selection);
+			openWizard("gama.ui.wizards.new.experiment", selection);
 		}
 
 	};
@@ -65,7 +65,7 @@ public class GamaNavigatorNewMenu extends GamaNavigatorMenu { // NO_UCD (unused 
 
 		@Override
 		public void widgetSelected(final SelectionEvent e) {
-			openWizard("msi.gama.gui.wizards.newProjectWizard", selection);
+			openWizard("gama.ui.wizards.new.project", selection);
 		}
 
 	};
@@ -85,7 +85,7 @@ public class GamaNavigatorNewMenu extends GamaNavigatorMenu { // NO_UCD (unused 
 
 		@Override
 		public void widgetSelected(final SelectionEvent e) {
-			openWizard("msi.gama.gui.wizards.NewTestExperimentWizard", selection);
+			openWizard("gama.ui.wizards.new.test", selection);
 		}
 
 	};

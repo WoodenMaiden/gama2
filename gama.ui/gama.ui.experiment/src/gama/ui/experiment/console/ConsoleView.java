@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * ConsoleView.java, in gama.ui.experiment, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * ConsoleView.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.experiment.console;
 
@@ -37,7 +37,6 @@ import gama.ui.shared.resources.IGamaColors;
 import gama.ui.shared.resources.IGamaIcons;
 import gama.ui.shared.utils.WorkbenchHelper;
 import gama.ui.shared.views.GamaViewPart;
-import gama.ui.shared.views.GamaViewPart.GamaUIJob;
 import gama.ui.shared.views.toolbar.GamaToolbar2;
 import gama.ui.shared.views.toolbar.GamaToolbarFactory;
 import gama.ui.shared.views.toolbar.IToolbarDecoratedView;
@@ -297,7 +296,6 @@ public class ConsoleView extends GamaViewPart implements IToolbarDecoratedView.S
 	 * problems. So the view is stated as accepting an "experiment-less" mode. See Issue #1361 Method
 	 * shouldBeClosedWhenNoExperiments()
 	 *
-	 * @see ummisco.gama.ui.views.GamaViewPart#shouldBeClosedWhenNoExperiments()
 	 */
 	@Override
 	protected boolean shouldBeClosedWhenNoExperiments() {

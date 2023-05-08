@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * UserControlView.java, in gama.ui.experiment, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * UserControlView.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.experiment.user;
 
@@ -41,8 +41,6 @@ import gama.ui.shared.resources.IGamaColors;
 import gama.ui.shared.resources.IGamaIcons;
 import gama.ui.shared.utils.ViewsHelper;
 import gama.ui.shared.views.GamaViewPart;
-import gama.ui.shared.views.GamaViewPart.GamaUIJob;
-import gama.ui.shared.views.GamaViewPart.UpdatePriority;
 import gama.ui.shared.views.toolbar.GamaToolbar2;
 import gaml.core.architecture.user.UserInputStatement;
 import gaml.core.architecture.user.UserPanelStatement;
@@ -207,12 +205,6 @@ public class UserControlView extends GamaViewPart implements IGamaView.User {
 		};
 	}
 
-	/**
-	 * Method createToolItem()
-	 *
-	 * @see ummisco.gama.ui.views.toolbar.IToolbarDecoratedView#createToolItem(int,
-	 *      ummisco.gama.ui.views.toolbar.GamaToolbar2)
-	 */
 	@Override
 	public void createToolItems(final GamaToolbar2 tb) {
 		super.createToolItems(tb);

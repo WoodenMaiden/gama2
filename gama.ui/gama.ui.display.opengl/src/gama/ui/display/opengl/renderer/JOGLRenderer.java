@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * JOGLRenderer.java, in gama.ui.display.opengl, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * JOGLRenderer.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.display.opengl.renderer;
 
@@ -435,11 +435,6 @@ public class JOGLRenderer extends AbstractDisplayGraphics implements IOpenGLRend
 				DPIHelper.autoScaleDown(getCanvas().getMonitor(), canvas.getSurfaceWidth() / data.getEnvWidth()));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.IOpenGLRenderer#getWidth()
-	 */
 	@SuppressWarnings ("restriction")
 	@Override
 	public final double getWidth() {
@@ -456,22 +451,12 @@ public class JOGLRenderer extends AbstractDisplayGraphics implements IOpenGLRend
 		// PlatformHelper.autoScaleDown(canvas.getSurfaceWidth()) * (float) surface.getZoomLevel();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.IOpenGLRenderer#getHeight()
-	 */
 	@Override
 	public final double getHeight() {
 		return openGL.getPixelWidthAndHeightOfWorld()[1] * (float) surface.getZoomLevel();
 		// return canvas.getSurfaceHeight() * surface.getZoomLevel();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.IOpenGLRenderer#getRealWorldPointFromWindowPoint (java.awt.Point)
-	 */
 	@Override
 	public GamaPoint getRealWorldPointFromWindowPoint(final GamaPoint mouse) {
 		return getCameraHelper().getWorldPositionFrom(new GamaPoint(mouse.x, mouse.y), new GamaPoint());
@@ -483,52 +468,21 @@ public class JOGLRenderer extends AbstractDisplayGraphics implements IOpenGLRend
 	@Override
 	public final int getDisplayHeight() { return (int) Math.round(getHeight()); }
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.IOpenGLRenderer#getCameraHelper()
-	 */
-
 	@Override
 	public CameraHelper getCameraHelper() { return cameraHelper; }
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.IOpenGLRenderer#getKeystoneHelper()
-	 */
 	@Override
 	public KeystoneHelper getKeystoneHelper() { return keystoneHelper; }
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.IOpenGLRenderer#getPickingHelper()
-	 */
 	@Override
 	public PickingHelper getPickingHelper() { return pickingHelper; }
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.IOpenGLRenderer#getOpenGLHelper()
-	 */
 	@Override
 	public OpenGL getOpenGLHelper() { return openGL; }
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.IOpenGLRenderer#getLightHelper()
-	 */
 	@Override
 	public LightHelper getLightHelper() { return lightHelper; }
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.IOpenGLRenderer#getSceneHelper()
-	 */
 	@Override
 	public SceneHelper getSceneHelper() { return sceneHelper; }
 

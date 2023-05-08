@@ -455,7 +455,7 @@
        point="org.eclipse.ui.views">
     <view
           allowMultiple="false"
-          category="msi.gama.gui.category.gama"
+          category="msi.gama.ui.components"
           class="org.eclipse.ui.views.contentoutline.ContentOutline"
           icon="platform:/plugin/gama.ui.shared/icons/views/tabs/view.outline.png"
           id="gama.ui.application.outline"
@@ -464,7 +464,7 @@
     </view>
     <view
           allowMultiple="false"
-          category="msi.gama.gui.category.gama"
+          category="msi.gama.ui.components"
           class="gama.ui.editor.views.SyntaxErrorsView"
           icon="platform:/plugin/gama.ui.shared/icons/views/tabs/view.problems.png"
           id="gama.ui.application.problems"
@@ -777,10 +777,10 @@
     <extension 
           point="org.eclipse.ui.perspectiveExtensions">
        <perspectiveExtension
-             targetID="gama.ui.application.perspectives.ModelingPerspective">
+             targetID="gama.ui.perspective.ModelingPerspective">
           <view
                 closeable="false"
-                id="msi.gama.gui.view.GamaNavigator"
+                id="gama.ui.view.navigator"
                 minimized="false"
                 moveable="true"
                 ratio="0.25"
@@ -795,7 +795,7 @@
                 moveable="true"
                 ratio="0.70"
                 relationship="bottom"
-                relative="msi.gama.gui.view.GamaNavigator"
+                relative="gama.ui.view.navigator"
                 visible="false">
           </view>
           <view
@@ -814,11 +814,11 @@
                 id="gama.ui.application.problems">
           </viewShortcut>
           <perspectiveShortcut
-                id="gama.ui.application.perspectives.SimulationPerspective">
+                id="gama.ui.perspective.SimulationPerspective">
           </perspectiveShortcut>
           <view
                 closeable="true"
-                id="gama.ui.application.view.InteractiveConsoleView"
+                id="gama.ui.view.InteractiveConsoleView"
                 minimized="false"
                 moveable="true"
                 ratio="0.7"
@@ -829,7 +829,7 @@
                 visible="true">
           </view>
           <viewShortcut
-                id="gama.ui.application.view.InteractiveConsoleView">
+                id="gama.ui.view.InteractiveConsoleView">
           </viewShortcut>
        </perspectiveExtension>
     </extension>
@@ -839,7 +839,7 @@
              class="gama.ui.editor.perspective.ModelingPerspective"
              fixed="false"
              icon="platform:/plugin/gama.ui.shared/icons/views/perspective.modeling.png"
-             id="gama.ui.application.perspectives.ModelingPerspective"
+             id="gama.ui.perspective.ModelingPerspective"
              name="Modeling">
           <description> 
              The perspective used to edit GAMA models

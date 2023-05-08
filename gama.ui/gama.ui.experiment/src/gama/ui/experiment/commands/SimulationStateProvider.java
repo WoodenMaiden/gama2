@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * SimulationStateProvider.java, in gama.ui.experiment, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * SimulationStateProvider.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.experiment.commands;
 
@@ -33,7 +33,7 @@ public class SimulationStateProvider extends AbstractSourceProvider implements I
 	public final static String SIMULATION_TYPE = "gama.ui.experiment.SimulationType";
 
 	/** The Constant SIMULATION_STEPBACK. */
-	public final static String SIMULATION_STEPBACK = "ummisco.gama.ui.experiment.SimulationStepBack";
+	public final static String SIMULATION_STEPBACK = "gama.ui.experiment.SimulationStepBack";
 
 	/** The Constant map. */
 	private final static Map<String, String> map = new HashMap<>(3);

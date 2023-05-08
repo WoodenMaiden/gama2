@@ -103,7 +103,7 @@
                   style="push">
                <parameter
                      name="newWizardId"
-                     value="msi.gama.gui.wizards.newProjectWizard">
+                     value="gama.ui.wizards.new.project">
                </parameter>
                <visibleWhen
                      checkEnabled="false">
@@ -128,7 +128,7 @@
                   style="push">
                <parameter
                      name="newWizardId"
-                     value="msi.gama.gui.wizards.NewFileWizard">
+                     value="gama.ui.wizards.new.model">
                </parameter>
             </command>
             <command
@@ -138,7 +138,7 @@
                   style="push">
                <parameter
                      name="newWizardId"
-                     value="msi.gama.gui.wizards.NewExperimentWizard">
+                     value="gama.ui.wizards.new.experiment">
                </parameter>
             </command>
             <command
@@ -148,11 +148,11 @@
                   style="push">
                <parameter
                      name="newWizardId"
-                     value="msi.gama.gui.wizards.NewTestExperimentWizard">
+                     value="gama.ui.wizards.new.test">
                </parameter>
             </command>
             <separator
-                  name="gama.ui.application.separator22"
+                  name="separator2"
                   visible="true">
             </separator>
             <command
@@ -234,7 +234,7 @@
                </parameter>
             </command>
             <separator
-                  name="gama.ui.application.separator1"
+                  name="separator"
                   visible="true">
             </separator>
             <command
@@ -266,7 +266,7 @@
             </visibleWhen>
          </menu>
          <separator
-               name="msi.gama.gui.gamaNavigator.separator1"
+               name="separator"
                visible="true">
          </separator>
          <menu
@@ -327,7 +327,7 @@
             </visibleWhen>
          </command>
          <command
-               commandId="ummisco.gama.navigator.reveal"
+               commandId="gama.ui.command.Reveal"
                icon="platform:/plugin/gama.ui.shared/icons/navigator/file.reveal.png"
                label="Reveal in Workspace"
                style="push">
@@ -377,7 +377,7 @@
                style="push">
             <parameter
                   name="newWizardId"
-                  value="msi.gama.gui.wizards.newProjectWizard">
+                  value="gama.ui.wizards.new.project">
             </parameter>
             <visibleWhen
                   checkEnabled="false">
@@ -402,7 +402,7 @@
                style="push">
             <parameter
                   name="newWizardId"
-                  value="msi.gama.gui.wizards.NewFileWizard">
+                  value="gama.ui.wizards.new.model">
             </parameter>
          </command>
          <command
@@ -412,7 +412,7 @@
                style="push">
             <parameter
                   name="newWizardId"
-                  value="msi.gama.gui.wizards.NewExperimentWizard">
+                  value="gama.ui.wizards.new.experiment">
             </parameter>
          </command>
          <command
@@ -422,11 +422,11 @@
                style="push">
             <parameter
                   name="newWizardId"
-                  value="msi.gama.gui.wizards.NewTestExperimentWizard">
+                  value="gama.ui.wizards.new.test">
             </parameter>
          </command>
          <separator
-               name="gama.ui.application.separator10"
+               name="separator0"
                visible="true">
          </separator>
          <command
@@ -440,12 +440,12 @@
    <extension
          point="org.eclipse.ui.navigator.viewer">
       <viewer
-            viewerId="msi.gama.gui.view.GamaNavigator">
+            viewerId="gama.ui.view.navigator">
          <popupMenu
                 allowsPlatformContributions="true"
                 id="navigator.menu">  
              <insertionPoint name="group.new"/>
-             <insertionPoint
+             <insertionPoint 
                    name="group.open"
                    separator="true"/>
              <insertionPoint name="group.openWith"/>   
@@ -461,7 +461,7 @@
           </popupMenu>
       </viewer>
       <viewerActionBinding
-            viewerId="msi.gama.gui.view.GamaNavigator">
+            viewerId="gama.ui.view.navigator">
          <includes>
             <actionExtension
                   pattern="edit.actions">
@@ -507,7 +507,7 @@
          </excludes>
       </viewerActionBinding>
       <viewerContentBinding
-            viewerId="msi.gama.gui.view.GamaNavigator">
+            viewerId="gama.ui.view.navigator">
          <includes>
             <contentExtension
                   pattern="gama.ui.application.shapefile.filter">
@@ -523,7 +523,7 @@
       </viewerContentBinding>
       <dragAssistant
             class="org.eclipse.ui.navigator.resources.ResourceDragAdapterAssistant"
-            viewerId="msi.gama.gui.view.GamaNavigator">
+            viewerId="gama.ui.view.navigator">
       </dragAssistant>
    </extension>
    <extension
@@ -718,11 +718,10 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            allowMultiple="false"
-            category="msi.gama.gui.category.gama"
+            category="gama.ui.components"
             class="gama.ui.navigator.GamaNavigator"
             icon="platform:/plugin/gama.ui.shared/icons/views/tabs/view.navigator.png"
-            id="msi.gama.gui.view.GamaNavigator" 
+            id="gama.ui.view.navigator" 
             name="Models"
             restorable="true">
       </view>
@@ -730,42 +729,42 @@
    <extension
          point="org.eclipse.ui.newWizards">
       <category
-            id="msi.gama.gui.wizards.GAMA"
+            id="gama.ui.wizards"
             name="GAMA">
       </category>
       <wizard
-            category="msi.gama.gui.wizards.GAMA"
+            category="gama.ui.wizards"
             class="gama.ui.navigator.wizards.NewFileWizard"
             hasPages="true"
             icon="platform:/plugin/gama.ui.shared/icons/navigator/new.model2.png"
-            id="msi.gama.gui.wizards.NewFileWizard"
+            id="gama.ui.wizards.new.model"
             name="Model file"
             project="false">
       </wizard>
        <wizard
-             category="msi.gama.gui.wizards.GAMA"
+             category="gama.ui.wizards"
              class="gama.ui.navigator.wizards.NewExperimentWizard"
              hasPages="true"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/new.model2.png"
-             id="msi.gama.gui.wizards.NewExperimentWizard"
+             id="gama.ui.wizards.new.experiment"
              name="Experiment file"
              project="false">
       </wizard>
       <wizard
-            category="msi.gama.gui.wizards.GAMA"
+            category="gama.ui.wizards"
             class="gama.ui.navigator.wizards.NewProjectWizard"
             hasPages="true"
             icon="platform:/plugin/gama.ui.shared/icons/navigator/new.project2.png"
-            id="msi.gama.gui.wizards.newProjectWizard"
+            id="gama.ui.wizards.new.project"
             name="Gama Project"
             project="true">
       </wizard>
       <wizard
-            category="msi.gama.gui.wizards.GAMA"
+            category="gama.ui.wizards"
             class="gama.ui.navigator.wizards.NewTestExperimentWizard"
             hasPages="true"
             icon="platform:/plugin/gama.ui.shared/icons/navigator/new.model2.png"
-            id="msi.gama.gui.wizards.NewTestExperimentWizard"
+            id="gama.ui.wizards.new.test"
             name="Test experiment file"
             project="false">
       </wizard>
@@ -842,8 +841,8 @@
 point="org.eclipse.core.expressions.propertyTesters">
 <propertyTester
 class="gama.ui.navigator.ClipboardTester"
-id="ummisco.gama.clipboard.tester"
-namespace="ummisco.gama"
+id="gama.ui.tester.clipboard"
+namespace="gama.ui"
 properties="cbready"
 type="java.lang.Object">
 </propertyTester>
@@ -851,28 +850,28 @@ type="java.lang.Object">
     <extension
           point="org.eclipse.ui.importWizards">
        <wizard
-             category="msi.gama.gui.wizards.GAMA"
+             category="gama.ui.wizards"
              class="gama.ui.navigator.wizards.ImportProjectWizard"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/import.project.png"
              id="gama.ui.shared.import.ExternalProject"
              name="GAMA Project">
        </wizard>
        <wizard
-             category="msi.gama.gui.wizards.GAMA"
+             category="gama.ui.wizards"
              class="gama.ui.navigator.wizards.FileImportWizard"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/import.disk.png"
              id="gama.ui.shared.import.ExternalFile"
              name="External files from disk">
        </wizard>
        <wizard
-             category="msi.gama.gui.wizards.GAMA"
+             category="gama.ui.wizards"
              class="gama.ui.navigator.wizards.ZipImportWizard"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/import.archive.png"
              id="gama.ui.shared.import.ZipFile"
              name="External files from archive">
        </wizard>
        <category
-             id="msi.gama.gui.wizards.GAMA"
+             id="gama.ui.wizards"
              name="GAMA">
        </category>
     </extension>
@@ -918,14 +917,14 @@ type="java.lang.Object">
     <extension
           point="org.eclipse.ui.exportWizards">
        <wizard
-             category="msi.gama.gui.wizards.GAMA"
+             category="gama.ui.wizards"
              class="gama.ui.navigator.wizards.ExportProjectWizard"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/import.archive.png"
              id="gama.ui.shared.export.ExternalProject"
              name="GAMA Project">
        </wizard>
        <wizard
-             category="msi.gama.gui.wizards.GAMA"
+             category="gama.ui.wizards"
              class="gama.ui.navigator.wizards.ZipExportWizard"
              icon="platform:/plugin/gama.ui.shared/icons/navigator/import.archive.png"
              id="gama.ui.shared.export.ZipFile"
@@ -935,8 +934,8 @@ type="java.lang.Object">
     <extension
           point="org.eclipse.ui.commands">
        <command
-             categoryId="msi.gama.category"
-             id="ummisco.gama.navigator.reveal"
+             categoryId="msi.gama.ui.components"
+             id="gama.ui.command.Reveal"
              name="Reveal in Workspace">
        </command>
     </extension>
@@ -944,7 +943,7 @@ type="java.lang.Object">
           point="org.eclipse.ui.handlers">
        <handler
              class="gama.ui.navigator.commands.RevealInWorkspace"
-             commandId="ummisco.gama.navigator.reveal">
+             commandId="gama.ui.command.Reveal">
           <enabledWhen>
              <with
                    variable="selection">

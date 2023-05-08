@@ -54,7 +54,7 @@ public class PerspectiveHelper {
 	public static final String PERSPECTIVE_MODELING_ID = IGui.PERSPECTIVE_MODELING_ID;
 
 	/** The Constant PERSPECTIVE_SIMULATION_ID. */
-	public static final String PERSPECTIVE_SIMULATION_ID = "gama.ui.application.perspectives.SimulationPerspective";
+	public static final String PERSPECTIVE_SIMULATION_ID = "gama.ui.perspective.SimulationPerspective";
 
 	/** The Constant PERSPECTIVE_SIMULATION_FRAGMENT. */
 	public static final String PERSPECTIVE_SIMULATION_FRAGMENT = "Simulation";

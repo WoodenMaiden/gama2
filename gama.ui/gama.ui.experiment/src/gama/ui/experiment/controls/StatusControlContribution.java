@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * StatusControlContribution.java, in gama.ui.experiment, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * StatusControlContribution.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.experiment.controls;
 
@@ -190,9 +190,6 @@ public class StatusControlContribution extends WorkbenchWindowControlContributio
 
 	}
 
-	/**
-	 * @see ummisco.gama.ui.controls.IPopupProvider#getPopupText()
-	 */
 	@Override
 	public PopupText getPopupText() {
 		final PopupText result = new PopupText();
@@ -244,9 +241,10 @@ public class StatusControlContribution extends WorkbenchWindowControlContributio
 	}
 
 	/**
-	 * @see ummisco.gama.ui.controls.IPopupProvider#getPopupBackground()
+	 * Gets the popup background.
+	 *
+	 * @return the popup background
 	 */
-	// @Override
 	public GamaUIColor getPopupBackground() {
 		if (inUserStatus && color != null) return color;
 		return state == IGui.ERROR ? IGamaColors.ERROR : state == IGui.WAIT ? IGamaColors.WARNING

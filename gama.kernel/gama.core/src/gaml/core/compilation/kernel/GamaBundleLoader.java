@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * GamaBundleLoader.java, in gama.core, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * GamaBundleLoader.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gaml.core.compilation.kernel;
 
@@ -154,7 +154,8 @@ public class GamaBundleLoader {
 	private static final Set<String> GAMA_DISPLAY_PLUGINS_NAMES = new LinkedHashSet<>();
 
 	/** The Constant GAMA_CORE_DISPLAY_PLUGINS. */
-	private static final Set<String> GAMA_CORE_DISPLAY_PLUGINS = Set.of("ummisco.gama.java2d", "ummisco.gama.opengl");
+	private static final Set<String> GAMA_CORE_DISPLAY_PLUGINS =
+			Set.of("gama.ui.display.java2d", "gama.ui.display.opengl");
 
 	/** The model plugins. */
 	private static final Multimap<Bundle, String> MODEL_PLUGINS = ArrayListMultimap.create();

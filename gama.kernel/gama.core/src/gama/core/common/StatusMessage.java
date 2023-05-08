@@ -1,12 +1,11 @@
 /*******************************************************************************************************
  *
- * StatusMessage.java, in gama.core, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * StatusMessage.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.core.common;
 
@@ -21,18 +20,20 @@ public class StatusMessage implements IStatusMessage {
 
 	/** The message. */
 	String message = "";
-	
+
 	/** The code. */
 	protected int code = IGui.INFORM;
-	
+
 	/** The icon. */
 	protected String icon;
 
 	/**
 	 * Instantiates a new status message.
 	 *
-	 * @param msg the msg
-	 * @param s the s
+	 * @param msg
+	 *            the msg
+	 * @param s
+	 *            the s
 	 */
 	public StatusMessage(final String msg, final int s) {
 		message = msg;
@@ -42,9 +43,12 @@ public class StatusMessage implements IStatusMessage {
 	/**
 	 * Instantiates a new status message.
 	 *
-	 * @param msg the msg
-	 * @param s the s
-	 * @param icon the icon
+	 * @param msg
+	 *            the msg
+	 * @param s
+	 *            the s
+	 * @param icon
+	 *            the icon
 	 */
 	public StatusMessage(final String msg, final int s, final String icon) {
 		message = msg;
@@ -53,33 +57,20 @@ public class StatusMessage implements IStatusMessage {
 	}
 
 	@Override
-	public String getText() {
-		return message;
-	}
+	public String getText() { return message; }
 
 	@Override
-	public int getCode() {
-		return code;
-	}
+	public int getCode() { return code; }
 
 	/**
 	 * Method getColor()
-	 * 
+	 *
 	 * @see gama.annotations.common.interfaces.IStatusMessage#getColor()
 	 */
 	@Override
-	public GamaColor getColor() {
-		return null;
-	}
+	public GamaColor getColor() { return null; }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see gama.core.common.IStatusMessage#getIcon()
-	 */
 	@Override
-	public String getIcon() {
-		return icon;
-	}
+	public String getIcon() { return icon; }
 
 }

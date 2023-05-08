@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * TextureCache2.java, in gama.ui.display.opengl, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * TextureCache2.java, in gama.ui.display.opengl, is part of the source code of the GAMA modeling and simulation
+ * platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.display.opengl.renderer.caches;
 
@@ -67,11 +67,6 @@ public class TextureCache2 implements ITextureCache {
 		volatileTextures = new HashMap<>();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.caches.ITextureCache#initialize()
-	 */
 	@Override
 	public void initialize() {
 		if (isNonPowerOf2TexturesAvailable == null) {
@@ -82,26 +77,15 @@ public class TextureCache2 implements ITextureCache {
 				TextureIO.setTexRectEnabled(newValue);
 			});
 			TextureIO.setTexRectEnabled(GamaPreferences.Displays.DISPLAY_POWER_OF_TWO.getValue());
-			// DEBUG.OUT("Non power-of-two textures available: " + isNonPowerOf2TexturesAvailable);
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.caches.ITextureCache#deleteVolatileTextures()
-	 */
 	@Override
 	public void deleteVolatileTextures() {
 		volatileTextures.forEach((s, t) -> t.destroy(gl.getGL()));
 		volatileTextures = new HashMap<>();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.caches.ITextureCache#dispose()
-	 */
 	@Override
 	public void dispose() {
 		deleteVolatileTextures();
@@ -116,11 +100,6 @@ public class TextureCache2 implements ITextureCache {
 	 * @param file
 	 *            the file
 	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.caches.ITextureCache#processs(java.io.File)
-	 */
 	@Override
 	public void processs(final IImageProvider file) {
 
@@ -130,22 +109,12 @@ public class TextureCache2 implements ITextureCache {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.caches.ITextureCache#processUnloaded()
-	 */
 	@Override
 	public void processUnloaded() {
 		texturesToProcess.forEach((n, i) -> { getTexture(i, false, true); });
 		// texturesToProcess.clear();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see ummisco.gama.opengl.renderer.caches.ITextureCache#getTexture(java.awt.image.BufferedImage)
-	 */
 	@Override
 	public Texture getTexture(final BufferedImage img) {
 		String id = String.valueOf(img.hashCode());

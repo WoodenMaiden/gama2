@@ -29,7 +29,7 @@
       <activityPatternBinding
             activityId="disabled"
             isEqualityPattern="false"
-            pattern="gama.ui.application/gama.ui.application.perspectives..*">
+            pattern="gama.ui.application/gama.ui.perspective..*">
       </activityPatternBinding>
       <activityPatternBinding
             activityId="disabled"
@@ -55,24 +55,24 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            id="gama.gui.category.gama"
+            id="gama.ui.components"
             name="Gama">
       </category>
             <view
             allowMultiple="false"
-            category="gama.gui.category.gama"
+            category="gama.ui.components"
             class="gama.ui.shared.views.InteractiveConsoleView"
             icon="/icons/views/tabs/view.interactive.png"
-            id="gama.ui.application.view.InteractiveConsoleView"
+            id="gama.ui.view.InteractiveConsoleView"
             name="Interactive console"
             restorable="true">
       </view>
             <view 
                   allowMultiple="false"
-                  category="gama.gui.category.gama"
+                  category="gama.ui.components"
                   class="gama.ui.shared.views.TestView"
                   icon="/icons/views/tabs/view.test.png"
-                  id="gama.ui.application.view.TestView"
+                  id="gama.ui.view.TestView"
                   name="Tests"
                   restorable="false"> 
             </view> 
@@ -80,13 +80,13 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            categoryId="gama.category"
+            categoryId="gama.ui.components"
             defaultHandler="gama.ui.shared.commands.OpenGamaWebsiteHandler"
             id="gama.ui.application.command.web"
             name="Welcome page">
       </command>
       <category
-            id="gama.category"
+            id="gama.ui.components"
             name="Specific to GAMA">
       </category>
       <commandParameterType
@@ -212,7 +212,7 @@
                id="gama.ui.application.common.toolbar"
                label="Common">
             <command
-                  commandId="gama.ui.application.goto.modeling"
+                  commandId="gama.ui.command.SwitchToModelingPerspective"
                   disabledIcon="platform:/plugin/gama.ui.shared/icons/views/perspective.modeling_disabled.png"
                   icon="platform:/plugin/gama.ui.shared/icons/views/perspective.modeling.png"
                   label="Modeling perspective"
@@ -289,31 +289,31 @@
    <extension  point="org.eclipse.ui.commands">
       
       <command
-            categoryId="gama.category"
+            categoryId="gama.ui.components"
             defaultHandler="gama.ui.shared.commands.DetailsHandler"
             id="gama.ui.details"
             name="Installation details">
       </command>
       <command
-            categoryId="gama.category"
+            categoryId="gama.ui.components"
             defaultHandler="gama.ui.shared.commands.SwitchWorkspaceHandler"
             id="gama.ui.switchWorkspace"
             name="Switch Workspace">
      </command>
       <command
-            categoryId="gama.category"
+            categoryId="gama.ui.components"
             defaultHandler="gama.ui.shared.commands.InstallHandler"
             id="gama.ui.install"
             name="Install new plugins...">
       </command>
       <command
-            categoryId="gama.category"
+            categoryId="gama.ui.components"
             defaultHandler="gama.ui.shared.commands.UpdateHandler"
             id="gama.ui.update"
             name="Check for updates">
       </command>
       <command
-            categoryId="gama.category"
+            categoryId="gama.ui.components"
             defaultHandler="gama.ui.shared.commands.RestartHandler"
             id="gama.ui.restart"
             name="Restart GAMA">

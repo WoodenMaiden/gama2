@@ -459,7 +459,7 @@ public class SwtGui implements IGui {
 
 			// To solve issue #3697
 			ICommandService hs = WorkbenchHelper.getService(ICommandService.class);
-			hs.refreshElements("gama.ui.application.commands.SynchronizeExperiment", null);
+			hs.refreshElements("gama.ui.command.SynchronizeExperiment", null);
 
 			WorkbenchHelper.getPage().setEditorAreaVisible(showEditors);
 			getConsole().toggleConsoleViews(exp.getAgent(), showConsoles == null || showConsoles);
