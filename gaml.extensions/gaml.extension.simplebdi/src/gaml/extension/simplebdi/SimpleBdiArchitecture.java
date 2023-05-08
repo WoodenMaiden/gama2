@@ -1575,14 +1575,6 @@ public class SimpleBdiArchitecture extends ReflexArchitecture {
 			return false;
 
 		}
-		// if (cond instanceof String) {
-		// final Object res = msi.gaml.operators.System.opEvalGaml(scope,
-		// (String) cond);
-		// if (Cast.asBool(scope, res) == false) {
-		// return true;
-		// }
-		//
-		// }
 		return false;
 
 	}

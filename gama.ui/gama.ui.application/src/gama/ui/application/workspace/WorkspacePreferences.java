@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * WorkspacePreferences.java, in gama.ui.application, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * WorkspacePreferences.java, in gama.ui.application, is part of the source code of the GAMA modeling and simulation
+ * platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.application.workspace;
 
@@ -162,7 +162,7 @@ public class WorkspacePreferences {
 	public static String getCurrentGamaStampString() {
 
 		try {
-			final URL tmpURL = new URL("platform:/plugin/msi.gama.models/models/");
+			final URL tmpURL = new URL("platform:/plugin/gama.library/models/");
 			URL resolvedFileURL = FileLocator.toFileURL(tmpURL);
 
 			// We need to use the 3-arg constructor of URI in order to properly escape file system chars

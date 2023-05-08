@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * ArrangeDisplayViews.java, in gama.ui.experiment, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * ArrangeDisplayViews.java, in gama.ui.experiment, is part of the source code of the GAMA modeling and simulation
+ * platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.experiment.commands;
 
@@ -32,14 +32,14 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.common.collect.Iterables;
 
-import gama.ui.application.workbench.PerspectiveHelper;
-import gama.ui.application.workbench.ThemeHelper;
 import gama.core.common.interfaces.IGamaView;
 import gama.core.common.preferences.GamaPreferences;
 import gama.core.outputs.LayeredDisplayOutput;
 import gama.core.util.tree.GamaNode;
 import gama.core.util.tree.GamaTree;
 import gama.dev.DEBUG;
+import gama.ui.application.workbench.PerspectiveHelper;
+import gama.ui.application.workbench.ThemeHelper;
 import gama.ui.shared.utils.ViewsHelper;
 import gama.ui.shared.utils.WorkbenchHelper;
 
@@ -79,7 +79,7 @@ public class ArrangeDisplayViews extends AbstractHandler {
 	}
 
 	/** The Constant LAYOUT_KEY. */
-	public static final String LAYOUT_KEY = "msi.gama.displays.layout";
+	public static final String LAYOUT_KEY = "gama.displays.layout";
 
 	/** The Constant DISPLAY_INDEX_KEY. */
 	static final String DISPLAY_INDEX_KEY = "GamaIndex";

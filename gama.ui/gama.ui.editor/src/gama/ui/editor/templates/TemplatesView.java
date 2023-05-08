@@ -28,7 +28,7 @@ public class TemplatesView extends ViewPart {
 	@Override
 	public void createPartControl(final Composite parent) {
 		PreferenceDialog dialog =
-			PreferencesUtil.createPreferenceDialogOn(parent.getShell(), "msi.gama.lang.gaml.Gaml.templates",
+			PreferencesUtil.createPreferenceDialogOn(parent.getShell(), "gaml.compiler.Gaml.templates",
 				new String[] {}, null);
 		PreferencePage selectedPage = (PreferencePage) dialog.getSelectedPage();
 		selectedPage.createControl(parent);

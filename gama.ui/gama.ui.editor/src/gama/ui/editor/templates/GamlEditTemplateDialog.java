@@ -261,7 +261,7 @@ public class GamlEditTemplateDialog extends StatusDialog implements IEditTemplat
 	 * @return the context id
 	 */
 	protected String getContextId() {
-		return "msi.gama.lang.gaml.Gaml.Model";
+		return "gama.ui.templates.context";
 	}
 
 	/**

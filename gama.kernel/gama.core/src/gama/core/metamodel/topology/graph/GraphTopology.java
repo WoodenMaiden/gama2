@@ -1,12 +1,11 @@
 /*******************************************************************************************************
  *
- * GraphTopology.java, in gama.core, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * GraphTopology.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.core.metamodel.topology.graph;
 
@@ -804,24 +803,14 @@ public class GraphTopology extends AbstractTopology {
 		return new GraphTopology(scope, environment, (GamaSpatialGraph) places);
 	}
 
-	/**
-	 * @see gama.core.environment.AbstractTopology#getRandomPlace()
-	 */
-
 	@Override
 	public ISpatialGraph getPlaces() { return (GamaSpatialGraph) super.getPlaces(); }
 
-	/**
-	 * @see gama.core.environment.ITopology#isValidLocation(msi.gama.util.GamaPoint)
-	 */
 	@Override
 	public boolean isValidLocation(final IScope scope, final GamaPoint p) {
 		return isValidGeometry(scope, p.getGeometry());
 	}
 
-	/**
-	 * @see gama.core.environment.ITopology#isValidGeometry(gama.core.interfaces.IGeometry)
-	 */
 	@Override
 	public boolean isValidGeometry(final IScope scope, final IShape g) {
 		// Geometry g2 = g.getInnerGeometry();
@@ -829,11 +818,6 @@ public class GraphTopology extends AbstractTopology {
 		return false;
 	}
 
-	/**
-	 * @throws GamaRuntimeException
-	 * @see gama.core.environment.ITopology#distanceBetween(gama.core.interfaces.IGeometry, gama.core.interfaces.IGeometry,
-	 *      java.lang.Double)
-	 */
 	@Override
 	public Double distanceBetween(final IScope scope, final IShape source, final IShape target) {
 		final GamaSpatialPath path = this.pathBetween(scope, source, target);
@@ -869,11 +853,6 @@ public class GraphTopology extends AbstractTopology {
 		return path.getDistance(scope);
 	}
 
-	/**
-	 * @throws GamaRuntimeException
-	 * @see gama.core.environment.ITopology#directionInDegreesTo(gama.core.interfaces.IGeometry,
-	 *      gama.core.interfaces.IGeometry)
-	 */
 	@Override
 	public Double directionInDegreesTo(final IScope scope, final IShape source, final IShape target) {
 		// WARNING As it is computed every time the location of an agent is set,
@@ -894,10 +873,6 @@ public class GraphTopology extends AbstractTopology {
 		// return Maths.checkHeading((int) result);
 	}
 
-	/**
-	 * @see gama.core.environment.ITopology#getAgentsIn(gama.core.interfaces.IGeometry, gama.core.environment.IAgentFilter,
-	 *      boolean)
-	 */
 	@Override
 	public Collection<IAgent> getAgentsIn(final IScope scope, final IShape source, final IAgentFilter f,
 			final SpatialRelation relation) {

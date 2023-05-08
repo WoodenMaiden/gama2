@@ -58,6 +58,6 @@ Export-Package: gama.ui.editor,
  gaml.compiler.ui.quickfix
 Bundle-Activator: gama.ui.editor.internal.EditorActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Automatic-Module-Name: msi.gama.application
+Automatic-Module-Name: gama.ui.editor
 Import-Package: gama.headless.core,
  org.apache.log4j

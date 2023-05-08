@@ -560,7 +560,7 @@
          </possibleChildren>
          <commonSorter
                class="gama.ui.navigator.NavigatorSorter"
-               id="msi.gama.navigator.sorter">
+               id="gama.ui.navigator.sorter">
             <parentExpression>
             <or>
                <instanceof
@@ -784,7 +784,7 @@
             name="Shapefile support"
             priority="high">
          <property
-               name="msi.gama.support.target">
+               name="gama.support.target">
          </property>
       </content-type>
       <content-type
@@ -934,7 +934,7 @@ type="java.lang.Object">
     <extension
           point="org.eclipse.ui.commands">
        <command
-             categoryId="msi.gama.ui.components"
+             categoryId="gama.ui.components"
              id="gama.ui.command.Reveal"
              name="Reveal in Workspace">
        </command>

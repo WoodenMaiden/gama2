@@ -31,7 +31,7 @@ import gama.ui.navigator.contents.VirtualContent;
 public class GamlDecorator implements ILightweightLabelDecorator {
 
 	/** The decorator id. */
-	public static String decoratorId = "msi.gama.light.decorator";
+	public static String decoratorId = "gama.ui.decorator.light";
 
 	@Override
 	public void addListener(final ILabelProviderListener listener) {}

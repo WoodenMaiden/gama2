@@ -346,7 +346,7 @@ public class TemplateReferenceMenu extends GamlReferenceMenu {
 		final GamlEditor editor = getEditor();
 		if (data == null) {
 			data = new TemplatePersistenceData(
-					new Template("", "", "msi.gama.lang.gaml.Gaml.Model", editor.getSelectedText(), true), true,
+					new Template("", "", "gama.ui.templates.context", editor.getSelectedText(), true), true,
 					dataId);
 		}
 		final boolean succeed = editor.openEditTemplateDialog(data, edit);

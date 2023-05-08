@@ -11,7 +11,7 @@
             name="Gama">
          <property
                name="windowImages"
-               value="/msi.gama.application/icons/window/icon16.png,/msi.gama.application/icons/window/icon32.png,/msi.gama.application/icons/window/icon48.png,/msi.gama.application/icons/window/icon64.png,/msi.gama.application/icons/window/icon128.png,/msi.gama.application/icons/window/icon256.png">
+               value="icons/window/icon16.png,icons/window/icon32.png,icons/window/icon48.png,icons/window/icon64.png,icons/window/icon128.png,icons/window/icon256.png">
          </property> 
          <property
                name="aboutText"
@@ -19,7 +19,7 @@
          </property>
          <property
                name="aboutImage"
-               value="/msi.gama.application/icons/window/icon128.png">
+               value="icons/window/icon128.png">
          </property>
          <property
                name="startupProgressRect"

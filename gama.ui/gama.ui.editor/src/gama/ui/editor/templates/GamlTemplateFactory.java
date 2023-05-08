@@ -58,7 +58,7 @@ public class GamlTemplateFactory {
 	 *
 	 * @return the context id
 	 */
-	public static String getContextId() { return "msi.gama.lang.gaml.Gaml.Model"; }
+	public static String getContextId() { return "gama.ui.templates.context"; }
 
 	/**
 	 * From.

@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * BoxProviderRegistry.java, in gama.ui.editor, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * BoxProviderRegistry.java, in gama.ui.editor, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.editor.editbox;
 
@@ -23,14 +23,14 @@ import gama.ui.editor.internal.EditorActivator;
 /**
  * The Class BoxProviderRegistry.
  */
-@SuppressWarnings({ "rawtypes" })
+@SuppressWarnings ({ "rawtypes" })
 public class BoxProviderRegistry {
 
-	/** The Constant PROIVDERS. */
-	private static final String PROIVDERS = "proivders";
-	
+	/** The Constant PROVIDERS. */
+	private static final String PROVIDERS = "proivders";
+
 	/** The Constant PROVIDER_ID_. */
-	private static final String PROVIDER_ID_ = "ummisco.gaml.editbox.provider.";
+	private static final String PROVIDER_ID_ = "gama.editbox.provider.";
 
 	/** The providers. */
 	protected Collection<IBoxProvider> providers;
@@ -44,8 +44,7 @@ public class BoxProviderRegistry {
 	 * @return single instance of BoxProviderRegistry
 	 */
 	public static BoxProviderRegistry getInstance() {
-		if (INSTANCE == null)
-			INSTANCE = new BoxProviderRegistry();
+		if (INSTANCE == null) { INSTANCE = new BoxProviderRegistry(); }
 		return INSTANCE;
 	}
 
@@ -54,9 +53,7 @@ public class BoxProviderRegistry {
 	 *
 	 * @return the gaml provider
 	 */
-	public IBoxProvider getGamlProvider() {
-		return getInstance().providerForName("GAML");
-	}
+	public IBoxProvider getGamlProvider() { return getInstance().providerForName("GAML"); }
 
 	/**
 	 * Gets the box providers.
@@ -64,12 +61,8 @@ public class BoxProviderRegistry {
 	 * @return the box providers
 	 */
 	public Collection<IBoxProvider> getBoxProviders() {
-		if (providers == null) {
-			providers = loadProviders();
-		}
-		if (providers == null) {
-			providers = defaultProviders();
-		}
+		if (providers == null) { providers = loadProviders(); }
+		if (providers == null) { providers = defaultProviders(); }
 		return providers;
 	}
 
@@ -80,17 +73,13 @@ public class BoxProviderRegistry {
 	 */
 	protected Collection<IBoxProvider> loadProviders() {
 		List<IBoxProvider> result = null;
-		final String pSetting = EditorActivator.getInstance().getPreferenceStore().getString(PROIVDERS);
+		final String pSetting = EditorActivator.getInstance().getPreferenceStore().getString(PROVIDERS);
 		if (pSetting != null && pSetting.length() > 0) {
 			final String[] split = pSetting.split(",");
 			if (split.length > 0) {
-				result = new ArrayList<IBoxProvider>();
+				result = new ArrayList<>();
 
-				for (final String s : split) {
-					if (s.trim().length() > 0) {
-						result.add(createProvider(s.trim()));
-					}
-				}
+				for (final String s : split) { if (s.trim().length() > 0) { result.add(createProvider(s.trim())); } }
 			}
 		}
 		return result;
@@ -99,11 +88,10 @@ public class BoxProviderRegistry {
 	/**
 	 * Sets the providers.
 	 *
-	 * @param newProviders the new providers
+	 * @param newProviders
+	 *            the new providers
 	 */
-	public void setProviders(final Collection<IBoxProvider> newProviders) {
-		providers = newProviders;
-	}
+	public void setProviders(final Collection<IBoxProvider> newProviders) { providers = newProviders; }
 
 	/**
 	 * Store providers.
@@ -112,12 +100,10 @@ public class BoxProviderRegistry {
 		if (providers != null) {
 			final StringBuilder sb = new StringBuilder();
 			for (final IBoxProvider p : providers) {
-				if (sb.length() != 0) {
-					sb.append(",");
-				}
+				if (sb.length() != 0) { sb.append(","); }
 				sb.append(p.getName());
 			}
-			EditorActivator.getInstance().getPreferenceStore().setValue(PROIVDERS, sb.toString());
+			EditorActivator.getInstance().getPreferenceStore().setValue(PROVIDERS, sb.toString());
 		}
 	}
 
@@ -127,7 +113,7 @@ public class BoxProviderRegistry {
 	 * @return the collection
 	 */
 	protected Collection<IBoxProvider> defaultProviders() {
-		final List<IBoxProvider> result = new ArrayList<IBoxProvider>();
+		final List<IBoxProvider> result = new ArrayList<>();
 		// order important (see supports())
 		result.add(gamlProvider());
 		result.add(textProvider());
@@ -137,7 +123,8 @@ public class BoxProviderRegistry {
 	/**
 	 * Creates the provider.
 	 *
-	 * @param name the name
+	 * @param name
+	 *            the name
 	 * @return the box provider impl
 	 */
 	protected BoxProviderImpl createProvider(final String name) {
@@ -183,7 +170,7 @@ public class BoxProviderRegistry {
 	 * @return the map
 	 */
 	protected Map<String, Class> defaultBuilders() {
-		final Map<String, Class> result = new HashMap<String, Class>();
+		final Map<String, Class> result = new HashMap<>();
 		result.put("Text", BoxBuilderImpl.class);
 		result.put("GAML", JavaBoxBuilder.class);
 		// result.put("Markup", MarkupBuilder2.class);
@@ -194,16 +181,13 @@ public class BoxProviderRegistry {
 	/**
 	 * Provider for name.
 	 *
-	 * @param name the name
+	 * @param name
+	 *            the name
 	 * @return the i box provider
 	 */
 	public IBoxProvider providerForName(final String name) {
 		final Collection<IBoxProvider> providers = getBoxProviders();
-		for (final IBoxProvider provider : providers) {
-			if (provider.getName().equals(name)) {
-				return provider;
-			}
-		}
+		for (final IBoxProvider provider : providers) { if (provider.getName().equals(name)) return provider; }
 		final IBoxProvider provider = createProvider(name);
 		providers.add(provider);
 		return provider;
@@ -212,13 +196,12 @@ public class BoxProviderRegistry {
 	/**
 	 * Removes the provider.
 	 *
-	 * @param name the name
+	 * @param name
+	 *            the name
 	 */
 	public void removeProvider(final String name) {
 		for (final Iterator<IBoxProvider> it = getBoxProviders().iterator(); it.hasNext();) {
-			if (it.next().getName().equals(name)) {
-				it.remove();
-			}
+			if (it.next().getName().equals(name)) { it.remove(); }
 		}
 	}
 

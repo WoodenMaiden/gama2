@@ -1,22 +1,22 @@
 /*******************************************************************************************************
  *
- * ContinueStatement.java, in gama.core, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * ContinueStatement.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gaml.core.statements;
 
 import gama.annotations.common.interfaces.IGamlIssue;
 import gama.annotations.common.interfaces.IKeyword;
-import gama.annotations.precompiler.IConcept;
-import gama.annotations.precompiler.ISymbolKind;
 import gama.annotations.precompiler.GamlAnnotations.doc;
 import gama.annotations.precompiler.GamlAnnotations.inside;
 import gama.annotations.precompiler.GamlAnnotations.symbol;
+import gama.annotations.precompiler.IConcept;
+import gama.annotations.precompiler.ISymbolKind;
 import gama.core.runtime.IScope;
 import gama.core.runtime.exceptions.GamaRuntimeException;
 import gaml.core.compilation.IDescriptionValidator;
@@ -92,9 +92,6 @@ public class ContinueStatement extends AbstractStatement {
 		super(desc);
 	}
 
-	/**
-	 * @see gaml.core.commands.AbstractCommand#privateExecuteIn(gama.core.runtime.IScope)
-	 */
 	@Override
 	protected Object privateExecuteIn(final IScope scope) throws GamaRuntimeException {
 		scope.setContinueStatus();

@@ -39,11 +39,6 @@ public class MessageData {
 	 *
 	 * @return the name of sender
 	 */
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see misc.current_development.IMessage#getSender()
-		 */
 	public IAgent getSender() { return sender; }
 
 	/**
@@ -67,11 +62,6 @@ public class MessageData {
 	 * @param receivers
 	 *            the new name of all receivers
 	 */
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see misc.current_development.IMessage#setReceivers(java.util.List)
-		 */
 	public void setReceivers(final IList receivers) { this.receivers = receivers; }
 
 	/**
@@ -79,11 +69,6 @@ public class MessageData {
 	 *
 	 * @return the content of the message
 	 */
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see misc.current_development.IMessage#getContent()
-		 */
 	public IList getContent() { return content; }
 
 	/**
@@ -91,11 +76,6 @@ public class MessageData {
 	 *
 	 * @param content
 	 *            the new content of the message
-	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see misc.current_development.IMessage#setContent(java.lang.String)
 	 */
 	public void setContent(final IList content) {
 		if (content != null) { this.content = content; }
@@ -106,11 +86,6 @@ public class MessageData {
 	 *
 	 * @return the performative name
 	 */
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see misc.current_development.IMessage#getPerformative()
-		 */
 	public String getPerformativeName() { return performative.name(); }
 
 	/**
@@ -118,11 +93,6 @@ public class MessageData {
 	 *
 	 * @return the performative of the message (defined by the FIPA)
 	 */
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see gaml.extensions.fipa.IMessage#getPerformative()
-		 */
 	public Performative getPerformative() { return performative; }
 
 	/**
@@ -131,11 +101,6 @@ public class MessageData {
 	 * @param performative
 	 *            the new performative name
 	 */
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see misc.current_development.IMessage#setPerformative(java.lang.String)
-		 */
 	public void setPerformativeName(final String performative) {
 		this.performative = Performative.valueOf(performative);
 	}
@@ -158,11 +123,6 @@ public class MessageData {
 	 *
 	 * @return the associated conversation
 	 */
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see misc.current_development.IMessage#getConversation()
-		 */
 	public Conversation getConversation() { return conversation; }
 
 	/**
@@ -171,18 +131,8 @@ public class MessageData {
 	 * @param conv
 	 *            the new associated conversation
 	 */
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see misc.current_development.IMessage#setConversation(msi.gama.metamodel .agent.interfaces.BasicEntity)
-		 */
 	public void setConversation(final Conversation conv) { conversation = conv; }
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		final StringBuilder retVal = new StringBuilder();
@@ -196,11 +146,6 @@ public class MessageData {
 	 *
 	 * @return the message
 	 */
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see misc.current_development.IMessage#getMessage()
-		 */
 	public MessageData getMessage() { return this; }
 
 }

@@ -83,14 +83,7 @@
 			name="Gaml">
 			<keywordReference id="gaml.compiler.ui.keyword_Gaml"/>
 		</page>
-<!--		<page
-			category="msi.gama.lang.gaml.Gaml"
-			class="gaml.compiler.ui.GamlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-			id="msi.gama.lang.gaml.Gaml.coloring"
-			name="Syntax Coloring">
-			<keywordReference id="msi.gama.lang.gaml.ui.keyword_Gaml"/>
-		</page>
--->
+
 		<page
 			category="gaml.compiler.Gaml"
 			class="gaml.compiler.ui.GamlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
@@ -226,7 +219,7 @@
            allPopups="false"
            locationURI="menu:file?before=save.ext">
         <command
-              commandId="ummisco.command.clean.build"
+              commandId="gama.ui.command.CleanBuild"
               disabledIcon="platform:/plugin/gama.ui.shared/icons/build/build.all_disabled.png"
               icon="platform:/plugin/gama.ui.shared/icons/build/build.all.png"
               label="Clean and validate all"
@@ -275,7 +268,6 @@
 			type="experiment">
 		</parser>
 	</extension>
-	<!-- marker definitions for msi.gama.lang.gaml.Gaml -->
 	<extension
 			id="gaml.check.fast"
 			name="Gaml Problem"
@@ -355,7 +347,7 @@
 		</command>
   <command
         defaultHandler="gama.ui.editor.menu.CleanBuildCommand"
-        id="ummisco.command.clean.build"
+        id="gama.ui.command.CleanBuild"
         name="Clean and build all models">
   </command>
 	</extension>
@@ -371,7 +363,6 @@
 			</command>
 		</menuContribution>
 	</extension>
-	<!-- quickfix marker resolution generator for msi.gama.lang.gaml.Gaml -->
 	<extension
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
@@ -455,7 +446,7 @@
        point="org.eclipse.ui.views">
     <view
           allowMultiple="false"
-          category="msi.gama.ui.components"
+          category="gama.ui.components"
           class="org.eclipse.ui.views.contentoutline.ContentOutline"
           icon="platform:/plugin/gama.ui.shared/icons/views/tabs/view.outline.png"
           id="gama.ui.application.outline"
@@ -464,7 +455,7 @@
     </view>
     <view
           allowMultiple="false"
-          category="msi.gama.ui.components"
+          category="gama.ui.components"
           class="gama.ui.editor.views.SyntaxErrorsView"
           icon="platform:/plugin/gama.ui.shared/icons/views/tabs/view.problems.png"
           id="gama.ui.application.problems"
@@ -473,7 +464,7 @@
     </view>
     <view
           class="gama.ui.editor.templates.TemplatesView"
-          id="msi.gama.lang.gaml.ui.templates"
+          id="gama.ui.view.templates"
           name="Templates"
           restorable="true">
     </view>
@@ -492,7 +483,7 @@
            <decorator
                  adaptable="true"
                  class="gama.ui.editor.decorators.GamlDecorator"
-                 id="msi.gama.light.decorator"
+                 id="gama.ui.decorator.light"
                  label="Gaml Errors"
                  lightweight="true"
                  location="TOP_LEFT"
@@ -550,13 +541,11 @@
           
        <markerContentGenerator
              defaultMarkerGrouping="org.eclipse.ui.ide.allMarkers.severity"
-             id="msi.gama.lang.gaml.ui.error.generator"
+             id="gama.ui.editor.marker.generator"
              name="Error Generator">
           <markerTypeReference
                 id="org.eclipse.xtext.ui.task">
           </markerTypeReference>             
-             
-             
           <markerTypeReference
                 id="gama.ui.editor.gaml.check.expensive">
           </markerTypeReference>
@@ -678,17 +667,17 @@
          </markerGrouping>
           <markerFieldConfiguration
                 enabled="true"
-                id="msi.gama.lang.gaml.ui.markerFieldConfiguration1"
+                id="gama.ui.marker.field.configuration"
                 name="Problems"
                 scope="ON_ANY"
                 values="gama.ui.editor.views.GamlProblems">
           </markerFieldConfiguration>
           <markerFieldReference
-                id="msi.gama.lang.gaml.ui.description.field"
+                id="gama.ui.marker.field.description"
                 visible="true">
           </markerFieldReference>
           <markerFieldReference
-                id="msi.gama.lang.gaml.ui.project.field"
+                id="gama.ui.marker.field.project"
                 visible="true">
           </markerFieldReference>
           <markerFieldReference
@@ -702,12 +691,12 @@
        </markerContentGenerator>
        <markerField
              class="gama.ui.editor.markers.ProjectMarkerField"
-             id="msi.gama.lang.gaml.ui.project.field"
+             id="gama.ui.marker.field.project"
              name="Project">
        </markerField>
        <markerField
              class="gama.ui.editor.markers.GamlDescriptionMarkerField"
-             id="msi.gama.lang.gaml.ui.description.field"
+             id="gama.ui.marker.field.description"
              name="Description">
        </markerField>
     </extension>
@@ -760,13 +749,13 @@
     <extension
           point="org.eclipse.ui.actionSets">
        <actionSet
-             id="msi.gama.lang.gaml.ui.actionSet1"
+             id="gama.ui.search.action.set"
              label="Search Gaml Elements"
              visible="true">
           <action
                 class="gama.ui.editor.editor.DelegateForAllElements"
                 icon="platform:/plugin/gama.ui.shared/icons/generic/menu.searchtext.png"
-                id="gama.ui.application.action1"
+                id="gama.ui.command.search.gaml"
                 label="GAML elements in models..."
                 menubarPath="org.eclipse.search.menu/extraSearchGroup"
                 style="push"

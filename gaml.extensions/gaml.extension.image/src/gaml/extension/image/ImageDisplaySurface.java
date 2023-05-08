@@ -91,9 +91,6 @@ public class ImageDisplaySurface implements IDisplaySurface {
 
 	}
 
-	/**
-	 * @see gama.common.interfaces.IDisplaySurface#initialize(double, double, msi.gama.outputs.IDisplayOutput)
-	 */
 	@Override
 	public void outputReloaded() {
 		this.scope = output.getScope().copyForGraphics("in image surface of " + output.getName());
@@ -406,20 +403,9 @@ public class ImageDisplaySurface implements IDisplaySurface {
 	@Override
 	public void layersChanged() {}
 
-	/**
-	 * Method changed()
-	 *
-	 * @see gama.outputs.LayeredDisplayData.DisplayDataListener#changed(msi.gama.outputs.LayeredDisplayData.Changes,
-	 *      boolean)
-	 */
 	@Override
 	public void changed(final Changes property, final Object value) {}
 
-	/**
-	 * Method getVisibleRegionForLayer()
-	 *
-	 * @see gama.common.interfaces.IDisplaySurface#getVisibleRegionForLayer(msi.gama.common.interfaces.ILayer)
-	 */
 	@Override
 	public Envelope getVisibleRegionForLayer(final ILayer currentLayer) {
 		return null;

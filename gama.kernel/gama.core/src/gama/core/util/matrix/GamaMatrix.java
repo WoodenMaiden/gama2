@@ -1,12 +1,11 @@
 /*******************************************************************************************************
  *
- * GamaMatrix.java, in gama.core, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * GamaMatrix.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.core.util.matrix;
 
@@ -506,31 +505,12 @@ public abstract class GamaMatrix<T> implements IMatrix<T> {
 		return _listValue(scope, contentsType, true);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see gama.core.interfaces.IValue#matrixValue(gama.core.interfaces.IScope, msi.gama.util.GamaPoint)
-	 */
 	@Override
 	public final IMatrix<T> matrixValue(final IScope scope, final IType type, final GamaPoint size, final boolean copy)
 			throws GamaRuntimeException {
 		return _matrixValue(scope, size, type, copy);
 	}
 
-	/**
-	 * @see java.lang.Iterable#iterator()
-	 */
-	// @Override
-	// public abstract Iterator<T> iterator();
-
-	// @Override
-	// public final Iterable<T> iterable(final IScope scope) {
-	// return this;
-	// }
-
-	/**
-	 * @see gama.core.interfaces.IMatrix#getRowsList()
-	 */
 	@Override
 	public IList<IList<T>> getRowsList() {
 		final IList result = GamaListFactory.create(Types.LIST.of(getGamlType().getContentType()));
@@ -538,11 +518,6 @@ public abstract class GamaMatrix<T> implements IMatrix<T> {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see gama.core.interfaces.IMatrix#getColumnsList()
-	 */
 	@Override
 	public IList<IList<T>> getColumnsList() {
 		final IList result = GamaListFactory.create(Types.LIST.of(getGamlType().getContentType()));
@@ -550,11 +525,6 @@ public abstract class GamaMatrix<T> implements IMatrix<T> {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see gama.core.interfaces.IMatrix#getRow(java.lang.Integer)
-	 */
 	@Override
 	public IList<T> getRow(final Integer n) {
 		final IList result = GamaListFactory.create(getGamlType().getContentType());
@@ -563,11 +533,6 @@ public abstract class GamaMatrix<T> implements IMatrix<T> {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see gama.core.interfaces.IMatrix#getColumn(java.lang.Integer)
-	 */
 	@Override
 	public IList<T> getColumn(final Integer n) {
 		final IList result = GamaListFactory.create(getGamlType().getContentType());
@@ -576,31 +541,16 @@ public abstract class GamaMatrix<T> implements IMatrix<T> {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see gama.core.interfaces.IMatrix#plus(gama.core.interfaces.IMatrix)
-	 */
 	@Override
 	public IMatrix plus(final IScope scope, final IMatrix other) throws GamaRuntimeException {
 		return opPlus(scope, this, other);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see gama.core.interfaces.IMatrix#times(gama.core.interfaces.IMatrix)
-	 */
 	@Override
 	public IMatrix times(final IScope scope, final IMatrix other) throws GamaRuntimeException {
 		return opTimes(scope, this, other);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see gama.core.interfaces.IMatrix#minus(gama.core.interfaces.IMatrix)
-	 */
 	@Override
 	public IMatrix<T> minus(final IScope scope, final IMatrix other) throws GamaRuntimeException {
 		return opMinus(scope, this, other);

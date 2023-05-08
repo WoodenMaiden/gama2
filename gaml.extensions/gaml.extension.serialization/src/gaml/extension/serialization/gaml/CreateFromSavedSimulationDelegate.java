@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * CreateFromSavedSimulationDelegate.java, in gaml.extension.serialization, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * CreateFromSavedSimulationDelegate.java, in gaml.extension.serialization, is part of the source code of the GAMA
+ * modeling and simulation platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 
 package gaml.extension.serialization.gaml;
@@ -41,20 +41,11 @@ import gaml.extension.serialization.type.converters.ConverterScope;
 @SuppressWarnings ({ "unchecked", "rawtypes" })
 public class CreateFromSavedSimulationDelegate implements ICreateDelegate {
 
-	/**
-	 * Method acceptSource()
-	 *
-	 * @see gama.common.interfaces.ICreateDelegate#acceptSource(IScope, java.lang.Object)
-	 */
 	@Override
 	public boolean acceptSource(final IScope scope, final Object source) {
 		return source instanceof GamaSavedSimulationFile;
 	}
 
-	/**
-	 * @see gama.common.interfaces.ICreateDelegate#createFrom(msi.gama.runtime.IScope, java.util.List, int,
-	 *      java.lang.Object)
-	 */
 	@Override
 	public boolean createFrom(final IScope scope, final List<Map<String, Object>> inits, final Integer max,
 			final Object source, final Arguments init, final CreateStatement statement) {
@@ -89,11 +80,6 @@ public class CreateFromSavedSimulationDelegate implements ICreateDelegate {
 		return true;
 	}
 
-	/**
-	 * Method fromFacetType()
-	 *
-	 * @see gama.common.interfaces.ICreateDelegate#fromFacetType()
-	 */
 	@Override
 	public IType fromFacetType() {
 		return Types.FILE;

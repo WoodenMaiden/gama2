@@ -82,7 +82,7 @@
       <command
             categoryId="gama.ui.components"
             defaultHandler="gama.ui.shared.commands.OpenGamaWebsiteHandler"
-            id="gama.ui.application.command.web"
+            id="gama.ui.command.OpenWebsite"
             name="Welcome page">
       </command>
       <category
@@ -279,7 +279,7 @@
                visible="true">
          </separator>
          <command
-               commandId="gama.ui.application.command.web"
+               commandId="gama.ui.command.OpenWebsite"
                icon="platform:/plugin/gama.ui.shared/icons/views/open.web.png"
                label="Welcome page"
                style="push">

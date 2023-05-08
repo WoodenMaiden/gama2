@@ -8,7 +8,7 @@
           point="org.eclipse.ui.views">
        <view
              allowMultiple="true"
-             category="msi.gama.ui.components"
+             category="gama.ui.components"
              class="gama.ui.display.opengl.view.OpenGLDisplayView"
              icon="platform:/plugin/gama.ui.shared/icons/views/tabs/view.display.png"
              id="gama.ui.view.OpenGLDisplayView"

@@ -1,12 +1,11 @@
 /*******************************************************************************************************
  *
- * GridTopology.java, in gama.core, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * GridTopology.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.core.metamodel.topology.grid;
 
@@ -16,7 +15,7 @@ import java.util.Set;
 
 import gama.annotations.common.interfaces.IKeyword;
 import gama.core.common.geometry.Envelope3D;
-//import gama.core.common.interfaces.msi;
+// import gama.core.common.interfaces.msi;
 import gama.core.metamodel.agent.IAgent;
 import gama.core.metamodel.population.IPopulation;
 import gama.core.metamodel.population.IPopulationSet;
@@ -257,27 +256,17 @@ public class GridTopology extends AbstractTopology {
 		return getPlaces().computeShortestPathBetween(scope, source, target, this, null);
 	}
 
-	/**
-	 * @see gama.core.environment.ITopology#isValidLocation(msi.gama.util.GamaPoint)
-	 */
 	@Override
 	public boolean isValidLocation(final IScope scope, final GamaPoint p) {
 		return getPlaces().getPlaceAt(p) != null;
 
 	}
 
-	/**
-	 * @see gama.core.environment.ITopology#isValidGeometry(gama.core.interfaces.IGeometry)
-	 */
 	@Override
 	public boolean isValidGeometry(final IScope scope, final IShape g) {
 		return isValidLocation(scope, g.getLocation());
 	}
 
-	/**
-	 * @see gama.core.environment.ITopology#distanceBetween(gama.core.interfaces.IGeometry, gama.core.interfaces.IGeometry,
-	 *      java.lang.Double)
-	 */
 	@Override
 	public Double distanceBetween(final IScope scope, final IShape source, final IShape target) {
 		if (!isValidGeometry(scope, source) || !isValidGeometry(scope, target)) return Double.MAX_VALUE;
@@ -292,10 +281,6 @@ public class GridTopology extends AbstractTopology {
 		return (double) getPlaces().manhattanDistanceBetween(source, target);
 	}
 
-	/**
-	 * @see gama.core.environment.ITopology#directionInDegreesTo(gama.core.interfaces.IGeometry,
-	 *      gama.core.interfaces.IGeometry)
-	 */
 	@Override
 	public Double directionInDegreesTo(final IScope scope, final IShape source, final IShape target) {
 		// TODO compute from the path
@@ -340,19 +325,5 @@ public class GridTopology extends AbstractTopology {
 		super.dispose();
 		getPlaces().dispose();
 	}
-
-	// @Override
-	// public IList<GamaSpatialPath> KpathsBetween(final IScope scope, final IShape source, final IShape target,
-	// final int k) {
-	// // TODO for the moment, returns only 1 shortest path.... need to fix it!
-	// return super.KpathsBetween(scope, source, target, k);
-	// }
-	//
-	// @Override
-	// public IList<GamaSpatialPath> KpathsBetween(final IScope scope, final GamaPoint source, final GamaPoint target,
-	// final int k) {
-	// // TODO for the moment, returns only 1 shortest path.... need to fix it!
-	// return super.KpathsBetween(scope, source, target, k);
-	// }
 
 }

@@ -33,26 +33,7 @@ import gaml.extension.database.utils.sql.SqlUtils;
 /**
  * The Class SQLSkill.
  */
-/*
- * @Author TRUONG Minh Thai
- *
- * @Supervisors: Christophe Sibertin-BLANC Fredric AMBLARD Benoit GAUDOU
- *
- *
- * created date: 22-Feb-2012 Modified: 24-Sep-2012: Add methods: - boolean isconnected() - select(String select) -
- * executeUpdate(String updateComm) - getParameter: return connection Parameter; Delete method: selectDB,
- * executeUpdateDB 25-Sep-2012: Add methods: timeStamp, helloWorld 18-Feb-2013: Add public int insert(final IScope
- * scope) throws GamaRuntimeException 21-Feb-2013: Modify public IList<Object> select(final IScope scope) throws
- * GamaRuntimeException Modify public int executeUpdate(final IScope scope) throws GamaRuntimeException Modify public
- * int insert(final IScope scope) throws GamaRuntimeException 10-Mar-2013: Modify select method: Add transform parameter
- * Modify insert method: Add transform parameter 29-Apr-2013 Remove import msi.gama.database.SqlConnection; Add import
- * msi.gama.database.sql.SqlConnection; Change all method appropriately 07-Jan-2014: Move arg "transform" of select and
- * insert action as key of arg "Param" 
- * 01-Aug-2014: Add date time functions: getCurrentDateTime: get system datetime
- * getDateOffset: get (datetime + offsettime) 
- * 21-Sept-2022 : remove getCurrentDateTime, timeStamp and getDateOffset as they are irrelevant to databases
- * Last Modified: 01-Aug-2014
- */
+
 @skill (
 		name = "SQLSKILL",
 		concept = { IConcept.DATABASE, IConcept.SKILL })

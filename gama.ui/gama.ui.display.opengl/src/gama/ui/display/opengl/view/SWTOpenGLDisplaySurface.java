@@ -320,19 +320,9 @@ public class SWTOpenGLDisplaySurface implements IDisplaySurface.OpenGL {
 
 	}
 
-	/**
-	 * Method getManager()
-	 *
-	 * @see gama.core.common.interfaces.IDisplaySurface#getManager()
-	 */
 	@Override
 	public ILayerManager getManager() { return layerManager; }
 
-	/**
-	 * Method focusOn()
-	 *
-	 * @see gama.core.common.interfaces.IDisplaySurface#focusOn(msi.gama.metamodel.shape.IShape)
-	 */
 	@Override
 	public void focusOn(final IShape geometry) {
 		// FIXME: Need to compute the depth of the shape to adjust ZPos value.
@@ -343,11 +333,6 @@ public class SWTOpenGLDisplaySurface implements IDisplaySurface.OpenGL {
 		renderer.getCameraHelper().zoomFocus(geometry.getEnvelope().yNegated());
 	}
 
-	/**
-	 * Method waitForUpdateAndRun()
-	 *
-	 * @see gama.core.common.interfaces.IDisplaySurface#waitForUpdateAndRun(java.lang.Runnable)
-	 */
 	@Override
 	public void runAndUpdate(final Runnable r) {
 		r.run();
@@ -358,33 +343,18 @@ public class SWTOpenGLDisplaySurface implements IDisplaySurface.OpenGL {
 		}
 	}
 
-	/**
-	 * Method getWidth()
-	 *
-	 * @see gama.core.common.interfaces.IDisplaySurface#getWidth()
-	 */
 	@Override
 	public int getWidth() {
 		return renderer.getCanvas().getSurfaceWidth();
 		// return size.x;
 	}
 
-	/**
-	 * Method getHeight()
-	 *
-	 * @see gama.core.common.interfaces.IDisplaySurface#getHeight()
-	 */
 	@Override
 	public int getHeight() {
 		return renderer.getCanvas().getSurfaceHeight();
 		// return size.y;
 	}
 
-	/**
-	 * Method outputReloaded()
-	 *
-	 * @see gama.core.common.interfaces.IDisplaySurface#outputReloaded()
-	 */
 	@Override
 	public void outputReloaded() {
 		setDisplayScope(output.getScope().copyForGraphics("in opengl display"));
@@ -572,11 +542,6 @@ public class SWTOpenGLDisplaySurface implements IDisplaySurface.OpenGL {
 		}
 	}
 
-	/**
-	 * Method selectAgents()
-	 *
-	 * @see gama.core.common.interfaces.IDisplaySurface.OpenGL#selectAgents(msi.gama.metamodel.agent.IAgent)
-	 */
 	@Override
 	public void selectAgent(final DrawingAttributes attributes) {
 		IAgent ag = null;

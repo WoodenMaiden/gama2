@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * AgentDB.java, in gaml.extension.database, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * AgentDB.java, in gaml.extension.database, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gaml.extension.database.gaml.species;
 
@@ -30,26 +30,7 @@ import gaml.extension.database.utils.sql.SqlUtils;
 /**
  * The Class AgentDB.
  */
-/*
- * @Author TRUONG Minh Thai
- *
- * @Supervisors: Christophe Sibertin-BLANC Fredric AMBLARD Benoit GAUDOU
- *
- * species: The AgentDB is defined in this class. AgentDB supports the action - isConnected: returns true/false -
- * testConnection: tests the connection - close: closes the current connection - connect: makes a connection to DBMS. -
- * select: executeQuery to select data from DBMS via current connection. - executeUpdate: runs executeUpdate to
- * update/insert/delete/drop/create data on DBMS via current connection.
- *
- * created date: 22-Feb-2012 Modified: 24-Sep-2012: Add methods: - boolean isconnected() - select(String select) -
- * executeUpdate(String updateComm) - getParameter: return connection Parameter; Delete method: selectDB,
- * executeUpdateDB 25-Sep-2012: Add methods: timeStamp, helloWorld 18-Feb-2013: Add public int insert(final IScope
- * scope) throws GamaRuntimeException 21-Feb-2013: Modify public IList<Object> select(final IScope scope) throws
- * GamaRuntimeException Modify public int executeUpdate(final IScope scope) throws GamaRuntimeException Modify public
- * int insert(final IScope scope) throws GamaRuntimeException 10-Mar-2013: Modify select method: Add transform parameter
- * Modify insert method: Add transform parameter 29-Apr-2013: Remove import msi.gama.database.SqlConnection; Add import
- * msi.gama.database.sql.SqlConnection; Change all method appropriately 07-Jan-2014: Move arg "transform" of select and
- * insert action to key of arg "Params" Last Modified: 07-Jan-2014
- */
+
 @species (
 		name = "AgentDB",
 		doc = @doc ("An abstract species that can be extended to provide agents with capabilities to access databases"))
@@ -59,22 +40,25 @@ public class AgentDB extends GamlAgent {
 
 	/** The conn. */
 	private Connection conn = null;
-	
+
 	/** The sql conn. */
 	private SqlConnection sqlConn = null;
-	
+
 	/** The is connection. */
 	private boolean isConnection = false;
-	
+
 	/** The params. */
 	private java.util.Map<String, String> params = null;
 
 	/**
 	 * Instantiates a new agent DB.
 	 *
-	 * @param s the s
-	 * @param index the index
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @param s
+	 *            the s
+	 * @param index
+	 *            the index
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	public AgentDB(final IPopulation s, final int index) throws GamaRuntimeException {
 		super(s, index);
@@ -83,9 +67,11 @@ public class AgentDB extends GamlAgent {
 	/**
 	 * Checks if is connected.
 	 *
-	 * @param scope the scope
+	 * @param scope
+	 *            the scope
 	 * @return true, if is connected
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@action (
 			name = "isConnected",
@@ -99,9 +85,11 @@ public class AgentDB extends GamlAgent {
 	/**
 	 * Close.
 	 *
-	 * @param scope the scope
+	 * @param scope
+	 *            the scope
 	 * @return the object
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@action (
 			name = "close",
@@ -126,9 +114,11 @@ public class AgentDB extends GamlAgent {
 	/**
 	 * Time stamp.
 	 *
-	 * @param scope the scope
+	 * @param scope
+	 *            the scope
 	 * @return the long
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	// added from MaeliaSkill
 	@action (
@@ -144,9 +134,11 @@ public class AgentDB extends GamlAgent {
 	/**
 	 * Connect DB.
 	 *
-	 * @param scope the scope
+	 * @param scope
+	 *            the scope
 	 * @return the object
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	/*
 	 * Make a connection to BDMS
@@ -184,9 +176,11 @@ public class AgentDB extends GamlAgent {
 	/**
 	 * Test connection.
 	 *
-	 * @param scope the scope
+	 * @param scope
+	 *            the scope
 	 * @return true, if successful
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	/*
 	 * Test a connection to DBMS
@@ -215,9 +209,11 @@ public class AgentDB extends GamlAgent {
 	/**
 	 * Select.
 	 *
-	 * @param scope the scope
+	 * @param scope
+	 *            the scope
 	 * @return the i list
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	/*
 	 * Make a connection to BDMS and execute the select statement
@@ -238,8 +234,7 @@ public class AgentDB extends GamlAgent {
 							name = "values",
 							type = IType.LIST,
 							optional = true,
-							doc = @doc ("List of values that are used to replace question marks"))
-			},
+							doc = @doc ("List of values that are used to replace question marks")) },
 			doc = @doc (
 					value = "Make a connection to DBMS and execute the select statement.",
 					returns = "Returns the obtained result from executing the select statement."))
@@ -268,9 +263,11 @@ public class AgentDB extends GamlAgent {
 	/**
 	 * Execute update.
 	 *
-	 * @param scope the scope
+	 * @param scope
+	 *            the scope
 	 * @return the int
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	/*
 	 * - Make a connection to BDMS - Executes the SQL statement in this PreparedStatement object, which must be an SQL
@@ -290,8 +287,7 @@ public class AgentDB extends GamlAgent {
 							name = "values",
 							type = IType.LIST,
 							optional = true,
-							doc = @doc ("List of values that are used to replace question mark"))
-			},
+							doc = @doc ("List of values that are used to replace question mark")) },
 			doc = @doc (
 					value = "- Make a connection to DBMS - Executes the SQL statement in this PreparedStatement object, which must be an SQL\n"
 							+ "	 INSERT, UPDATE or DELETE statement; or an SQL statement that returns nothing, such as a DDL statement.",
@@ -324,9 +320,11 @@ public class AgentDB extends GamlAgent {
 	/**
 	 * Gets the paramater.
 	 *
-	 * @param scope the scope
+	 * @param scope
+	 *            the scope
 	 * @return the paramater
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@action (
 			name = "getParameter",
@@ -341,9 +339,11 @@ public class AgentDB extends GamlAgent {
 	/**
 	 * Sets the parameter.
 	 *
-	 * @param scope the scope
+	 * @param scope
+	 *            the scope
 	 * @return the object
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	@action (
 			name = "setParameter",
@@ -373,9 +373,11 @@ public class AgentDB extends GamlAgent {
 	/**
 	 * Insert.
 	 *
-	 * @param scope the scope
+	 * @param scope
+	 *            the scope
 	 * @return the int
-	 * @throws GamaRuntimeException the gama runtime exception
+	 * @throws GamaRuntimeException
+	 *             the gama runtime exception
 	 */
 	/*
 	 * Make a connection to BDMS and execute the insert statement
@@ -400,8 +402,7 @@ public class AgentDB extends GamlAgent {
 							name = "values",
 							type = IType.LIST,
 							optional = false,
-							doc = @doc ("List of values that are used to insert into table. Columns and values must have same size"))
-			},
+							doc = @doc ("List of values that are used to insert into table. Columns and values must have same size")) },
 			doc = @doc (
 					value = "- Make a connection to DBMS - Executes the insert statement.",
 					returns = "Returns the number of updated rows. "))

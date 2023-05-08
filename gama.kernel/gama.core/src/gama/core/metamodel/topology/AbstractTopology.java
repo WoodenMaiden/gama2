@@ -1,12 +1,12 @@
 /*******************************************************************************************************
  *
- * AbstractTopology.java, in gama.core, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * AbstractTopology.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.core.metamodel.topology;
 
@@ -209,9 +209,6 @@ public abstract class AbstractTopology implements ITopology {
 		return false;
 	}
 
-	/**
-	 * @see gama.core.environment.ITopology#initialize(msi.gama.interfaces.IPopulation)
-	 */
 	@Override
 	public void initialize(final IScope scope, final IPopulation<? extends IAgent> pop) throws GamaRuntimeException {
 		// Create the population from the places of the topology
@@ -225,10 +222,6 @@ public abstract class AbstractTopology implements ITopology {
 		getSpatialIndex().remove(agent.getEnvelope(), agent);
 	}
 
-	/**
-	 * @throws GamaRuntimeException
-	 * @see gama.core.environment.ITopology#pathBetween(msi.gama.interfaces.IGeometry, msi.gama.interfaces.IGeometry)
-	 */
 	@Override
 	public GamaSpatialPath pathBetween(final IScope scope, final IShape source, final IShape target)
 			throws GamaRuntimeException {

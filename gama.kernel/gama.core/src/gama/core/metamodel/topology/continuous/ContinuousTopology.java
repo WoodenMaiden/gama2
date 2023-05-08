@@ -1,17 +1,17 @@
 /*******************************************************************************************************
  *
- * ContinuousTopology.java, in gama.core, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * ContinuousTopology.java, in gama.core, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.core.metamodel.topology.continuous;
 
 import gama.annotations.common.interfaces.IKeyword;
-//import gama.core.common.interfaces.msi;
+// import gama.core.common.interfaces.msi;
 import gama.core.metamodel.shape.GamaPoint;
 import gama.core.metamodel.shape.IShape;
 import gama.core.metamodel.topology.AbstractTopology;
@@ -65,17 +65,11 @@ public class ContinuousTopology extends AbstractTopology {
 		return new ContinuousTopology(scope, environment);
 	}
 
-	/**
-	 * @see gama.core.environment.ITopology#isValidLocation(msi.gama.util.GamaPoint)
-	 */
 	@Override
 	public boolean isValidLocation(final IScope scope, final GamaPoint p) {
 		return environment.covers(p);
 	}
 
-	/**
-	 * @see gama.core.environment.ITopology#isValidGeometry(msi.gama.interfaces.IGeometry)
-	 */
 	@Override
 	public boolean isValidGeometry(final IScope scope, final IShape g) {
 		return environment.intersects(g);
@@ -105,9 +99,7 @@ public class ContinuousTopology extends AbstractTopology {
 	}
 
 	@Override
-	public boolean isContinuous() {
-		return true;
-	}
+	public boolean isContinuous() { return true; }
 
 	@Override
 	public Double distanceBetween(final IScope scope, final IShape g1, final IShape g2) {

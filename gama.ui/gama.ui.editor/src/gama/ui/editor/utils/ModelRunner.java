@@ -1,18 +1,17 @@
 /*******************************************************************************************************
  *
- * ModelRunner.java, in gama.ui.editor, is part of the source code of the
- * GAMA modeling and simulation platform (v.2.0.0).
+ * ModelRunner.java, in gama.ui.editor, is part of the source code of the GAMA modeling and simulation platform
+ * (v.2.0.0).
  *
  * (c) 2007-2023 UMI 209 UMMISCO IRD/SU & Partners (IRIT, MIAT, TLU, CTU)
  *
  * Visit https://github.com/gama-platform/gama2 for license information and contacts.
- * 
+ *
  ********************************************************************************************************/
 package gama.ui.editor.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -41,6 +40,7 @@ import gama.core.kernel.model.IModel;
 import gama.core.runtime.GAMA;
 import gama.core.runtime.exceptions.GamaRuntimeException;
 import gama.dev.DEBUG;
+import gama.ui.editor.internal.EditorActivator;
 import gama.ui.navigator.contents.WrappedGamaFile;
 import gama.ui.shared.interfaces.IModelRunner;
 import gama.ui.shared.utils.WorkbenchHelper;
@@ -48,7 +48,6 @@ import gaml.compiler.validation.GamlModelBuilder;
 import gaml.core.compilation.GamlCompilationError;
 import gaml.core.statements.test.TestExperimentSummary;
 import gaml.core.statements.test.WithTestSummary;
-import gama.ui.editor.internal.EditorActivator;
 
 /**
  * The class ModelRunner.
@@ -68,7 +67,7 @@ public class ModelRunner extends AbstractServiceFactory implements IModelRunner 
 	 */
 	private void editModelInternal(final Object eObject) {
 		if (eObject instanceof URI uri) {
-			final Injector injector = EditorActivator.getInstance().getInjector("msi.gama.lang.gaml.Gaml");
+			final Injector injector = EditorActivator.getInstance().getInjector("gaml.compiler.Gaml");
 			final IURIEditorOpener opener = injector.getInstance(IURIEditorOpener.class);
 			opener.open(uri, true);
 		} else if (eObject instanceof EObject) {
