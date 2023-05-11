@@ -4,5 +4,6 @@
 
 rootProject.name = "gama"
 include(
-    "gama.kernel:gama.annotations"
+    "gama.kernel:gama.annotations",
+    "gama.build:gama.processor"
 )
