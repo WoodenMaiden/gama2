@@ -7,6 +7,12 @@ plugins {
     `maven-publish`
 }
 
+publishing {
+    publications.create<MavenPublication>("maven") {
+        from(components["java"])
+    }
+}
+
 repositories {
     mavenLocal()
     maven {
@@ -14,7 +20,7 @@ repositories {
     }
 }
 
-group = "gama.processor"
+group = "gama.kernel"
 version = "2.0.0-SNAPSHOT"
 description = "gama.annotations"
 java.sourceCompatibility = JavaVersion.VERSION_17
