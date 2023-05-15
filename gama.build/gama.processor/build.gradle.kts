@@ -22,13 +22,6 @@ version = "2.0.0-SNAPSHOT"
 description = "gama.processor"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
-repositories {
-    mavenLocal()
-    maven {
-        url = uri("https://repo.maven.apache.org/maven2/")
-    }
-}
-
 plugins {
     `java-library`
     `maven-publish`

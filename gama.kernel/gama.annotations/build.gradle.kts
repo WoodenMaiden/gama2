@@ -13,13 +13,6 @@ publishing {
     }
 }
 
-repositories {
-    mavenLocal()
-    maven {
-        url = uri("https://repo.maven.apache.org/maven2/")
-    }
-}
-
 group = "gama.kernel"
 version = "2.0.0-SNAPSHOT"
 description = "gama.annotations"
