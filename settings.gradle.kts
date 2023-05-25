@@ -19,5 +19,7 @@ dependencyResolutionManagement {
 
 include(
     "gama.kernel:gama.annotations",
-    "gama.build:gama.processor"
+    "gama.build:gama.processor",
+    "gama.kernel:gama.dev"
 )
+
