@@ -77,7 +77,7 @@ public class Option implements Cloneable
         final int prime = 31;
         int result = 1;
         result = ((prime*result)+((name == null)? 0 :name.hashCode()));
-        result = ((prime*result)+(new Boolean(enabled).hashCode()));
+        result = ((prime*result)+(Boolean.valueOf(enabled).hashCode()));
         return result;
     }
 

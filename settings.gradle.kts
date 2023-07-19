@@ -4,22 +4,72 @@
 
 rootProject.name = "gama"
 
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        maven { 
+            url = uri("https://repo.maven.apache.org/maven2/")
+            url = uri("https://buchen.github.io/maven-repo")
+            url = uri("https://maven.jzy3d.org/releases/")
+            artifactUrls("http://download.eclipse.org/releases/2022-12")
+        }
         mavenLocal()
         mavenCentral()
         // Custom maven repository
-        maven { url = uri("https://repo.maven.apache.org/maven2/") }
-        maven { url = uri("https://download.eclipse.org/releases/2022-12") }
-        maven { url = uri("https://buchen.github.io/maven-repo") }
-        maven { url = uri("https://maven.jzy3d.org/releases/") }
     }
 }
 
 include(
-    "gama.kernel:gama.annotations",
-    "gama.build:gama.processor",
-    "gama.kernel:gama.dev"
+    ":gama.kernel:gama.annotations",
+    ":gama.build:gama.processor",
+    ":gama.kernel:gama.dev",
+    ":gama.kernel:gama.dependencies"
 )
 
+/*
+[INFO] msi.gama.core ...................................... SUCCESS [ 14.267 s]
+[INFO] msi.gama.lang.gaml ................................. SUCCESS [  5.532 s]
+[INFO] msi.gama.documentation ............................. SUCCESS [  3.697 s]
+[INFO] irit.gaml.extensions.database ...................... SUCCESS [  1.618 s]
+[INFO] msi.gama.application ............................... SUCCESS [ 10.845 s]
+[INFO] simtools.gaml.extensions.traffic ................... SUCCESS [  2.057 s]
+[INFO] ummisco.gaml.extensions.maths ...................... SUCCESS [  1.590 s]
+[INFO] ummisco.gama.serialize ............................. SUCCESS [  1.716 s]
+[INFO] ummisco.gama.network ............................... SUCCESS [  2.089 s]
+[INFO] msi.gama.headless .................................. SUCCESS [  2.016 s]
+[INFO] ummisco.gama.ui.shared ............................. SUCCESS [  3.082 s]
+[INFO] ummisco.gama.ui.navigator .......................... SUCCESS [  2.217 s]
+[INFO] ummisco.gama.ui.modeling ........................... SUCCESS [  3.959 s]
+[INFO] ummisco.gama.ui.experiment ......................... SUCCESS [  2.470 s]
+[INFO] msi.gaml.extensions.fipa ........................... SUCCESS [  1.507 s]
+[INFO] miat.gaml.extensions.pedestrian .................... SUCCESS [  1.713 s]
+[INFO] simtools.gaml.extensions.physics ................... SUCCESS [  4.371 s]
+[INFO] femto_st.gama.proxy ................................ SUCCESS [  1.508 s]
+[INFO] msi.gama.models .................................... SUCCESS [  2.162 s]
+[INFO] msi.gaml.architecture.simplebdi .................... SUCCESS [  2.154 s]
+[INFO] ummisco.gaml.extensions.image ...................... SUCCESS [  1.521 s]
+[INFO] ummisco.gama.opengl ................................ SUCCESS [  2.814 s]
+[INFO] ummisco.gama.java2d ................................ SUCCESS [  1.798 s]
+[INFO] ummisco.gama.ui.viewers ............................ SUCCESS [  2.268 s]
+[INFO] ummisco.gaml.extensions.sound ...................... SUCCESS [  1.596 s]
+[INFO] ummisco.gaml.extensions.stats ...................... SUCCESS [  1.644 s]
+[INFO] ummisco.gama.feature.audio ......................... SUCCESS [  1.090 s]
+[INFO] ummisco.gama.feature.models ........................ SUCCESS [  0.610 s]
+[INFO] ummisco.gama.feature.dependencies .................. SUCCESS [ 37.674 s]
+[INFO] ummisco.gama.feature.dependencies.ui ............... SUCCESS [  7.323 s]
+[INFO] ummisco.gama.feature.core .......................... SUCCESS [  1.327 s]
+[INFO] ummisco.gama.feature.core.extensions ............... SUCCESS [  1.349 s]
+[INFO] ummisco.gama.feature.core.ui ....................... SUCCESS [  1.157 s]
+[INFO] ummisco.gama.feature.experiment.ui ................. SUCCESS [  1.180 s]
+[INFO] ummisco.gama.feature.modeling.ui ................... SUCCESS [  1.562 s]
+[INFO] ummisco.gama.feature.stats ......................... SUCCESS [  1.005 s]
+[INFO] ummisco.gama.feature.image ......................... SUCCESS [  0.987 s]
+[INFO] ummisco.gama.product ............................... SUCCESS [03:06 min]
+[INFO] msi.gama.p2updatesite .............................. SUCCESS [ 30.501 s]
+*/
