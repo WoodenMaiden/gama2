@@ -39,7 +39,7 @@ dependencies {
     implementation("org.eclipse.tycho:tycho-maven-plugin:3.0.4")
     implementation("org.eclipse.tycho:target-platform-configuration:3.0.4")
     implementation("org.apache.maven:maven-plugin-api:3.9.1")
-    implementation("gama.kernel:gama.annotations:" + project.version)
+    implementation(project(":gama.kernel:gama.annotations"))
 }
 
 sourceSets {
@@ -47,11 +47,25 @@ sourceSets {
         java {
             setSrcDirs(listOf("src"))
         }
-        /*resources {
-            setSrcDirs(listOf("src"))
-        }*/
+        resources {
+            setSrcDirs(
+                listOf(
+                    "src/gama/processor/precompiler/resources"
+                )
+            )
+        }
     }
 }
+
+/*
+bin.includes = META-INF/,\
+               .,\
+               build.properties,\
+               .project,\
+               .classpath,\
+               plugin.xml,\
+               src/gama/processor/precompiler/resources/
+*/
 
 tasks.jar {
     manifest {
