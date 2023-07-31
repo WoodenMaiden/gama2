@@ -19,6 +19,7 @@ release/
 *.history
 *.class
 .metadata/
+.vscode/
 /*/gaml/
 /*/bin/
 .__*

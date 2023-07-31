@@ -20,113 +20,43 @@ publishing {
 }
 
 dependencies {
-    implementation(project(":gama.kernel:gama.dev"))
-    implementation(project(":gama.kernel:gama.annotations"))
+    // api() will allow to expose the following dependencies to the modules that depend on gama.dependencies
+    // https://www.baeldung.com/gradle-implementation-vs-compile#best-practices-for-gradle-dependency-management
 
-    implementation("com.google.inject:guice:4.0-beta5")
+    api(project(":gama.kernel:gama.dev"))
+    api(project(":gama.kernel:gama.annotations"))
 
-implementation(files("./moeaframework-2.13.jar"))
-    implementation(files("./svgsalamander1.1.1/svgSalamander-v1.1.1.jar"))
-    implementation(files("./jgrapht 1.5.1/antlr4-runtime-4.8-1.jar"))
-    implementation(files("./jgrapht 1.5.1/jheaps-0.13.jar"))
-    implementation(files("./jgrapht 1.5.1/jgrapht-guava-1.5.1.jar"))
-    implementation(files("./jgrapht 1.5.1/jgrapht-io-1.5.1.jar"))
-    implementation(files("./jgrapht 1.5.1/jgrapht-opt-1.5.1.jar"))
-    implementation(files("./geotools/bigint-0.7.1.jar"))
-    implementation(files("./geotools/ehcache-2.10.3.jar"))
-    implementation(files("./geotools/imageio-ext-cog-streams-1.3.5.jar"))
-    implementation(files("./geotools/imageio-ext-cog-commons-1.3.5.jar"))
-    implementation(files("./geotools/imageio-ext-cog-reader-1.3.5.jar"))
-    implementation(files("./geotools/commons-httpclient-3.1.jar"))
-    implementation(files("./jaxb/jaxb-api.jar"))
-    implementation(files("./jaxb/jaxb-core.jar"))
-    implementation(files("./jaxb/jaxb-impl.jar"))
-    implementation(files("./geotools/ejml-core-0.34.jar"))
-    implementation(files("./geotools/xml-commons-resolver-1.2.jar"))
-    implementation(files("./geotools/org.w3.xlink-25.0.jar"))
-    implementation(files("./geotools/picocontainer-1.2.jar"))
-    implementation(files("./geotools/net.opengis.fes-25.0.jar"))
-    implementation(files("./geotools/net.opengis.ows-25.0.jar"))
-    implementation(files("./geotools/net.opengis.wfs-25.0.jar"))
-    implementation(files("./geotools/ojdbc8-19.10.0.0.jar"))
-    implementation(files("./geotools/jcc-11.5.5.0.jar"))
-    implementation(files("./geotools/commons-text-1.6.jar"))
-    implementation(files("./geotools/systems-common-2.0.1.jar"))
-    implementation(files("./jsr 363/indriya-2.1.2.jar"))
-    implementation(files("./jsr 363/si-quantity-2.0.1.jar"))
-    implementation(files("./jsr 363/si-units-2.0.1.jar"))
-    implementation(files("./jsr 363/unit-api-2.1.2.jar"))
-    implementation(files("./jsr 363/uom-lib-common-2.1.jar"))
-    implementation(files("./geotools/commons-lang3-3.8.1.jar"))
-    implementation(files("./geotools/disruptor-1.2.13.jar"))
-    implementation(files("./geotools/commons-collections4-4.4.jar"))
-    implementation(files("./geotools/commons-dbcp-1.4.jar"))
-    implementation(files("./geotools/commons-pool-1.5.4.jar"))
-    implementation(files("./geotools/ejml-ddense-0.34.jar"))
-    implementation(files("./geotools/imageio-ext-arcgrid-1.3.5.jar"))
-    implementation(files("./geotools/imageio-ext-geocore-1.3.5.jar"))
-    implementation(files("./geotools/imageio-ext-streams-1.3.5.jar"))
-    implementation(files("./geotools/imageio-ext-tiff-1.3.5.jar"))
-    implementation(files("./geotools/imageio-ext-utilities-1.3.5.jar"))
-    implementation(files("./geotools/jackson-core-2.10.5.jar"))
-    implementation(files("./geotools/jai_codec-1.1.3.jar"))
-    implementation(files("./geotools/jai_core-1.1.3.jar"))
-    implementation(files("./geotools/jai_imageio-1.1.jar"))
-    implementation(files("./geotools/jdom2-2.0.6.jar"))
-    implementation(files("./geotools/jgridshift-core-1.3.jar"))
-    implementation(files("./geotools/json-simple-1.1.1.jar"))
-    implementation(files("./geotools/jsr305-3.0.0.jar"))
-    implementation(files("./geotools/jt-affine-1.1.20.jar"))
-    implementation(files("./geotools/jt-algebra-1.1.20.jar"))
-    implementation(files("./geotools/jt-bandcombine-1.1.20.jar"))
-    implementation(files("./geotools/jt-bandmerge-1.1.20.jar"))
-    implementation(files("./geotools/jt-bandselect-1.1.20.jar"))
-    implementation(files("./geotools/jt-binarize-1.1.20.jar"))
-    implementation(files("./geotools/jt-border-1.1.20.jar"))
-    implementation(files("./geotools/jt-buffer-1.1.20.jar"))
-    implementation(files("./geotools/jt-classbreaks-1.1.20.jar"))
-    implementation(files("./geotools/jt-classifier-1.1.20.jar"))
-    implementation(files("./geotools/jt-colorconvert-1.1.20.jar"))
-    implementation(files("./geotools/jt-colorindexer-1.1.20.jar"))
-    implementation(files("./geotools/jt-contour-1.6.0.jar"))
-    implementation(files("./geotools/jt-crop-1.1.20.jar"))
-    implementation(files("./geotools/jt-errordiffusion-1.1.20.jar"))
-    implementation(files("./geotools/jt-format-1.1.20.jar"))
-    implementation(files("./geotools/jt-imagefunction-1.1.20.jar"))
-    implementation(files("./geotools/jt-iterators-1.1.20.jar"))
-    implementation(files("./geotools/jt-jiffle-op-1.1.20.jar"))
-    implementation(files("./geotools/jt-lookup-1.1.20.jar"))
-    implementation(files("./geotools/jt-mosaic-1.1.20.jar"))
-    implementation(files("./geotools/jt-nullop-1.1.20.jar"))
-    implementation(files("./geotools/jt-orderdither-1.1.20.jar"))
-    implementation(files("./geotools/jt-piecewise-1.1.20.jar"))
-    implementation(files("./geotools/jt-rangelookup-1.6.0.jar"))
-    implementation(files("./geotools/jt-rescale-1.1.20.jar"))
-    implementation(files("./geotools/jt-rlookup-1.1.20.jar"))
-    implementation(files("./geotools/jt-scale-1.1.20.jar"))
-    implementation(files("./geotools/jt-scale2-1.1.20.jar"))
-    implementation(files("./geotools/jt-shadedrelief-1.1.20.jar"))
-    implementation(files("./geotools/jt-stats-1.1.20.jar"))
-    implementation(files("./geotools/jt-translate-1.1.20.jar"))
-    implementation(files("./geotools/jt-utilities-1.1.20.jar"))
-    implementation(files("./geotools/jt-utils-1.6.0.jar"))
-    implementation(files("./geotools/jt-vectorbin-1.1.20.jar"))
-    implementation(files("./geotools/jt-vectorbinarize-1.6.0.jar"))
-    implementation(files("./geotools/jt-vectorize-1.6.0.jar"))
-    implementation(files("./geotools/jt-warp-1.1.20.jar"))
-    implementation(files("./geotools/jt-zonal-1.1.20.jar"))
-    implementation(files("./geotools/jt-zonalstats-1.6.0.jar"))
-    implementation(files("./geotools/mysql-connector-java-8.0.22.jar"))
-    implementation(files("./geotools/postgresql-42.2.19.jar"))
-    implementation(files("./geotools/sqlite-jdbc-3.34.0.jar"))
-    implementation(files("./jfreechart/jfreechart-1.5.3.jar"))
-    implementation(files("./geotools/gt-http-commons-25.0.jar"))
+    api("com.google.inject:guice:4.0-beta5")
+    compileOnlyApi("org.osgi:org.osgi.framework:1.10.0")
+
+    api(files("./protobuf-java-3.6.1.jar"))
+
+    // We ignore the 3.4.0 version because the com.google.protobuf.GeneratedMessageLite.MethodToInvoke
+    // enum has less values than the 3.6.1 version, which causes compilations problems
+
+    val ignoredFiles = listOf("protobuf-java-3.4.0.jar")
+
+    // 👇 put the directories containing the jars you want to include
+    listOf(
+        "./geotools", "./jaxb", "./jfreechart", "./jgrapht 1.5.1",
+        "./streamex", "./svgsalamander1.1.1", "./jts", "./jsr 363",
+        "./commons-math3-3.6.1.jar", "./moeaframework-2.13.jar", 
+    ).forEach { path ->
+        api(
+            fileTree(mapOf(
+                "dir" to "$path", 
+                "include" to listOf("*.jar"),
+                "exclude" to ignoredFiles
+            ))
+        )
+    }
+    
     
 }
 
 tasks {
     jar {
-        manifest {
+        manifest {  
             from ("META-INF/MANIFEST.MF")
         }
     }
@@ -134,25 +64,18 @@ tasks {
 
 
 tasks.named<Jar>("jar") {
+    dependsOn(":gama.kernel:gama.annotations:jar")
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
     from(configurations.runtimeClasspath.get().filter { it.name.endsWith(".jar") }.map { zipTree(it) })
 }
 
 
 sourceSets.main {
-        java {
-            setSrcDirs(listOf("src"))
-        }
-        /*resources {
-            setSrcDirs(listOf("resources"))
-        }*/
-    
+    java {
+        setSrcDirs(listOf("src"))
+    }
+    /*resources {
+        setSrcDirs(listOf("resources"))
+    }*/
 }
-
-// Copy-dependencies
-task copyDependencies(type: Copy) {
-  from configurations.default
-  into 'dependencies'
-}
-
-build.dependsOn(copyToLib)
 
