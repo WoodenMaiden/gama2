@@ -21,36 +21,23 @@ publishing {
 
 dependencies {
     // api() will allow to expose the following dependencies to the modules that depend on gama.dependencies
-    // https://www.baeldung.com/gradle-implementation-vs-compile#best-practices-for-gradle-dependency-management
+    // https://www.baeldung.com/gradle-dependency-management#2-types-of-configuration
 
     api(project(":gama.kernel:gama.dev"))
     api(project(":gama.kernel:gama.annotations"))
 
-    api("com.google.inject:guice:4.0-beta5")
+    api("com.google.inject:guice:7.0.0")
     compileOnlyApi("org.osgi:org.osgi.framework:1.10.0")
 
-    api(files("./protobuf-java-3.6.1.jar"))
 
-    // We ignore the 3.4.0 version because the com.google.protobuf.GeneratedMessageLite.MethodToInvoke
-    // enum has less values than the 3.6.1 version, which causes compilations problems
+    val classPathFiles = """[^\s]+[\w\d\ -_/]+\.jar""".toRegex(setOf(RegexOption.MULTILINE)).findAll(
+            file("META-INF/MANIFEST.MF").readText()
+    ).map{ it.value }.toList()
 
-    val ignoredFiles = listOf("protobuf-java-3.4.0.jar")
+    logger.debug("JAR files in gama.dependencies: ")
+    classPathFiles.forEach(logger::debug)
 
-    // 👇 put the directories containing the jars you want to include
-    listOf(
-        "./geotools", "./jaxb", "./jfreechart", "./jgrapht 1.5.1",
-        "./streamex", "./svgsalamander1.1.1", "./jts", "./jsr 363",
-        "./commons-math3-3.6.1.jar", "./moeaframework-2.13.jar", 
-    ).forEach { path ->
-        api(
-            fileTree(mapOf(
-                "dir" to "$path", 
-                "include" to listOf("*.jar"),
-                "exclude" to ignoredFiles
-            ))
-        )
-    }
-    
+    api(files(classPathFiles))
     
 }
 

@@ -751,6 +751,7 @@ Bundle-ClassPath: .,
  geotools/ehcache-2.10.3.jar,
  geotools/bigint-0.7.1.jar,
  jgrapht 1.5.1/jgrapht-core-1.5.1.jar,
+ jgrapht 1.5.1/jgrapht-ext-1.5.1.jar
  jgrapht 1.5.1/jgrapht-guava-1.5.1.jar,
  jgrapht 1.5.1/jgrapht-io-1.5.1.jar,
  jgrapht 1.5.1/jgrapht-opt-1.5.1.jar,

@@ -29,7 +29,9 @@ include(
     ":gama.kernel:gama.annotations",
     ":gama.build:gama.processor",
     ":gama.kernel:gama.dev",
-    ":gama.kernel:gama.dependencies"
+    ":gama.kernel:gama.dependencies",
+    ":gama.kernel:gama.core",
+    // ":gama.gaml:gama.compiler"
 )
 
 /*
