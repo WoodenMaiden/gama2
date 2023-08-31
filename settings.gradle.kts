@@ -11,7 +11,7 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT) // So we can override dependencies in subprojects if needed
     repositories {
         maven { 
             url = uri("https://repo.maven.apache.org/maven2/")

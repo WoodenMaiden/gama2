@@ -18,28 +18,20 @@ version = "2.0.0-SNAPSHOT"
 description = "gama.annotations"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
-tasks.withType<JavaCompile>() {
-    options.encoding = "UTF-8"
-}
-
-tasks.withType<Javadoc>() {
-    options.encoding = "UTF-8"
-}
-
 tasks.jar {
     manifest {
         from ("META-INF/MANIFEST.MF")
     }
 }
 
-sourceSets {
-    main {
-        java {
-            setSrcDirs(listOf("src"))
-        }
-        /*resources {
-            setSrcDirs(listOf("src"))
-        }*/
-    }
-}
+//sourceSets {
+//    main {
+//        java {
+//            setSrcDirs(listOf("src"))
+//        }
+//        /*resources {
+//            setSrcDirs(listOf("src"))
+//        }*/
+//    }
+//}
 

@@ -9,14 +9,6 @@
  * 
  ********************************************************************************************************/
 
-tasks.withType<JavaCompile>() {
-    options.encoding = "UTF-8"
-}
-
-tasks.withType<Javadoc>() {
-    options.encoding = "UTF-8"
-}
-
 group = "gama.build"
 version = "2.0.0-SNAPSHOT"
 description = "gama.processor"
